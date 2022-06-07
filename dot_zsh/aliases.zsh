@@ -1,0 +1,1 @@
+alias Gck="git checkout"

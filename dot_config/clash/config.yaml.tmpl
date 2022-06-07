@@ -1,0 +1,25 @@
+port: 8080
+socks-port: 8079
+mode: rule
+external-controller: 127.0.0.1:9090
+proxy-providers:
+  subscription:
+    type: http
+    url: {{.clashSubscription}}
+    path: ./subscription.yaml
+    health-check:
+      enable: true
+      lazy: true
+      interval: 3600
+      url: http://www.gstatic.com/generate_204
+proxy-groups:
+  - name: auto
+    type: url-test
+    use:
+      - subscription
+    lazy: true
+    interval: 600
+    url: http://www.gstatic.com/generate_204
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,auto
