@@ -6,7 +6,6 @@
     git
     neovim
     chezmoi
-    clash
 
     # Utils
     ripgrep

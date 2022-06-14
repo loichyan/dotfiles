@@ -1,0 +1,11 @@
+[Unit]
+DefaultDependencies=no
+ConditionPathExists=!/nix
+ConditionPathIsReadWrite=/
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStartPre=chattr -i /
+ExecStart=mkdir /nix
+ExecStopPost=chattr +i /

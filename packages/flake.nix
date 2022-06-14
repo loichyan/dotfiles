@@ -14,6 +14,7 @@
       {
         packages = {
           symbols-nerd-font = pkgs.callPackage ./symbols-nerd-font { };
+          nix-single-user = pkgs.callPackage ./nix-single-user { };
         };
       }
     )

@@ -26,6 +26,9 @@ rpm-ostree install podman-compose tmux zsh \
   fira-code-fonts langpacks-zh_CN \
   code microsoft-edge-stable
 
+# Install Nix.
+sh <(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install) --no-daemon --no-modify-profile
+
 # Enable podman socket.
 systemctl --user enable --now podman.socket
 
