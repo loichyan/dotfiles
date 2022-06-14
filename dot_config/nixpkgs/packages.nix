@@ -37,7 +37,9 @@
     python310Packages.pip
 
     # Rust
-    rust-bin.stable.latest.default
+    (rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+    })
     rust-analyzer
 
     # Lua
