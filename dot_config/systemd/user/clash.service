@@ -1,0 +1,11 @@
+[Unit]
+Description=A rule based proxy in Go.
+After=network.target
+
+[Service]
+Type=exec
+Restart=on-abort
+ExecStart=zsh -c 'bwrap-nix zsh -cl clash'
+
+[Install]
+WantedBy=default.target

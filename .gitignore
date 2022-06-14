@@ -3,3 +3,7 @@
 
 # Editor
 .vscode
+
+# Nix files
+result
+flake.lock

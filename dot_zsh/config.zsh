@@ -8,6 +8,11 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey -v
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
+# Load additional zsh functions path.
+for profile in ${(z)NIX_PROFILES}; do
+  fpath+=( "${profile}/share/zsh/site-functions" )
+done
+unset profile
 
 #
 # Module configs
@@ -37,13 +42,16 @@ if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-${HOME}}/.zimrc" ]]; then
 fi
 # Initialize modules.
 source "${ZIM_HOME}/init.zsh"
+# Refresh dumpfile.
+zimfw check-dumpfile -q
 
 #
 # zsh-history-substring-search
 #
 
-zmodload -F zsh/terminfo +p:terminfo
+
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+zmodload -F zsh/terminfo +p:terminfo
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
 for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
 for key ('k') bindkey -M vicmd ${key} history-substring-search-up
@@ -55,10 +63,10 @@ unset key
 #
 
 # Load functions.
-source "$MY_ZSH/functions.zsh"
+source "${MY_ZSH}/functions.zsh"
 
 # Load aliases.
-source "$MY_ZSH/aliases.zsh"
+source "${MY_ZSH}/aliases.zsh"
 
 # Setup zoxide.
 if (( ${+commands[zoxide]} )); then

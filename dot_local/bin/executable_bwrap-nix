@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+binds=""
+for p in $(find / -mindepth 1 -maxdepth 1 -not -name nix); do
+  binds="${binds} --dev-bind ${p} ${p}"
+done
+exec bwrap \
+  --dev-bind ~/.nix /nix \
+  $binds \
+  ${@:-$SHELL -l}

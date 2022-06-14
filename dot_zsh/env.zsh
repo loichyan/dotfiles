@@ -1,5 +1,5 @@
 # Remove duplicated entries in PATH.
-typeset -U PATH
+typeset -U PATH path
 
 # Set term color.
 export TERM=xterm-256color
@@ -8,26 +8,31 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 
-# Setup environment variables for Nix.
-source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-if [[ -d /nix ]]; then
-  for profile in "${(z)NIX_PROFILES}"; do
-    # Load Homa Manger session variables.
-    if [[ -f "$profile/etc/profile.d/hm-session-vars.sh" ]]; then
-      source "$profile/etc/profile.d/hm-session-vars.sh"
-    fi
-    # Load zsh completions.
-    fpath+=(
-      "$profile/share/zsh/site-functions"
-    )
-  done
-  unset profile
-fi
+# Set golang proxy.
+export GOPROXY=https://proxy.golang.com.cn,direct
 
-# Prepend local installed packages to PATH.
-path=(
-  ~/.local/bin
-  ~/.cargo/bin
-  ~/.pnpm/bin
-  $path
+# Setup environment variables for Nix and Home Manager.
+for profile (
+  ~/.nix-profile/etc/profile.d/nix.sh
+  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+) do
+  if [[ -e $profile ]]; then
+    source $profile
+  fi
+done
+
+# Language specified packages.
+declare -A local_path=(
+  [cargo]=~/.cargo/bin
+  [pip]=~/.pip/bin
+  [pnpm]=~/.pnpm/bin
 )
+for k v in ${(kv)local_path}; do
+  if (( ${+commands[$k]} )); then
+    path=( $v $path )
+  fi
+done
+unset local_path k v
+
+# Local installed packages.
+path=( ~/.local/bin $path )
