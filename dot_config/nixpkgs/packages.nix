@@ -44,5 +44,6 @@
 
     # Lua
     stylua
+    sumneko-lua-language-server
   ];
 }

@@ -1,5 +1,5 @@
 {
-  description = "My local Nix packages.";
+  description = "My local system packages.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
