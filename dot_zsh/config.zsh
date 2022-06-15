@@ -77,3 +77,8 @@ fi
 if (( ${+commands[direnv]} )); then
   eval "$(direnv hook zsh)"
 fi
+
+# Load tabtab completions (pnpm).
+if [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]]; then
+  source ~/.config/tabtab/zsh/__tabtab.zsh
+fi
