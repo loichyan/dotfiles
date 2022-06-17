@@ -11,15 +11,19 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    myPkgs = {
+      url = "./pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { home-manager, rust-overlay, ... }:
+  outputs = { home-manager, rust-overlay, myPkgs, ... }:
     let
       username = data.user;
       data = import ./data.nix;
       homeDirectory = data.home;
       stateVersion = "22.05";
-      overlays = [ rust-overlay.overlay ];
+      overlays = [ rust-overlay.overlay myPkgs.overlay ];
     in
     {
       homeConfigurations."${username}" =

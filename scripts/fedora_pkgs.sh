@@ -31,6 +31,3 @@ sh <(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install) --no-daemon -
 
 # Enable podman socket.
 systemctl --user enable --now podman.socket
-
-# Install node packages.
-pnpm add -g commitizen

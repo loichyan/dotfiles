@@ -13,6 +13,7 @@
     tokei
     bat
     tmux
+    myPkgs.cz-cli
 
     # Shell
     direnv
