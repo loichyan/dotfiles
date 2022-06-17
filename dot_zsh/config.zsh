@@ -86,3 +86,8 @@ fi
 if (( ${+commands[starship]} )); then
   eval "$(starship init zsh)"
 fi
+
+# Load pip completions.
+if (( ${+commands[pip]} )); then
+  eval "$(pip completion --zsh)"
+fi
