@@ -40,5 +40,11 @@
               ];
             };
         };
+      templates = {
+        basic = {
+          path = ./templates/basic;
+          description = "Basic nix project";
+        };
+      };
     };
 }
