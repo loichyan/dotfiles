@@ -18,6 +18,7 @@
     direnv
     zoxide
     shfmt
+    starship
 
     # C/C++
     gcc

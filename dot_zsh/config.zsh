@@ -49,7 +49,6 @@ zimfw check-dumpfile -q
 # zsh-history-substring-search
 #
 
-
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 zmodload -F zsh/terminfo +p:terminfo
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
@@ -81,4 +80,9 @@ fi
 # Load tabtab completions (pnpm).
 if [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]]; then
   source ~/.config/tabtab/zsh/__tabtab.zsh
+fi
+
+# Setup starship.
+if (( ${+commands[starship]} )); then
+  eval "$(starship init zsh)"
 fi
