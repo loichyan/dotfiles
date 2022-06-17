@@ -16,4 +16,4 @@ nix build ".#homeConfigurations.${YOUR_USER}.activationPackage"
 
 ## TODO
 
-- [ ] Beautify Tumx.
+- [x] Beautify Tumx.
