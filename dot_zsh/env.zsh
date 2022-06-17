@@ -11,6 +11,9 @@ export VISUAL=nvim
 # Set golang proxy.
 export GOPROXY=https://proxy.golang.com.cn,direct
 
+# Define python user base folder.
+export PYTHONUSERBASE=~/.pip
+
 # Setup environment variables for Nix and Home Manager.
 for profile (
   ~/.nix-profile/etc/profile.d/nix.sh
@@ -20,6 +23,7 @@ for profile (
     source $profile
   fi
 done
+unset profile
 
 # Language specified packages.
 declare -A local_path=(
