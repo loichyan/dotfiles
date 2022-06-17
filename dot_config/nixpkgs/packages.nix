@@ -34,8 +34,13 @@
     nodePackages.pnpm
 
     # Python
-    python310
-    python310Packages.pip
+    (python3.withPackages
+      (py: with py; [
+        black
+        jupyter
+        virtualenv
+      ])
+    )
 
     # Rust
     (rust-bin.stable.latest.default.override {
