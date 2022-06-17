@@ -12,10 +12,9 @@ proxy-providers:
     interval: 36000
 proxy-groups:
   - name: auto
-    type: load-balance
+    type: select
     use:
       - subscription
-    interval: 600
     url: http://www.gstatic.com/generate_204
 rules:
   - GEOIP,CN,DIRECT
