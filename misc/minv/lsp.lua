@@ -70,8 +70,8 @@ function M.setup(minv)
   config.formatters = {
     -- Lua
     stylua = {},
-    -- Prettier
-    prettier = {},
+    -- Prettierd
+    prettierd = {},
   }
 end
 
