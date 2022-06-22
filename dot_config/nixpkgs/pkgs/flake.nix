@@ -18,6 +18,7 @@
         in
         {
           cz-cli = pkgs.callPackage ./cz-cli.nix { inherit npmlock2nix; };
+          prettierd = pkgs.callPackage ./prettierd.nix { };
         };
       overlay = final: _: {
         myPkgs = mkPkgs final;

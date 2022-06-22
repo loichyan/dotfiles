@@ -52,5 +52,8 @@
     # Lua
     stylua
     sumneko-lua-language-server
+
+    # Web
+    myPkgs.prettierd
   ];
 }
