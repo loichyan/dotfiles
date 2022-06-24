@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = { home-manager, rust-overlay, myPkgs, ... }:
+  outputs = { nixpkgs, home-manager, rust-overlay, myPkgs, ... }:
     let
       username = data.user;
       data = import ./data.nix;
@@ -27,9 +27,14 @@
     in
     {
       homeConfigurations."${username}" =
-        home-manager.lib.homeManagerConfiguration {
-          inherit username homeDirectory stateVersion;
+        let
           system = "x86_64-linux";
+          pkgs = import nixpkgs {
+            inherit system overlays;
+          };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit username homeDirectory stateVersion pkgs system;
           configuration = { pkgs, ... }:
             {
               # Setup Nixpkgs overlays and configs.
