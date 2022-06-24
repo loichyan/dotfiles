@@ -55,5 +55,8 @@
 
     # Web
     myPkgs.prettierd
+
+    # Others
+    taplo-cli
   ];
 }
