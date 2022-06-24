@@ -61,6 +61,14 @@ local function custom(minv)
 
   require("custom.plugins").setup(minv)
 
+  -----------
+  -- Theme --
+  -----------
+
+  minv.plugins.theme.setup = function()
+    require("onedark").setup({})
+  end
+
   ---------------
   -- Cmpletion --
   ---------------

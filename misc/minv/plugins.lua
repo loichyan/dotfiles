@@ -17,12 +17,7 @@ function M.setup(minv)
       end,
     })
     :extend({
-      {
-        "ful1e5/onedark.nvim",
-        config = function()
-          require("onedark").setup({})
-        end,
-      },
+      { "ful1e5/onedark.nvim" },
     })
   plugins.treesitter.plug:extend({
     {
