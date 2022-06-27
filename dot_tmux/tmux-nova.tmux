@@ -5,7 +5,7 @@ black="#282c34"
 white="#aab2bf"
 green="#98c379"
 grey="#3e4452"
-seg_a="$green black"
+seg_a="$green $black"
 seg_b="$grey $white"
 seg_c="$black $white"
 
