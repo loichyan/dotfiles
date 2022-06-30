@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   buildPhase = ''
     # Copy files
     confdir=rootfs/etc
-    mkdir -p \
+    install -m 0755 -d \
       $confdir/pki/${pname}/certs \
       $confdir/pki/${pname}/private \
       $confdir/rpm
@@ -27,6 +27,7 @@ stdenv.mkDerivation {
       -t rpm \
       -C rootfs \
       -p out \
+      --rpm-use-file-permissions \
       --rpm-tag "Supplements: akmods"
   '';
   installPhase = ''

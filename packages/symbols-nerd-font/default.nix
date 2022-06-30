@@ -19,15 +19,20 @@ stdenv.mkDerivation {
   '';
   buildPhase = ''
     # Copy fonts
-    font_dir=rootfs/usr/share/fonts
-    mkdir -p "$font_dir"
-    mv fonts "$font_dir/symbols-nerd-font"
+    fontdir=usr/share/fonts/symbols-nerd-font
+    install -m 0755 -d rootfs/$fontdir
+    install -m 0644 -p fonts/* rootfs/$fontdir
     # Copy fontconfig files
-    mkdir -p rootfs/usr/share/fontconfig/conf.avail
-    mkdir -p rootfs/etc/fonts/conf.d
-    fontcfg=usr/share/fontconfig/conf.avail/10-symbols-nerd-font.conf
-    cp ${./fontconfig.conf} rootfs/$fontcfg
-    ln -s /$fontcfg rootfs/etc/fonts/conf.d
+    fontcfg_tmpldir=usr/share/fontconfig/conf.avail
+    fontcfg_confdir=etc/fonts/conf.d
+    install -m 0755 -d \
+      rootfs/$fontcfg_tmpldir \
+      rootfs/$fontcfg_confdir
+    fontconf=$fontcfg_tmpldir/10-symbols-nerd-font.conf
+    install -m 0644 -p ${./fontconfig.conf} rootfs/$fontconf
+    ln -s /$fontconf rootfs/$fontcfg_confdir
+    # Copy metainfo
+    install -Dm 0644 -p ${./metainfo.xml} rootfs/usr/share/metainfo/${pname}.metainfo.xml
     # Build FPM
     mkdir -p out
     fakeroot fpm \
@@ -37,7 +42,8 @@ stdenv.mkDerivation {
       -s dir \
       -t rpm \
       -C rootfs \
-      -p out
+      -p out \
+      --rpm-use-file-permissions
   '';
   installPhase = ''
     mv out $out

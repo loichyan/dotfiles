@@ -9,19 +9,21 @@ stdenv.mkDerivation {
   src = ./.;
   buildPhase = ''
     # Copy services
-    service_dir=rootfs/usr/lib/systemd
-    mkdir -p "$service_dir"
-    mv system $service_dir
+    unitdir=rootfs/usr/lib/systemd/system
+    install -m 0755 -d $unitdir
+    install -m 0644 nix-mkdir.service $unitdir
+    install -m 0644 nix.mount $unitdir
     # Build FPM
     mkdir -p out
     fakeroot fpm \
       -n ${pname} \
       -v ${version} \
-      -a ${stdenv.targetPlatform.linuxArch} \
+      -a all \
       -s dir \
       -t rpm \
       -C rootfs \
-      -p out
+      -p out \
+      --rpm-use-file-permissions
   '';
   installPhase = ''
     mv out $out
