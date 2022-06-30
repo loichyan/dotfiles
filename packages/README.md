@@ -2,10 +2,15 @@
 
 Local installed packages.
 
-## Symbols Nerd font
+## Symbols nerd font
 
 Symbols only of [Nerd Font](https://www.nerdfonts.com/).
 
-## Nix Single User
+## Nix single user
 
-Create /nix mount point for rpm-ostree based systems.
+Create /nix mount point for rpm-ostree base systems.
+
+## Akmods keys
+
+Local keys required by akmods to sign modules, for more information
+[see this](https://github.com/CheariX/silverblue-akmods-keys).

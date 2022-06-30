@@ -15,6 +15,7 @@
         packages = {
           symbols-nerd-font = pkgs.callPackage ./symbols-nerd-font { };
           nix-single-user = pkgs.callPackage ./nix-single-user { };
+          akmods-keys = pkgs.callPackage ./akmods-keys { };
         };
       }
     )
