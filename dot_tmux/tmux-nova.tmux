@@ -2,7 +2,7 @@
 
 # Onedark theme (odedlaz/tmux-onedark-theme).
 black="#282c34"
-white="#aab2bf"
+white="#abb2bf"
 green="#98c379"
 grey="#3e4452"
 seg_a="$green $black"
@@ -28,10 +28,11 @@ set -g @nova-pane-border-style "$black"
 set -g @nova-pane-active-border-style "$green"
 
 # Mode segment.
-set -g @nova-segment-mode "#{?client_prefix,C-B,NOP}"
+set -g @nova-segment-mode "#[bold]#{?client_prefix,C-B,NOP}"
 set -g @nova-segment-mode-colors "$seg_a"
 
 # Whoami segment.
+set -g @nova-segment-whoami "#[bold]#(whoami)@#h"
 set -g @nova-segment-whoami-colors "$seg_a"
 
 # Date segment.
