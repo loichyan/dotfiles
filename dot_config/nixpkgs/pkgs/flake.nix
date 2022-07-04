@@ -20,9 +20,6 @@
           cz-cli = pkgs.callPackage ./cz-cli.nix { inherit npmlock2nix; };
           prettierd = pkgs.callPackage ./prettierd.nix { };
         };
-      overlay = final: _: {
-        myPkgs = mkPkgs final;
-      };
     in
     (flake-utils.lib.eachDefaultSystem (system:
       let
@@ -32,8 +29,9 @@
         packages = mkPkgs pkgs;
       }
     )) // {
-      inherit overlay;
-      overlays.default = overlay;
+      overlays.default = final: _: {
+        myPkgs = mkPkgs final;
+      };
     }
   ;
 }

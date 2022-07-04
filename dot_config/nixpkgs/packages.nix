@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  # Let Home Manager manages itself.
+  programs.home-manager.enable = true;
+
   # Install packages.
   home.packages = with pkgs;  [
     # Basic

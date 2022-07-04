@@ -19,11 +19,14 @@
 
   outputs = { nixpkgs, home-manager, rust-overlay, myPkgs, ... }:
     let
-      username = data.user;
       data = import ./data.nix;
+      username = data.user;
       homeDirectory = data.home;
-      stateVersion = "22.05";
-      overlays = [ rust-overlay.overlay myPkgs.overlay ];
+      stateVersion = "22.11";
+      overlays = [
+        rust-overlay.overlays.default
+        myPkgs.overlays.default
+      ];
     in
     {
       homeConfigurations."${username}" =
@@ -34,20 +37,12 @@
           };
         in
         home-manager.lib.homeManagerConfiguration {
-          inherit username homeDirectory stateVersion pkgs system;
-          configuration = { pkgs, ... }:
-            {
-              # Setup Nixpkgs overlays and configs.
-              nixpkgs.overlays = overlays;
-
-              # Let Home Manager manages itself.
-              programs.home-manager.enable = true;
-
-              imports = [
-                ./packages.nix
-                ./services.nix
-              ];
-            };
+          inherit pkgs;
+          modules = [
+            { home = { inherit username homeDirectory stateVersion; }; }
+            ./packages.nix
+            ./services.nix
+          ];
         };
       templates = {
         basic = {
