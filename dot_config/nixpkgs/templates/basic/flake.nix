@@ -11,7 +11,9 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-      { }
+      {
+        devShells.default = with pkgs; mkShell { };
+      }
     )
   ;
 }

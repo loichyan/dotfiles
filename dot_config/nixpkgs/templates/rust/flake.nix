@@ -1,5 +1,5 @@
 {
-  description = "A simple nix project";
+  description = "A simple rust project.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,13 +10,16 @@
     };
   };
 
-  outputs = { nixpkgs, flake-utils, ... }:
+  outputs = { nixpkgs, flake-utils, rust-overlay, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ rust-overlay.overlays.default ];
+        };
       in
       {
-        devShells.default = with pkgs; {
+        devShells.default = with pkgs; mkShell {
           buildInputs = [
             (rust-bin.stable.latest.default.override {
               extensions = [ "rust-src" ];
