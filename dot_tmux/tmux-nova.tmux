@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
 
-# Onedark theme (odedlaz/tmux-onedark-theme).
-black="#282c34"
-white="#abb2bf"
-green="#98c379"
-grey="#3e4452"
-seg_a="$green $black"
+
+# Nightfox colors for Tmux
+# Upstream: github:edeneast/nightfox.nvim/main/extra/nightfox/nightfox_tmux.tmux
+black="#131a24"
+white="#aeafb0"
+blue="#719cd6"
+grey="#393b44"
+seg_a="$blue $black"
 seg_b="$grey $white"
 seg_c="$black $white"
+
+# Misc styles.
+set -g mode-style "fg=$blue,bg=$white"
+set -g message-style "fg=$blue,bg=$white"
+set -g message-command-style "fg=$blue,bg=$white"
+set -g status "on"
+set -g status-justify "left"
+set -g status-style "fg=$blue,bg=$black"
 
 # Single row.
 set -g @nova-rows 0
@@ -25,7 +35,7 @@ set -g @nova-pane "#S:#W"
 set -g @nova-status-style-active-bg "$black"
 set -g @nova-status-style-active-fg "$white"
 set -g @nova-pane-border-style "$black"
-set -g @nova-pane-active-border-style "$green"
+set -g @nova-pane-active-border-style "$blue"
 
 # Mode segment.
 set -g @nova-segment-mode "#[bold]#{?client_prefix,C-B,NOP}"
