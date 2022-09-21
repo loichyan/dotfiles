@@ -7,7 +7,6 @@
   home.packages = with pkgs;  [
     # Basic
     git
-    neovim
     chezmoi
 
     # Utils
@@ -17,6 +16,11 @@
     bat
     tmux
     myPkgs.cz-cli
+
+    # Neovim
+    neovim
+    xclip
+    wl-clipboard
 
     # Shell
     direnv
@@ -36,6 +40,9 @@
     # Node
     nodejs
     nodePackages.pnpm
+
+    # Deno
+    deno
 
     # Python
     python3Packages.black
