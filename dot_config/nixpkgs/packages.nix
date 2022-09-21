@@ -41,6 +41,9 @@
     nodejs
     nodePackages.pnpm
 
+    # Typescript
+    (nodePackages.typescript-language-server)
+
     # Deno
     deno
 
