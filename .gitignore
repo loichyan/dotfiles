@@ -7,3 +7,6 @@
 # Nix files
 result
 flake.lock
+
+# Node.js
+node_modules

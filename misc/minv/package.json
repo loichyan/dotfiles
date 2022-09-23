@@ -1,0 +1,19 @@
+{
+  "name": "minv-custom",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT OR Apache-2.0",
+  "main": "lua/custom",
+  "types": "lua/custom.d.ts",
+  "scripts": {
+    "build": "tstl"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3",
+    "typescript-to-lua": "^1.10.1"
+  },
+  "dependencies": {
+    "lua-types": "^2.13.0",
+    "minv": "github:loichyan/minv#dev"
+  }
+}
