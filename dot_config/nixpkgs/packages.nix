@@ -65,5 +65,7 @@
 
     # Others
     taplo-cli
+    vale
+    sfz
   ];
 }
