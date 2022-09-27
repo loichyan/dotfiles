@@ -1,9 +1,27 @@
-# Dotfiles
+# 🏠 Dotfiles
 
-My dotfiles managed by [Chezmoi](https://www.chezmoi.io/) and
-[Home Manager](https://github.com/nix-community/home-manager).
+My dotfiles.
 
-## Installation
+## 📸 Showcase
+
+### Neovim
+
+![neovim](assets/neovim.png)
+
+### Tmux
+
+![tmux](assets/tmux.png)
+
+## ✨ Overview
+
+- Mainly run on [Fedora Silverblue](https://silverblue.fedoraproject.org/)
+- Depoly using [Chezmoi](https://www.chezmoi.io/)
+- Manage packages using
+  [Home Manager](https://github.com/nix-community/home-manager)
+- Customize zsh using [Zimfw](https://zimfw.sh/)
+- Customize neovim using [MiNV](https://github.com/loichyan/minv)
+
+## 🚀 Installation
 
 ### Deploy dotfiles
 
@@ -22,6 +40,7 @@ nix build ".#homeConfigurations.${YOUR_USER}.activationPackage"
 ./result/activate
 ```
 
-## TODO
+## 📝 Todo
 
 - [x] Beautify Tumx.
+- [ ] Switch to [dbot](https://github.com/loichyan/dbot)
