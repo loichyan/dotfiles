@@ -43,8 +43,14 @@ export function setup_plugins(this: void, minv: MINV) {
       1: {
         $pre_setup_cmp: {
           setup() {
+            const compare = req("cmp").config.compare;
             minv.update_preset({
               cmp: {
+                sorting: {
+                  comparators: {
+                    $set: [compare.score, compare.recently_used],
+                  },
+                },
                 sources: {
                   $concat: [{ name: "nvim_lsp_signature_help" }],
                 },

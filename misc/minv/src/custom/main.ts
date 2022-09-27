@@ -22,5 +22,9 @@ export function setup(this: void) {
     au.close.enable = not_vscode;
     au.format_on_save.enable = not_vscode;
     au.trim_spaces.enable = not_vscode;
+    au.ruler.enable = not_vscode;
+    au.ruler.offsets = {
+      rust: 80,
+    };
   });
 }
