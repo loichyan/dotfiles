@@ -2,7 +2,7 @@
 typeset -U PATH path
 
 # Set term color.
-# export TERM=xterm-256color
+export TERM=xterm-256color
 
 # Set default editor.
 export EDITOR=nvim
