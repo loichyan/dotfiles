@@ -26,5 +26,6 @@ export function setup(this: void) {
     au.ruler.offsets = {
       rust: 80,
     };
+    minv.settings.o.clipboard = "";
   });
 }

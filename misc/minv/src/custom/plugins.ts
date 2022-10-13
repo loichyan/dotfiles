@@ -48,7 +48,11 @@ export function setup_plugins(this: void, minv: MINV) {
               cmp: {
                 sorting: {
                   comparators: {
-                    $set: [compare.score, compare.recently_used],
+                    $set: [
+                      compare.recently_used,
+                      compare.score,
+                      compare.sort_text,
+                    ],
                   },
                 },
                 sources: {
