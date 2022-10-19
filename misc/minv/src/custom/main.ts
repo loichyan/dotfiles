@@ -27,5 +27,6 @@ export function setup(this: void) {
       rust: 80,
     };
     minv.settings.o.clipboard = "";
+    vim.o.guifont = "Fira Code:h11";
   });
 }

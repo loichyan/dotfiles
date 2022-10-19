@@ -21,6 +21,7 @@
     neovim
     xclip
     wl-clipboard
+    nixgl-wrapped.neovide
 
     # Shell
     direnv

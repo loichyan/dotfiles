@@ -6,11 +6,19 @@
     flake-utils.url = "github:numtide/flake-utils";
     npmlock2nix_ = {
       url = "github:nix-community/npmlock2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
       flake = false;
+    };
+    nixgl-wrapped = {
+      url = "./nixgl-wrapped";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
   };
 
-  outputs = { nixpkgs, flake-utils, npmlock2nix_, ... }:
+  outputs = { nixpkgs, flake-utils, npmlock2nix_, nixgl-wrapped, ... }:
     let
       mkPkgs = pkgs:
         let
@@ -29,9 +37,9 @@
         packages = mkPkgs pkgs;
       }
     )) // {
-      overlays.default = final: _: {
+      overlays.default = final: prev: {
         myPkgs = mkPkgs final;
-      };
+      } // (nixgl-wrapped.overlays.default final prev);
     }
   ;
 }

@@ -201,15 +201,15 @@ export function setup_plugins(this: void, minv: MINV) {
             });
           },
         },
-        $pre_setup_toggleterm: {
-          setup() {
-            minv.update_preset({
-              toggleterm: {
-                direction: { $set: "horizontal" },
-              },
-            });
-          },
-        },
+        // $pre_setup_toggleterm: {
+        //   setup() {
+        //     minv.update_preset({
+        //       toggleterm: {
+        //         direction: { $set: "horizontal" },
+        //       },
+        //     });
+        //   },
+        // },
         numb: {
           1: "nacro90/numb.nvim",
           setup() {
