@@ -17,15 +17,20 @@
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
+        llvmPkgs = pkgs.llvmPackages;
+        mkShell = pkgs.mkShell.override { stdenv = llvmPkgs.stdenv; };
       in
       {
-        devShells.default = with pkgs; mkShell {
-          buildInputs = [
+        devShells.default = mkShell (with pkgs; {
+          nativeBuildInputs = [
             (rust-bin.stable.latest.default.override {
               extensions = [ "rust-src" ];
             })
+            llvmPkgs.bintools
           ];
-        };
+          NIX_CFLAGS_LINK = "-fuse-ld=lld";
+          RUSTFLAGS = [ "-Clinker=clang" "-Clink-arg=-fuse-ld=lld" ];
+        });
       }
     )
   ;
