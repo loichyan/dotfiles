@@ -1,9 +1,6 @@
 # Remove duplicated entries in PATH.
 typeset -U PATH path
 
-# Set term color.
-export TERM=xterm-256color
-
 # Set default editor.
 export EDITOR=nvim
 export VISUAL=nvim
