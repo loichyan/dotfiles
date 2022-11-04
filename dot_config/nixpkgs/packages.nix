@@ -16,6 +16,7 @@
     bat
     tmux
     myPkgs.cz-cli
+    netcat
 
     # Neovim
     neovim
@@ -56,6 +57,7 @@
       extensions = [ "rust-src" ];
     })
     rust-analyzer
+    cargo-edit
 
     # Lua
     stylua
