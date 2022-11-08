@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) clash aria;
+  inherit (pkgs) clash aria tor;
 in
 {
   systemd.user.services = {
@@ -27,6 +27,23 @@ in
         Type = "exec";
         Restart = "on-abort";
         ExecStart = "${aria}/bin/aria2c";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+    tor = {
+      Unit = {
+        Description = tor.meta.description;
+        After = "network.target";
+      };
+      Service = {
+        Type = "exec";
+        Restart = "on-abort";
+        ExecStart = "${tor}/bin/tor";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
       };
     };
   };
