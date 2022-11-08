@@ -1,7 +1,7 @@
 import { MINV } from "minv";
 
 function disable_formatting(this: void, client: any) {
-  client.resolved_capabilities.document_formatting = false;
+  client.server_capabilities.document_formatting = false;
 }
 
 export function setup_lsp(this: void, minv: MINV) {
