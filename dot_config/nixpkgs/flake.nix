@@ -14,6 +14,7 @@
     myPkgs = {
       url = "./pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
   };
 

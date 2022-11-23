@@ -16,9 +16,13 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, flake-utils, npmlock2nix_, nixgl-wrapped, ... }:
+  outputs = { nixpkgs, flake-utils, npmlock2nix_, nixgl-wrapped, rust-overlay, ... }:
     let
       mkPkgs = pkgs:
         let
@@ -27,11 +31,15 @@
         {
           cz-cli = pkgs.callPackage ./cz-cli.nix { inherit npmlock2nix; };
           prettierd = pkgs.callPackage ./prettierd.nix { };
+          cargo-nightly-expand = pkgs.callPackage ./cargo-nightly-expand.nix { };
         };
     in
     (flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ rust-overlay.overlays.default ];
+        };
       in
       {
         packages = mkPkgs pkgs;

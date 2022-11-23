@@ -53,11 +53,9 @@
     python3Packages.black
 
     # Rust
-    (rust-bin.stable.latest.default.override {
-      extensions = [ "rust-src" ];
-    })
     rust-analyzer
     cargo-edit
+    myPkgs.cargo-nightly-expand
 
     # Lua
     stylua
