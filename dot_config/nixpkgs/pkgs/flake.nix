@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    npmlock2nix_ = {
+    npmlock2nix = {
       url = "github:nix-community/npmlock2nix";
       inputs.nixpkgs.follows = "nixpkgs";
       flake = false;
@@ -16,34 +16,30 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, flake-utils, npmlock2nix_, nixgl-wrapped, rust-overlay, ... }:
+  outputs = { nixpkgs, flake-utils, npmlock2nix, nixgl-wrapped, fenix, ... }:
     let
+      overlays = [ fenix.overlays.default ];
       mkPkgs = pkgs:
         let
-          npmlock2nix = pkgs.callPackage npmlock2nix_ { };
+          npmlock2nix2 = pkgs.callPackage npmlock2nix { };
         in
         {
-          cz-cli = pkgs.callPackage ./cz-cli.nix { inherit npmlock2nix; };
+          cz-cli = pkgs.callPackage ./cz-cli.nix { npmlock2nix = npmlock2nix2; };
           prettierd = pkgs.callPackage ./prettierd.nix { };
           cargo-nightly-expand = pkgs.callPackage ./cargo-nightly-expand.nix { };
         };
     in
     (flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ rust-overlay.overlays.default ];
-        };
+        pkgs = import nixpkgs { inherit system overlays; };
       in
-      {
-        packages = mkPkgs pkgs;
-      }
+      { packages = mkPkgs pkgs; }
     )) // {
       overlays.default = final: prev: {
         myPkgs = mkPkgs final;

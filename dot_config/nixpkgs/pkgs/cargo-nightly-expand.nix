@@ -1,8 +1,8 @@
-{ pkgs, writeShellApplication, rust-bin, cargo-expand }:
+{ pkgs, writeShellApplication, fenix, cargo-expand }:
 writeShellApplication {
   name = "cargo-nightly-expand";
   runtimeInputs = [
-    rust-bin.nightly.latest.minimal
+    fenix.minimal.toolchain
     cargo-expand
   ];
   text = ''

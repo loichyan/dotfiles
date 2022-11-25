@@ -7,27 +7,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     myPkgs = {
       url = "./pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
+      inputs.fenix.follows = "fenix";
     };
   };
 
-  outputs = { nixpkgs, home-manager, rust-overlay, myPkgs, ... }:
+  outputs = { nixpkgs, home-manager, myPkgs, fenix, ... }:
     let
       data = import ./data.nix;
       username = data.user;
       homeDirectory = data.home;
       stateVersion = "22.11";
-      overlays = [
-        rust-overlay.overlays.default
-        myPkgs.overlays.default
-      ];
+      overlays = [ myPkgs.overlays.default fenix.overlays.default ];
     in
     {
       homeConfigurations."${username}" =
