@@ -55,6 +55,7 @@
     # Rust
     rust-analyzer
     cargo-edit
+    cargo-tarpaulin
     myPkgs.cargo-nightly-expand
 
     # Lua
