@@ -1,7 +1,7 @@
 import { MINV } from "minv";
 
 function disable_formatting(this: void, client: any) {
-  client.server_capabilities.document_formatting = false;
+  client.server_capabilities.documentFormattingProvider = false;
 }
 
 export function setup_lsp(this: void, minv: MINV) {
@@ -13,8 +13,8 @@ export function setup_lsp(this: void, minv: MINV) {
           rust_analyzer: {
             settings: {
               "rust-analyzer": {
-                experimental: {
-                  procAttrMacros: true,
+                checkOnSave: {
+                  command: "clippy",
                 },
               },
             },

@@ -2,13 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   lua-types: ^2.13.0
-  minv: github:loichyan/minv#dev
+  minv: git+file:///var/home/loichyan/devel/lua/minv
   typescript: ^4.8.3
   typescript-to-lua: ^1.10.1
 
 dependencies:
   lua-types: 2.13.0
-  minv: github.com/loichyan/minv/0f7b8e049713d59249e8d6cb6f482e1f93eeb5c2
+  minv: /var/home/loichyan/devel/lua/minv/8c32067d4fdf368c785608fc00c760b030289f3c
 
 devDependencies:
   typescript: 4.8.3
@@ -101,17 +101,15 @@ packages:
     hasBin: true
     dev: true
 
-  github.com/loichyan/minv/0f7b8e049713d59249e8d6cb6f482e1f93eeb5c2:
-    resolution: {tarball: https://codeload.github.com/loichyan/minv/tar.gz/0f7b8e049713d59249e8d6cb6f482e1f93eeb5c2}
-    name: minv
-    version: 0.1.0
+  /var/home/loichyan/devel/lua/minv/8c32067d4fdf368c785608fc00c760b030289f3c:
+    resolution: {commit: 8c32067d4fdf368c785608fc00c760b030289f3c, repo: file:///var/home/loichyan/devel/lua/minv, type: git}
     dependencies:
       lua-types: 2.13.0
       spark: github.com/loichyan/spark.nvim/9d363d8f2ccae4bf61ab20879aa6e1550452afa0
     dev: false
 
   github.com/loichyan/spark.nvim/9d363d8f2ccae4bf61ab20879aa6e1550452afa0:
-    resolution: {commit: 9d363d8f2ccae4bf61ab20879aa6e1550452afa0, repo: git+ssh://git@github.com/loichyan/spark.nvim.git, type: git}
+    resolution: {tarball: https://codeload.github.com/loichyan/spark.nvim/tar.gz/9d363d8f2ccae4bf61ab20879aa6e1550452afa0}
     name: spark.nvim
     version: 0.0.0
     dependencies:

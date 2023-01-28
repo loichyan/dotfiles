@@ -20,12 +20,13 @@ export function setup(this: void) {
     const au = minv.autocmds;
     au.auto_resize.enable = not_vscode;
     au.close.enable = not_vscode;
-    au.format_on_save.enable = not_vscode;
+    au.format_on_save.enable = false;
     au.trim_spaces.enable = not_vscode;
     au.ruler.enable = not_vscode;
     au.ruler.offsets = {
       rust: 80,
     };
     minv.settings.o.clipboard = "";
+    vim.o.guifont = "Fira Code:h11";
   });
 }

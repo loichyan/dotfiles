@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "lua-types": "^2.13.0",
-    "minv": "github:loichyan/minv#dev"
+    "minv": "git+file:///var/home/loichyan/devel/lua/minv"
   }
 }

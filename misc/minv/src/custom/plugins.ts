@@ -201,15 +201,6 @@ export function setup_plugins(this: void, minv: MINV) {
             });
           },
         },
-        // $pre_setup_toggleterm: {
-        //   setup() {
-        //     minv.update_preset({
-        //       toggleterm: {
-        //         direction: { $set: "horizontal" },
-        //       },
-        //     });
-        //   },
-        // },
         numb: {
           1: "nacro90/numb.nvim",
           setup() {
@@ -346,6 +337,19 @@ export function setup_plugins(this: void, minv: MINV) {
         // TODO: glepnir/lspsaga.nvim
         repeat: { 1: "tpope/vim-repeat" },
         sleuth: { 1: "tpope/vim-sleuth" },
+        easy_align: {
+          1: "junegunn/vim-easy-align",
+          setup() {
+            minv.set_keymap("ga", "<Plug>(EasyAlign)", {
+              mode: "x",
+              noremap: false,
+            });
+            minv.set_keymap("ga", "<Plug>(EasyAlign)", {
+              mode: "n",
+              noremap: false,
+            });
+          },
+        },
         leap: {
           1: "ggandor/leap.nvim",
           setup() {

@@ -169,6 +169,13 @@ function ____exports.setup_plugins(minv)
         extra = {[1] = {
             ["repeat"] = {[1] = "tpope/vim-repeat"},
             sleuth = {[1] = "tpope/vim-sleuth"},
+            easy_align = {
+                [1] = "junegunn/vim-easy-align",
+                setup = function()
+                    minv:set_keymap("ga", "<Plug>(EasyAlign)", {mode = "x", noremap = false})
+                    minv:set_keymap("ga", "<Plug>(EasyAlign)", {mode = "n", noremap = false})
+                end
+            },
             leap = {
                 [1] = "ggandor/leap.nvim",
                 setup = function()
