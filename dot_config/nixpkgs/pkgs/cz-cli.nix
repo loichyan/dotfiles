@@ -2,7 +2,7 @@
 let
   name = "cz-cli";
   version = "v4.2.4";
-  node_module = npmlock2nix.node_modules {
+  node_module = npmlock2nix.v1.node_modules {
     inherit name version;
     src = fetchFromGitHub {
       owner = "commitizen";

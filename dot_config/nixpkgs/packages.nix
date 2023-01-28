@@ -42,6 +42,7 @@
     # Node
     nodejs
     nodePackages.pnpm
+    nodePackages.yarn
 
     # Typescript
     (nodePackages.typescript-language-server)
@@ -50,12 +51,18 @@
     deno
 
     # Python
+    python3
     python3Packages.black
+    python3Packages.virtualenv
 
     # Rust
     rust-analyzer
     cargo-edit
     cargo-tarpaulin
+    trunk
+    wasm-bindgen-cli
+    wasm-pack
+    binaryen
     myPkgs.cargo-nightly-expand
 
     # Lua
@@ -64,6 +71,10 @@
 
     # Web
     myPkgs.prettierd
+
+    # Perl
+    perl
+    perl536Packages.JSONPP
 
     # Others
     taplo-cli
