@@ -1,0 +1,3 @@
+ControlPort 8091
+SocksPort 8090
+Socks5Proxy {{data.mySocksProxy}}

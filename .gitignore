@@ -1,5 +1,5 @@
 # Private data
-.chezmoidata.*
+dbot.data.yaml
 
 # Editor
 .vscode

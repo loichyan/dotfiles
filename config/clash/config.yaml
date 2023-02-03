@@ -1,5 +1,5 @@
-port: {{.myHttpProxyPort}}
-socks-port: {{.mySocksProxyPort}}
+port: {{data.myHttpProxyPort}}
+socks-port: {{data.mySocksProxyPort}}
 mode: rule
 external-controller: localhost:9090
 profile:
@@ -7,7 +7,7 @@ profile:
 proxy-providers:
   subscription:
     type: http
-    url: {{.clashSubscription}}
+    url: {{data.clashSubscription}}
     path: ./subscription.yaml
     interval: 7200
     health-check:

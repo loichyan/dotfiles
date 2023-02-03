@@ -15,18 +15,18 @@ My dotfiles.
 ## ✨ Overview
 
 - Mainly run on [Fedora Silverblue](https://silverblue.fedoraproject.org/)
-- Depoly using [Chezmoi](https://www.chezmoi.io/)
+- Depoly using [dbot](https://github.com/loichyan/dbot)
 - Manage packages using
   [Home Manager](https://github.com/nix-community/home-manager)
 - Customize zsh using [Zimfw](https://zimfw.sh/)
-- Customize neovim using [MiNV](https://github.com/loichyan/minv)
+- Customize NeoVim using [MiNV](https://github.com/loichyan/minv)
 
 ## 🚀 Installation
 
 ### Deploy dotfiles
 
 ```sh
-chezmoi apply
+dbot apply
 ```
 
 ### Setup Home Manager
@@ -43,7 +43,7 @@ nix build ".#homeConfigurations.${YOUR_USER}.activationPackage"
 ## 📝 Todo
 
 - [x] Beautify Tumx.
-- [ ] Switch to [dbot](https://github.com/loichyan/dbot)
+- [x] Switch to [dbot](https://github.com/loichyan/dbot)
 
 ## ⚖️ License
 
