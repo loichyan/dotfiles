@@ -3,7 +3,7 @@
 return {
   -- lazyvim.plugins.coding
   {
-    "hrsh7th/nvim-cmp",
+    "nvim-cmp",
     opts = function(_, opts)
       local bordered = require("cmp.config.window").bordered
       return vim.tbl_deep_extend("force", opts, {
@@ -16,16 +16,16 @@ return {
   },
   -- lazyvim.plugins.editor
   {
-    "folke/which-key.nvim",
+    "which-key.nvim",
     opts = { window = { border = BORDER_STYLE } },
   },
   {
-    "lewis6991/gitsigns.nvim",
+    "gitsigns.nvim",
     opts = { preview_config = { border = BORDER_STYLE } },
   },
   -- lazyvim.plugins.lsp
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = function(_, opts)
       -- Set LspInfo border
       require("lspconfig.ui.windows").default_options.border = BORDER_STYLE
@@ -33,14 +33,14 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason.nvim",
     opts = {
       ui = { border = BORDER_STYLE },
     },
   },
   -- lazyvim.plugins.ui
   {
-    "folke/noice.nvim",
+    "noice.nvim",
     opts = {
       presets = { lsp_doc_border = true },
     },
