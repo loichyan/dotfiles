@@ -19,7 +19,7 @@ My dotfiles.
 - Manage packages using
   [Home Manager](https://github.com/nix-community/home-manager)
 - Customize zsh using [Zimfw](https://zimfw.sh/)
-- Customize NeoVim using [MiNV](https://github.com/loichyan/minv)
+- Customize NeoVim using [LazyVim](https://www.lazyvim.org/)
 
 ## 🚀 Installation
 
