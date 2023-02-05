@@ -62,6 +62,13 @@ return {
       {
         "<leader>ft",
         toggle_term(function()
+          return { dir = require("lazyvim.util").get_root() }
+        end),
+        desc = "Terminal (root)",
+      },
+      {
+        "<leader>fT",
+        toggle_term(function()
           return {
             dir = vim.loop.cwd(),
           }
@@ -69,25 +76,18 @@ return {
         desc = "Terminal (cwd)",
       },
       {
-        "<leader>fT",
-        toggle_term(function()
-          return { dir = require("lazyvim.util").get_root() }
-        end),
-        desc = "Terminal (root)",
-      },
-      {
         "<leader>gg",
-        toggle_term(function()
-          return { cmd = "lazygit", dir = vim.loop.cwd() }
-        end),
-        desc = "Lazygit (cwd)",
-      },
-      {
-        "<leader>gG",
         toggle_term(function()
           return { cmd = "lazygit", dir = require("lazyvim.util").get_root() }
         end),
         desc = "Lazygit (root)",
+      },
+      {
+        "<leader>gG",
+        toggle_term(function()
+          return { cmd = "lazygit", dir = vim.loop.cwd() }
+        end),
+        desc = "Lazygit (cwd)",
       },
     },
     opts = {

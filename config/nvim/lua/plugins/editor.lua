@@ -14,23 +14,22 @@ return {
   {
     "neo-tree.nvim",
     keys = {
-
       {
         "<leader>fe",
-        function()
-          neo_tree_focus(vim.loop.cwd())
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      {
-        "<leader>fE",
         function()
           neo_tree_focus(require("lazyvim.util").get_root())
         end,
         desc = "Explorer NeoTree (root)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (cwd)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (root)", remap = true },
+      {
+        "<leader>fE",
+        function()
+          neo_tree_focus(vim.loop.cwd())
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root)", remap = true },
+      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
     },
     opts = {
       -- Add neo-tree mappings
