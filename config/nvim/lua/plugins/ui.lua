@@ -6,7 +6,7 @@ local function toggle_term(opts_fn)
       local Terminal = require("toggleterm.terminal").Terminal
       term = Terminal:new(vim.tbl_extend("force", opts_fn(), {
         on_open = function(term2)
-          vim.keymap.set("t", "<esc><esc>", function()
+          vim.keymap.set({ "n", "t" }, "<C-t>", function()
             term2:toggle()
           end, { buffer = term2.bufnr, desc = "Toggle terminal" })
         end,
@@ -59,6 +59,12 @@ return {
     "akinsho/toggleterm.nvim",
     enabled = NOT_VSCODE,
     keys = {
+      {
+        "<C-t>",
+        "<leader>ft",
+        desc = "Open terminal (root)",
+        remap = true,
+      },
       {
         "<leader>ft",
         toggle_term(function()
