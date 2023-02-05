@@ -52,4 +52,5 @@ require("lazy").setup({
     },
   },
   ui = { border = BORDER_STYLE },
+  change_detection = { enabled = false },
 })
