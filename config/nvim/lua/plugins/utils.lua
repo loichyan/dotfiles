@@ -4,7 +4,7 @@ return {
   ----------------
   {
     "ahmedkhalf/project.nvim",
-    enabled = NOT_VSCODE,
+    cond = NOT_VSCODE,
     event = "VeryLazy",
     opts = {},
     keys = {

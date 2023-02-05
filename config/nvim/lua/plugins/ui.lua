@@ -1,18 +1,25 @@
+local term_opts = {
+  on_open = function(term2)
+    vim.keymap.set({ "n", "t" }, "<C-t>", function()
+      term2:toggle()
+    end, { buffer = term2.bufnr, desc = "Toggle terminal" })
+  end,
+}
+
 ---@param opts_fn fun():table
-local function toggle_term(opts_fn)
-  local term
+local function create_term(opts_fn)
   return function()
-    if term == nil then
-      local Terminal = require("toggleterm.terminal").Terminal
-      term = Terminal:new(vim.tbl_extend("force", opts_fn(), {
-        on_open = function(term2)
-          vim.keymap.set({ "n", "t" }, "<C-t>", function()
-            term2:toggle()
-          end, { buffer = term2.bufnr, desc = "Toggle terminal" })
-        end,
-      }))
-    end
+    local Terminal = require("toggleterm.terminal").Terminal
+    local term =
+      Terminal:new(vim.tbl_extend("force", opts_fn(), term_opts, { count = vim.v.count }))
     term:toggle()
+  end
+end
+
+---@param dir_fn fun():string
+local function toggle_term(dir_fn)
+  return function()
+    require("toggleterm").toggle(vim.v.count, nil, dir_fn())
   end
 end
 
@@ -57,7 +64,7 @@ return {
   ----------------
   {
     "akinsho/toggleterm.nvim",
-    enabled = NOT_VSCODE,
+    cond = NOT_VSCODE,
     keys = {
       {
         "<C-t>",
@@ -68,45 +75,46 @@ return {
       {
         "<leader>ft",
         toggle_term(function()
-          return { dir = require("lazyvim.util").get_root() }
+          return require("lazyvim.util").get_root()
         end),
         desc = "Terminal (root)",
       },
       {
         "<leader>fT",
         toggle_term(function()
-          return {
-            dir = vim.loop.cwd(),
-          }
+          ---@diagnostic disable-next-line:return-type-mismatch
+          return vim.loop.cwd()
         end),
         desc = "Terminal (cwd)",
       },
       {
         "<leader>gg",
-        toggle_term(function()
+        create_term(function()
           return { cmd = "lazygit", dir = require("lazyvim.util").get_root() }
         end),
         desc = "Lazygit (root)",
       },
       {
         "<leader>gG",
-        toggle_term(function()
+        create_term(function()
           return { cmd = "lazygit", dir = vim.loop.cwd() }
         end),
         desc = "Lazygit (cwd)",
       },
     },
-    opts = {
-      direction = "float",
-      float_opts = { border = "rounded" },
-    },
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, term_opts, {
+        direction = "float",
+        float_opts = { border = "rounded" },
+      })
+    end,
     config = function(_, opts)
       require("toggleterm").setup(opts)
     end,
   },
   {
     "mrjones2014/smart-splits.nvim",
-    enabled = NOT_VSCODE,
+    cond = NOT_VSCODE,
     keys = {
       -- Resize window
       { "<A-j>", smart_splits("resize_down"), desc = "Resize window down" },
