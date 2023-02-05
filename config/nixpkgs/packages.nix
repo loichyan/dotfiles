@@ -17,6 +17,7 @@
     tmux
     myPkgs.cz-cli
     netcat
+    lazygit
 
     # Neovim
     neovim
@@ -77,6 +78,7 @@
     perl536Packages.JSONPP
 
     # Others
+    (nodePackages.code-json-languageserver)
     taplo-cli
     vale
     sfz

@@ -2,35 +2,36 @@ import:
   - dbot.data.yaml
 
 profile:
-  ~ignore: result
+  +ignore: result
   .aria2:
-    ~source: aria2
+    +source: aria2
     aria2.conf: <template>
   .cargo:
-    ~source: cargo
+    +source: cargo
     config.toml: <template>
   .config:
-    ~source: config
+    +source: config
     clash/config.yaml: <template>
     containers/registries.conf: <template>
     nixpkgs/data.nix: <template>
+    nvim: <link>
   .czrc:
-    ~type: template
-    ~source: misc/czrc.json
+    +type: template
+    +source: misc/czrc.json
   .gitconfig:
-    ~type: template
-    ~source: misc/gitconfig
+    +type: template
+    +source: misc/gitconfig
   .npmrc:
-    ~type: template
-    ~source: misc/npmrc.json
+    +type: template
+    +source: misc/npmrc.json
   .tmux: tmux/config
   .tmux.conf: tmux/tmux.conf
   .torrc:
-    ~type: template
-    ~source: misc/torrc
+    +type: template
+    +source: misc/torrc
   .zimrc: zsh/zimrc.zsh
   .zsh: zsh/config
   .zshenv:
-    ~type: template
-    ~source: zsh/zshenv.zsh
+    +type: template
+    +source: zsh/zshenv.zsh
   .zshrc: zsh/zshrc.zsh
