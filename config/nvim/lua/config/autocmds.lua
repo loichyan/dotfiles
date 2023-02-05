@@ -10,7 +10,7 @@ local rulers = {
 for ft, offset in pairs(rulers) do
   au("FileType", {
     callback = function()
-      vim.opt_local.colorcolumn = offset
+      vim.opt_local.colorcolumn = tostring(offset)
     end,
     pattern = ft,
   })
