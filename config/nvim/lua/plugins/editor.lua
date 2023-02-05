@@ -12,7 +12,7 @@ end
 
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "neo-tree.nvim",
     keys = {
 
       {
@@ -43,7 +43,7 @@ return {
     },
   },
   {
-    "RRethy/vim-illuminate",
+    "vim-illuminate",
     -- Enable wrap
     keys = {
       {

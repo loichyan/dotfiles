@@ -36,7 +36,7 @@ end
 return {
   -- Add lsp servers
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     init = function()
       local keymaps = require("lazyvim.plugins.lsp.keymaps")
       local keys = keymaps.get()
@@ -56,7 +56,7 @@ return {
     opts = { servers = servers },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "null-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls").builtins
       opts.sources = {
@@ -67,7 +67,7 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason.nvim",
     opts = {
       ensure_installed = {},
     },

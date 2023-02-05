@@ -16,11 +16,11 @@ for ft, offset in pairs(rulers) do
   })
 end
 
--- Press `q` to close a buffer
+-- Press `q` to force close a buffer
 au("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "q", "<cmd>close!<cr>", { buffer = event.buf, silent = true })
   end,
   pattern = {
     "git",

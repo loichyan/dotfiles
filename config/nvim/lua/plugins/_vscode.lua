@@ -2,44 +2,39 @@
 
 local plugins = {
   -- lazyvim.plugins.coding
-  { "L3MON4D3/LuaSnip" },
-  { "hrsh7th/nvim-cmp" },
+  { "LuaSnip" },
+  { "nvim-cmp" },
   -- lazyvim.plugins.colorshceme
-  { "folke/tokyonight.nvim" },
-  { "catppuccin/nvim" },
+  { "tokyonight.nvim" },
+  { "catppuccin/nvim", name = "catppuccin" },
   -- lazyvim.plugins.editor
-  { "nvim-neo-tree/neo-tree.nvim" },
-  { "windwp/nvim-spectre" },
-  { "folke/which-key.nvim" },
-  { "lewis6991/gitsigns.nvim" },
-  { "echasnovski/mini.bufremove" },
-  { "folke/trouble.nvim" },
-  { "folke/todo-comments.nvim" },
+  { "neo-tree.nvim" },
+  { "nvim-spectre" },
+  { "telescope.nvim" },
+  { "which-key.nvim" },
+  { "gitsigns.nvim" },
+  { "mini.bufremove" },
+  { "trouble.nvim" },
+  { "todo-comments.nvim" },
   -- lazyvim.plugins.lsp
-  { "neovim/nvim-lspconfig" },
-  { "jose-elias-alvarez/null-ls.nvim" },
-  { "williamboman/mason.nvim" },
-  -- lazyvim.plugins.treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    ---@type TSConfig
-    opts = { highlight = { enable = NOT_VSCODE } },
-  },
+  { "nvim-lspconfig" },
+  { "null-ls.nvim" },
+  { "mason.nvim" },
   -- lazyvim.plugins.ui
-  { "rcarriga/nvim-notify" },
-  { "stevearc/dressing.nvim" },
-  { "akinsho/bufferline.nvim" },
-  { "nvim-lualine/lualine.nvim" },
-  { "lukas-reineke/indent-blankline.nvim" },
-  { "echasnovski/mini.indentscope" },
-  { "folke/noice.nvim" },
-  { "goolord/alpha-nvim" },
-  { "SmiteshP/nvim-navic" },
-  { "nvim-tree/nvim-web-devicons" },
-  { "MunifTanjim/nui.nvim" },
+  { "nvim-notify" },
+  { "dressing.nvim" },
+  { "bufferline.nvim" },
+  { "lualine.nvim" },
+  { "indent-blankline.nvim" },
+  { "mini.indentscope" },
+  { "noice.nvim" },
+  { "alpha-nvim" },
+  { "nvim-navic" },
+  { "nvim-web-devicons" },
+  { "nui.nvim" },
   -- lazyvim.plugins.utils
-  { "dstein64/vim-startuptime" },
-  { "folke/persistence.nvim" },
+  { "vim-startuptime" },
+  { "persistence.nvim" },
 }
 
 for _, name in ipairs(plugins) do
@@ -48,4 +43,11 @@ for _, name in ipairs(plugins) do
   end
 end
 
-return plugins
+---@diagnostic disable-next-line:missing-parameter
+return vim.list_extend(plugins, {
+  -- Disable some treesitter modules
+  {
+    "nvim-treesitter",
+    opts = { highlight = { enable = NOT_VSCODE } },
+  },
+})

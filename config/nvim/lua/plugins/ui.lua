@@ -25,14 +25,14 @@ end
 
 return {
   {
-    "rcarriga/nvim-notify",
+    "nvim-notify",
     opts = function(_, opts)
       require("telescope").load_extension("notify")
       return opts
     end,
   },
   {
-    "nvim-lualine/lualine.nvim",
+    "lualine.nvim",
     opts = {
       options = {
         component_separators = { left = "", right = "" },
@@ -40,9 +40,9 @@ return {
       },
     },
   },
-  { "echasnovski/mini.indentscope", enabled = false },
+  { "mini.indentscope", enabled = false },
   {
-    "lukas-reineke/indent-blankline.nvim",
+    "indent-blankline.nvim",
     opts = {
       char = "▏",
       context_char = "▏",
@@ -100,6 +100,7 @@ return {
   },
   {
     "mrjones2014/smart-splits.nvim",
+    enabled = NOT_VSCODE,
     keys = {
       -- Resize window
       { "<A-j>", smart_splits("resize_down"), desc = "Resize window down" },

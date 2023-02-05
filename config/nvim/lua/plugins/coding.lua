@@ -1,6 +1,6 @@
 return {
   {
-    "L3MON4D3/LuaSnip",
+    "LuaSnip",
     opts = {
       history = false,
       region_check_events = "InsertEnter",
@@ -8,7 +8,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.surround",
+    "mini.surround",
     keys = function(_, keys)
       ---@diagnostic disable-next-line:missing-parameter
       return vim.list_extend(keys, {
@@ -23,7 +23,7 @@ return {
   ----------------
   {
     "nacro90/numb.nvim",
-    event = "CmdlineChanged",
+    event = "BufReadPost",
     opts = {},
     config = function(_, opts)
       require("numb").setup(opts)
@@ -38,5 +38,5 @@ return {
       })
     end,
   },
-  { "junegunn/vim-easy-align", cmd = "EasyAlign" }
+  { "junegunn/vim-easy-align", cmd = "EasyAlign" },
 }

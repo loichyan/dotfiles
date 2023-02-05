@@ -4,8 +4,9 @@ return {
   ----------------
   {
     "ahmedkhalf/project.nvim",
-    opts = {},
     enabled = NOT_VSCODE,
+    event = "VeryLazy",
+    opts = {},
     keys = {
       {
         "<leader>fp",

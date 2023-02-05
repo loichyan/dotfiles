@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local colorscheme = "default"
+local colorscheme = "habamax"
 if NOT_VSCODE then
   colorscheme = "tokyonight"
 end
@@ -20,9 +20,11 @@ end
 require("lazy").setup({
   spec = {
     -- Add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
-      colorscheme = colorscheme,
-    } },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = { colorscheme = colorscheme },
+    },
     -- Import my custom plugins
     { import = "plugins" },
   },
