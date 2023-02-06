@@ -7,17 +7,6 @@ return {
       delete_check_events = "InsertLeave",
     },
   },
-  {
-    "mini.surround",
-    keys = function(_, keys)
-      ---@diagnostic disable-next-line:missing-parameter
-      return vim.list_extend(keys, {
-        { "gzr", false },
-        { "gzc", desc = "Replace surrounding" },
-      })
-    end,
-    opts = { mappings = { replace = "gzc" } },
-  },
   ----------------
   -- My plugins --
   ----------------

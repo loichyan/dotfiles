@@ -6,38 +6,41 @@ local function open_and_quit(state)
   end
 end
 
-local function neo_tree_focus(dir)
-  require("neo-tree.command").execute({ focus = true, dir = dir })
+local function root()
+  return require("lazyvim.util").get_root()
+end
+
+local function cwd()
+  return vim.loop.cwd()
+end
+
+---@param dir_fn fun():string
+local function focus(dir_fn)
+  return function()
+    require("neo-tree.command").execute({ focus = true, dir = dir_fn() })
+  end
+end
+
+---@param action string
+local function illuminate(action)
+  return function()
+    require("illuminate")[action]()
+  end
 end
 
 return {
   {
     "neo-tree.nvim",
     keys = {
-      {
-        "<leader>fe",
-        function()
-          neo_tree_focus(require("lazyvim.util").get_root())
-        end,
-        desc = "Explorer NeoTree (root)",
-      },
-      {
-        "<leader>fE",
-        function()
-          neo_tree_focus(vim.loop.cwd())
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+      -- Toggle or focus explorer
+      { "<leader>fe", focus(root), desc = "Explorer NeoTree (root)" },
+      { "<leader>fE", focus(cwd), desc = "Explorer NeoTree (cwd)" },
+      { "<leader>e", focus(root), desc = "Explorer NeoTree (root)" },
+      { "<leader>E", focus(cwd), desc = "Explorer NeoTree (cwd)" },
     },
     opts = {
-      -- Add neo-tree mappings
       window = {
-        mappings = {
-          ["<cr>"] = open_and_quit,
-          ["o"] = "open_drop",
-        },
+        mappings = { ["<cr>"] = open_and_quit },
       },
     },
   },
@@ -45,20 +48,8 @@ return {
     "vim-illuminate",
     -- Enable wrap
     keys = {
-      {
-        "]]",
-        function()
-          require("illuminate").goto_next_reference(true)
-        end,
-        desc = "Next Reference",
-      },
-      {
-        "[[",
-        function()
-          require("illuminate").goto_prev_reference(true)
-        end,
-        desc = "Prev Reference",
-      },
+      { "]]", illuminate("goto_next_reference"), desc = "Next Reference" },
+      { "[[", illuminate("goto_prev_reference"), desc = "Prev Reference" },
     },
   },
   ----------------

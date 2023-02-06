@@ -8,13 +8,7 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      {
-        "<leader>fp",
-        function()
-          require("telescope").extensions.projects.projects()
-        end,
-        desc = "Projects",
-      },
+      { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
     },
     config = function(_, opts)
       require("project_nvim").setup(opts)

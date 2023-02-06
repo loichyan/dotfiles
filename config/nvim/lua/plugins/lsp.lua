@@ -1,6 +1,6 @@
-local function disable_formatting(client)
-  client.server_capabilities.documentFormattingProvider = false
-end
+-- local function disable_formatting(client)
+--   client.server_capabilities.documentFormattingProvider = false
+-- end
 
 local servers = {
   jsonls = {},
@@ -16,13 +16,13 @@ local servers = {
   taplo = {},
   clangd = {},
   tsserver = {
-    on_attach = function(client)
-      disable_formatting(client)
+    on_attach = function(_)
+      -- disable_formatting(client)
     end,
   },
   cssls = {
-    on_attach = function(client)
-      disable_formatting(client)
+    on_attach = function(_)
+      -- disable_formatting(client)
     end,
   },
   rnix = {},
@@ -34,36 +34,20 @@ for _, server in pairs(servers) do
 end
 
 return {
-  -- Add lsp servers
   {
     "nvim-lspconfig",
-    init = function()
-      local keymaps = require("lazyvim.plugins.lsp.keymaps")
-      local keys = keymaps.get()
-      ---@diagnostic disable-next-line:missing-parameter
-      vim.list_extend(keys, {
-        { "<leader>cr", false },
-        {
-          "<leader>cc",
-          function()
-            keymaps.rename()
-          end,
-          desc = "Rename",
-          has = "rename",
-        },
-      })
-    end,
     opts = { servers = servers },
   },
   {
     "null-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls").builtins
-      opts.sources = {
-        nls.formatting.prettierd,
-        nls.formatting.stylua,
-      }
-      return opts
+      return vim.tbl_deep_extend("force", opts, {
+        sources = {
+          nls.formatting.prettierd,
+          nls.formatting.stylua,
+        },
+      })
     end,
   },
   {

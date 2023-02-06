@@ -1,10 +1,24 @@
 local term_opts = {
-  on_open = function(term2)
+  on_open = function(term)
     vim.keymap.set({ "n", "t" }, "<C-t>", function()
-      term2:toggle()
-    end, { buffer = term2.bufnr, desc = "Toggle terminal" })
+      term:toggle()
+    end, { buffer = term.bufnr, desc = "Toggle terminal" })
   end,
 }
+
+---@param cmd? string
+local function root(cmd)
+  return function()
+    return { cmd = cmd, dir = require("lazyvim.util").get_root() }
+  end
+end
+
+---@param cmd? string
+local function cwd(cmd)
+  return function()
+    return { cmd = cmd, dir = vim.loop.cwd() }
+  end
+end
 
 ---@param opts_fn fun():table
 local function create_term(opts_fn)
@@ -16,17 +30,17 @@ local function create_term(opts_fn)
   end
 end
 
----@param dir_fn fun():string
-local function toggle_term(dir_fn)
+---@param opts_fn fun():table
+local function toggle_term(opts_fn)
   return function()
-    require("toggleterm").toggle(vim.v.count, nil, dir_fn())
+    require("toggleterm").toggle(vim.v.count, nil, opts_fn().dir)
   end
 end
 
----@param f string
-local function smart_splits(f)
+---@param action string
+local function smart_splits(action)
   return function()
-    require("smart-splits")[f]()
+    require("smart-splits")[action]()
   end
 end
 
@@ -39,6 +53,13 @@ return {
     end,
   },
   {
+    "bufferline.nvim",
+    keys = {
+      { "<leader>bh", "<cmd>BufferLineCloseLeft<cr>", desc = "Close Left Buffers" },
+      { "<leader>bl", "<cmd>BufferLineCloseRight<cr>", desc = "Close Right Buffers" },
+    },
+  },
+  {
     "lualine.nvim",
     opts = {
       options = {
@@ -47,7 +68,6 @@ return {
       },
     },
   },
-  { "mini.indentscope", enabled = false },
   {
     "indent-blankline.nvim",
     opts = {
@@ -59,6 +79,7 @@ return {
       show_trailing_blankline_indent = false,
     },
   },
+  { "mini.indentscope", enabled = false },
   ----------------
   -- My plugins --
   ----------------
@@ -66,41 +87,13 @@ return {
     "akinsho/toggleterm.nvim",
     cond = NOT_VSCODE,
     keys = {
-      {
-        "<C-t>",
-        "<leader>ft",
-        desc = "Open terminal (root)",
-        remap = true,
-      },
-      {
-        "<leader>ft",
-        toggle_term(function()
-          return require("lazyvim.util").get_root()
-        end),
-        desc = "Terminal (root)",
-      },
-      {
-        "<leader>fT",
-        toggle_term(function()
-          ---@diagnostic disable-next-line:return-type-mismatch
-          return vim.loop.cwd()
-        end),
-        desc = "Terminal (cwd)",
-      },
-      {
-        "<leader>gg",
-        create_term(function()
-          return { cmd = "lazygit", dir = require("lazyvim.util").get_root() }
-        end),
-        desc = "Lazygit (root)",
-      },
-      {
-        "<leader>gG",
-        create_term(function()
-          return { cmd = "lazygit", dir = vim.loop.cwd() }
-        end),
-        desc = "Lazygit (cwd)",
-      },
+      -- Toggle terminals
+      { "<C-t>", toggle_term(root()), desc = "Open terminal (root)" },
+      { "<leader>ft", toggle_term(root()), desc = "Terminal (root)" },
+      { "<leader>fT", toggle_term(cwd()), desc = "Terminal (cwd)" },
+      -- LaztGit
+      { "<leader>gg", create_term(root("lazygit")), desc = "Lazygit (root)" },
+      { "<leader>gG", create_term(cwd("lazygit")), desc = "Lazygit (cwd)" },
     },
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, term_opts, {
@@ -116,16 +109,16 @@ return {
     "mrjones2014/smart-splits.nvim",
     cond = NOT_VSCODE,
     keys = {
-      -- Resize window
-      { "<A-j>", smart_splits("resize_down"), desc = "Resize window down" },
-      { "<A-k>", smart_splits("resize_up"), desc = "Resize window up" },
-      { "<A-h>", smart_splits("resize_left"), desc = "Resize window left" },
-      { "<A-l>", smart_splits("resize_right"), desc = "Resize window right" },
       -- Move among windows
-      { "<C-j>", smart_splits("move_cursor_down"), desc = "Move cursor down" },
-      { "<C-k>", smart_splits("move_cursor_up"), desc = "Move cursor up" },
-      { "<C-h>", smart_splits("move_cursor_left"), desc = "Move cursor left" },
-      { "<C-l>", smart_splits("move_cursor_right"), desc = "Move cursor right" },
+      { "<C-k>", smart_splits("move_cursor_up"), desc = "Move Cursor up" },
+      { "<C-j>", smart_splits("move_cursor_down"), desc = "Move Cursor down" },
+      { "<C-h>", smart_splits("move_cursor_left"), desc = "Move Cursor left" },
+      { "<C-l>", smart_splits("move_cursor_right"), desc = "Move Cursor right" },
+      -- Resize window
+      { "<C-Up>", smart_splits("resize_up"), desc = "Resize Window up" },
+      { "<C-Down>", smart_splits("resize_down"), desc = "Resize Window down" },
+      { "<C-Left>", smart_splits("resize_left"), desc = "Resize Window left" },
+      { "<C-Right>", smart_splits("resize_right"), desc = "Resize Window right" },
     },
     opts = {},
     config = function(_, opts)

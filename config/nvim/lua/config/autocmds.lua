@@ -26,5 +26,6 @@ au("FileType", {
     "git",
     "TelescopePrompt",
     "null-ls-info",
+    "vim",
   },
 })
