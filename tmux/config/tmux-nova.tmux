@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # Name: Tokyo Night Moon
 # License: MIT
