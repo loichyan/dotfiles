@@ -4,11 +4,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    npmlock2nix = {
-      url = "github:nix-community/npmlock2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      flake = false;
-    };
     nixgl-wrapped = {
       url = "./nixgl-wrapped";
       inputs = {
@@ -22,18 +17,12 @@
     };
   };
 
-  outputs = { nixpkgs, flake-utils, npmlock2nix, nixgl-wrapped, fenix, ... }:
+  outputs = { nixpkgs, flake-utils, nixgl-wrapped, fenix, ... }:
     let
       overlays = [ fenix.overlays.default ];
-      mkPkgs = pkgs:
-        let
-          npmlock2nix2 = pkgs.callPackage npmlock2nix { };
-        in
-        {
-          cz-cli = pkgs.callPackage ./cz-cli.nix { npmlock2nix = npmlock2nix2; };
-          prettierd = pkgs.callPackage ./prettierd.nix { };
-          cargo-nightly-expand = pkgs.callPackage ./cargo-nightly-expand.nix { };
-        };
+      mkPkgs = pkgs: {
+        cargo-nightly-expand = pkgs.callPackage ./cargo-nightly-expand.nix { };
+      };
     in
     (flake-utils.lib.eachDefaultSystem (system:
       let

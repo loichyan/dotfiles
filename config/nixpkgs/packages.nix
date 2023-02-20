@@ -15,7 +15,7 @@
     tokei
     bat
     tmux
-    myPkgs.cz-cli
+    commitizen
     netcat
     lazygit
 
@@ -71,14 +71,14 @@
     sumneko-lua-language-server
 
     # Web
-    myPkgs.prettierd
+    (nodePackages.prettier)
 
     # Perl
     perl
     perl536Packages.JSONPP
 
     # Others
-    (nodePackages.code-json-languageserver)
+    (nodePackages.vscode-json-languageserver)
     taplo-cli
     vale
     sfz
