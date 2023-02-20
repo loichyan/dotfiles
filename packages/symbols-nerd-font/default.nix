@@ -1,7 +1,7 @@
 { pkgs, lib, stdenv, fetchurl }:
 let
   pname = "symbols-nerd-font";
-  version = "2.2.0";
+  version = "2.3.3";
   fonts = {
     "NerdFontsSymbolsOnly" = lib.fakeSha256;
   };
@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = with pkgs; [ unzip fpm rpm fakeroot ];
   src = fetchurl {
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/NerdFontsSymbolsOnly.zip";
-    sha256 = "sha256-bokMFvokvmHcWfTmnTHD+6iHGQvVHeMjrh+Gwe8wmsU=";
+    sha256 = "sha256-nPDIAN6GvDHxEVsPR2LvjYCnSfbPpM90E7AfxWPMP2o=";
   };
   unpackPhase = ''
     mkdir fonts
