@@ -1,10 +1,6 @@
--- local function disable_formatting(client)
---   client.server_capabilities.documentFormattingProvider = false
--- end
-
 local servers = {
   jsonls = {},
-  sumneko_lua = {},
+  lua_ls = {},
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -15,16 +11,8 @@ local servers = {
   },
   taplo = {},
   clangd = {},
-  tsserver = {
-    on_attach = function(_)
-      -- disable_formatting(client)
-    end,
-  },
-  cssls = {
-    on_attach = function(_)
-      -- disable_formatting(client)
-    end,
-  },
+  tsserver = {},
+  cssls = {},
   rnix = {},
 }
 
@@ -40,15 +28,12 @@ return {
   },
   {
     "null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls").builtins
-      return vim.tbl_deep_extend("force", opts, {
-        sources = {
-          nls.formatting.prettierd,
-          nls.formatting.stylua,
-        },
-      })
-    end,
+    opts = {
+      formatters = {
+        prettier = true,
+        stylua = true,
+      },
+    },
   },
   {
     "mason.nvim",

@@ -12,30 +12,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local colorscheme = "habamax"
-if NOT_VSCODE then
-  colorscheme = "tokyonight"
-end
-
+-- TODO: diable autocheck in VSCode
 require("lazy").setup({
   spec = {
-    -- Add LazyVim and import its plugins
     {
-      "LazyVim/LazyVim",
-      import = "lazyvim.plugins",
-      opts = { colorscheme = colorscheme },
+      "loichyan/DeltaVim",
+      import = "deltavim.plugins",
     },
-    -- Import my custom plugins
     { import = "plugins" },
+    { import = "fixup" },
   },
-  defaults = {
-    -- All plugins will be lazy-loaded.
-    lazy = true,
-    -- Always use the latest git commit
-    version = false,
-  },
-  install = { colorscheme = { colorscheme } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  defaults = { lazy = true, version = false },
+  checker = { enabled = true },
   performance = {
     rtp = {
       -- Disable some rtp plugins

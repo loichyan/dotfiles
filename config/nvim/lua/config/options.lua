@@ -1,27 +1,27 @@
-local g = vim.g
-local opt = vim.opt
-local env = vim.env
+local MY_HTTP_PROXY = vim.env["MY_HTTP_PROXY"]
+for _, k in ipairs({ "http_proxy", "https_proxy" }) do
+  vim.env[k] = MY_HTTP_PROXY
+  vim.env[k:upper()] = MY_HTTP_PROXY
+end
 
--- Markdown highlight
-g.markdown_fenced_languages = {
-  "bash",
-  "c",
-  "json",
-  "lua",
-  "python",
-  "rust",
-  "sh",
+local colorscheme = "habamax"
+if NOT_VSCODE then colorscheme = "tokyonight" end
+
+return {
+  config = { colorscheme = colorscheme },
+  g = {
+    markdown_fenced_languages = {
+      "bash",
+      "c",
+      "json",
+      "lua",
+      "python",
+      "rust",
+      "sh",
+    },
+  },
+  o = {
+    clipboard = "",
+    guifont = "Fira Code:h11",
+  },
 }
-
--- Proxy environment variables
-local my_http_proxy = vim.env.MY_HTTP_PROXY
-env.http_proxy = my_http_proxy
-env.HTTP_PROXY = my_http_proxy
-env.https_proxy = my_http_proxy
-env.HTTPS_PROXY = my_http_proxy
-
--- Clipboard
-opt.clipboard = ""
-
--- GUI font
-opt.guifont = "Fira Code:h11"

@@ -24,6 +24,7 @@
     xclip
     wl-clipboard
     nixgl-wrapped.neovide
+    tree-sitter
 
     # Shell
     direnv
@@ -78,7 +79,7 @@
     perl536Packages.JSONPP
 
     # Others
-    (nodePackages.vscode-json-languageserver)
+    (nodePackages.vscode-langservers-extracted)
     taplo-cli
     vale
     sfz

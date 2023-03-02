@@ -1,3 +1,5 @@
+local Util = require("deltavim.util")
+
 local function open_and_quit(state)
   local node = state.tree:get_node()
   state.commands["open_drop"](state)
@@ -6,38 +8,9 @@ local function open_and_quit(state)
   end
 end
 
-local function root()
-  return require("lazyvim.util").get_root()
-end
-
-local function cwd()
-  return vim.loop.cwd()
-end
-
----@param dir_fn fun():string
-local function focus(dir_fn)
-  return function()
-    require("neo-tree.command").execute({ focus = true, dir = dir_fn() })
-  end
-end
-
----@param action string
-local function illuminate(action)
-  return function()
-    require("illuminate")[action]()
-  end
-end
-
 return {
   {
     "neo-tree.nvim",
-    keys = {
-      -- Toggle or focus explorer
-      { "<leader>fe", focus(root), desc = "Explorer NeoTree (root)" },
-      { "<leader>fE", focus(cwd), desc = "Explorer NeoTree (cwd)" },
-      { "<leader>e", focus(root), desc = "Explorer NeoTree (root)" },
-      { "<leader>E", focus(cwd), desc = "Explorer NeoTree (cwd)" },
-    },
     opts = {
       window = {
         mappings = { ["<cr>"] = open_and_quit },
@@ -45,12 +18,33 @@ return {
     },
   },
   {
-    "vim-illuminate",
-    -- Enable wrap
-    keys = {
-      { "]]", illuminate("goto_next_reference"), desc = "Next Reference" },
-      { "[[", illuminate("goto_prev_reference"), desc = "Prev Reference" },
-    },
+    "which-key.nvim",
+    opts = function(_, opts)
+      return Util.merge({}, opts, {
+        groups = {
+          mode = { "n", "x" },
+          ["["] = { name = "+prev" },
+          ["]"] = { name = "+next" },
+          ["g"] = { name = "+goto" },
+          ["gz"] = { name = "+surround" },
+          ["<Leader>b"] = { name = "+buffer" },
+          ["<Leader>f"] = { name = "+find" },
+          ["<Leader>g"] = { name = "+git" },
+          ["<Leader>l"] = { name = "+lsp" },
+          ["<Leader>n"] = { name = "+notify" },
+          ["<Leader>q"] = { name = "+session" },
+          ["<Leader>s"] = { name = "+search" },
+          ["<Leader>u"] = { name = "+ui" },
+          ["<Leader>w"] = { name = "+window" },
+          ["<Leader>x"] = { name = "+quickfix" },
+          ["<Leader><Tab>"] = { name = "+tab" },
+        },
+      })
+    end,
+  },
+  {
+    "gitsigns.nvim",
+    opts = { current_line_blame = true },
   },
   ----------------
   -- My plugins --
@@ -61,9 +55,7 @@ return {
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
+      config = function() require("telescope").load_extension("fzf") end,
     },
   },
 }

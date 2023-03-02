@@ -1,13 +1,13 @@
--- Disable some LazyVim plugins when running as the backend of VSCode.
+-- Disable some plugins when running as the backend of VSCode.
 
 local plugins = {
-  -- lazyvim.plugins.coding
+  -- deltavim.plugins.coding
   { "LuaSnip" },
   { "nvim-cmp" },
-  -- lazyvim.plugins.colorshceme
+  -- deltavim.plugins.colorshceme
   { "tokyonight.nvim" },
-  { "catppuccin/nvim", name = "catppuccin" },
-  -- lazyvim.plugins.editor
+  { "catppuccin" },
+  -- deltavim.plugins.editor
   { "neo-tree.nvim" },
   { "nvim-spectre" },
   { "telescope.nvim" },
@@ -16,11 +16,11 @@ local plugins = {
   { "mini.bufremove" },
   { "trouble.nvim" },
   { "todo-comments.nvim" },
-  -- lazyvim.plugins.lsp
+  -- deltavim.plugins.lsp
   { "nvim-lspconfig" },
   { "null-ls.nvim" },
   { "mason.nvim" },
-  -- lazyvim.plugins.ui
+  -- deltavim.plugins.ui
   { "nvim-notify" },
   { "dressing.nvim" },
   { "bufferline.nvim" },
@@ -32,15 +32,19 @@ local plugins = {
   { "nvim-navic" },
   { "nvim-web-devicons" },
   { "nui.nvim" },
-  -- lazyvim.plugins.utils
+  -- deltavim.plugins.utils
   { "vim-startuptime" },
   { "persistence.nvim" },
+  -- deltavim.extras
+  { "smart-splits.nvim" },
+  -- my plugins
+  { "crates.nvim" },
+  { "project.nvim" },
+  { "vim-tmux-clipboard" },
 }
 
 for _, name in ipairs(plugins) do
-  if not NOT_VSCODE then
-    name.cond = false
-  end
+  if not NOT_VSCODE then name.cond = false end
 end
 
 ---@diagnostic disable-next-line:missing-parameter
