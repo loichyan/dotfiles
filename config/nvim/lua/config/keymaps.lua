@@ -1,6 +1,5 @@
 ---@type DeltaVim.Keymaps
 local keymaps = {
-  -- TODO: keymaps order
   -- enhanced
   { true, "@enhanced.j" },
   { true, "@enhanced.k" },
@@ -52,11 +51,11 @@ local keymaps = {
   { "<Down>", "@cmp.next_item" },
   { "<Up>", "@cmp.prev_item" },
   { "<CR>", "@cmp.confirm" },
+  { "<C-d>", "@cmp.scroll_down" },
   { "<C-e>", "@cmp.abort" },
-  { "<C-b>", "@cmp.scroll_up" },
-  { "<C-f>", "@cmp.scroll_down" },
-  { "<C-p>", "@cmp.prev_item" },
   { "<C-n>", "@cmp.next_item" },
+  { "<C-p>", "@cmp.prev_item" },
+  { "<C-u>", "@cmp.scroll_up" },
   { "<C-Space>", "@cmp.complete" },
   -- surround
   { "gza", "@surround.add" },
