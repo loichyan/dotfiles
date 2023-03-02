@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- TODO: diable autocheck in VSCode
 require("lazy").setup({
   spec = {
     {
@@ -23,7 +22,7 @@ require("lazy").setup({
     { import = "fixup" },
   },
   defaults = { lazy = true, version = false },
-  checker = { enabled = true },
+  checker = { enabled = NOT_VSCODE },
   performance = {
     rtp = {
       -- Disable some rtp plugins
@@ -39,6 +38,6 @@ require("lazy").setup({
       },
     },
   },
-  ui = { border = BORDER_STYLE },
+  ui = { border = "rounded" },
   change_detection = { enabled = false },
 })
