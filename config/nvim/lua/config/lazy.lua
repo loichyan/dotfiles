@@ -14,14 +14,20 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins",
+    -- },
     {
       "loichyan/DeltaVim",
+      dir = "~/devel/lua/DeltaVim",
       import = "deltavim.plugins",
     },
     { import = "plugins" },
     { import = "fixup" },
   },
   defaults = { lazy = true, version = false },
+  install = { missing = NOT_VSCODE, colorscheme = { "tokyonight" } },
   checker = { enabled = NOT_VSCODE },
   performance = {
     rtp = {

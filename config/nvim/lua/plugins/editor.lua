@@ -1,3 +1,4 @@
+local Keymap = require("deltavim.core.keymap")
 local Util = require("deltavim.util")
 
 local function open_and_quit(state)
@@ -46,6 +47,7 @@ return {
     "gitsigns.nvim",
     opts = { current_line_blame = true },
   },
+  { "flit.nvim" },
   ----------------
   -- My plugins --
   ----------------
@@ -57,5 +59,30 @@ return {
       build = "make",
       config = function() require("telescope").load_extension("fzf") end,
     },
+  },
+  -- Diffview/merge tool
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen" },
+    keys = function()
+      -- stylua: ignore
+      return Keymap.Collector()
+        :map({
+          { "@diffview.open", "<Cmd>DiffviewOpen<CR>", "Open diffview" },
+          { "@diffview.file_histroy", "<Cmd>DiffviewFileHistory<CR>", "File histroy" },
+        })
+        :collect_lazy()
+    end,
+    opts = function()
+      -- stylua: ignore
+      local close = { "n", "q", "<Cmd>DiffviewClose<CR>", { desc = "Close diffview" } }
+      return {
+        keymaps = {
+          view = { close },
+          file_panel = { close },
+          file_history_panel = { close },
+        },
+      }
+    end,
   },
 }

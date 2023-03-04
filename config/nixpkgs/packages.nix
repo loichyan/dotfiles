@@ -21,10 +21,13 @@
 
     # Neovim
     neovim
-    xclip
-    wl-clipboard
-    nixgl-wrapped.neovide
+    # xclip
+    # wl-clipboard
+    # nixgl-wrapped.neovide
+    # nvim-treesitter
     tree-sitter
+    # LuaSnip
+    (luajitPackages.jsregexp)
 
     # Shell
     direnv

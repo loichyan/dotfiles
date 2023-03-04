@@ -6,7 +6,7 @@ return {
   { "@auto_resize", true },
   { "@highlight_yank", true },
   { "@quit", true },
-  { "@rulers", true, offsets = rulers },
+  { "@rulers", true, ft = rulers },
   { "@sync_time", true },
   { "@trim_spaces", true },
 }

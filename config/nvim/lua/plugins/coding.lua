@@ -1,9 +1,11 @@
 return {
   {
     "LuaSnip",
+    -- jsregexp is installed by nixpkgs
+    build = {},
     opts = {
       region_check_events = "InsertEnter",
-      delete_check_events = "InsertLeave",
+      delete_check_events = "TextChanged",
     },
   },
   ----------------
