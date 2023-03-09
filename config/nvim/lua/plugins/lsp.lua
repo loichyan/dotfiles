@@ -1,6 +1,11 @@
+---@type lspconfig.options
 local servers = {
+  clangd = {},
+  cssls = {},
   jsonls = {},
   lua_ls = {},
+  pyright = {},
+  rnix = {},
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -10,10 +15,7 @@ local servers = {
     },
   },
   taplo = {},
-  clangd = {},
   tsserver = {},
-  cssls = {},
-  rnix = {},
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools

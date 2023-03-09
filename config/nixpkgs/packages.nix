@@ -5,35 +5,34 @@
 
   # Install packages.
   home.packages = with pkgs;  [
-    # Basic
-    git
+    # Dotfiles manager
     chezmoi
 
     # Utils
-    ripgrep
-    fd
-    tokei
     bat
-    tmux
-    commitizen
+    fd
     netcat
+    ripgrep
+    sfz
+    tmux
+    tokei
+
+    # Git
+    commitizen
+    git
     lazygit
 
     # Neovim
     neovim
-    # xclip
-    # wl-clipboard
-    # nixgl-wrapped.neovide
-    # nvim-treesitter
     tree-sitter
-    # LuaSnip
+    # used by LuaSnip
     (luajitPackages.jsregexp)
 
     # Shell
     direnv
-    zoxide
     shfmt
     starship
+    zoxide
 
     # C/C++
     gcc
@@ -48,9 +47,14 @@
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
-
-    # Typescript
+    # typescript
     (nodePackages.typescript-language-server)
+    # prettier
+    (nodePackages.prettier)
+    # html/css/json/eslint
+    (nodePackages.vscode-langservers-extracted)
+    # prose linter
+    vale
 
     # Deno
     deno
@@ -62,29 +66,25 @@
 
     # Rust
     rust-analyzer
+    # cargo ulities
     cargo-edit
     cargo-tarpaulin
+    myPkgs.cargo-nightly-expand
+    # wasm
     trunk
     wasm-bindgen-cli
     wasm-pack
     binaryen
-    myPkgs.cargo-nightly-expand
+    # toml
+    taplo-cli
 
     # Lua
     stylua
     sumneko-lua-language-server
 
-    # Web
-    (nodePackages.prettier)
-
     # Perl
     perl
+    # used by Yarn autocompleton
     perl536Packages.JSONPP
-
-    # Others
-    (nodePackages.vscode-langservers-extracted)
-    taplo-cli
-    vale
-    sfz
   ];
 }
