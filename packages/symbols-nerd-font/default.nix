@@ -13,6 +13,10 @@ stdenv.mkDerivation {
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/NerdFontsSymbolsOnly.zip";
     sha256 = "sha256-nPDIAN6GvDHxEVsPR2LvjYCnSfbPpM90E7AfxWPMP2o=";
   };
+  fontconfig_file = fetchurl {
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/10-nerd-font-symbols.conf";
+    sha256 = "sha256-HrnGZnURiaQWZpkGqU+zE/CW8bs2s3x8b0MRjBpl5x8=";
+  };
   unpackPhase = ''
     mkdir fonts
     unzip $src "*.ttf" ".otf" -x "*Windows Compatible.*" -d fonts || true
@@ -29,7 +33,7 @@ stdenv.mkDerivation {
       rootfs/$fontcfg_tmpldir \
       rootfs/$fontcfg_confdir
     fontconf=$fontcfg_tmpldir/10-symbols-nerd-font.conf
-    install -m 0644 -p ${./fontconfig.conf} rootfs/$fontconf
+    install -m 0644 -p $fontconfig_file rootfs/$fontconf
     ln -s /$fontconf rootfs/$fontcfg_confdir
     # Copy metainfo
     install -Dm 0644 -p ${./metainfo.xml} rootfs/usr/share/metainfo/${pname}.metainfo.xml
