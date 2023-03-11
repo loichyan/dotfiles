@@ -29,7 +29,7 @@ ms_repo edge
 # Install common packages.
 rpm-ostree install podman-compose tmux zsh \
   gnome-tweaks kitty yaru-theme \
-  fira-code-fonts langpacks-zh_CN \
+  fira-code-fonts cascadia-code-fonts langpacks-zh_CN \
   code microsoft-edge-stable
 
 # Install Nix.
