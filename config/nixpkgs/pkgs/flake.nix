@@ -22,6 +22,7 @@
       overlays = [ fenix.overlays.default ];
       mkPkgs = pkgs: {
         cargo-nightly-expand = pkgs.callPackage ./cargo-nightly-expand.nix { };
+        extra-files = pkgs.callPackage ./extra-files.nix { };
       };
     in
     (flake-utils.lib.eachDefaultSystem (system:

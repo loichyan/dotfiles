@@ -16,6 +16,7 @@
     sfz
     tmux
     tokei
+    myPkgs.extra-files
 
     # Git
     commitizen
@@ -26,7 +27,7 @@
     neovim
     tree-sitter
     # used by LuaSnip
-    (luajitPackages.jsregexp)
+    luajitPackages.jsregexp
 
     # Shell
     direnv
@@ -48,11 +49,11 @@
     nodePackages.pnpm
     nodePackages.yarn
     # typescript
-    (nodePackages.typescript-language-server)
+    nodePackages.typescript-language-server
     # prettier
-    (nodePackages.prettier)
+    nodePackages.prettier
     # html/css/json/eslint
-    (nodePackages.vscode-langservers-extracted)
+    nodePackages.vscode-langservers-extracted
     # prose linter
     vale
 
