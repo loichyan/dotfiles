@@ -27,7 +27,7 @@ require("lazy").setup({
     { import = "fixup" },
   },
   defaults = { lazy = true, version = false },
-  install = { missing = NOT_VSCODE, colorscheme = { "tokyonight" } },
+  install = { missing = NOT_VSCODE, colorscheme = { "catppuccin" } },
   checker = { enabled = NOT_VSCODE },
   performance = {
     rtp = {

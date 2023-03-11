@@ -6,7 +6,7 @@ end
 
 return {
   config = {
-    colorscheme = NOT_VSCODE and "tokyonight" or "habamax",
+    colorscheme = NOT_VSCODE and "catppuccin" or "habamax",
   },
   o = {
     clipboard = "",

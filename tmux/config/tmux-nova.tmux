@@ -1,14 +1,15 @@
 #!/usr/bin/bash
 
-# Name: Tokyo Night Moon
-# License: MIT
-# Author: Folke Lemaitre
-# Upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/tmux/tokyonight_moon.conf
-black="#1e2030"
-blue="#82aaff"
-gray="#3b4261"
-white="#828bb8"
-yellow="#ffc777"
+# Name:     Catppuccin Mocha
+# Author:   Catppuccin Org
+# License:  MIT
+# Upstream: https://github.com/catppuccin/tmux/blob/main/catppuccin-mocha.tmuxtheme
+
+black="#1e1e2e"
+blue="#89b4fa"
+gray="#313244"
+white="#cdd6f4"
+yellow="#f9e2af"
 
 seg_a="$blue $black"
 seg_b="$gray $blue"
