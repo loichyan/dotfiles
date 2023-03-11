@@ -1,6 +1,9 @@
 -- Language specified plugins
 
 return {
+  -- Json
+  { "b0o/schemastore.nvim", lazy = true },
+  -- Rust
   {
     "Saecki/crates.nvim",
     event = { "BufReadPre", "BufNewFile" },

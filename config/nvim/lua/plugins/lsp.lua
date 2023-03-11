@@ -4,7 +4,18 @@ local Keymap = require("deltavim.core.keymap")
 local servers = {
   clangd = {},
   cssls = {},
-  jsonls = {},
+  jsonls = {
+    on_attach = function(client)
+      client.notify("workspace/didChangeConfiguration", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+    end,
+  },
   lua_ls = {},
   pyright = {},
   rnix = {},

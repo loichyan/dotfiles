@@ -25,4 +25,9 @@ return {
   -- My plugins --
   ----------------
   { "junegunn/vim-easy-align", cmd = "EasyAlign" },
+  {
+    "max397574/better-escape.nvim",
+    opts = { mapping = { "jk", "jj" } },
+    event = "InsertEnter",
+  },
 }
