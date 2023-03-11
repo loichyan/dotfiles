@@ -8,21 +8,21 @@ return {
       delete_check_events = "TextChanged",
     },
   },
+  {
+    "mini.pairs",
+    opts = {
+      mappings = {
+        ["'"] = {
+          action = "closeopen",
+          pair = "''",
+          neigh_pattern = "[^%a\\&].",
+          register = { cr = false },
+        },
+      },
+    },
+  },
   ----------------
   -- My plugins --
   ----------------
-  {
-    "nacro90/numb.nvim",
-    event = "BufReadPost",
-    opts = {},
-    config = function(_, opts) require("numb").setup(opts) end,
-  },
-  {
-    "tpope/vim-sleuth",
-    event = "BufReadPost",
-    config = function()
-      require("deltavim.util").autocmd("BufReadPost", "silent! Sleuth<CR>")
-    end,
-  },
   { "junegunn/vim-easy-align", cmd = "EasyAlign" },
 }

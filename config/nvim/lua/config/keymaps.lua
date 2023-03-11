@@ -68,6 +68,7 @@ return function()
     -- comment
     { "gc", "@comment.toggle" },
     { "gcc", "@comment.toggle_line" },
+    { "gc", "@select.comment" },
     -- file/find
     { "<C-t>", "@terminal.open" },
     { "<C-t>", "@terminal.hide" },
@@ -156,7 +157,7 @@ return function()
     { "<Leader>lf", "@lsp.format" },
     { "<Leader>li", "@ui.lsp_info" },
     { "<Leader>lI", "@ui.nullls_info" },
-    { "<Leader>lr", "@lsp.rename" },
+    { "<Leader>lr", "@lsp.rename:inc_rename" },
     -- treesitter
     { "<C-Space>", "@treesitter.increase_selection" },
     { "<BS>", "@treesitter.decrease_selection" },

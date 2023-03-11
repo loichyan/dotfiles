@@ -7,6 +7,19 @@ return {
   -- My plugins --
   ----------------
   {
+    "nacro90/numb.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {},
+    config = function(_, opts) require("numb").setup(opts) end,
+  },
+  {
+    "tpope/vim-sleuth",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("deltavim.util").autocmd("BufReadPost", "silent! Sleuth<CR>")
+    end,
+  },
+  {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",
     opts = {},

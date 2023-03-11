@@ -1,3 +1,5 @@
+local Keymap = require("deltavim.core.keymap")
+
 ---@type lspconfig.options
 local servers = {
   clangd = {},
@@ -42,5 +44,24 @@ return {
     opts = {
       ensure_installed = {},
     },
+  },
+  ----------------
+  -- My plugins --
+  ----------------
+  -- inc-rename
+  {
+    "smjonas/inc-rename.nvim",
+    cmd = "IncRename",
+    keys = function()
+      local function rename() return ":IncRename " .. vim.fn.expand("<cword>") end
+
+      -- stylua: ignore
+      return Keymap.Collector()
+        :map({
+          { "@lsp.rename:inc_rename", rename, "Rename with preview", expr = true },
+        })
+        :collect_lazy()
+    end,
+    config = true,
   },
 }
