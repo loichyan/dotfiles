@@ -1,4 +1,8 @@
 [http]
 proxy = "http://{{data.myHttpProxy}}"
+
 [https]
 proxy = "http://{{data.myHttpProxy}}"
+
+[registries.crates-io]
+protocol = "sparse"
