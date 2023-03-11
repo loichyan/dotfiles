@@ -5,12 +5,13 @@
 # Author: Folke Lemaitre
 # Upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/tmux/tokyonight_moon.conf
 black="#1e2030"
-white="#828bb8"
 blue="#82aaff"
+gray="#3b4261"
+white="#828bb8"
 yellow="#ffc777"
-grey="#3b4261"
+
 seg_a="$blue $black"
-seg_b="$grey $blue"
+seg_b="$gray $blue"
 
 # Misc styles.
 set -g mode-style "fg=$black,bg=$yellow"

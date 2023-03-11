@@ -42,6 +42,7 @@ return {
         "vim",
         "yaml",
       },
+      highlight = { additional_vim_regex_highlighting = false },
     },
   },
 }
