@@ -1,4 +1,20 @@
+local Util = require("deltavim.util")
+
 return {
+  {
+    "nvim-cmp",
+    opts = function(_, opts)
+      return Util.merge({}, opts, {
+        sources = require("cmp").config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "path" },
+          { name = "crates" },
+          { name = "buffer" },
+        }),
+      })
+    end,
+  },
   {
     "LuaSnip",
     -- jsregexp is installed by nixpkgs

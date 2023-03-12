@@ -24,6 +24,7 @@ local servers = {
       ["rust-analyzer"] = {
         ---@diagnostic disable-next-line:assign-type-mismatch
         checkOnSave = { command = "clippy" },
+        procMacro = { enable = true, attributes = { enable = true } },
       },
     },
   },

@@ -51,6 +51,7 @@ return function()
     { "<Down>", "@cmp.next_item" },
     { "<Up>", "@cmp.prev_item" },
     { "<CR>", "@cmp.confirm" },
+    { "<S-CR>", "@cmp.confirm_replace" },
     { "<C-e>", "@cmp.abort" },
     { "<C-n>", "@cmp.next_item" },
     { "<C-p>", "@cmp.prev_item" },
