@@ -19,15 +19,6 @@ local servers = {
   lua_ls = {},
   pyright = {},
   rnix = {},
-  rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        ---@diagnostic disable-next-line:assign-type-mismatch
-        checkOnSave = { command = "clippy" },
-        procMacro = { enable = true, attributes = { enable = true } },
-      },
-    },
-  },
   taplo = {},
   tsserver = {},
 }

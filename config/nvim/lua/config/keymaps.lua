@@ -154,6 +154,7 @@ return function()
     { "gt", "@search.lsp_type_definitions" },
     { "gx", "@lsp.line_diagnostics" },
     { "K", "@lsp.hover" },
+    { "<C-k>", "@lsp.code_action" },
     { "<Leader>la", "@lsp.code_action" },
     { "<Leader>lf", "@lsp.format" },
     { "<Leader>li", "@ui.lsp_info" },
