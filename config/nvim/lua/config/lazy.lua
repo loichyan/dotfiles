@@ -24,7 +24,6 @@ require("lazy").setup({
       import = "deltavim.plugins",
     },
     { import = "plugins" },
-    { import = "fixup" },
   },
   defaults = { lazy = true, version = false },
   install = { missing = NOT_VSCODE, colorscheme = { "catppuccin" } },

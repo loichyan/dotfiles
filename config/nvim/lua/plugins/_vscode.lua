@@ -13,6 +13,7 @@ local plugins = {
   { "telescope.nvim" },
   { "which-key.nvim" },
   { "gitsigns.nvim" },
+  { "vim-illuminate" },
   { "mini.bufremove" },
   { "trouble.nvim" },
   { "todo-comments.nvim" },
@@ -35,12 +36,6 @@ local plugins = {
   -- deltavim.plugins.utils
   { "vim-startuptime" },
   { "persistence.nvim" },
-  -- deltavim.extras
-  { "smart-splits.nvim" },
-  -- my plugins
-  { "crates.nvim" },
-  { "project.nvim" },
-  { "vim-tmux-clipboard" },
 }
 
 for _, name in ipairs(plugins) do

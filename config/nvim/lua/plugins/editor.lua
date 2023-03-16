@@ -64,6 +64,7 @@ return {
   -- Diffview/merge tool
   {
     "sindrets/diffview.nvim",
+    cond = NOT_VSCODE,
     cmd = { "DiffviewOpen" },
     keys = function()
       -- stylua: ignore
@@ -88,6 +89,7 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
+    cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     cmd = "ColorizerToggle",
     opts = { "*" },

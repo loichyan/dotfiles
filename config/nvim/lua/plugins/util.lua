@@ -3,6 +3,7 @@ local Keymap = require("deltavim.core.keymap")
 
 return {
   { import = "deltavim.extras.util.smart_splits" },
+  { "smart-splits.nvim", cond = NOT_VSCODE },
   ----------------
   -- My plugins --
   ----------------
@@ -21,6 +22,7 @@ return {
   },
   {
     "ahmedkhalf/project.nvim",
+    cond = NOT_VSCODE,
     event = "VeryLazy",
     opts = {},
     keys = function()
@@ -38,6 +40,7 @@ return {
   },
   {
     "roxma/vim-tmux-clipboard",
+    cond = NOT_VSCODE,
     event = "VeryLazy",
   },
 }

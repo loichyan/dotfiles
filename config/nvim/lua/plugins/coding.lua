@@ -71,9 +71,13 @@ return {
   ----------------
   -- My plugins --
   ----------------
-  { "junegunn/vim-easy-align", cmd = "EasyAlign" },
+  {
+    "junegunn/vim-easy-align",
+    cmd = "EasyAlign",
+  },
   {
     "max397574/better-escape.nvim",
+    cond = NOT_VSCODE,
     opts = { mapping = { "jk", "jj" } },
     event = "InsertEnter",
   },

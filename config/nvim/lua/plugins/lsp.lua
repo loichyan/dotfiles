@@ -54,6 +54,7 @@ return {
   -- inc-rename
   {
     "smjonas/inc-rename.nvim",
+    cond = NOT_VSCODE,
     cmd = "IncRename",
     keys = function()
       local function rename() return ":IncRename " .. vim.fn.expand("<cword>") end

@@ -2,10 +2,15 @@
 
 return {
   -- Json
-  { "b0o/schemastore.nvim", lazy = true },
+  {
+    "b0o/schemastore.nvim",
+    cond = NOT_VSCODE,
+    lazy = true,
+  },
   -- Rust
   {
     "simrat39/rust-tools.nvim",
+    cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       tools = {
@@ -25,6 +30,7 @@ return {
   },
   {
     "Saecki/crates.nvim",
+    cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       popup = { border = "rounded" },
