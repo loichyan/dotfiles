@@ -5,6 +5,8 @@ return {
   {
     "nvim-cmp",
     opts = function(_, opts)
+      local cmp = require("cmp")
+      local comparator = cmp.config.compare
       local source_names = {
         buffer = "[BUF]",
         creates = "[CRATES]",
@@ -36,13 +38,20 @@ return {
             return item
           end,
         },
-        sources = require("cmp").config.sources({
+        sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
           { name = "crates" },
           { name = "buffer" },
         }),
+        sorting = {
+          comparators = {
+            comparator.score,
+            comparator.kind,
+            comparator.recently_used,
+          },
+        },
       })
     end,
   },

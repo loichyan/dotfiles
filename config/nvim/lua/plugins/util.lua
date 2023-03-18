@@ -10,13 +10,12 @@ return {
   {
     "nacro90/numb.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    opts = {},
-    config = function(_, opts) require("numb").setup(opts) end,
+    config = true,
   },
   {
     "tpope/vim-sleuth",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
+    cmd = "Sleuth",
+    init = function()
       require("deltavim.util").autocmd("BufReadPost", "silent! Sleuth<CR>")
     end,
   },
@@ -24,7 +23,6 @@ return {
     "ahmedkhalf/project.nvim",
     cond = NOT_VSCODE,
     event = "VeryLazy",
-    opts = {},
     keys = function()
       -- stylua: ignore
       return Keymap.Collector()

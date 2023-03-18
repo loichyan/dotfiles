@@ -39,4 +39,19 @@ return {
       },
     },
   },
+  -- Markdown
+  {
+    "toppair/peek.nvim",
+    cond = NOT_VSCODE,
+    lazy = true,
+    build = "deno task build:fast",
+    init = function()
+      local function peek(name)
+        return function() require("peek")[name]() end
+      end
+      vim.api.nvim_create_user_command("PeekOpen", peek("open"), {})
+      vim.api.nvim_create_user_command("PeekClose", peek("close"), {})
+    end,
+    opts = { app = "microsoft-edge" },
+  },
 }
