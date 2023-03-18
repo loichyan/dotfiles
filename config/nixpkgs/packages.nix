@@ -31,6 +31,7 @@
 
     # Shell
     direnv
+    nix-direnv
     shfmt
     starship
     zoxide
