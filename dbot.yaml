@@ -2,7 +2,9 @@ import:
   - dbot.data.yaml
 
 profile:
-  +ignore: result
+  +ignore:
+    - result
+    - flake.lock
   .aria2:
     +source: aria2
     aria2.conf: <template>
@@ -13,7 +15,7 @@ profile:
     +source: config
     clash/config.yaml: <template>
     containers/registries.conf: <template>
-    nixpkgs/data.nix: <template>
+    home-manager/data.nix: <template>
     nvim: <link>
   .czrc:
     +type: template
