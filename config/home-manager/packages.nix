@@ -32,9 +32,13 @@
     # Shell
     direnv
     nix-direnv
+    shellcheck
     shfmt
     starship
     zoxide
+
+    # Dockerfile
+    hadolint
 
     # C/C++
     gcc

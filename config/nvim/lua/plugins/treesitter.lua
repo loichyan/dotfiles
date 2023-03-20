@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter",
+    dependencies = { "windwp/nvim-ts-autotag", "andymass/vim-matchup" },
     opts = {
       ensure_installed = {
         "bash",
@@ -43,7 +44,9 @@ return {
         "vim",
         "yaml",
       },
+      autotag = { enable = true },
       highlight = { additional_vim_regex_highlighting = false },
+      matchup = { enable = true },
     },
   },
 }

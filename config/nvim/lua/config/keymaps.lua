@@ -155,6 +155,7 @@ return function()
     { "gx", "@lsp.line_diagnostics" },
     { "K", "@lsp.hover" },
     { "<Leader>la", "@lsp.code_action" },
+    { "<Leader>lA", "@lsp.code_action_source" },
     { "<Leader>lf", "@lsp.format" },
     { "<Leader>li", "@ui.lsp_info" },
     { "<Leader>lI", "@ui.nullls_info" },

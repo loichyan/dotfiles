@@ -38,16 +38,18 @@ return {
     opts = {
       formatters = {
         prettier = true,
+        shfmt = true,
         stylua = true,
+      },
+      linters = {
+        eslint = true,
+        hadolint = true,
+        shellcheck = true,
       },
     },
   },
-  {
-    "mason.nvim",
-    opts = {
-      ensure_installed = {},
-    },
-  },
+  { "mason.nvim", enabled = false },
+  { "mason-lspconfig.nvim", enabled = false },
   ----------------
   -- My plugins --
   ----------------
