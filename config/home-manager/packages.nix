@@ -75,6 +75,8 @@
     # cargo ulities
     cargo-edit
     cargo-tarpaulin
+    cargo-release
+    cargo-readme
     myPkgs.cargo-nightly-expand
     # wasm
     trunk
