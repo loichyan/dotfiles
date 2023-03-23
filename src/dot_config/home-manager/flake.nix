@@ -24,6 +24,7 @@
       username = data.user;
       homeDirectory = data.home;
       stateVersion = "22.11";
+      # Add data to overlay
       overlays = [ myPkgs.overlays.default fenix.overlays.default ];
     in
     {

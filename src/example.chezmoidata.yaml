@@ -1,0 +1,11 @@
+user: user1
+home: /home/user1
+email: user1@example.com
+# TODO: no proxy url
+myHttpProxyPort: 1080
+myHttpProxy: 127.0.0.1:1080
+mySocksProxyPort: 1079
+mySocksProxy: 127.0.0.1:1079
+myTorProxyPort: 8090
+clashSubscription: https://example.com
+aliyunRegistry: xxxxxxxx

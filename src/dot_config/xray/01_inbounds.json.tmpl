@@ -5,13 +5,13 @@
       "protocol": "socks",
       "settings": { "udp": true },
       "listen": "127.0.0.1",
-      "port": {{data.mySocksProxyPort}}
+      "port": {{ .mySocksProxyPort }}
     },
     {
       "tag": "http-in",
       "protocol": "http",
       "listen": "127.0.0.1",
-      "port": {{data.myHttpProxyPort}}
+      "port": {{ .myHttpProxyPort }}
     }
   ]
 }

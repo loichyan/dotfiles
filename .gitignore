@@ -1,11 +1,10 @@
 # Private data
-dbot.data.yaml
-config/xray/99_proxy.json
+.chezmoidata.*
 
 # Editor
 .vscode
 
-# Nix files
+# Nix build files
 result
 flake.lock
 

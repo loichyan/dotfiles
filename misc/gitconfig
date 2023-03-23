@@ -1,9 +1,0 @@
-[init]
-  defaultBranch = main
-[user]
-  name = {{data.user}}
-  email = {{data.email}}
-[http]
-  proxy = http://{{data.myHttpProxy}}
-[https]
-  proxy = http://{{data.myHttpProxy}}
