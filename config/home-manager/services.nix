@@ -1,18 +1,18 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) clash aria tor;
+  inherit (pkgs) xray aria tor;
 in
 {
   systemd.user.services = {
-    clash = {
+    xray = {
       Unit = {
-        Description = clash.meta.description;
+        Description = xray.meta.description;
         After = "network.target";
       };
       Service = {
         Type = "exec";
         Restart = "on-abort";
-        ExecStart = "${clash}/bin/clash";
+        ExecStart = "${xray}/bin/xray -confdir %h/.config/xray";
       };
       Install = {
         WantedBy = [ "default.target" ];

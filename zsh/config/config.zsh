@@ -57,6 +57,9 @@ for key ('^[[A' '^P' 'k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('^[[B' '^N' 'j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
+# Use Ctrl-Space to autocomplete one word
+bindkey '^E' forward-word
+
 #
 # Misc
 #

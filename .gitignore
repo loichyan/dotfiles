@@ -1,5 +1,6 @@
 # Private data
 dbot.data.yaml
+config/xray/99_proxy.json
 
 # Editor
 .vscode

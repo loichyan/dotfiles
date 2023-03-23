@@ -17,6 +17,9 @@ profile:
     containers/registries.conf: <template>
     home-manager/data.nix: <template>
     nvim: <link>
+    xray/01_inbounds.json:
+      +type: template
+      +source: config/xray/01_inbounds.json.tmpl
   .czrc:
     +type: template
     +source: misc/czrc.json
