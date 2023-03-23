@@ -1,0 +1,12 @@
+# Your profile
+user: user1
+email: user1@example.com
+home: /home/user1
+# Proxy ports
+proxy:
+  http: 1080
+  socks: 1079
+  tor: 8090
+# Some private services
+aliyunRegistry: xxxxxxxx
+clashSubscription: https://example.com

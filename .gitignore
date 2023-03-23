@@ -1,10 +1,10 @@
 # Private data
-dbot.data.yaml
+.chezmoidata.*
 
 # Editor
 .vscode
 
-# Nix files
+# Nix build files
 result
 flake.lock
 

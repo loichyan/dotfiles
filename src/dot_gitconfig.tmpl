@@ -1,0 +1,9 @@
+[init]
+  defaultBranch = main
+[user]
+  name = {{ .user }}
+  email = {{ .email }}
+[http]
+  proxy = http://127.0.0.1:{{ .proxy.http }}
+[https]
+  proxy = http://127.0.0.1:{{ .proxy.http }}

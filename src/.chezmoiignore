@@ -1,0 +1,6 @@
+# Nix build files
+**/result
+**/flake.lock
+
+# Examples
+example*
