@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) xray aria tor;
+  inherit (pkgs) myData xray aria tor;
 in
 {
   systemd.user.services = {
@@ -12,7 +12,7 @@ in
       Service = {
         Type = "exec";
         Restart = "on-abort";
-        ExecStart = "${xray}/bin/xray -confdir %h/.config/xray";
+        ExecStart = "${xray}/bin/xray -confdir ${myData.home}/.config/xray";
       };
       Install = {
         WantedBy = [ "default.target" ];
