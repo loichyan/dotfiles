@@ -1,8 +1,8 @@
 [http]
-proxy = "http://{{ .myHttpProxy }}"
+proxy = "http://127.0.0.1:{{ .proxy.http }}"
 
 [https]
-proxy = "http://{{ .myHttpProxy }}"
+proxy = "http://127.0.0.1:{{ .proxy.http }}"
 
 [registries.crates-io]
 protocol = "sparse"

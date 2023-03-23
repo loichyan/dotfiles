@@ -1,2 +1,2 @@
-SocksPort {{ .myTorProxyPort }}
-Socks5Proxy {{ .mySocksProxy }}
+SocksPort {{ .proxy.tor }}
+Socks5Proxy 127.0.0.1:{{ .proxy.socks }}
