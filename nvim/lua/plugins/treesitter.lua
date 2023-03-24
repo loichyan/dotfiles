@@ -6,7 +6,6 @@ return {
       ensure_installed = {
         "bash",
         "c",
-        "comment",
         "cpp",
         "css",
         "dart",
@@ -28,6 +27,7 @@ return {
         "json",
         "jsonc",
         "lua",
+        "luadoc",
         "luap",
         "make",
         "markdown",

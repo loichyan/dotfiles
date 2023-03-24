@@ -92,6 +92,13 @@ return {
     cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     cmd = "ColorizerToggle",
-    opts = { "*" },
+    opts = {
+      "css",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
   },
 }
