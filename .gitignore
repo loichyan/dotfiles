@@ -1,5 +1,6 @@
 # Private data
 .chezmoidata.*
+*_private.*
 
 # Editor
 .vscode
