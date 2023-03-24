@@ -41,10 +41,10 @@
     hadolint
 
     # C/C++
+    clang-tools
+    cmake
     gcc
     gnumake
-    cmake
-    clang-tools
 
     # Nix
     rnix-lsp
@@ -52,14 +52,11 @@
     # Node
     nodejs
     nodePackages.pnpm
-    nodePackages.yarn
-    # typescript
-    nodePackages.typescript-language-server
-    # prettier
+    # lsp/formatter/linter
+    nodePackages.eslint
     nodePackages.prettier
-    # html/css/json/eslint
+    nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
-    # prose linter
     vale
 
     # Deno
@@ -74,25 +71,20 @@
     rust-analyzer
     # cargo ulities
     cargo-edit
-    cargo-tarpaulin
-    cargo-release
     cargo-readme
+    cargo-release
+    cargo-tarpaulin
     myPkgs.cargo-nightly-expand
     # wasm
+    binaryen
     trunk
     wasm-bindgen-cli
     wasm-pack
-    binaryen
     # toml
     taplo-cli
 
     # Lua
     stylua
     sumneko-lua-language-server
-
-    # Perl
-    perl
-    # used by Yarn autocompleton
-    perl536Packages.JSONPP
   ];
 }
