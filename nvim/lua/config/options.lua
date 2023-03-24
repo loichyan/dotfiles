@@ -10,6 +10,6 @@ return {
   },
   o = {
     clipboard = "",
-    guifont = "Fira Code:h11",
+    guifont = "monospace:h11",
   },
 }
