@@ -41,4 +41,9 @@ return {
     cond = NOT_VSCODE,
     event = "VeryLazy",
   },
+  {
+    "wakatime/vim-wakatime",
+    cond = NOT_VSCODE,
+    event = "VeryLazy",
+  },
 }

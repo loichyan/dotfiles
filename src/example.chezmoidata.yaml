@@ -10,3 +10,4 @@ proxy:
 # Some private services
 aliyunRegistry: xxxxxxxx
 clashSubscription: https://example.com
+wakamimeApiKey: xxxxxxxx
