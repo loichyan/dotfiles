@@ -16,6 +16,12 @@ return {
       window = {
         mappings = { ["<cr>"] = open_and_quit },
       },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          never_show = { ".git" },
+        },
+      },
     },
   },
   {
