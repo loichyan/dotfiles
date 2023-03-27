@@ -44,11 +44,20 @@ return {
           stylua = true,
         },
         diagnostics = {
-          cspell = { filetypes = { "markdown" } },
+          cspell = {
+            filetypes = { "markdown" },
+            diagnostics_postprocess = function(diag)
+              diag.severity = vim.diagnostic.severity.WARN
+            end,
+          },
           eslint = true,
           hadolint = true,
           shellcheck = true,
-          vale = true,
+          vale = {
+            diagnostics_postprocess = function(diag)
+              diag.severity = vim.diagnostic.severity.HINT
+            end,
+          },
         },
         code_actions = {
           cspell = true,
