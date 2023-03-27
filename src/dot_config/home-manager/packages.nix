@@ -52,6 +52,7 @@
     # Node
     nodejs
     nodePackages.pnpm
+    nodePackages.yarn
     # lsp/formatter/linter
     nodePackages.eslint
     nodePackages.prettier
@@ -86,5 +87,10 @@
     # Lua
     stylua
     sumneko-lua-language-server
+
+    # Perl
+    perl
+    # used by Yarn autocompleton
+    perl536Packages.JSONPP
   ];
 }
