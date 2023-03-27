@@ -11,5 +11,6 @@ return {
   o = {
     clipboard = "",
     guifont = "monospace:h11",
+    swapfile = false,
   },
 }

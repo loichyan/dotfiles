@@ -37,16 +37,22 @@ return {
   {
     "null-ls.nvim",
     opts = {
-      formatters = {
-        prettier = true,
-        shfmt = true,
-        stylua = true,
-      },
-      linters = {
-        eslint = true,
-        hadolint = true,
-        shellcheck = true,
-        vale = true,
+      sources_with = {
+        formatting = {
+          prettier = true,
+          shfmt = true,
+          stylua = true,
+        },
+        diagnostics = {
+          cspell = { filetypes = { "markdown" } },
+          eslint = true,
+          hadolint = true,
+          shellcheck = true,
+          vale = true,
+        },
+        code_actions = {
+          cspell = true,
+        },
       },
     },
   },

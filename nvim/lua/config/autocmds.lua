@@ -5,4 +5,5 @@ local rulers = {
 }
 return {
   { "@ruler", true, ft = rulers },
+  { "@wrap_spell", false },
 }

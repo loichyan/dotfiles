@@ -58,6 +58,9 @@
     nodePackages.prettier
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
+
+    # Prose linter & spell checker
+    nodePackages.cspell
     vale
 
     # Deno
