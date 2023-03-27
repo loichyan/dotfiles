@@ -46,6 +46,7 @@ return {
         eslint = true,
         hadolint = true,
         shellcheck = true,
+        vale = true,
       },
     },
   },
