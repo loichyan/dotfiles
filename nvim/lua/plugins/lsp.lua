@@ -6,7 +6,11 @@ local servers = {
   clangd = true,
   cssls = true,
   jsonls = {
-    settings = { json = { validate = { enable = true } } },
+    settings = {
+      json = {
+        validate = { enable = true },
+      },
+    },
     on_attach = function(client)
       client.notify("workspace/didChangeConfiguration", {
         settings = {
@@ -16,7 +20,12 @@ local servers = {
     end,
   },
   yamlls = {
-    settings = { yaml = { validate = true, keyOrdering = false } },
+    settings = {
+      yaml = {
+        validate = true,
+        keyOrdering = false,
+      },
+    },
     on_attach = function(client)
       client.notify("workspace/didChangeConfiguration", {
         settings = {
@@ -25,7 +34,11 @@ local servers = {
       })
     end,
   },
-  lua_ls = true,
+  lua_ls = {
+    settings = {
+      Lua = { workspace = { checkThirdParty = false } },
+    },
+  },
   pyright = true,
   rnix = true,
   taplo = true,
