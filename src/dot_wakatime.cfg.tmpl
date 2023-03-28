@@ -1,2 +1,9 @@
 [settings]
 api_key = {{ .wakatimeApiKey }}
+proxy = socks5://127.0.0.1:{{ .proxy.socks }}
+hide_project_folder = true
+hide_project_names = false
+hide_branch_names = false
+hide_file_names = false
+include = {{ .devDir }}
+exclude_unknown_project = true
