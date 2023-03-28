@@ -31,12 +31,10 @@ return {
   {
     "Saecki/crates.nvim",
     cond = NOT_VSCODE,
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPre" },
     opts = {
       popup = { border = "rounded" },
-      null_ls = {
-        enabled = true,
-      },
+      null_ls = { enabled = true },
     },
   },
   -- Markdown
