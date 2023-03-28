@@ -48,6 +48,7 @@ return {
         sorting = {
           comparators = {
             function(a, b) return not comparator.order(a, b) end,
+            comparator.kind,
             comparator.recently_used,
           },
         },

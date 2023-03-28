@@ -43,7 +43,7 @@ return {
     cond = NOT_VSCODE,
     ft = { "markdown" },
     build = "deno task build:fast",
-    opts = { app = "microsoft-edge" },
+    opts = { app = "firefox" },
     config = function(_, opts)
       local function peek(name)
         return function() require("peek")[name]() end
