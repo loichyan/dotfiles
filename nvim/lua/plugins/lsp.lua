@@ -1,31 +1,39 @@
 local Keymap = require("deltavim.core.keymap")
 local Util = require("deltavim.util")
 
----@type lspconfig.options
+---@type lspconfig.options|table<string,boolean>
 local servers = {
-  clangd = {},
-  cssls = {},
+  clangd = true,
+  cssls = true,
   jsonls = {
+    settings = { json = { validate = { enable = true } } },
     on_attach = function(client)
       client.notify("workspace/didChangeConfiguration", {
         settings = {
-          json = {
-            schemas = require("schemastore").json.schemas(),
-            validate = { enable = true },
-          },
+          json = { schemas = require("schemastore").json.schemas() },
         },
       })
     end,
   },
-  lua_ls = {},
-  pyright = {},
-  rnix = {},
-  taplo = {},
-  tsserver = {},
+  yamlls = {
+    settings = { yaml = { validate = true, keyOrdering = false } },
+    on_attach = function(client)
+      client.notify("workspace/didChangeConfiguration", {
+        settings = {
+          yaml = { schemas = require("schemastore").yaml.schemas() },
+        },
+      })
+    end,
+  },
+  lua_ls = true,
+  pyright = true,
+  rnix = true,
+  taplo = true,
+  tsserver = true,
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools
-for _, server in pairs(servers) do
+for _, server in pairs(Util.copy_as_table(servers)) do
   server.mason = server.mason == true or false
 end
 
