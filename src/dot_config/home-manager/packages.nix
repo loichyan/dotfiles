@@ -11,6 +11,7 @@
     # Utils
     bat
     fd
+    lsd
     netcat
     ripgrep
     sfz
