@@ -36,7 +36,13 @@ local servers = {
   },
   lua_ls = {
     settings = {
-      Lua = { workspace = { checkThirdParty = false } },
+      Lua = {
+        workspace = {
+          library = {
+            "${3rd}/luv/library",
+          },
+        },
+      },
     },
   },
   pyright = true,

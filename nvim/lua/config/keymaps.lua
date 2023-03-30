@@ -119,6 +119,7 @@ return function()
     { "<Leader>gc", "@search.git_commits" },
     { "<Leader>gC", "@search.git_status" },
     { "<Leader>gd", "@diffview.open" },
+    { "<Leader>gD", "@diffview.open_last" },
     { "<Leader>gg", "@terminal.lazygit" },
     { "<Leader>gG", "@terminal.lazygit_cwd" },
     { "<Leader>gh", "@diffview.file_histroy" },

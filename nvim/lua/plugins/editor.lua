@@ -77,6 +77,7 @@ return {
       return Keymap.Collector()
         :map({
           { "@diffview.open", "<Cmd>DiffviewOpen<CR>", "Open diffview" },
+          { "@diffview.open_last", "<Cmd>DiffviewOpen HEAD~1<CR>", "Open diffview with last commit" },
           { "@diffview.file_histroy", "<Cmd>DiffviewFileHistory %<CR>", "File histroy" },
         })
         :collect_lazy()

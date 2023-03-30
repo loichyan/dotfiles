@@ -1,4 +1,4 @@
-NOT_VSCODE = vim.g.vscode == nil -- and false
+NOT_VSCODE = not vim.g.vscode
 
 -- Bootstrap DeltaVim
 require("config.lazy")
