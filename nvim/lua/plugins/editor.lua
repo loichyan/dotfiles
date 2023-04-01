@@ -14,7 +14,7 @@ return {
     "neo-tree.nvim",
     opts = {
       window = {
-        mappings = { ["<cr>"] = open_and_quit },
+        mappings = { ["<CR>"] = open_and_quit },
       },
       filesystem = {
         filtered_items = {

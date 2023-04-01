@@ -72,6 +72,7 @@
     python3
     python3Packages.black
     python3Packages.virtualenv
+    nodePackages.pyright
 
     # Rust
     rust-analyzer
