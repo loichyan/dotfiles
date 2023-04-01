@@ -160,7 +160,7 @@ return function()
     { "<Leader>lf", "@lsp.format" },
     { "<Leader>li", "@ui.lsp_info" },
     { "<Leader>lI", "@ui.nullls_info" },
-    { "<Leader>lr", "@lsp.rename:inc_rename" },
+    { "<Leader>lr", "@lsp.rename" },
     -- treesitter
     { "<C-Space>", "@treesitter.increase_selection" },
     { "<BS>", "@treesitter.decrease_selection" },

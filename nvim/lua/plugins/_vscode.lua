@@ -27,6 +27,7 @@ local plugins = {
   { "nvim-notify" },
   { "dressing.nvim" },
   { "bufferline.nvim" },
+  { "barbecue.nvim" },
   { "lualine.nvim" },
   { "indent-blankline.nvim" },
   { "mini.indentscope" },

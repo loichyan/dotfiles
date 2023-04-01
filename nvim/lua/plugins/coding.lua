@@ -4,7 +4,7 @@ local Util = require("deltavim.util")
 return {
   {
     "nvim-cmp",
-    opts = function(_, opts)
+    opts2 = function(_, opts)
       local cmp = require("cmp")
       local comparator = cmp.config.compare
       local source_names = {
