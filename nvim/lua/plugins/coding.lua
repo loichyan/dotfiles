@@ -1,5 +1,5 @@
 local Config = require("deltavim.config")
-local Util = require("deltavim.util")
+local Utils = require("deltavim.utils")
 
 return {
   {
@@ -21,7 +21,7 @@ return {
         path = 1,
       }
       local icons = Config.icons.kinds
-      return Util.merge({}, opts, {
+      return Utils.merge({}, opts, {
         formatting = {
           fields = { "abbr", "kind", "menu" },
           format = function(entry, item)

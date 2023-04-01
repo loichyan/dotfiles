@@ -1,5 +1,5 @@
 local Keymap = require("deltavim.core.keymap")
-local Util = require("deltavim.util")
+local Utils = require("deltavim.utils")
 
 local function open_and_quit(state)
   local node = state.tree:get_node()
@@ -27,7 +27,7 @@ return {
   {
     "which-key.nvim",
     opts = function(_, opts)
-      return Util.merge({}, opts, {
+      return Utils.merge({}, opts, {
         groups = {
           mode = { "n", "x" },
           ["["] = { name = "+prev" },

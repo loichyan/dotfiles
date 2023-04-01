@@ -1,4 +1,4 @@
-local Util = require("deltavim.util")
+local Utils = require("deltavim.utils")
 
 ---@type lspconfig.options|table<string,boolean>
 local servers = {
@@ -51,7 +51,7 @@ local servers = {
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools
-for _, server in pairs(Util.copy_as_table(servers)) do
+for _, server in pairs(Utils.copy_as_table(servers)) do
   server.mason = server.mason == true or false
 end
 

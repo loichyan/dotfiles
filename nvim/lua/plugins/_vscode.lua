@@ -1,6 +1,6 @@
 -- Disable some plugins when running as the backend of VSCode.
 
-local Util = require("deltavim.util")
+local Utils = require("deltavim.utils")
 
 local plugins = {
   -- deltavim.plugins.coding
@@ -46,7 +46,7 @@ for _, name in ipairs(plugins) do
 end
 
 ---@diagnostic disable-next-line:missing-parameter
-return Util.concat(plugins, {
+return Utils.concat(plugins, {
   -- Disable some treesitter modules
   {
     "nvim-treesitter",
