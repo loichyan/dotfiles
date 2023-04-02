@@ -1,6 +1,10 @@
 { pkgs, stdenv, fenix }:
 let
-  rust = fenix.stable.defaultToolchain;
+  # Most common derivation.
+  rust = with pkgs.fenix; combine [
+    stable.defaultToolchain
+    stable.rust-src
+  ];
 in
 stdenv.mkDerivation {
   name = "extra-files";
