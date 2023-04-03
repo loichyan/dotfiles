@@ -81,6 +81,7 @@
     cargo-readme
     cargo-release
     cargo-tarpaulin
+    cargo-watch
     myPkgs.cargo-nightly-expand
     # wasm
     binaryen
