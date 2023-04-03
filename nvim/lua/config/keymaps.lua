@@ -167,8 +167,8 @@ return function()
     { "<Leader>lI", "@ui.nullls_info" },
     { "<Leader>lr", "@lsp.rename" },
     -- treesitter
-    { "<C-Space>", "@treesitter.increase_selection" },
-    { "<BS>", "@treesitter.decrease_selection" },
+    { "<C-Space>", "@treesitter.icrement_selection" },
+    { "<BS>", "@treesitter.decrement_selection" },
     -- notify
     { "<S-Enter>", "@notify.redirect" },
     { "<Leader>na", "@notify.all" },

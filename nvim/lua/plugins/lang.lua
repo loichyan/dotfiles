@@ -14,13 +14,21 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       tools = { inlay_hints = { auto = false } },
-      server = { standalone = false },
+      server = {
+        standalone = false,
+        settings = {
+          ["rust-analyzer"] = {
+            check = { command = "clippy" },
+            procMacro = { enable = true, attributes = { enable = true } },
+          },
+        },
+      },
     },
   },
   {
     "Saecki/crates.nvim",
     cond = NOT_VSCODE,
-    event = { "BufReadPre" },
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       popup = { border = "rounded" },
       null_ls = { enabled = true },

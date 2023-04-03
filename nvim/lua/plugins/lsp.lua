@@ -47,15 +47,6 @@ local servers = {
   },
   pyright = true,
   rnix = true,
-  rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        ---@diagnostic disable-next-line
-        checkOnSave = { command = "clippy" },
-        procMacro = { enable = true, attributes = { enable = true } },
-      },
-    },
-  },
   taplo = true,
   tsserver = true,
 }
