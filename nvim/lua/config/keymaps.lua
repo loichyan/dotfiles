@@ -46,8 +46,8 @@ return function()
     { "<Leader><Tab>q", "@tab.close" },
     { "<Leader><Tab><Tab>", "@tab.new" },
     -- cmp/snippet
-    { "<Tab>", "@snippet.next_node" },
-    { "<S-Tab>", "@snippet.prev_node" },
+    { true, "@cmp.super_tab" },
+    { true, "@cmp.super_stab" },
     { "<Down>", "@cmp.next_item" },
     { "<Up>", "@cmp.prev_item" },
     { "<CR>", "@cmp.confirm" },
@@ -57,6 +57,7 @@ return function()
     { "<C-p>", "@cmp.prev_item" },
     { "<C-d>", "@cmp.scroll_down" },
     { "<C-u>", "@cmp.scroll_up" },
+    { "<C-y>", "@cmp.confirm" },
     { "<C-Space>", "@cmp.complete" },
     -- surround
     { "gza", "@surround.add" },
@@ -67,9 +68,13 @@ return function()
     { "gzn", "@surround.update_n_lines" },
     { "gzr", "@surround.replace" },
     -- comment
-    { "gc", "@comment.toggle" },
+    { "gb", "@comment.oplead_block" },
+    { "gbb", "@comment.toggle_block" },
+    { "gc", "@comment.oplead_line" },
+    { "gcA", "@comment.insert_eol" },
     { "gcc", "@comment.toggle_line" },
-    { "gc", "@select.comment" },
+    { "gcO", "@comment.insert_above" },
+    { "gco", "@comment.insert_below" },
     -- file/find
     { "<C-t>", "@terminal.open" },
     { "<C-t>", "@terminal.hide" },

@@ -37,6 +37,7 @@ local servers = {
     settings = {
       Lua = {
         workspace = {
+          checkThirdParty = false,
           library = {
             "${3rd}/luv/library",
           },
@@ -46,11 +47,21 @@ local servers = {
   },
   pyright = true,
   rnix = true,
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        ---@diagnostic disable-next-line
+        checkOnSave = { command = "clippy" },
+        procMacro = { enable = true, attributes = { enable = true } },
+      },
+    },
+  },
   taplo = true,
   tsserver = true,
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools
+servers = Utils.copy_as_table(servers)
 for _, server in pairs(Utils.copy_as_table(servers)) do
   server.mason = server.mason == true or false
 end
@@ -58,9 +69,7 @@ end
 return {
   {
     "nvim-lspconfig",
-    opts = function(_, opts)
-      return Utils.merge({}, opts, { servers = servers })
-    end,
+    opts = { servers = servers },
   },
   {
     "null-ls.nvim",

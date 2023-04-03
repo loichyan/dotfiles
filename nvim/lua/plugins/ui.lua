@@ -1,9 +1,5 @@
 return {
   {
-    "noice.nvim",
-    opts = { presets = { inc_rename = true } },
-  },
-  {
     "lualine.nvim",
     opts = {
       options = {

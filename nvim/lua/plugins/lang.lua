@@ -13,19 +13,8 @@ return {
     cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      tools = {
-        inlay_hints = { auto = false },
-      },
-      server = {
-        standalone = false,
-        settings = {
-          ["rust-analyzer"] = {
-            ---@diagnostic disable-next-line:assign-type-mismatch
-            checkOnSave = { command = "clippy" },
-            procMacro = { enable = true, attributes = { enable = true } },
-          },
-        },
-      },
+      tools = { inlay_hints = { auto = false } },
+      server = { standalone = false },
     },
   },
   {

@@ -5,6 +5,7 @@ return {
   ----------------
   -- My plugins --
   ----------------
+  { "direnv/direnv.vim", lazy = false },
   {
     "nacro90/numb.nvim",
     event = { "BufReadPost", "BufNewFile" },

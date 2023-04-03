@@ -6,6 +6,7 @@ local plugins = {
   -- deltavim.plugins.coding
   { "LuaSnip" },
   { "nvim-cmp" },
+  { "nvim-autopairs" },
   -- deltavim.plugins.colorshceme
   { "tokyonight.nvim" },
   { "catppuccin" },
