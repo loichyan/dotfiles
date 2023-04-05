@@ -5,9 +5,6 @@ typeset -U PATH path
 export EDITOR=nvim
 export VISUAL=nvim
 
-# Set golang proxy.
-export GOPROXY=https://proxy.golang.com.cn,direct
-
 # Define python user base folder.
 export PYTHONUSERBASE=~/.pip
 
