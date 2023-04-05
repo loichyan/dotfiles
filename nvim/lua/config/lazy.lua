@@ -22,8 +22,8 @@ require("lazy").setup({
     { import = "plugins" },
   },
   defaults = { lazy = true, version = false },
-  install = { missing = NOT_VSCODE, colorscheme = { "catppuccin" } },
-  checker = { enabled = NOT_VSCODE },
+  install = { missing = false, colorscheme = { "catppuccin" } },
+  checker = { enabled = false },
   performance = {
     rtp = {
       -- Disable some rtp plugins
