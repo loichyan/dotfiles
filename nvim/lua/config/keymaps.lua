@@ -1,5 +1,6 @@
 ---@return DeltaVim.Keymaps
 return function()
+  local nixt = { "n", "i", "x", "t" }
   -- TODO: remap some keys in VSCode
   return {
     -- enhanced
@@ -11,14 +12,14 @@ return function()
     { true, "@enhanced.shr" },
     { true, "@enhanced.esc" },
     -- window
-    { "<C-h>", "@smart_splits.move_left" },
-    { "<C-j>", "@smart_splits.move_down" },
-    { "<C-k>", "@smart_splits.move_up" },
-    { "<C-l>", "@smart_splits.move_right" },
-    { "<M-h>", "@smart_splits.resize_left" },
-    { "<M-j>", "@smart_splits.resize_down" },
-    { "<M-k>", "@smart_splits.resize_up" },
-    { "<M-l>", "@smart_splits.resize_right" },
+    { "<C-h>", "@smart_splits.move_left", mode = nixt },
+    { "<C-j>", "@smart_splits.move_down", mode = nixt },
+    { "<C-k>", "@smart_splits.move_up", mode = nixt },
+    { "<C-l>", "@smart_splits.move_right", mode = nixt },
+    { "<M-h>", "@smart_splits.resize_left", mode = nixt },
+    { "<M-j>", "@smart_splits.resize_down", mode = nixt },
+    { "<M-k>", "@smart_splits.resize_up", mode = nixt },
+    { "<M-l>", "@smart_splits.resize_right", mode = nixt },
     { "<Leader>-", "@window.split" },
     { "<Leader>|", "@window.vsplit" },
     { "<Leader>w-", "@window.split" },
