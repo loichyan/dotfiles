@@ -1,3 +1,7 @@
 alias Gck="git checkout"
 alias Gsw="git switch"
-alias ls="lsd"
+
+# Replace ls with lsd
+if (( ${+commands[lsd]} )); then
+  alias ls="lsd"
+fi
