@@ -25,6 +25,10 @@ return {
     },
   },
   {
+    "toggleterm.nvim",
+    opts = { direction = "horizontal" },
+  },
+  {
     "which-key.nvim",
     opts = function(_, opts)
       return Utils.merge({}, opts, {
