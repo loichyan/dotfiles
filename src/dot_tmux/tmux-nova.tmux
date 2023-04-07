@@ -3,13 +3,28 @@
 # Name:     Catppuccin Mocha
 # Author:   Catppuccin Org
 # License:  MIT
-# Upstream: https://github.com/catppuccin/tmux/blob/main/catppuccin-mocha.tmuxtheme
+# Upstream: https://github.com/catppuccin/tmux
 
-black="#1e1e2e"
-blue="#89b4fa"
-gray="#313244"
-white="#cdd6f4"
-yellow="#f9e2af"
+# shellcheck disable=SC2034
+thm_bg="#24273a"
+thm_fg="#cad3f5"
+thm_cyan="#91d7e3"
+thm_black="#1e2030"
+thm_gray="#363a4f"
+thm_magenta="#c6a0f6"
+thm_pink="#f5bde6"
+thm_red="#ed8796"
+thm_green="#a6da95"
+thm_yellow="#eed49f"
+thm_blue="#8aadf4"
+thm_orange="#f5a97f"
+thm_black4="#5b6078"
+
+black="$thm_black"
+blue="$thm_blue"
+gray="$thm_gray"
+white="$thm_fg"
+yellow="$thm_yellow"
 
 seg_a="$blue $black"
 seg_b="$gray $blue"
