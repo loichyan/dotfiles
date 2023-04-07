@@ -10,6 +10,7 @@
 
     # Utils
     bat
+    delta
     fd
     lsd
     netcat
