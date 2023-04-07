@@ -4,11 +4,19 @@ for _, k in ipairs({ "http_proxy", "https_proxy" }) do
   vim.env[k:upper()] = MY_HTTP_PROXY
 end
 
+local timeoutlen
+if NOT_VSCODE then
+  timeoutlen = 300
+else
+  timeoutlen = 500
+end
+
 return {
   config = {
     colorscheme = NOT_VSCODE and "catppuccin" or "habamax",
   },
   o = {
+    timeoutlen = timeoutlen,
     clipboard = "",
     guifont = "monospace:h11",
     swapfile = false,
