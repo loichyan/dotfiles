@@ -11,6 +11,7 @@
     # Utils
     bat
     delta
+    erdtree
     fd
     lsd
     netcat
