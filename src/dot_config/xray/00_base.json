@@ -51,7 +51,7 @@
     ]
   },
   "outbounds": [
-    { "tag": "proxy", "protocol": "freedom" },
+    { "tag": "proxy", "protocol": "blackhole" },
     { "tag": "direct", "protocol": "freedom" },
     { "tag": "block", "protocol": "blackhole" }
   ]

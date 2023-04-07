@@ -1,6 +1,13 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) myData xray aria tor;
+  inherit (pkgs) myData xray aria tor writeScript;
+  geodat = writeScript "geodat"
+    ''
+      #!/bin/sh
+      mkdir -p ${myData.home}/.local/share/xray
+      curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o ${myData.home}/.local/share/xray/geoip.dat
+      curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o ${myData.home}/.local/share/xray/geosite.dat
+    '';
 in
 {
   systemd.user.services = {
@@ -10,9 +17,13 @@ in
         After = "network.target";
       };
       Service = {
+        Environment = [
+          "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
+          "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
+        ];
         Type = "exec";
         Restart = "on-abort";
-        ExecStart = "${xray}/bin/xray -confdir ${myData.home}/.config/xray";
+        ExecStart = "${xray}/bin/.xray-wrapped";
       };
       Install = {
         WantedBy = [ "default.target" ];
@@ -41,6 +52,34 @@ in
         Type = "exec";
         Restart = "on-abort";
         ExecStart = "${tor}/bin/tor";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+    geodat = {
+      Unit = {
+        Description = "Download geodat";
+        After = "network.target";
+      };
+      Service = {
+        Environment = [
+          "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
+          "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
+        ];
+        Type = "exec";
+        ExecStart = "${geodat}";
+      };
+    };
+  };
+  systemd.user.timers = {
+    geodat = {
+      Unit = {
+        Description = "Auto download geodat";
+        After = "network.target";
+      };
+      Timer = {
+        OnUnitActiveSec = "*-*-* 00:00:00";
       };
       Install = {
         WantedBy = [ "default.target" ];
