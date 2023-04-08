@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     {
-      "loichyan/DeltaVim",
+      name = "DeltaVim",
       dir = "~/devel/lua/DeltaVim",
       import = "deltavim.plugins",
     },
