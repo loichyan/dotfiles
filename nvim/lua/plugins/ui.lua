@@ -17,7 +17,7 @@ return {
     opts = function(_, opts)
       table.insert(opts.buttons, 3, {
         "p",
-        "󱔘 ",
+        "󱔗 ",
         "Find projects",
         H.telescope({ "projects" }),
       })
