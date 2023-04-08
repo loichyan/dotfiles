@@ -1,9 +1,10 @@
 # Set proxy environment variables.
 setproxy() {
-  export HTTP_PROXY="$MY_HTTP_PROXY"
-  export http_proxy="$MY_HTTP_PROXY"
-  export HTTPS_PROXY="$MY_HTTP_PROXY"
-  export https_proxy="$MY_HTTP_PROXY"
+  local proxy="${1:-$MY_HTTP_PROXY}"
+  export HTTP_PROXY="$proxy"
+  export http_proxy="$proxy"
+  export HTTPS_PROXY="$proxy"
+  export https_proxy="$proxy"
 }
 
 # Remove proxy environment variables.
