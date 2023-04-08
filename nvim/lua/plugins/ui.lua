@@ -1,3 +1,5 @@
+local H = require("deltavim.helpers")
+
 return {
   {
     "lualine.nvim",
@@ -8,6 +10,18 @@ return {
         section_separators = { left = "", right = "" },
       },
     },
+  },
+  {
+    "alpha-nvim",
+    ---@param opts DeltaVim.Config.Alpha
+    opts = function(_, opts)
+      table.insert(opts.buttons, 3, {
+        "p",
+        "󱔘 ",
+        "Find projects",
+        H.telescope({ "projects" }),
+      })
+    end,
   },
   {
     "indent-blankline.nvim",
