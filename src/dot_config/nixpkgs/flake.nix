@@ -5,15 +5,15 @@
     templates = {
       basic = {
         path = ./templates/basic;
-        description = "A simple nix project.";
+        description = "A simple nix project";
       };
-      license = {
-        path = ./templates/license;
-        description = "MIT OR Apache-2.0 license.";
+      repo = {
+        path = ./templates/repo;
+        description = "Starter of a repository";
       };
       rust = {
         path = ./templates/rust;
-        description = "A simple rust project.";
+        description = "A simple rust project";
       };
     };
   };
