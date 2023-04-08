@@ -12,9 +12,6 @@ else
 end
 
 return {
-  config = {
-    colorscheme = NOT_VSCODE and "catppuccin" or "habamax",
-  },
   o = {
     timeoutlen = timeoutlen,
     clipboard = "",
