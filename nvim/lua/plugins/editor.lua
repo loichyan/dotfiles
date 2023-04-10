@@ -69,7 +69,11 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    config = function() require("telescope").load_extension("fzf") end,
+    config = function()
+      if Utils.has("telescope.nvim") then
+        require("telescope").load_extension("fzf")
+      end
+    end,
   },
   -- Diffview/merge tool
   {

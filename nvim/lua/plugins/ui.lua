@@ -15,12 +15,11 @@ return {
     "alpha-nvim",
     ---@param opts DeltaVim.Config.Alpha
     opts = function(_, opts)
-      table.insert(opts.buttons, 3, {
-        "p",
-        "󱔗 ",
-        "Find projects",
-        H.telescope({ "projects" }),
-      })
+      table.insert(
+        opts.buttons,
+        3,
+        { "p", "󱔗 ", "Find projects", H.telescope({ "projects" }) }
+      )
     end,
   },
   {

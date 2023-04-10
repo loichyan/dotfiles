@@ -1,4 +1,5 @@
 local H = require("deltavim.helpers")
+local Utils = require("deltavim.utils")
 local Keymap = require("deltavim.core.keymap")
 
 return {
@@ -32,7 +33,9 @@ return {
     end,
     config = function(_, opts)
       require("project_nvim").setup(opts)
-      require("telescope").load_extension("projects")
+      if Utils.has("telescope.nvim") then
+        require("telescope").load_extension("projects")
+      end
     end,
   },
   {
