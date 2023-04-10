@@ -218,6 +218,8 @@ return function()
       { "[[", "@goto.prev_reference" },
       { "]]", "@goto.next_reference" },
       -- util
+      { "<Tab>", "<C-t>", mode = "i" },
+      { "<S-Tab>", "<C-d>", mode = "i" },
       { "jj", "@util.escape_insert" },
       { "jk", "@util.escape_insert" },
       { "<C-s>", "@util.save" },
