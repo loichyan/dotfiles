@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Name:     Catppuccin Mocha
 # Author:   Catppuccin Org

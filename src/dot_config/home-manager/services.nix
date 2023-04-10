@@ -3,7 +3,7 @@ let
   inherit (pkgs) myData xray aria tor writeScript;
   geodat = writeScript "geodat"
     ''
-      #!/bin/sh
+      #!/usr/bin/env bash
       mkdir -p ${myData.home}/.local/share/xray
       curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o ${myData.home}/.local/share/xray/geoip.dat
       curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o ${myData.home}/.local/share/xray/geosite.dat
