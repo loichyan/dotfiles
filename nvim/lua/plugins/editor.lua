@@ -79,11 +79,14 @@ return {
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
+    cond = NOT_VSCODE,
     build = "make",
     config = function() require("telescope").load_extension("fzf") end,
   },
   {
     "nvim-telescope/telescope-project.nvim",
+    cond = NOT_VSCODE,
+    event = "VeryLazy",
     keys = function()
       -- stylua: ignore
       return Keymap.Collector()

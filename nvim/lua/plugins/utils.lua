@@ -4,7 +4,11 @@ return {
   ----------------
   -- My plugins --
   ----------------
-  { "direnv/direnv.vim", lazy = false },
+  {
+    "direnv/direnv.vim",
+    lazy = false,
+    cond = NOT_VSCODE,
+  },
   {
     "nacro90/numb.nvim",
     event = { "BufReadPost", "BufNewFile" },
