@@ -8,6 +8,9 @@ export VISUAL=nvim
 # Define python user base folder.
 export PYTHONUSERBASE=~/.pip
 
+# Wakatime cli binary
+export ZSH_WAKATIME_BIN=wakatime-cli
+
 # Setup environment variables for Nix and Home Manager.
 for profile (
   ~/.nix-profile/etc/profile.d/nix.sh
