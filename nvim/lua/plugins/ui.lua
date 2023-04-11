@@ -18,7 +18,7 @@ return {
       table.insert(
         opts.buttons,
         3,
-        { "p", "󱔗 ", "Find projects", H.telescope({ "projects" }) }
+        { "p", "󱔗 ", "Find projects", H.telescope({ "project", "project" }) }
       )
     end,
   },

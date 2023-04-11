@@ -16,13 +16,13 @@ require("lazy").setup({
   spec = {
     {
       name = "DeltaVim",
-      dir = "~/devel/lua/DeltaVim",
+      dir = "~/dev/lua/DeltaVim",
       import = "deltavim.plugins",
     },
     { import = "plugins" },
     -- {
     --   name = "LazyVim",
-    --   dir = "~/devel/lua/LazyVim",
+    --   dir = "~/dev/lua/LazyVim",
     --   dev = true,
     --   import = "lazyvim.plugins",
     -- },

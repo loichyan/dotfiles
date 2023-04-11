@@ -1,5 +1,3 @@
-local H = require("deltavim.helpers")
-local Utils = require("deltavim.utils")
 local Keymap = require("deltavim.core.keymap")
 
 return {
@@ -17,25 +15,6 @@ return {
     cmd = "Sleuth",
     init = function()
       require("deltavim.utils").autocmd("BufReadPost", "silent! Sleuth<CR>")
-    end,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    cond = NOT_VSCODE,
-    event = "VeryLazy",
-    keys = function()
-      -- stylua: ignore
-      return Keymap.Collector()
-        :map({
-          { "@search.projects", H.telescope({ "projects" }), "Projects" },
-        })
-        :collect_lazy()
-    end,
-    config = function(_, opts)
-      require("project_nvim").setup(opts)
-      if Utils.has("telescope.nvim") then
-        require("telescope").load_extension("projects")
-      end
     end,
   },
   {

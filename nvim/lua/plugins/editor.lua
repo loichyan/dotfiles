@@ -1,4 +1,5 @@
 local Keymap = require("deltavim.core.keymap")
+local H = require("deltavim.helpers")
 local Utils = require("deltavim.utils")
 
 local function open_and_quit(state)
@@ -61,19 +62,37 @@ return {
   ----------------
   -- My plugins --
   ----------------
-  -- Add telescope-fzf-native
+  -- Telescope plugins
   {
     "telescope.nvim",
-    dependencies = { "telescope-fzf-native.nvim" },
+    dependencies = {
+      "telescope-fzf-native.nvim",
+      "telescope-project.nvim",
+    },
+    opts = {
+      extensions = {
+        project = {
+          base_dirs = { "~/dev" },
+        },
+      },
+    },
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    config = function()
-      if Utils.has("telescope.nvim") then
-        require("telescope").load_extension("fzf")
-      end
+    config = function() require("telescope").load_extension("fzf") end,
+  },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    keys = function()
+      -- stylua: ignore
+      return Keymap.Collector()
+        :map({
+          { "@search.projects", H.telescope({ "project", "project" }), "Projects" },
+        })
+        :collect_lazy()
     end,
+    config = function() require("telescope").load_extension("project") end,
   },
   -- Diffview/merge tool
   {
