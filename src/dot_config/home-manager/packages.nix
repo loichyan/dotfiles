@@ -16,11 +16,11 @@
     lsd
     netcat
     ripgrep
-    sfz
     tmux
     tokei
     wakatime
     myPkgs.extra-files
+    nodePackages.serve
 
     # Git
     commitizen
