@@ -19,6 +19,7 @@
     sfz
     tmux
     tokei
+    wakatime
     myPkgs.extra-files
 
     # Git
