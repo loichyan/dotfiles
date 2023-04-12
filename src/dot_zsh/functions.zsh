@@ -27,7 +27,7 @@ byproxy() {
 # Backup a volume
 docker-vbackup() {
   if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Directroy/volume supplied"
+    echo "No directroy/volume supplied"
     return 1
   fi
   local dir=$1
@@ -42,7 +42,7 @@ docker-vbackup() {
 # Restore a volume
 docker-vrestore() {
   if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Directroy/volume supplied"
+    echo "No directroy/volume supplied"
     return 1
   fi
   local dir=$1
