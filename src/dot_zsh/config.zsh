@@ -25,6 +25,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Set escpace binding.
 ZVM_VI_INSERT_ESCAPE_BINDKEY=JK
 ZVM_INIT_MODE=sourcing
+# Wakatime
+ZSH_WAKATIME_BIN=wakatime-cli
 
 #
 # zimfw

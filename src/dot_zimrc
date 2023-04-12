@@ -36,6 +36,5 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule jeffreytse/zsh-vi-mode
 # WakaTime
 if (( ${+commands[wakatime-cli]} )); then
-  ZSH_WAKATIME_BIN=wakatime-cli
   zmodule sobolevn/wakatime-zsh-plugin -n wakatime
 fi
