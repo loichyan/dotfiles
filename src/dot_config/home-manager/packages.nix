@@ -22,6 +22,10 @@
     myPkgs.extra-files
     nodePackages.serve
 
+    # NixGL
+    nixgl.auto.nixGLDefault
+    nixgl.nixGLIntel
+
     # Git
     commitizen
     git
