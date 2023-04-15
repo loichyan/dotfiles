@@ -47,9 +47,11 @@
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          nixpkgs.config.allowUnfree = true;
           modules = [
-            { home = { inherit username homeDirectory stateVersion; }; }
+            {
+              home = { inherit username homeDirectory stateVersion; };
+              nixpkgs.config.allowUnfree = true;
+            }
             ./packages.nix
             ./services.nix
           ];
