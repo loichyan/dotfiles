@@ -34,7 +34,3 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 # Improved Vi Mode
 zmodule jeffreytse/zsh-vi-mode
-# WakaTime
-if (( ${+commands[wakatime-cli]} )); then
-  zmodule sobolevn/wakatime-zsh-plugin -n wakatime
-fi
