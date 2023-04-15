@@ -18,14 +18,16 @@ symlink() {
     warn "Skip non-existent path '$src'"
     return
   elif [ -h "$dest" ]; then
+    info "Update symlink '$dest'"
     rm "$dest"
   elif [ -e "$dest" ]; then
     warn "Skip existing path '$dest'"
     return
+  else
+    info "Create symlink '$dest'"
   fi
 
   ln -s "$src" "$dest"
-  info "Create symlink '$dest'"
 }
 
 info "Setup extra configuration"
