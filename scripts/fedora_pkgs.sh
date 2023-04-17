@@ -12,19 +12,22 @@ rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklis
 
 ms_repo() {
   local repo=$1
-  echo "\
-[ms_${repo}]
-name=ms_${repo}
+  sudo tee "/etc/yum.repos.d/_ms-${repo}.repo" <<<"\
+[ms-${repo}]
+name=ms-${repo}
 baseurl=https://packages.microsoft.com/yumrepos/${repo}
 enabled=1
 gpgcheck=1
-gpgkey=https://packages.microsoft.com/keys/microsoft.asc\
-" | sudo tee "/etc/yum.repos.d/ms_${repo}.repo"
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc"
 }
 
 # Import Microsoft repos.
-ms_repo vscode
 ms_repo edge
+ms_repo vscode
+# Personal packages
+source /etc/os-release &&
+  curl "https://copr.fedorainfracloud.org/coprs/loichyan/packages/repo/$ID-$VERSION_ID/dnf.repo" |
+  sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:loichyan:packages.repo
 
 # Install common packages.
 rpm-ostree install podman-compose tmux zsh \
