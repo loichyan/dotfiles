@@ -3,28 +3,31 @@ local W = require("wezterm")
 local Act = W.action
 
 return {
+  -- Colorscheme & font
   color_scheme = "Catppuccin Macchiato",
+  term = "wezterm",
   font = W.font({ family = "monospace" }),
   font_size = 11.0,
   line_height = 1.15,
-  window_decorations = "TITLE",
+  -- Cursor style
+  default_cursor_style = "BlinkingUnderline",
+  cursor_blink_rate = 450,
+  cursor_blink_ease_in = "Constant",
+  cursor_blink_ease_out = "Constant",
+  -- Title & tab bar
+  window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+  use_fancy_tab_bar = false,
+  tab_max_width = 25,
+  show_tab_index_in_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
+  -- Window & pane style
   window_padding = {
     left = "0.5cell",
     right = "0.5cell",
     top = "0.5cell",
     bottom = "0.5cell",
   },
-  inactive_pane_hsb = {
-    saturation = 0.9,
-    brightness = 0.8,
-  },
-  visual_bell = {
-    fade_in_duration_ms = 75,
-    fade_out_duration_ms = 75,
-    target = "CursorColor",
-  },
-  leader = { key = "b", mods = "CTRL" },
+  -- Keybindings
   keys = {
     {
       key = "|",
@@ -37,12 +40,37 @@ return {
       action = Act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
     {
-      key = "x",
+      key = "O",
+      mods = "CTRL|SHIFT",
+      action = Act.RotatePanes("Clockwise"),
+    },
+    {
+      key = "I",
+      mods = "CTRL|SHIFT",
+      action = Act.RotatePanes("CounterClockwise"),
+    },
+    {
+      key = "<",
+      mods = "CTRL|SHIFT",
+      action = Act.ActivateTabRelative(-1),
+    },
+    {
+      key = ">",
+      mods = "CTRL|SHIFT",
+      action = Act.ActivateTabRelative(1),
+    },
+    {
+      key = "X",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentPane({ confirm = true }),
     },
     {
-      key = "w",
+      key = "H",
+      mods = "CTRL|SHIFT",
+      action = Act.ActivateCopyMode,
+    },
+    {
+      key = "W",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentTab({ confirm = true }),
     },
