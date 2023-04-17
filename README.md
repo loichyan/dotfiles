@@ -4,13 +4,7 @@ My dotfiles.
 
 ## 📸 Showcase
 
-### Neovim
-
-![neovim](assets/neovim.png)
-
-### Tmux
-
-![tmux](assets/tmux.png)
+![wezterm](assets/wezterm.png)
 
 ## ✨ Overview
 
@@ -20,6 +14,7 @@ My dotfiles.
   [Home Manager](https://github.com/nix-community/home-manager)
 - Customize zsh using [Zimfw](https://zimfw.sh/)
 - Customize NeoVim using [DeltaVim](https://github.com/loichyan/DeltaVim)
+- Terminal & mux using [wezterm](https://wezfurlong.org/wezterm)
 
 ## 🚀 Installation
 
