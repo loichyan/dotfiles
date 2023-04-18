@@ -20,6 +20,8 @@ My dotfiles.
 
 ### Deploy dotfiles
 
+Check [the website](https://www.chezmoi.io/) for more advanced usage.
+
 ```sh
 chezmoi apply
 ```
@@ -33,6 +35,19 @@ Build the first generation of Home Manager (following
 cd ~/.config/nixpkgs
 nix build ".#homeConfigurations.${YOUR_USER}.activationPackage"
 ./result/activate
+```
+
+### Import Copr repository
+
+Check [the repo](https://github.com/loichyan/rpms) for more details.
+
+```sh
+sudo dnf copr enable loichyan/packages
+# Or download manually
+source /etc/os-release &&
+  curl "https://copr.fedorainfracloud.org/coprs/loichyan/packages/repo/$ID-$VERSION_ID/dnf.repo" |
+  sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:loichyan:packages.repo
+
 ```
 
 ## ⚖️ License

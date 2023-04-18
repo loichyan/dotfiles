@@ -1,15 +1,16 @@
 {
-  "language": "en",
   "version": "0.2",
-  "flagWords": [],
   "words": [
     "chzemoi",
-    "silverblue",
-    "dotfiles",
-    "nixpkgs",
-    "neovim",
+    "copr",
     "depoly",
-    "zimfw",
-    "chezmoi"
-  ]
+    "dotfiles",
+    "neovim",
+    "nixpkgs",
+    "silverblue",
+    "wezterm",
+    "zimfw"
+  ],
+  "language": "en",
+  "flagWords": []
 }
