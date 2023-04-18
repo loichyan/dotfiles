@@ -2,6 +2,11 @@
 # Zsh configs
 #
 
+# Fix terminfo
+if [ -z "$terminfo" ]; then
+  export TERM=xterm-256color
+fi
+
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 # Set Vi keymap.
