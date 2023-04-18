@@ -15,9 +15,10 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pkgs-xray-1_7_5.url = "github:NixOS/nixpkgs/8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8";
   };
 
-  outputs = { nixpkgs, flake-utils, nixgl-wrapped, fenix, ... }:
+  outputs = { nixpkgs, flake-utils, nixgl-wrapped, fenix, pkgs-xray-1_7_5, ... }:
     let
       overlays = [ fenix.overlays.default ];
       mkPkgs = pkgs: {
@@ -33,6 +34,7 @@
     )) // {
       overlays.default = final: prev: {
         myPkgs = mkPkgs final;
+        xray-1_7_5 = pkgs-xray-1_7_5.legacyPackages.${prev.system}.xray;
       } // (nixgl-wrapped.overlays.default final prev);
     }
   ;
