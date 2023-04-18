@@ -22,11 +22,6 @@ return {
     end,
   },
   {
-    "roxma/vim-tmux-clipboard",
-    cond = NOT_VSCODE,
-    event = "VeryLazy",
-  },
-  {
     "wakatime/vim-wakatime",
     cond = NOT_VSCODE,
     event = "VeryLazy",

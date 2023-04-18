@@ -2,6 +2,24 @@ local smart_splits = require("smart_splits")
 local W = require("wezterm")
 local Act = W.action
 
+---@param action "move"|"resize"
+---@param dir string
+local function pane_splits(action, dir)
+  if action == "move" then
+    return {
+      key = dir .. "Arrow",
+      mods = "CTRL",
+      action = Act.ActivatePaneDirection(dir),
+    }
+  elseif action == "resize" then
+    return {
+      key = dir .. "Arrow",
+      mods = "ALT",
+      action = Act.AdjustPaneSize({ dir, 3 }),
+    }
+  end
+end
+
 return {
   -- Colorscheme & font
   color_scheme = "Catppuccin Macchiato",
@@ -79,10 +97,18 @@ return {
     smart_splits("move", "CTRL", "j"),
     smart_splits("move", "CTRL", "k"),
     smart_splits("move", "CTRL", "l"),
+    pane_splits("move", "Left"),
+    pane_splits("move", "Down"),
+    pane_splits("move", "Up"),
+    pane_splits("move", "Right"),
     -- resize panes
     smart_splits("resize", "ALT", "h"),
     smart_splits("resize", "ALT", "j"),
     smart_splits("resize", "ALT", "k"),
     smart_splits("resize", "ALT", "l"),
+    pane_splits("resize", "Left"),
+    pane_splits("resize", "Down"),
+    pane_splits("resize", "Up"),
+    pane_splits("resize", "Right"),
   },
 }

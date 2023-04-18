@@ -51,6 +51,12 @@ return {
           ["<Leader>x"] = { name = "+quickfix" },
           ["<Leader><Tab>"] = { name = "+tab" },
         },
+        operators = Keymap.Collector()
+          :map({
+            { "@iron.send_motion", "Send" },
+            { "@iron.mark_motion", "Mark" },
+          })
+          :collect_lhs_table(),
       })
     end,
   },

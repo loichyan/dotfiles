@@ -1,4 +1,5 @@
 -- Language specified plugins
+local Keymap = require("deltavim.core.keymap")
 
 return {
   -- Json
@@ -49,5 +50,62 @@ return {
       vim.api.nvim_create_user_command("PeekClose", peek("close"), {})
       require("peek").setup(opts)
     end,
+  },
+  -- Repl
+  {
+    "Vigemus/iron.nvim",
+    cond = NOT_VSCODE,
+    cmd = "IronRepl",
+    keys = function()
+      return Keymap.Collector()
+        :map({
+          { "@iron.repl", "<Cmd>IronRepl<CR>", "Open repl" },
+          { "@iron.send_motion", desc = "Send" },
+          { "@iron.visual_send", mode = "x", desc = "Send" },
+          { "@iron.send_file", desc = "Send file" },
+          { "@iron.send_line", desc = "Send line" },
+          { "@iron.send_mark", desc = "Send mark" },
+          { "@iron.mark_motion", decs = "Mark" },
+          { "@iron.mark_visual", mode = "x", desc = "Mark" },
+          { "@iron.remove_mark", desc = "Remove mark" },
+          { "@iron.cr", desc = "CR" },
+          { "@iron.interrupt", desc = "Interrupt" },
+          { "@iron.exit", desc = "Exit" },
+          { "@iron.clear", desc = "Clear" },
+        })
+        :collect_lazy()
+    end,
+    opts = function()
+      local keymaps = Keymap.Collector()
+        :map_unique({
+          { "@iron.send_motion", "send_motion" },
+          { "@iron.visual_send", "visual_send" },
+          { "@iron.send_file", "send_file" },
+          { "@iron.send_line", "send_line" },
+          { "@iron.send_mark", "send_mark" },
+          { "@iron.mark_motion", "mark_motion" },
+          { "@iron.mark_visual", "mark_visual" },
+          { "@iron.remove_mark", "remove_mark" },
+          { "@iron.cr", "cr" },
+          { "@iron.interrupt", "interrupt" },
+          { "@iron.exit", "exit" },
+          { "@iron.clear", "clear" },
+        })
+        :collect_rhs_table()
+      return {
+        config = {
+          scratch_repl = true,
+          repl_definition = {
+            python = {
+              command = { "ipython" },
+              format = require("iron.fts.common").bracketed_paste,
+            },
+          },
+          repl_open_cmd = require("iron.view").right("40%"),
+        },
+        keymaps = keymaps,
+      }
+    end,
+    config = function(_, opts) require("iron.core").setup(opts) end,
   },
 }
