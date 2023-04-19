@@ -33,7 +33,8 @@ source /etc/os-release &&
 rpm-ostree install podman-compose tmux zsh \
   gnome-tweaks kitty yaru-theme \
   fira-code-fonts cascadia-code-fonts langpacks-zh_CN ibus-rime \
-  wl-clipboard xclip \
+  ffmpeg wl-clipboard xclip \
+  wezterm symbols-nerd-font \
   code microsoft-edge-stable
 
 # Install Nix.
