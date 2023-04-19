@@ -1,6 +1,16 @@
 local H = require("deltavim.helpers")
+local Utils = require("deltavim.utils")
 
 return {
+  {
+    "bufferline.nvim",
+    opts = function(_, opts)
+      return Utils.merge({}, opts, {
+        highlights = require("catppuccin.groups.integrations.bufferline").get(),
+      })
+    end,
+  },
+  { "barbecue.nvim", opts = { theme = "catppuccin" } },
   {
     "lualine.nvim",
     opts = {

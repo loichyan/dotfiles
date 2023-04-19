@@ -40,10 +40,10 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   -- Window & pane style
   window_padding = {
-    left = "0.5cell",
-    right = "0.5cell",
-    top = "0.5cell",
-    bottom = "0.5cell",
+    left = 3,
+    right = 3,
+    top = 3,
+    bottom = 3,
   },
   -- Keybindings
   keys = {

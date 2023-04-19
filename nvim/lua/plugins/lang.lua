@@ -65,7 +65,7 @@ return {
           { "@iron.send_file", desc = "Send file" },
           { "@iron.send_line", desc = "Send line" },
           { "@iron.send_mark", desc = "Send mark" },
-          { "@iron.mark_motion", decs = "Mark" },
+          { "@iron.mark_motion", desc = "Mark" },
           { "@iron.mark_visual", mode = "x", desc = "Mark" },
           { "@iron.remove_mark", desc = "Remove mark" },
           { "@iron.cr", desc = "CR" },
@@ -101,7 +101,10 @@ return {
               format = require("iron.fts.common").bracketed_paste,
             },
           },
-          repl_open_cmd = require("iron.view").right("40%"),
+          repl_open_cmd = require("iron.view").split.vertical(0.4, {
+            winfixwidth = false,
+            winfixheight = false,
+          }),
         },
         keymaps = keymaps,
       }

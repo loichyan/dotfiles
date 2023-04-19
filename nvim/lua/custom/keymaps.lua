@@ -36,6 +36,10 @@ return function()
     { "<Leader>Y", '"+Y', mode = { "n", "x" } },
     { "<Leader>p", '"+p', mode = { "n", "x" } },
     { "<Leader>P", '"+P', mode = { "n", "x" } },
+    -- leap/flit
+    { "s", "@leap.forward_to" },
+    { "S", "@leap.backward_to" },
+    { "gs", "@leap.from_window" },
     -- util
     { "gw", "@util.search_this" },
   }
@@ -228,10 +232,6 @@ return function()
       { "<Leader>qq", "@session.quit" },
       { "<Leader>qQ", "@session.quit_silently" },
       { "<Leader>qs", "@session.stop" },
-      -- leap/flit
-      { "s", "@leap.forward_to" },
-      { "S", "@leap.backward_to" },
-      { "gs", "@leap.from_window" },
       -- goto references
       { "[[", "@goto.prev_reference" },
       { "]]", "@goto.next_reference" },
