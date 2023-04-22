@@ -28,6 +28,8 @@ zmodule completion
 
 # Feature rich syntax highlighting for Zsh.
 zmodule zdharma-continuum/fast-syntax-highlighting
+# Multi-word history search
+zmodule zdharma-continuum/history-search-multi-word
 # Fish-like history search (up arrow) for Zsh.
 zmodule zsh-users/zsh-history-substring-search
 # Fish-like autosuggestions for Zsh.

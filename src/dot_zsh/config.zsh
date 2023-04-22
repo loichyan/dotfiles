@@ -64,6 +64,7 @@ unset key
 
 # Use Ctrl-Space to autocomplete one word
 bindkey '^E' forward-word
+bindkey "^R" history-search-multi-word
 
 #
 # Misc
