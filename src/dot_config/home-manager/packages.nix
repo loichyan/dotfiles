@@ -19,7 +19,6 @@
     tmux
     tokei
     wakatime
-    myPkgs.extra-files
     nodePackages.serve
 
     # NixGL
@@ -82,6 +81,10 @@
     nodePackages.pyright
 
     # Rust
+    (with pkgs.fenix; combine [
+      stable.defaultToolchain
+      stable.rust-src
+    ])
     rust-analyzer
     # cargo ulities
     cargo-edit
