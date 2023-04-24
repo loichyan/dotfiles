@@ -18,8 +18,7 @@ symlink() {
     warn "Skip non-existent path '$src'"
     return
   elif [ -h "$dest" ]; then
-    info "Update symlink '$dest'"
-    rm "$dest"
+    return
   elif [ -e "$dest" ]; then
     warn "Skip existing path '$dest'"
     return
