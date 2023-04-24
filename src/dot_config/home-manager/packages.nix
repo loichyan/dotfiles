@@ -106,6 +106,9 @@
     stylua
     sumneko-lua-language-server
 
+    # Java
+    jdk8
+
     # Perl
     perl
     # used by Yarn autocompleton
