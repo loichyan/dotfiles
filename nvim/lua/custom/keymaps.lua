@@ -1,4 +1,4 @@
-local Utils = require("deltavim.utils")
+local Util = require("deltavim.util")
 
 ---@return DeltaVim.Keymaps
 return function()
@@ -45,7 +45,7 @@ return function()
   }
   if NOT_VSCODE then
     local nixt = { "n", "i", "x", "t" }
-    Utils.concat(keymaps, {
+    Util.concat(keymaps, {
       -- window
       { "<C-h>", "@smart_splits.move_left", mode = nixt },
       { "<C-j>", "@smart_splits.move_down", mode = nixt },
@@ -246,7 +246,7 @@ return function()
       local args = { ... }
       return function() vim.fn.VSCodeNotify(cmd, unpack(args)) end
     end
-    Utils.concat(keymaps, {
+    Util.concat(keymaps, {
       -- buffer
       { "<S-h>", vs("workbench.action.previousEditor") },
       { "<S-l>", vs("workbench.action.nextEditor") },

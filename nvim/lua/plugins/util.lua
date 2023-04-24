@@ -18,7 +18,7 @@ return {
     "tpope/vim-sleuth",
     cmd = "Sleuth",
     init = function()
-      require("deltavim.utils").autocmd("BufReadPost", "silent! Sleuth<CR>")
+      require("deltavim.util").autocmd("BufReadPost", "silent! Sleuth<CR>")
     end,
   },
   {

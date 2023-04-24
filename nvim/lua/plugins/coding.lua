@@ -1,11 +1,11 @@
-local Utils = require("deltavim.utils")
+local Util = require("deltavim.util")
 
 return {
   {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
-      local o = Utils.deep_merge({}, opts, {
+      local o = Util.deep_merge({}, opts, {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },

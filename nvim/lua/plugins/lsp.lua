@@ -1,4 +1,4 @@
-local Utils = require("deltavim.utils")
+local Util = require("deltavim.util")
 
 ---@type lspconfig.options|table<string,boolean>
 local servers = {
@@ -52,8 +52,8 @@ local servers = {
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools
-servers = Utils.copy_as_table(servers)
-for _, server in pairs(Utils.copy_as_table(servers)) do
+servers = Util.copy_as_table(servers)
+for _, server in pairs(Util.copy_as_table(servers)) do
   server.mason = server.mason == true or false
 end
 
@@ -65,7 +65,7 @@ return {
   {
     "null-ls.nvim",
     opts = function(_, opts)
-      return Utils.merge({}, opts, {
+      return Util.merge({}, opts, {
         sources_with = {
           formatting = {
             black = true,

@@ -1,11 +1,11 @@
 local H = require("deltavim.helpers")
-local Utils = require("deltavim.utils")
+local Util = require("deltavim.util")
 
 return {
   {
     "bufferline.nvim",
     opts = function(_, opts)
-      return Utils.merge({}, opts, {
+      return Util.merge({}, opts, {
         highlights = require("catppuccin.groups.integrations.bufferline").get(),
       })
     end,
