@@ -23,7 +23,6 @@ end
 return {
   -- Colorscheme & font
   color_scheme = "Catppuccin Macchiato",
-  term = "wezterm",
   font = W.font({ family = "monospace" }),
   font_size = 11.0,
   line_height = 1.15,

@@ -5,3 +5,7 @@ alias Gsw="git switch"
 if (( ${+commands[lsd]} )); then
   alias ls="lsd"
 fi
+
+if [[ $TERM_PROGRAM == "WezTerm" ]]; then
+  alias nvim="env TERM=wezterm nvim"
+fi
