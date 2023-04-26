@@ -109,6 +109,10 @@
     # Java
     jdk8
 
+    # Haskell
+    ghc
+    haskell-language-server
+
     # Perl
     perl
     # used by Yarn autocompleton
