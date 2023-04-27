@@ -4,6 +4,7 @@ local Util = require("deltavim.util")
 local servers = {
   clangd = true,
   cssls = true,
+  hls = true,
   jsonls = {
     settings = {
       json = {

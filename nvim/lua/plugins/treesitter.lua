@@ -19,6 +19,7 @@ return {
         "gomod",
         "gosum",
         "gowork",
+        "haskell",
         "html",
         "java",
         "javascript",

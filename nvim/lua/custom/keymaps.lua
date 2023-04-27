@@ -106,7 +106,7 @@ return function()
       { "<Leader>fF", "@search.files_cwd" },
       { "<Leader>fn", "@util.new_file" },
       { "<Leader>fo", "@search.oldfiles" },
-      { "<Leader>ft", "@terminal.open" },
+      { "<Leader>ft", "@terminal.select" },
       { "<Leader>fT", "@terminal.open_cwd" },
       { "<Leader><Leader>", "@search.files" },
       -- search
