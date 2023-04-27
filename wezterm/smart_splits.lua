@@ -27,26 +27,27 @@ local direction_keys = {
 }
 
 ---@param action "resize"|"move"
----@param mods string
 ---@param key string
-return function(action, mods, key)
+return function(action, key)
+  local mods
+  local act
+  if action == "resize" then
+    mods = "ALT"
+    act = { AdjustPaneSize = { direction_keys[key], 3 } }
+  elseif action == "move" then
+    mods = "CTRL"
+    act = { ActivatePaneDirection = direction_keys[key] }
+  end
+  local vact = { SendKey = { key = key, mods = mods } }
   return {
     key = key,
     mods = mods,
     action = W.action_callback(function(win, pane)
       if is_vim(pane) then
         -- pass the keys through to vim/nvim
-        win:perform_action({
-          SendKey = { key = key, mods = mods },
-        }, pane)
-      elseif action == "resize" then
-        win:perform_action({
-          AdjustPaneSize = { direction_keys[key], 3 },
-        }, pane)
+        win:perform_action(vact, pane)
       else
-        win:perform_action({
-          ActivatePaneDirection = direction_keys[key],
-        }, pane)
+        win:perform_action(act, pane)
       end
     end),
   }
