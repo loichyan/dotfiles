@@ -2,6 +2,12 @@
 # Zsh configs
 #
 
+# Use gpg-agent
+if (( ${+commands[gpg]} )) && (( ${+commands[gpg-agent]} )); then
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
+fi
+
 # Fix terminfo
 if [ -z "$terminfo" ]; then
   export TERM=xterm-256color
