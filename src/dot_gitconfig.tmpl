@@ -1,9 +1,12 @@
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [user]
-  name = {{ .user }}
-  email = {{ .email }}
+	name = {{ .user }}
+	email = {{ .email }}
+	signingkey = {{ .signingkey }}
+[commit]
+	gpgsign = true
 [http]
-  proxy = http://127.0.0.1:{{ .proxy.http }}
+	proxy = http://127.0.0.1:{{ .proxy.http }}
 [https]
-  proxy = http://127.0.0.1:{{ .proxy.http }}
+	proxy = http://127.0.0.1:{{ .proxy.http }}
