@@ -3,6 +3,7 @@
 -- Upstream: https://github.com/mrjones2014/smart-splits.nvim
 
 local W = require("wezterm")
+local Act = W.action
 
 -- Equivalent to POSIX basename(3)
 -- Given "/foo/bar" returns "bar"
@@ -14,12 +15,7 @@ local function is_vim(pane)
   return process_name == "nvim" or process_name == "vim"
 end
 
-local direction_keys = {
-  Left = "h",
-  Down = "j",
-  Up = "k",
-  Right = "l",
-  -- reverse lookup
+local key_directions = {
   h = "Left",
   j = "Down",
   k = "Up",
@@ -28,15 +24,16 @@ local direction_keys = {
 
 ---@param action "resize"|"move"
 ---@param key string
-return function(action, key)
+local function smart(action, key)
   local mods
   local act
-  if action == "resize" then
-    mods = "ALT"
-    act = { AdjustPaneSize = { direction_keys[key], 3 } }
-  elseif action == "move" then
+  local dir = key_directions[key]
+  if action == "move" then
     mods = "CTRL"
-    act = { ActivatePaneDirection = direction_keys[key] }
+    act = { ActivatePaneDirection = dir }
+  elseif action == "resize" then
+    mods = "ALT"
+    act = { AdjustPaneSize = { dir, 3 } }
   end
   local vact = { SendKey = { key = key, mods = mods } }
   return {
@@ -52,3 +49,44 @@ return function(action, key)
     end),
   }
 end
+
+---@param action "move"|"resize"
+---@param key string
+local function pane(action, key)
+  local dir = key_directions[key]
+  key = key:upper()
+  if action == "move" then
+    return {
+      key = key,
+      mods = "CTRL|SHIFT",
+      action = Act.ActivatePaneDirection(dir),
+    }
+  elseif action == "resize" then
+    return {
+      key = key,
+      mods = "ALT|SHIFT",
+      action = Act.AdjustPaneSize({ dir, 3 }),
+    }
+  end
+end
+
+return {
+  -- move between split panes
+  smart("move", "h"),
+  smart("move", "j"),
+  smart("move", "k"),
+  smart("move", "l"),
+  pane("move", "h"),
+  pane("move", "j"),
+  pane("move", "k"),
+  pane("move", "l"),
+  -- resize panes
+  smart("resize", "h"),
+  smart("resize", "j"),
+  smart("resize", "k"),
+  smart("resize", "l"),
+  pane("resize", "h"),
+  pane("resize", "j"),
+  pane("resize", "k"),
+  pane("resize", "l"),
+}

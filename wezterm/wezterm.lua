@@ -1,24 +1,5 @@
-local smart_splits = require("smart_splits")
 local W = require("wezterm")
 local Act = W.action
-
----@param action "move"|"resize"
----@param dir string
-local function pane_splits(action, dir)
-  if action == "move" then
-    return {
-      key = dir .. "Arrow",
-      mods = "CTRL",
-      action = Act.ActivatePaneDirection(dir),
-    }
-  elseif action == "resize" then
-    return {
-      key = dir .. "Arrow",
-      mods = "ALT",
-      action = Act.AdjustPaneSize({ dir, 3 }),
-    }
-  end
-end
 
 return {
   -- Colorscheme & font
@@ -91,23 +72,6 @@ return {
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentTab({ confirm = true }),
     },
-    -- move between split panes
-    smart_splits("move", "h"),
-    smart_splits("move", "j"),
-    smart_splits("move", "k"),
-    smart_splits("move", "l"),
-    pane_splits("move", "Left"),
-    pane_splits("move", "Down"),
-    pane_splits("move", "Up"),
-    pane_splits("move", "Right"),
-    -- resize panes
-    smart_splits("resize", "h"),
-    smart_splits("resize", "j"),
-    smart_splits("resize", "k"),
-    smart_splits("resize", "l"),
-    pane_splits("resize", "Left"),
-    pane_splits("resize", "Down"),
-    pane_splits("resize", "Up"),
-    pane_splits("resize", "Right"),
+    table.unpack(require("smart_splits")),
   },
 }
