@@ -1,4 +1,5 @@
 local W = require("wezterm")
+local SplitKeys = require("split_keys")
 local Act = W.action
 
 return {
@@ -72,6 +73,6 @@ return {
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentTab({ confirm = true }),
     },
-    table.unpack(require("smart_splits")),
+    table.unpack(SplitKeys),
   },
 }
