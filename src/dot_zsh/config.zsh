@@ -68,9 +68,14 @@ for key ('^[[A' '^P' 'k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('^[[B' '^N' 'j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
-# Use Ctrl-Space to autocomplete one word
+# Use Ctrl-E to autocomplete one word
 bindkey '^E' forward-word
+
+# Hsmw
+zstyle ":history-search-multi-word" highlight-color "bg=yellow,fg=black,bold"
 bindkey "^R" history-search-multi-word
+bindkey -M emacs '\t' history-search-multi-word
+bindkey -M emacs "$terminfo[kcbt]" history-search-multi-word-backwards
 
 #
 # Misc
