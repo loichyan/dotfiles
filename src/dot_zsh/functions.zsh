@@ -1,6 +1,6 @@
 # Set proxy environment variables.
 setproxy() {
-  local proxy="${1:-$MY_HTTP_PROXY}"
+  local proxy="${proxy:-$MY_HTTP_PROXY}"
   export HTTP_PROXY="$proxy"
   export http_proxy="$proxy"
   export HTTPS_PROXY="$proxy"
@@ -17,10 +17,11 @@ noproxy() {
 
 # Temporarily set environment variables.
 byproxy() {
-  env HTTP_PROXY="$MY_HTTP_PROXY" \
-    http_proxy="$MY_HTTP_PROXY" \
-    HTTPS_PROXY="$MY_HTTP_PROXY" \
-    https_proxy="$MY_HTTP_PROXY" \
+  local proxy="${proxy:-$MY_HTTP_PROXY}"
+  env HTTP_PROXY="$proxy" \
+    http_proxy="$proxy" \
+    HTTPS_PROXY="$proxy" \
+    https_proxy="$proxy" \
     "$@"
 }
 
