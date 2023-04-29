@@ -59,7 +59,7 @@ return {
       action = Act.ActivateTabRelative(1),
     },
     {
-      key = "X",
+      key = "D",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentPane({ confirm = true }),
     },
