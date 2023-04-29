@@ -1,12 +1,14 @@
 {
   "version": "0.2",
   "words": [
-    "chzemoi",
+    "akmods",
+    "chezmoi",
     "copr",
     "depoly",
     "dotfiles",
     "neovim",
     "nixpkgs",
+    "ostree",
     "silverblue",
     "wezterm",
     "zimfw"

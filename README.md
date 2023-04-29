@@ -9,7 +9,7 @@ My dotfiles.
 ## ✨ Overview
 
 - Mainly run on [Fedora Silverblue](https://silverblue.fedoraproject.org/)
-- Depoly using [chzemoi](https://github.com/twpayne/chezmoi)
+- Depoly using [chezmoi](https://github.com/twpayne/chezmoi)
 - Manage packages using
   [Home Manager](https://github.com/nix-community/home-manager)
 - Customize zsh using [Zimfw](https://zimfw.sh/)
