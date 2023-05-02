@@ -1,3 +1,4 @@
+local Keymap = require("deltavim.core.keymap")
 local Util = require("deltavim.util")
 
 ---@type lspconfig.options|table<string,boolean>
@@ -99,4 +100,18 @@ return {
   },
   { "mason.nvim", enabled = false },
   { "mason-lspconfig.nvim", enabled = false },
+  --
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    keys = function()
+      -- stylua: ignore
+      return Keymap.Collector()
+        :map({
+          { "@lsp.symbols_outline", "<Cmd>SymbolsOutline<CR>", "Symbols Outline" },
+        })
+        :collect_lazy()
+    end,
+    config = true,
+  },
 }

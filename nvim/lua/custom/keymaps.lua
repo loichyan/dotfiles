@@ -195,6 +195,7 @@ return function()
       { "<Leader>li", "@ui.lsp_info" },
       { "<Leader>lI", "@ui.nullls_info" },
       { "<Leader>lr", "@lsp.rename" },
+      { "<Leader>ls", "@lsp.symbols_outline" },
       -- iron
       { "<Leader>ic", "@iron.interrupt" },
       { "<Leader>id", "@iron.clear" },
