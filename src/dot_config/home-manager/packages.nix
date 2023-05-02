@@ -113,6 +113,10 @@
     ghc
     haskell-language-server
 
+    # Dev Ops
+    caddy
+    butane
+
     # Perl
     perl
     # used by Yarn autocompleton
