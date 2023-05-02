@@ -1,3 +1,4 @@
+local Util = require("deltavim.util")
 local Keymap = require("deltavim.core.keymap")
 
 return {
@@ -16,10 +17,7 @@ return {
   },
   {
     "tpope/vim-sleuth",
-    cmd = "Sleuth",
-    init = function()
-      require("deltavim.util").autocmd("BufReadPost", "silent! Sleuth<CR>")
-    end,
+    event = "VeryLazy",
   },
   {
     "wakatime/vim-wakatime",
