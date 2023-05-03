@@ -13,6 +13,7 @@
     delta
     erdtree
     fd
+    jq
     lsd
     netcat
     ripgrep
