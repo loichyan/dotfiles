@@ -15,6 +15,12 @@ return function()
     { ".", "@util.undo_break_point" },
     { ",", "@util.undo_break_point" },
     { ";", "@util.undo_break_point" },
+    { ":", "@util.undo_break_point" },
+    { "，", "@util.undo_break_point" },
+    { "。", "@util.undo_break_point" },
+    { "；", "@util.undo_break_point" },
+    { "：", "@util.undo_break_point" },
+    { "=", "@util.undo_break_point" },
     -- surround
     { "gza", "@surround.add" },
     { "gzd", "@surround.delete" },
