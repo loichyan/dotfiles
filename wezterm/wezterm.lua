@@ -5,7 +5,10 @@ local Act = W.action
 return {
   -- Colorscheme & font
   color_scheme = "Catppuccin Macchiato",
-  font = W.font({ family = "monospace" }),
+  font = W.font_with_fallback({
+    "monospace",
+    "Noto Sans CJK SC",
+  }),
   font_size = 11.0,
   line_height = 1.15,
   -- Cursor style
@@ -13,6 +16,7 @@ return {
   cursor_blink_rate = 450,
   cursor_blink_ease_in = "Constant",
   cursor_blink_ease_out = "Constant",
+  hide_mouse_cursor_when_typing = false,
   -- Title & tab bar
   window_decorations = "INTEGRATED_BUTTONS|RESIZE",
   use_fancy_tab_bar = false,
