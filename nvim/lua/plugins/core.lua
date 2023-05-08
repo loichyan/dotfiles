@@ -2,7 +2,7 @@ return {
   {
     "DeltaVim",
     opts = {
-      colorscheme = NOT_VSCODE and "catppuccin" or "habamax",
+      colorscheme = NOT_VSCODE and COLORSCHEME or "habamax",
     },
   },
 }

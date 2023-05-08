@@ -7,30 +7,11 @@ local servers = {
   cssls = true,
   hls = true,
   jsonls = {
-    settings = {
-      json = {
-        validate = { enable = true },
-      },
-    },
+    settings = { json = { validate = { enable = true } } },
     on_attach = function(client)
       client.notify("workspace/didChangeConfiguration", {
         settings = {
           json = { schemas = require("schemastore").json.schemas() },
-        },
-      })
-    end,
-  },
-  yamlls = {
-    settings = {
-      yaml = {
-        validate = true,
-        keyOrdering = false,
-      },
-    },
-    on_attach = function(client)
-      client.notify("workspace/didChangeConfiguration", {
-        settings = {
-          yaml = { schemas = require("schemastore").yaml.schemas() },
         },
       })
     end,
@@ -40,9 +21,7 @@ local servers = {
       Lua = {
         workspace = {
           checkThirdParty = false,
-          library = {
-            "${3rd}/luv/library",
-          },
+          library = { "${3rd}/luv/library" },
         },
       },
     },
@@ -51,6 +30,16 @@ local servers = {
   rnix = true,
   taplo = true,
   tsserver = true,
+  yamlls = {
+    settings = { yaml = { validate = true, keyOrdering = false } },
+    on_attach = function(client)
+      client.notify("workspace/didChangeConfiguration", {
+        settings = {
+          yaml = { schemas = require("schemastore").yaml.schemas() },
+        },
+      })
+    end,
+  },
 }
 
 -- Use nixpkgs instead of mason.nvim to manage tools

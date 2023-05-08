@@ -23,14 +23,14 @@ require("lazy").setup({
     -- {
     --   name = "LazyVim",
     --   dir = "~/dev/lua/LazyVim",
-    --   dev = true,
     --   import = "lazyvim.plugins",
     -- },
     -- { "mason.nvim", enabled = false },
     -- { "mason-lspconfig.nvim", enabled = false },
+    -- { "mini.indentscope", enabled = false },
   },
   defaults = { lazy = true, version = false },
-  install = { missing = NOT_VSCODE, colorscheme = { "catppuccin" } },
+  install = { missing = NOT_VSCODE, colorscheme = { COLORSCHEME } },
   checker = { enabled = NOT_VSCODE },
   performance = {
     rtp = {

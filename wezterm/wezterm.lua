@@ -4,10 +4,11 @@ local Act = W.action
 
 return {
   -- Colorscheme & font
-  color_scheme = "Catppuccin Macchiato",
+  color_scheme = "tokyonight_storm",
+  -- color_scheme = "Catppuccin Macchiato",
   font = W.font_with_fallback({
-    "monospace",
-    "Noto Sans CJK SC",
+    { family = "monospace" },
+    { family = "Noto Sans CJK SC", weight = "Book", scale = 0.95 },
   }),
   font_size = 11.0,
   line_height = 1.15,
