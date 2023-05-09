@@ -82,11 +82,11 @@
     nodePackages.pyright
 
     # Rust
-    (with pkgs.fenix; combine [
-      stable.defaultToolchain
-      stable.rust-src
+    (with pkgs.fenix; with stable; combine [
+      defaultToolchain
+      rust-src
+      rust-analyzer
     ])
-    rust-analyzer
     # cargo ulities
     cargo-edit
     cargo-nextest
