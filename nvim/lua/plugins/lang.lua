@@ -15,15 +15,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       tools = { inlay_hints = { auto = false } },
-      server = {
-        standalone = false,
-        settings = {
-          ["rust-analyzer"] = {
-            check = { command = "clippy" },
-            procMacro = { enable = true, attributes = { enable = true } },
-          },
-        },
-      },
+      server = require("custom.lsp").rust_analyzer,
     },
   },
   {
