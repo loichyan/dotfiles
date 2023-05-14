@@ -13,7 +13,7 @@ return {
         sources_with = {
           formatting = {
             black = true,
-            prettier = true,
+            prettierd = true,
             shfmt = true,
             stylua = true,
           },

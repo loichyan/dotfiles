@@ -1,5 +1,4 @@
 local H = require("deltavim.helpers")
-local Util = require("deltavim.util")
 
 return {
   { "barbecue.nvim", opts = { theme = COLORSCHEME } },
@@ -34,4 +33,14 @@ return {
     },
   },
   { "mini.indentscope", enabled = false },
+  { "noice.nvim", enabled = false },
+  ----------------
+  -- My plugins --
+  ----------------
+  {
+    "j-hui/fidget.nvim",
+    cond = NOT_VSCODE,
+    event = "VeryLazy",
+    config = true,
+  },
 }
