@@ -76,9 +76,8 @@
     deno
 
     # Python
-    python3
-    python3Packages.black
-    python3Packages.virtualenv
+    (python3.withPackages (p: with p; [ black ]))
+    poetry
     nodePackages.pyright
 
     # Rust
