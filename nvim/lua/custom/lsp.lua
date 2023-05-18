@@ -36,6 +36,7 @@ local servers = {
     },
   },
   taplo = true,
+  texlab = true,
   tsserver = true,
   yamlls = {
     settings = { yaml = { validate = true, keyOrdering = false } },

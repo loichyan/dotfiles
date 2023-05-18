@@ -21,6 +21,7 @@ return {
         "gowork",
         "haskell",
         "html",
+        "latex",
         "java",
         "javascript",
         "jsdoc",

@@ -13,6 +13,7 @@ return {
         sources_with = {
           formatting = {
             black = true,
+            latexindent = true,
             prettierd = true,
             shfmt = true,
             stylua = true,
