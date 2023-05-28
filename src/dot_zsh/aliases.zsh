@@ -6,6 +6,10 @@ if (( ${+commands[lsd]} )); then
   alias ls="lsd"
 fi
 
+if (( ${+commands[lsd]} )); then
+  alias lg="lazygit"
+fi
+
 if [[ $TERM_PROGRAM == "WezTerm" ]]; then
   alias nvim="env TERM=wezterm nvim"
 fi
