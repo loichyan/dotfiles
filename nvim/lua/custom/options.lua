@@ -12,6 +12,9 @@ else
 end
 
 return {
+  g = {
+    tex_flavor = "latex",
+  },
   o = {
     timeoutlen = timeoutlen,
     clipboard = "",
