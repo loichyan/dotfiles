@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 # Import RPM Fusion
-rpm-ostree install \
-  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+source /etc/os-release &&
+  rpm-ostree install \
+    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$VERSION_ID.noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$VERSION_ID.noarch.rpm
 #  Install Nvidia driver and setup secure boot.
-rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda
+rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia
 sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau
 rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
@@ -30,15 +31,16 @@ source /etc/os-release &&
   sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:loichyan:packages.repo
 
 # Install common packages.
-rpm-ostree install podman-compose tmux zsh \
-  gnome-tweaks kitty yaru-theme \
-  fira-code-fonts cascadia-code-fonts langpacks-zh_CN ibus-rime \
-  ffmpeg wl-clipboard xclip \
-  wezterm symbols-nerd-font \
-  code microsoft-edge-stable
+rpm-ostree install \
+  zsh wezterm \
+  gnome-tweaks yaru-theme ibus-rime \
+  cascadia-code-fonts symbols-nerd-font \
+  podman-compose wl-clipboard xclip \
+  mozilla-openh264 \
+  code
 
 # Install Nix.
-sh <(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install) --no-daemon --no-modify-profile
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # Enable podman socket.
 systemctl --user enable --now podman.socket
