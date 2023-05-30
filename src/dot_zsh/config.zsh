@@ -3,7 +3,7 @@
 #
 
 # Use gpg-agent
-if (( ${+commands[gpg]} )) && (( ${+commands[gpg-agent]} )); then
+if [[ -d ~/.gnupg ]] && (( ${+commands[gpg]} )) && (( ${+commands[gpg-agent]} )); then
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
 fi
