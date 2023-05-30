@@ -32,8 +32,7 @@ Build the first generation of Home Manager (following
 [this guide](https://rycee.gitlab.io/home-manager/index.html#ch-nix-flakes)):
 
 ```sh
-cd ~/.config/nixpkgs
-nix build ".#homeConfigurations.${YOUR_USER}.activationPackage"
+nix run home-manager/master -- switch
 ./result/activate
 ```
 
