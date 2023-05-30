@@ -5,44 +5,36 @@
     nixpkgs.url = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixGL = {
-      url = "github:guibou/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    myPkgs = {
-      url = "./pkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.fenix.follows = "fenix";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, myPkgs, fenix, nixGL, ... }:
+  outputs = { nixpkgs, home-manager, fenix, ... }:
     let
       data = import ./data.nix;
+      stateVersion = "23.05";
       username = data.user;
       homeDirectory = data.home;
-      stateVersion = "22.11";
       overlays = [
         fenix.overlays.default
-        nixGL.overlays.default
-        myPkgs.overlays.default
-        (_: _: { myData = data; })
+        (_: prev: {
+          myData = data;
+          myPkgs = prev.callPackage ./pkgs/default.nix { };
+        })
       ];
     in
     {
-      homeConfigurations."${username}" =
+      homeConfigurations.${username} =
         let
           system = "x86_64-linux";
           pkgs = import nixpkgs {
             inherit system overlays;
+            config.allowUnfree = true;
           };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -50,7 +42,7 @@
           modules = [
             {
               home = { inherit username homeDirectory stateVersion; };
-              nixpkgs.config.allowUnfree = true;
+              programs.home-manager.enable = true;
             }
             ./packages.nix
             ./services.nix

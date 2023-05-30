@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  # Let Home Manager manages itself.
-  programs.home-manager.enable = true;
-
   # Install packages.
   home.packages = with pkgs;  [
     # Dotfiles manager
@@ -21,10 +18,6 @@
     tokei
     wakatime
     nodePackages.serve
-
-    # NixGL
-    nixgl.auto.nixGLDefault
-    nixgl.nixGLIntel
 
     # Git
     commitizen
