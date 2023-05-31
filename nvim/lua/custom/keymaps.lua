@@ -30,13 +30,9 @@ return function()
     { "gzn", "@surround.update_n_lines" },
     { "gzr", "@surround.replace" },
     -- comment
-    { "gb", "@comment.oplead_block" },
-    { "gbb", "@comment.toggle_block" },
-    { "gc", "@comment.oplead_line" },
-    { "gcA", "@comment.insert_eol" },
+    { "gc", "@comment.toggle" },
     { "gcc", "@comment.toggle_line" },
-    { "gcO", "@comment.insert_above" },
-    { "gco", "@comment.insert_below" },
+    { "gc", "@textobject.comment" },
     -- copy/paste using system clipboard
     { "<Leader>y", '"+y', mode = { "n", "x" } },
     { "<Leader>Y", '"+Y', mode = { "n", "x" } },
@@ -149,7 +145,7 @@ return function()
       -- git
       { "[g", "@goto.prev_hunk" },
       { "]g", "@goto.next_hunk" },
-      { "ig", "@select.hunk" },
+      { "ig", "@textobject.hunk" },
       { "<Leader>gb", "@git.blame_line" },
       { "<Leader>gB", "@git.blame_line_full" },
       { "<Leader>gc", "@search.git_commits" },
