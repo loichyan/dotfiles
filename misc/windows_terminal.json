@@ -10,7 +10,7 @@
       "acrylicOpacity": 0.85,
       "useAcrylic": true,
       "font": {
-        "face": "FiraCode Nerd Font",
+        "face": "Cascadia Code",
         "size": 10,
         "weight": "semi-light"
       }
