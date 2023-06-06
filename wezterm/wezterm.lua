@@ -34,12 +34,12 @@ return {
   -- Keybindings
   keys = {
     {
-      key = "|",
+      key = "\\",
       mods = "CTRL|SHIFT",
       action = Act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
     },
     {
-      key = "_",
+      key = "-",
       mods = "CTRL|SHIFT",
       action = Act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
@@ -54,12 +54,12 @@ return {
       action = Act.RotatePanes("CounterClockwise"),
     },
     {
-      key = "<",
+      key = ",",
       mods = "CTRL|SHIFT",
       action = Act.ActivateTabRelative(-1),
     },
     {
-      key = ">",
+      key = ".",
       mods = "CTRL|SHIFT",
       action = Act.ActivateTabRelative(1),
     },
