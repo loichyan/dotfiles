@@ -220,6 +220,8 @@ return function()
       -- buffer
       { "<S-h>", "@buffer.prev" },
       { "<S-l>", "@buffer.next" },
+      { "<C-,>", "@buffer.prev" },
+      { "<C-.>", "@buffer.next" },
       { "<Leader>`", "@buffer.switch_back" },
       { "<Leader>d", "@buffer.close" },
       { "<Leader>D", "@buffer.close_force" },
