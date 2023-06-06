@@ -44,3 +44,9 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # Enable podman socket.
 systemctl --user enable --now podman.socket
+
+# Enable tap-to-click
+sudo tee /etc/dconf/db/gdm.d/06-tap-to-click <<<"\
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true"
+sudo dconf update
