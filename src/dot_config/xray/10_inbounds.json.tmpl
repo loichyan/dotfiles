@@ -2,16 +2,14 @@
   "inbounds": [
     {
       "tag": "socks-in",
+      "port": {{ .proxy.socks }},
       "protocol": "socks",
-      "settings": { "udp": true },
-      "listen": "0.0.0.0",
-      "port": {{ .proxy.socks }}
+      "settings": { "udp": true }
     },
     {
       "tag": "http-in",
-      "protocol": "http",
-      "listen": "0.0.0.0",
-      "port": {{ .proxy.http }}
+      "port": {{ .proxy.http }},
+      "protocol": "http"
     }
   ]
 }
