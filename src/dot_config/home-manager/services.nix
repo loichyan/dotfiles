@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) myData myPkgs aria tor writeScript;
-  xray = myPkgs.xray-1_7_5;
+  inherit (pkgs) myData myPkgs aria tor writeScript xray;
   geodat = writeScript "geodat"
     ''
       #!/usr/bin/env bash

@@ -3,6 +3,7 @@
     { "tag": "direct", "protocol": "freedom" },
     { "tag": "block", "protocol": "blackhole" },
     { "tag": "vless-xtls", "protocol": "blackhole" },
-    { "tag": "vless-ws", "protocol": "blackhole" }
+    { "tag": "vless-ws", "protocol": "blackhole" },
+    { "tag": "vless-reality", "protocol": "blackhole" }
   ]
 }

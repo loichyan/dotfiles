@@ -109,7 +109,7 @@
     # Dev Ops
     caddy
     butane
-    myPkgs.xray-1_7_5
+    xray
 
     # Perl
     perl
