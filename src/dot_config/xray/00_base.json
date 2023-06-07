@@ -31,28 +31,21 @@
       {
         "type": "field",
         "domain": ["geosite:cn"],
+        "ip": ["geoip:cn", "geoip:private", "223.5.5.5"],
         "outboundTag": "direct"
       },
       {
         "type": "field",
-        "ip": ["geoip:cn", "geoip:private"],
-        "outboundTag": "direct"
-      },
-      {
-        "type": "field",
-        "domain": ["geosite:geolocation-!cn"],
-        "outboundTag": "proxy"
-      },
-      {
-        "type": "field",
-        "ip": ["223.5.5.5"],
-        "outboundTag": "direct"
+        "network": "udp,tcp",
+        "balancerTag": "proxy"
       }
-    ]
+    ],
+    "balancers": [{ "tag": "proxy", "selector": ["vless-xtls"] }]
   },
   "outbounds": [
-    { "tag": "proxy", "protocol": "blackhole" },
     { "tag": "direct", "protocol": "freedom" },
-    { "tag": "block", "protocol": "blackhole" }
+    { "tag": "block", "protocol": "blackhole" },
+    { "tag": "vless-xtls", "protocol": "blackhole" },
+    { "tag": "vless-ws", "protocol": "blackhole" }
   ]
 }
