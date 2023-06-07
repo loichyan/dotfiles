@@ -2,16 +2,11 @@
   "dns": {
     "servers": [
       {
-        "address": "1.1.1.1",
+        "address": "https://1.1.1.1/dns-query",
         "domains": ["geosite:geolocation-!cn"]
       },
       {
-        "address": "223.5.5.5",
-        "domains": ["geosite:cn"],
-        "expectIPs": ["geoip:cn"]
-      },
-      {
-        "address": "114.114.114.114",
+        "address": "https://doh.pub/dns-query",
         "domains": ["geosite:cn"]
       },
       "localhost"
