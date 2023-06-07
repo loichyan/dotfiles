@@ -266,5 +266,9 @@ return function()
       { "<Leader>la", vs("keyboard-quickfix.openQuickFix") },
     })
   end
+  for _, k in ipairs({ "y", "Y", "d", "D", "p", "P" }) do
+    table.insert(keymaps, { k, '"0' .. k, mode = "n" })
+    table.insert(keymaps, { k, '"0' .. k, mode = "x" })
+  end
   return keymaps
 end
