@@ -8,6 +8,7 @@ return {
         "c",
         "cpp",
         "css",
+        "cue",
         "dart",
         "diff",
         "dockerfile",

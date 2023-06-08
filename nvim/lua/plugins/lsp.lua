@@ -13,6 +13,7 @@ return {
         sources_with = {
           formatting = {
             black = true,
+            cue_fmt = true,
             latexindent = true,
             prettierd = true,
             shfmt = true,
@@ -25,6 +26,7 @@ return {
                 diag.severity = vim.diagnostic.severity.WARN
               end,
             },
+            cue_fmt = true,
             eslint = true,
             hadolint = true,
             shellcheck = true,

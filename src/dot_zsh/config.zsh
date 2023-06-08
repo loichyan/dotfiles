@@ -129,3 +129,8 @@ fi
 if (( ${+commands[pip]} )); then
   eval "$(pip completion --zsh)"
 fi
+
+# Load pip completions.
+if (( ${+commands[cue]} )); then
+  eval "$(cue completion zsh)"
+fi

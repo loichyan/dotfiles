@@ -116,6 +116,9 @@
     # used by Yarn autocompleton
     perl536Packages.JSONPP
 
+    # Cue
+    cue
+
     # Document
     texlive.combined.scheme-full
     texlab
