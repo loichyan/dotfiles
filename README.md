@@ -1,6 +1,6 @@
 # 🏠 Dotfiles
 
-My dotfiles.
+loichyan's dotfiles.
 
 ## 📸 Showcase
 
