@@ -32,6 +32,8 @@ zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule zdharma-continuum/history-search-multi-word
 # Fish-like history search (up arrow) for Zsh.
 zmodule zsh-users/zsh-history-substring-search
+# History manager
+zmodule marlonrichert/zsh-hist
 # Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
 # Improved Vi Mode
