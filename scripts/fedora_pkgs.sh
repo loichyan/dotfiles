@@ -35,7 +35,7 @@ rpm-ostree install \
   zsh wezterm \
   gnome-tweaks yaru-theme ibus-rime \
   cascadia-code-fonts symbols-nerd-font \
-  podman-compose wl-clipboard xclip \
+  podman-docker podman-compose wl-clipboard xclip \
   mozilla-openh264 \
   code
 
