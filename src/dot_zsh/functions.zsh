@@ -25,32 +25,55 @@ byproxy() {
     "$@"
 }
 
+__docker-vpare() {
+  local _volume _file k t
+  while (( $# )); do
+    k=
+    case $1 in
+      -v|--volume)
+        _volume="$2"
+        shift && (( $# )) && shift
+        ;;
+      -f|--file)
+        _file="$2"
+        shift && (( $# )) && shift
+        ;;
+      *)
+        echo "Unknown option $1"
+        return 1
+        ;;
+    esac
+  done
+  for k (file); do
+    if [[ -z "${(P)$(echo "_$k")}" ]]; then
+      echo "'-${k:0:1}/--${k}' is required"
+      return 1
+    fi
+  done
+  _file=$(realpath "$_file")
+  dir=$(dirname "$_file")
+  file=$(basename -s .tgz "$_file")
+  volume=${_volume:-file}
+}
+
 # Backup a volume
 docker-vbackup() {
-  if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "No directroy/volume supplied"
-    return 1
-  fi
-  local dir=$1
-  local vname=$2
+  local volume dir file
+  __docker-vpare "$@" || return 1
   docker run --rm \
-    -v "$vname:/$vname" \
-    -v "$(pwd)/$dir:/__backup:Z" \
+    -v "$volume:/tmp/volume" \
+    -v "$dir:/tmp/backup:Z" \
     alpine \
-    sh -c "tar -C '/$vname' -cvf '/__backup/$vname.tar.gz' ."
+    sh -c "tar -C '/tmp/volume' -cvf '/tmp/backup/$file.tgz' ."
 }
 
 # Restore a volume
 docker-vrestore() {
-  if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "No directroy/volume supplied"
-    return 1
-  fi
-  local dir=$1
-  local vname=$2
+  local volume dir file
+  __docker-vpare "$@" || return 1
   docker run --rm \
-    -v "$vname:/$vname" \
-    -v "$(pwd)/$dir:/__backup:Z" \
+    -v "$volume:/tmp/volume" \
+    -v "$dir:/tmp/backup:Z" \
     alpine \
-    sh -c "tar -C '/$vname' -xvf '/__backup/$vname.tar.gz'"
+    sh -c "tar -C '/tmp/volume' -xvf '/tmp/backup/$file.tgz'"
 }
