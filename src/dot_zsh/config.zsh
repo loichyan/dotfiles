@@ -24,12 +24,14 @@ done
 unset profile
 
 # Better history
-HISTSIZE=100000
-SAVEHIST=10000
-setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
-# Ignore some entries
-zstyle ':hist:*' auto-format no
-export HISTORY_IGNORE="(;*)"
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY_TIME
+# Remove entries start with a whitespace
+zshexit() { hist -q d ' *' }
 
 #
 # Module configs
