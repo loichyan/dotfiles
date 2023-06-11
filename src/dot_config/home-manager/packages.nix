@@ -14,6 +14,7 @@
     lsd
     netcat
     ripgrep
+    safe-rm
     tmux
     tokei
     wakatime
