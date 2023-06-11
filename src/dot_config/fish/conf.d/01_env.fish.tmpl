@@ -1,0 +1,5 @@
+if ! status is-login
+   return
+end
+
+set -gx MY_HTTP_PROXY http://127.0.0.1:{{ .proxy.http }}

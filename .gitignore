@@ -2,7 +2,7 @@
 /private
 *_private.*
 .chezmoidata.*
-
+fish_variables
 
 # Editor
 .vscode

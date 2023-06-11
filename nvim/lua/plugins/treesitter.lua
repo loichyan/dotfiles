@@ -12,6 +12,7 @@ return {
         "dart",
         "diff",
         "dockerfile",
+        "fish",
         "git_rebase",
         "gitattributes",
         "gitcommit",

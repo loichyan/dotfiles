@@ -13,7 +13,6 @@ return {
   font_size = 11.0,
   line_height = 1.15,
   -- Cursor style
-  default_cursor_style = "BlinkingUnderline",
   cursor_blink_rate = 450,
   cursor_blink_ease_in = "Constant",
   cursor_blink_ease_out = "Constant",
