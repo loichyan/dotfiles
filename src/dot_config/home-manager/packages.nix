@@ -70,7 +70,7 @@
     deno
 
     # Python
-    (python3.withPackages (p: with p; [ black ]))
+    myPkgs.python3
     poetry
     nodePackages.pyright
 
@@ -87,7 +87,6 @@
     cargo-release
     cargo-tarpaulin
     cargo-watch
-    myPkgs.cargo-nightly-expand
     # wasm
     binaryen
     trunk
