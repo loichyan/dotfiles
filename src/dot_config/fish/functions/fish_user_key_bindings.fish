@@ -3,5 +3,5 @@ function fish_user_key_bindings
     fish_vi_key_bindings --no-erase insert
     bind -M insert \ce forward-word
     bind -M insert \ce forward-word
-    bind -M insert JK (bind -M insert \e | string match -r "'(.*)'")[2]
+    bind -M insert JK (bind -M insert \e | string match -r "'(.*)'\$")[2]
 end
