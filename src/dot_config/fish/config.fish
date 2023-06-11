@@ -1,7 +1,5 @@
-if ! status is-interactive
-    return
+if status is-interactive
+    type -q zoxide && zoxide init fish | source
+    type -q starship && starship init fish | source
 end
 
-# Theme and prompt
-fish_config theme choose base16
-type -q starship && starship init fish | source

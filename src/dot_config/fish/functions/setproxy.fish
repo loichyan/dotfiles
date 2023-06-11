@@ -1,7 +1,7 @@
 function setproxy
     argparse -X 1 -- $argv
     set -l proxy
-    if [ -n "$argv" ]
+    if test -n "$argv"
         set proxy $argv
     else
         set proxy $MY_HTTP_PROXY
