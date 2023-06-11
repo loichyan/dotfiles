@@ -3,7 +3,7 @@ if status is-interactive
 
     function __hook_record_failures -e fish_postexec
         if test $status -ne 0
-            set -a __failures "$argv[1]"
+            set -a __failures $argv[1]
         end
     end
 
