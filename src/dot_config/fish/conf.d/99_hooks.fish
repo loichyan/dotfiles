@@ -11,6 +11,7 @@ if status is-interactive
         if test -n "$__failures"
             history delete -C -e $__failures
         end
+        echo all | history delete -p 'cd ' 'ls ' 'history ' 'rm ' >/dev/null
     end
 
     type -q direnv && direnv hook fish | source
