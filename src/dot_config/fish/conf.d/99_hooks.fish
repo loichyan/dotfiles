@@ -16,4 +16,3 @@ if status is-interactive
 
     type -q direnv && direnv hook fish | source
 end
-
