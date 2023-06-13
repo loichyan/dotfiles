@@ -32,10 +32,10 @@ source /etc/os-release &&
 
 # Install common packages.
 rpm-ostree install \
-  zsh wezterm \
+  fish wezterm \
   gnome-tweaks yaru-theme ibus-rime \
   cascadia-code-fonts symbols-nerd-font \
-  podman-docker podman-compose wl-clipboard xclip \
+  podman-compose wl-clipboard xclip \
   mozilla-openh264 \
   code
 
