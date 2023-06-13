@@ -41,14 +41,13 @@
             modules = [
               {
                 home = { inherit username homeDirectory stateVersion; };
-                programs.home-manager.enable = true;
                 nixpkgs = { inherit overlays; };
               }
+              ./modules/programs/cargo-nightly-expand.nix
+              ./modules/misc/completions.nix
+              ./modules/misc/hm-session-vars.nix
               ./packages.nix
               ./services.nix
-              ./pkgs/cargo-nightly-expand.nix
-              #./pkgs/hm-session-vars.nix
-              ./pkgs/completions.nix
             ];
           };
     };

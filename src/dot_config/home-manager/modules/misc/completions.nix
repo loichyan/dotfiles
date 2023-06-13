@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
+with builtins;
+with lib;
 let
+  cfg = config.misc.completions;
   inherit (pkgs) stdenv babelfish myPkgs;
   pip-completions = stdenv.mkDerivation {
     name = "pip-completions";
@@ -12,4 +15,11 @@ let
     '';
   };
 in
-{ home.packages = [ pip-completions ]; }
+{
+  options.misc.completions = {
+    enable = mkEnableOption "Completions";
+  };
+  config = mkIf cfg.enable {
+    home.packages = [ pip-completions ];
+  };
+}

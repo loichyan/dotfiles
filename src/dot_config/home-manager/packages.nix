@@ -1,5 +1,10 @@
 { pkgs, ... }:
 {
+  programs.cargo-nightly-expand.enable = true;
+  programs.home-manager.enable = true;
+  misc.completions.enable = true;
+  #misc.hm-session-vars.enable = true;
+
   # Install packages.
   home.packages = with pkgs;  [
     # Dotfiles manager
