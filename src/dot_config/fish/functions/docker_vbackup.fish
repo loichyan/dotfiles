@@ -4,8 +4,9 @@ function docker_vbackup
     set -l dir (dirname $file)
     set -l base (basename $file)
     set -l volume $_flag_v
-    docker run --rm \
-        -v $volume:/tmp/volume:ro,Z \
+    set -l docker (type -q podman && echo podman || echo docker)
+    $docker run --rm \
+        -v $volume:/tmp/volume:ro \
         -v $dir:/tmp/backup:Z \
         alpine \
         sh -c "tar -C '/tmp/volume' -cvzf '/tmp/backup/$base' ."
