@@ -4,7 +4,9 @@
   inputs = {
     nixpkgs.url = "nixpkgs";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      # TODO: switch back to release-23.05 util #4012 is merged
+      # url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/53ccbe0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {

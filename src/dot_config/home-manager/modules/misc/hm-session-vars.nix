@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with builtins;
 with lib;
 let
@@ -8,7 +8,6 @@ let
     name = "hm-session-vars";
     unpackPhase = "true";
     buildPhase = "true";
-    # FIXME: no sessionVariablesPackage
     installPhase = ''
       mkdir -p $out/etc/profile.d
       ${babelfish}/bin/babelfish \
