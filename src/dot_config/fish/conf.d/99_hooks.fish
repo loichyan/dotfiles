@@ -1,17 +1,22 @@
 if status is-interactive
+    set -g __history_successes $history
     set -g __history_failures
     set -g history_ignore_commands bat cat cd ch{con,grp,mod,own} cp echo l{s,l} math mv history printf rm string
 
     function __hook_record_failures -e fish_postexec
-        if test $status -ne 0
+        if test $status -eq 0
+            set -a __history_successes $argv[1]
+        else
             set -a __history_failures $argv[1]
         end
     end
 
     function __hook_drop_histories -e fish_exit
-        if test -n "$__history_failures"
-            history delete -C -e $__history_failures
+        set -l entries $history_ignore_commands
+        for c in $__history_failures
+            contains $c $__history_successes || set -a entries $c
         end
+        test -n "$entries" && history delete -C -e $entries
         echo all | history delete -p ';' (printf '%s \n' $history_ignore_commands) >/dev/null
     end
 
