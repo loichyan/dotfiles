@@ -12,7 +12,7 @@ loichyan's dotfiles.
 - Depoly using [chezmoi](https://github.com/twpayne/chezmoi)
 - Manage packages using
   [Home Manager](https://github.com/nix-community/home-manager)
-- Customize zsh using [Zimfw](https://zimfw.sh/)
+- Customize shell using [fish](https://fishshell.com/)
 - Customize NeoVim using [DeltaVim](https://github.com/loichyan/DeltaVim)
 - Terminal & mux using [wezterm](https://wezfurlong.org/wezterm)
 
