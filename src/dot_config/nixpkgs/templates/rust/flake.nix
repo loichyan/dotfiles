@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     fenix = {
       url = "github:nix-community/fenix";
@@ -16,15 +16,18 @@
           overlays = [ fenix.overlays.default ];
         };
       in
-      with pkgs; {
-        devShells.default = mkShell {
-          nativeBuildInputs = [
-            (with pkgs.fenix; combine [
-              stable.defaultToolchain
-              stable.rust-src
-            ])
-          ];
-        };
+      {
+        devShells.default =
+          with pkgs;
+          with pkgs.fenix;
+          mkShell {
+            nativeBuildInputs = [
+              (combine [
+                stable.defaultToolchain
+                stable.rust-src
+              ])
+            ];
+          };
       }
     )
   ;
