@@ -1,5 +1,10 @@
 if status is-interactive
-    type -q lsd && alias ls lsd
-    type -q lazygit && alias lg lazygit
-    type -q safe-rm && alias rm 'safe-rm -I' || alias rm (printf '%s -I' (which rm))
+    function alias_command
+        ! type -qf $argv[1] || alias $argv[1] "command $argv[2..-1]"
+    end
+
+    alias_command ls lsd
+    alias_command lg lazygit
+    alias_command rm rm -I
+    alias_command rm safe-rm -I
 end

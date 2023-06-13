@@ -1,5 +1,5 @@
 function docker_vbackup
-    test -n "$argv" && argparse f/file= v/volume= -- $argv || return
+    [ -n "$argv" ] && argparse f/file= v/volume= -- $argv || return
     set -l file (realpath $_flag_f)
     set -l dir (dirname $file)
     set -l base (basename $file)
