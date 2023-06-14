@@ -28,6 +28,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     cond = NOT_VSCODE,
     build = "./kitty/install-kittens.bash",
+    lazy = false,
     keys = function()
       ---@param f string
       ---@param args? any

@@ -5,15 +5,7 @@
 local W = require("wezterm")
 local Act = W.action
 
--- Equivalent to POSIX basename(3)
--- Given "/foo/bar" returns "bar"
--- Given "c:\\foo\\bar" returns "bar"
-local function basename(s) return string.gsub(s, "(.*[/\\])(.*)", "%2") end
-
-local function is_vim(pane)
-  local process_name = basename(pane:get_foreground_process_name())
-  return process_name == "nvim" or process_name == "vim"
-end
+local function is_vim(pane) return pane:get_user_vars().IS_NVIM == "true" end
 
 local key_directions = {
   h = "Left",
@@ -35,14 +27,14 @@ local function smart(action, key)
     mods = "ALT"
     act = { AdjustPaneSize = { dir, 3 } }
   end
-  local vact = { SendKey = { key = key, mods = mods } }
+  local act_vim = { SendKey = { key = key, mods = mods } }
   return {
     key = key,
     mods = mods,
     action = W.action_callback(function(win, pane)
       if is_vim(pane) then
         -- pass the keys through to vim/nvim
-        win:perform_action(vact, pane)
+        win:perform_action(act_vim, pane)
       else
         win:perform_action(act, pane)
       end
