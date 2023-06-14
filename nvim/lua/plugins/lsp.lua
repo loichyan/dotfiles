@@ -14,6 +14,7 @@ return {
           formatting = {
             black = true,
             cue_fmt = true,
+            fish_indent = true,
             latexindent = true,
             prettierd = true,
             shfmt = true,
@@ -28,6 +29,7 @@ return {
             },
             cue_fmt = true,
             eslint = true,
+            fish = true,
             hadolint = true,
             shellcheck = true,
             vale = {
