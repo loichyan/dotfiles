@@ -76,6 +76,7 @@ return {
           ["<Leader>f"] = { name = "+find" },
           ["<Leader>g"] = { name = "+git" },
           ["<Leader>l"] = { name = "+lsp" },
+          ["<Leader>ll"] = { name = "+lang" },
           ["<Leader>n"] = { name = "+notify" },
           ["<Leader>q"] = { name = "+session" },
           ["<Leader>s"] = { name = "+search" },

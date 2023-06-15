@@ -1,4 +1,5 @@
 local Util = require("deltavim.util")
+local Keymap = require("deltavim.core.keymap")
 
 ---@type lspconfig.options|table<string,boolean>
 local servers = {
@@ -34,6 +35,15 @@ local servers = {
         procMacro = { enable = true, attributes = { enable = true } },
       },
     },
+    on_attach = function(_, bufnr)
+      Keymap.Collector()
+        :map({
+          { "@rust.expand_macro", "<CMD>RustExpandMacro<CR>" },
+          { "@rust.open_cargo", "<CMD>RustOpenCargo<CR>" },
+          { "@rust.reload_workspace", "<CMD>RustReloadWorkspace<CR>" },
+        })
+        :collect_and_set({ buffer = bufnr })
+    end,
   },
   taplo = true,
   texlab = true,

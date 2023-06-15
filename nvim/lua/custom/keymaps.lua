@@ -198,6 +198,10 @@ return function()
       { "<Leader>lI", "@ui.nullls_info" },
       { "<Leader>lr", "@lsp.rename" },
       { "<Leader>ls", "@lsp.symbols_outline" },
+      -- lang
+      { "<Leader>lle", "@rust.expand_macro" },
+      { "<Leader>llo", "@rust.open_cargo" },
+      { "<Leader>llr", "@rust.reload_workspace" },
       -- iron
       { "<Leader>ic", "@iron.interrupt" },
       { "<Leader>id", "@iron.clear" },

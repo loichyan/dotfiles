@@ -14,7 +14,7 @@ return {
     cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      tools = { inlay_hints = { auto = false } },
+      tools = { inlay_hints = { auto = true } },
       server = require("custom.lsp").rust_analyzer,
     },
   },
