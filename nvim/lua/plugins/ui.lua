@@ -39,6 +39,8 @@ return {
   ----------------
   {
     "j-hui/fidget.nvim",
+    -- TODO: switch back to main brach
+    branch = "legacy",
     cond = NOT_VSCODE,
     event = "VeryLazy",
     config = true,
