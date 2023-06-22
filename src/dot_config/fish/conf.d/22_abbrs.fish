@@ -13,20 +13,31 @@ if status is-interactive
         abbr_command Pc$argv[1] podman-compose $argv[2..]
     end
 
+    function abbr_git
+        abbr_command G$argv[1] git $argv[2..]
+    end
+
     abbr_docker ''
     abbr_docker c compose
-    abbr_docker i image ls
+    abbr_docker i image
+    abbr_docker il image ls
     abbr_docker r run -it --rm
     abbr_compose ''
     abbr_compose l logs --tail=30 -f
+    abbr_compose r restart
 
-    abbr_command G git
-    abbr_command Gf git fetch
-    abbr_command Gl git log
-    abbr_command Gp git push
-    abbr_command Gs git status
-    abbr_command Gck git checkout
-    abbr_command Gsw git checkout
+    abbr_git ''
+    abbr_git c commit
+    abbr_git f fetch
+    abbr_git l log
+    abbr_git m merge
+    abbr_git mc merge --continue
+    abbr_git p push
+    abbr_git r rebase
+    abbr_git rc rebase --continue
+    abbr_git s status
+    abbr_git ck checkout
+    abbr_git sw checkout
 
-    functions -e abbr_{command,docker,compose}
+    functions -e abbr_{command,docker,compose,git}
 end
