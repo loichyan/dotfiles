@@ -34,9 +34,9 @@ source /etc/os-release &&
 rpm-ostree install \
   fish wezterm \
   gnome-tweaks yaru-theme ibus-rime \
-  cascadia-code-fonts symbols-nerd-font \
+  cascadia-code-fonts sarasa-gothic-fonts symbols-nerd-fonts \
   podman-compose wl-clipboard xclip \
-  mozilla-openh264 \
+  ffmepg mozilla-openh264 \
   code
 
 # Install Nix.
