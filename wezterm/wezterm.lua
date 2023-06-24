@@ -4,8 +4,8 @@ local Act = W.action
 
 return {
   -- Colorscheme & font
-  color_scheme = "tokyonight_moon",
-  -- color_scheme = "Catppuccin Macchiato",
+  -- color_scheme = "tokyonight_moon",
+  color_scheme = "Catppuccin Macchiato",
   font = W.font_with_fallback({
     { family = "monospace" },
     { family = "Sarasa UI SC" },

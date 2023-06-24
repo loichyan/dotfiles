@@ -3,15 +3,15 @@
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 set_opt() {
-  local option="$1"
-  local value="$2"
-  tmux set-option -gq "$option" "$value"
+	local option="$1"
+	local value="$2"
+	tmux set-option -gq "$option" "$value"
 }
 
 #== Colorscheme ==#
 
-source "${CURRENT_DIR}/tokyonight.sh"
-# source "${CURRENT_DIR}/catppuccin.sh"
+# source "${CURRENT_DIR}/tokyonight.sh"
+source "${CURRENT_DIR}/catppuccin.sh"
 
 seg_a="$blue $black"
 seg_b="$gray $blue"

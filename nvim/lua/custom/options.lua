@@ -16,13 +16,14 @@ return {
     tex_flavor = "latex",
   },
   o = {
-    timeoutlen = timeoutlen,
     clipboard = "",
-    guifont = "monospace:h11",
-    swapfile = false,
+    conceallevel = 0,
     -- Enable mode shapes, "Cursor" highlight, and blinking
     guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"
       .. "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,"
       .. "sm:block-blinkwait175-blinkoff150-blinkon175",
+    guifont = "monospace:h11",
+    swapfile = false,
+    timeoutlen = timeoutlen,
   },
 }
