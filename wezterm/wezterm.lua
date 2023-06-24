@@ -8,7 +8,7 @@ return {
   -- color_scheme = "Catppuccin Macchiato",
   font = W.font_with_fallback({
     { family = "monospace" },
-    { family = "Noto Sans CJK SC", weight = "Book", scale = 0.95 },
+    { family = "Sarasa UI SC" },
   }),
   font_size = 11.0,
   line_height = 1.15,
