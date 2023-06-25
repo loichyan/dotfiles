@@ -23,7 +23,7 @@
     tmux
     tokei
     wakatime
-    nodePackages.serve
+    nodePackages.live-server
 
     # Git
     commitizen
