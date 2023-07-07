@@ -9,7 +9,7 @@ if status is-interactive
     alias_command rm rm -I
     alias_command rm safe-rm -I
     [ "$TERM_PROGRAM" != WezTerm ] || set prefix 'TERM=wezterm'
-    alias_command nvim nvim --listen /tmp/nvim-server.sock
+    prefix=$prefix alias_command nvim nvim --listen /tmp/nvim-server.sock
 
     functions -e alias_command
 end
