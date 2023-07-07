@@ -1,3 +1,9 @@
+os:
+  edit: |
+    nvim --server /tmp/nvim-server.sock --remote-tab {{filename}}
+  editAtLine:
+    nvim --server /tmp/nvim-server.sock --remote-tab {{filename}} +{{line}}
+  editInTerminal: false
 customCommands:
   - key: "C"
     command: "cz c"
