@@ -121,7 +121,9 @@ return {
     "nvim-telescope/telescope-fzf-native.nvim",
     cond = NOT_VSCODE,
     build = "make",
-    config = function() require("telescope").load_extension("fzf") end,
+    config = function()
+      require("telescope").load_extension("fzf")
+    end,
   },
   {
     "nvim-telescope/telescope-project.nvim",
@@ -135,7 +137,9 @@ return {
         })
         :collect_lazy()
     end,
-    config = function() require("telescope").load_extension("project") end,
+    config = function()
+      require("telescope").load_extension("project")
+    end,
   },
   -- Diffview/merge tool
   {

@@ -36,7 +36,9 @@ return {
     opts = { app = "firefox" },
     config = function(_, opts)
       local function peek(name)
-        return function() require("peek")[name]() end
+        return function()
+          require("peek")[name]()
+        end
       end
       vim.api.nvim_create_user_command("PeekOpen", peek("open"), {})
       vim.api.nvim_create_user_command("PeekClose", peek("close"), {})
@@ -101,6 +103,8 @@ return {
         keymaps = keymaps,
       }
     end,
-    config = function(_, opts) require("iron.core").setup(opts) end,
+    config = function(_, opts)
+      require("iron.core").setup(opts)
+    end,
   },
 }

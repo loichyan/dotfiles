@@ -5,7 +5,9 @@
 local W = require("wezterm")
 local Act = W.action
 
-local function is_vim(pane) return pane:get_user_vars().IS_NVIM == "true" end
+local function is_vim(pane)
+  return pane:get_user_vars().IS_NVIM == "true"
+end
 
 local key_directions = {
   h = "Left",

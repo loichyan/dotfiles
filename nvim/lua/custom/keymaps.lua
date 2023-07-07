@@ -255,7 +255,9 @@ return function()
   else
     local vs = function(cmd, ...)
       local args = { ... }
-      return function() vim.fn.VSCodeNotify(cmd, unpack(args)) end
+      return function()
+        vim.fn.VSCodeNotify(cmd, unpack(args))
+      end
     end
     Util.concat(keymaps, {
       -- buffer

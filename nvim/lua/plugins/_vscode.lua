@@ -43,7 +43,9 @@ local plugins = {
 }
 
 for _, name in ipairs(plugins) do
-  if not NOT_VSCODE then name.cond = false end
+  if not NOT_VSCODE then
+    name.cond = false
+  end
 end
 
 ---@diagnostic disable-next-line:missing-parameter

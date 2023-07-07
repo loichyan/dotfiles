@@ -33,7 +33,9 @@ return {
       ---@param f string
       ---@param args? any
       local function cmd(f, args)
-        return function() require("smart-splits")[f](args) end
+        return function()
+          require("smart-splits")[f](args)
+        end
       end
 
       -- stylua: ignore

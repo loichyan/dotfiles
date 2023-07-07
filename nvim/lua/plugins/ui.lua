@@ -5,8 +5,7 @@ return {
     "bufferline.nvim",
     opts = function(_, opts)
       if COLORSCHEME == "catppuccin" then
-        opts.highlights =
-          require("catppuccin.groups.integrations.bufferline").get()
+        opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
       end
       return opts
     end,
@@ -26,11 +25,7 @@ return {
     "alpha-nvim",
     ---@param opts DeltaVim.Config.Alpha
     opts = function(_, opts)
-      table.insert(
-        opts.buttons,
-        3,
-        { "p", "󱔗 ", "Find projects", H.telescope({ "project", "project" }) }
-      )
+      table.insert(opts.buttons, 3, { "p", "󱔗 ", "Find projects", H.telescope({ "project", "project" }) })
     end,
   },
   {
