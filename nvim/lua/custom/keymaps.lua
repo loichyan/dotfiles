@@ -232,6 +232,7 @@ return function()
       { "<Leader>bb", "@buffer.switch_back" },
       { "<Leader>bh", "@buffer.close_left" },
       { "<Leader>bl", "@buffer.close_right" },
+      { "<Leader>bo", "@buffer.close_others" },
       { "<Leader>bP", "@buffer.close_ungrouped" },
       { "<Leader>bp", "@buffer.toggle_pin" },
       { "<Leader>bq", "@buffer.close" },

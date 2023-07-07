@@ -66,7 +66,7 @@ return {
     "which-key.nvim",
     opts = function(_, opts)
       return Util.merge({}, opts, {
-        groups = {
+        defaults = {
           mode = { "n", "x" },
           ["["] = { name = "+prev" },
           ["]"] = { name = "+next" },
