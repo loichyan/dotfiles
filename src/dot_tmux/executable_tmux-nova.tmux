@@ -8,10 +8,8 @@ set_opt() {
 	tmux set-option -gq "$option" "$value"
 }
 
-#== Colorscheme ==#
-
-# source "${CURRENT_DIR}/tokyonight.sh"
-source "${CURRENT_DIR}/catppuccin.sh"
+# Load colors
+source "${CURRENT_DIR}/colorscheme.sh"
 
 seg_a="$blue $black"
 seg_b="$gray $blue"

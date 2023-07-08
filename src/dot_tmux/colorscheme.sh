@@ -3,10 +3,14 @@
 ## Name:     Catppuccin Frappe
 ## Author:   Catppuccin Org
 ## License:  MIT
-## Upstream: https://github.com/catppuccin/tmux
+## Upstream: https://github.com/catppuccin/https://github.com/catppuccin/tmux
 
 # shellcheck disable=SC2034
 
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str is double quoted: ""
+# WARNING: hex colors can't contain capital letters
+
+# --> Catppuccin (Frappe)
 thm_bg="#303446"
 thm_fg="#c6d0f5"
 thm_cyan="#99d1db"
