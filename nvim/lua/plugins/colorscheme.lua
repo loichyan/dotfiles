@@ -1,4 +1,4 @@
 return {
   { "tokyonight.nvim", opts = { style = "moon" } },
-  { "catppuccin", opts = { flavour = "macchiato" } },
+  { "catppuccin", opts = { flavour = "frappe" } },
 }
