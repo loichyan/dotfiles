@@ -1,5 +1,5 @@
 return {
   colorscheme = "catppuccin",
-  catppuccin_flavour = "frappe",
+  catppuccin_style = "frappe",
   tokyonight_style = "storm",
 }

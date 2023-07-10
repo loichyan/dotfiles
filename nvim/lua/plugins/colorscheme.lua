@@ -1,6 +1,9 @@
-local C = require("custom.colorscheme")
+local Colorscheme = require("custom.colorscheme")
 
 return {
-  { "tokyonight.nvim", opts = { style = C.tokyonight_style } },
-  { "catppuccin", opts = { flavour = C.catppuccin_flavour } },
+  { "tokyonight.nvim", opts = { style = Colorscheme.tokyonight_style } },
+  { "catppuccin", opts = { flavour = Colorscheme.catppuccin_style } },
+  -- Disable unused colorschemes
+  { "tokyonight.nvim", enabled = false },
+  { "EdenEast/nightfox.nvim", enabled = false },
 }
