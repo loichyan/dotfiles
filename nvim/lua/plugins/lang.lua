@@ -49,7 +49,7 @@ return {
   {
     "Vigemus/iron.nvim",
     cond = NOT_VSCODE,
-    cmd = "IronRepl",
+    cmd = { "IronAttach", "IronRepl" },
     keys = function()
       return Keymap.Collector()
         :map({
