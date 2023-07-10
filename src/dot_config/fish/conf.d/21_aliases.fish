@@ -4,8 +4,10 @@ if status is-interactive
     end
 
     set -l prefix
-    alias_command ls lsd
+    alias_command cp xcp
+    alias_command du dust
     alias_command lg lazygit
+    alias_command ls exa
     alias_command rm rm -I
     alias_command rm safe-rm -I
     [ "$TERM_PROGRAM" != WezTerm ] || set prefix 'TERM=wezterm'

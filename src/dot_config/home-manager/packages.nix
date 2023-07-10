@@ -11,19 +11,24 @@
     chezmoi
 
     # Utils
-    bat
     delta
-    erdtree
-    fd
     jq
-    lsd
     netcat
-    ripgrep
     safe-rm
     tmux
     tokei
     wakatime
     nodePackages.live-server
+
+    # Coreutils in Rust
+    bat
+    bottom
+    broot
+    du-dust
+    exa
+    fd
+    ripgrep
+    xcp
 
     # Git
     commitizen
