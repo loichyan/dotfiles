@@ -2,20 +2,9 @@ local H = require("deltavim.helpers")
 
 return {
   {
-    "bufferline.nvim",
-    opts = function(_, opts)
-      if COLORSCHEME == "catppuccin" then
-        opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
-      end
-      return opts
-    end,
-  },
-  { "barbecue.nvim", opts = { theme = COLORSCHEME } },
-  {
     "lualine.nvim",
     opts = {
       options = {
-        theme = COLORSCHEME,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
       },
