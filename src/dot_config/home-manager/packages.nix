@@ -20,13 +20,14 @@
     wakatime
     nodePackages.live-server
 
-    # Coreutils in Rust
+    # Coreutil replacements
     bat
     bottom
     broot
     du-dust
     exa
     fd
+    htop
     ripgrep
     xcp
 
