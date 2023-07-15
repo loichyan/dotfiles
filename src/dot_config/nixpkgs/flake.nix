@@ -5,15 +5,23 @@
     templates = {
       basic = {
         path = ./templates/basic;
-        description = "A simple nix project";
+        description = "Nix project starter";
       };
       repo = {
         path = ./templates/repo;
-        description = "Starter of a repository";
+        description = "Repository starter";
       };
       rust = {
         path = ./templates/rust;
-        description = "A simple rust project";
+        description = "Rust library starter";
+      };
+      rust-bin = {
+        path = ./templates/rust-bin;
+        description = "Rust binary starter";
+      };
+      python = {
+        path = ./templates/python;
+        description = "Python project starter";
       };
     };
   };
