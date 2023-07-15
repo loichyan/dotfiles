@@ -4,21 +4,21 @@ if status is-interactive
     end
 
     function abbr_cargo
-        abbr_command C$argv[1] cargo $argv[2..]
+        abbr_command "C$argv[1]" cargo $argv[2..]
     end
 
     function abbr_docker
-        abbr_command D$argv[1] docker $argv[2..]
-        abbr_command P$argv[1] podman $argv[2..]
+        abbr_command "D$argv[1]" docker $argv[2..]
+        abbr_command "P$argv[1]" podman $argv[2..]
     end
 
     function abbr_docker_compose
-        abbr_command Dc$argv[1] docker-compose $argv[2..]
-        abbr_command Pc$argv[1] podman-compose $argv[2..]
+        abbr_command "Dc$argv[1]" docker-compose $argv[2..]
+        abbr_command "Pc$argv[1]" podman-compose $argv[2..]
     end
 
     function abbr_git
-        abbr_command G$argv[1] git $argv[2..]
+        abbr_command "G$argv[1]" git $argv[2..]
     end
 
     abbr_cargo
