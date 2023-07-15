@@ -36,4 +36,10 @@ if status is-interactive
     set -g fish_pager_color_selected_completion
     set -g fish_pager_color_selected_description
     set -g fish_pager_color_selected_prefix
+
+    set -gx LESS_TERMCAP_mb (printf '\e[1;31m')
+    set -gx LESS_TERMCAP_md (printf '\e[1;31m')
+    set -gx LESS_TERMCAP_me (printf '\e[0m')
+    set -gx LESS_TERMCAP_ue (printf '\e[0m')
+    set -gx LESS_TERMCAP_us (printf '\e[1;32m')
 end
