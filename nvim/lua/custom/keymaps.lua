@@ -22,13 +22,9 @@ return function()
     { "：", "@util.undo_break_point" },
     { "=", "@util.undo_break_point" },
     -- surround
-    { "gza", "@surround.add" },
-    { "gzd", "@surround.delete" },
-    { "gzf", "@surround.find" },
-    { "gzF", "@surround.find_left" },
-    { "gzh", "@surround.highlight" },
-    { "gzn", "@surround.update_n_lines" },
-    { "gzr", "@surround.replace" },
+    { "yz", "@surround.add" },
+    { "dz", "@surround.delete" },
+    { "cz", "@surround.replace" },
     -- comment
     { "gc", "@comment.toggle" },
     { "gcc", "@comment.toggle_line" },
