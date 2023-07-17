@@ -1,4 +1,5 @@
 { pkgs, ... }:
+with builtins;
 {
   programs.cargo-nightly-expand.enable = true;
   programs.home-manager.enable = true;
@@ -56,8 +57,8 @@
     # C/C++
     clang-tools
     cmake
-    gcc
     gnumake
+    (stdenvAdapters.useMoldLinker stdenv).cc
 
     # Nix
     rnix-lsp
