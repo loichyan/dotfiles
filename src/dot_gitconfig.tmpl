@@ -11,8 +11,8 @@
 [commit]
 	gpgsign = true
 [http]
-	proxy = http://127.0.0.1:{{ .proxy.http }}
+	proxy = socks5h://127.0.0.1:{{ .proxy.socks }}
 [https]
-	proxy = http://127.0.0.1:{{ .proxy.http }}
+	proxy = socks5h://127.0.0.1:{{ .proxy.socks }}
 [push]
 	followTags = true
