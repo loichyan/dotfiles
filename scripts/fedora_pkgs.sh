@@ -69,3 +69,6 @@ sudo tee /etc/dconf/db/gdm.d/06-tap-to-click <<<"\
 [org/gnome/desktop/peripherals/touchpad]
 tap-to-click=true"
 sudo dconf update
+
+# Load .config/dconf/user.txt
+echo 'service-db:keyfile/user' | sudo tee -a /etc/dconf/profile/user
