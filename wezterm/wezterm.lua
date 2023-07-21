@@ -49,7 +49,7 @@ return {
       action = Act.RotatePanes("Clockwise"),
     },
     {
-      key = "I",
+      key = "O",
       mods = "CTRL|SHIFT",
       action = Act.RotatePanes("CounterClockwise"),
     },
@@ -69,14 +69,14 @@ return {
       action = Act.CloseCurrentPane({ confirm = true }),
     },
     {
-      key = "H",
-      mods = "CTRL|SHIFT",
-      action = Act.ActivateCopyMode,
-    },
-    {
       key = "W",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentTab({ confirm = true }),
+    },
+    {
+      key = "Y",
+      mods = "CTRL|SHIFT",
+      action = Act.ActivateCopyMode,
     },
     table.unpack(SplitKeys),
   },

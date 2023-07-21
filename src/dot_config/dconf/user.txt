@@ -57,7 +57,5 @@ theme-variant='dark'
 show-extensions-notice=false
 
 [org/gnome/desktop/wm/keybindings]
-move-to-workspace-left=['<Control><Super>h']
-move-to-workspace-right=['<Control><Super>l']
-switch-to-workspace-left=['<Shift><Super>h']
-switch-to-workspace-right=['<Shift><Super>l']
+switch-to-workspace-left=['<Control><Super>comma']
+switch-to-workspace-right=['<Control><Super>period']

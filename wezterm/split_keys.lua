@@ -44,43 +44,15 @@ local function smart(action, key)
   }
 end
 
----@param action "move"|"resize"
----@param key string
-local function pane(action, key)
-  local dir = key_directions[key]
-  key = key:upper()
-  if action == "move" then
-    return {
-      key = key,
-      mods = "CTRL|SHIFT",
-      action = Act.ActivatePaneDirection(dir),
-    }
-  elseif action == "resize" then
-    return {
-      key = key,
-      mods = "ALT|SHIFT",
-      action = Act.AdjustPaneSize({ dir, 3 }),
-    }
-  end
-end
-
 return {
   -- move between split panes
   smart("move", "h"),
   smart("move", "j"),
   smart("move", "k"),
   smart("move", "l"),
-  pane("move", "h"),
-  pane("move", "j"),
-  pane("move", "k"),
-  pane("move", "l"),
   -- resize panes
   smart("resize", "h"),
   smart("resize", "j"),
   smart("resize", "k"),
   smart("resize", "l"),
-  pane("resize", "h"),
-  pane("resize", "j"),
-  pane("resize", "k"),
-  pane("resize", "l"),
 }
