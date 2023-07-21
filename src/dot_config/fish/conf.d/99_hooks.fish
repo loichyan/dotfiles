@@ -17,7 +17,7 @@ if status is-interactive
             contains $c $__history_successes || set -a entries $c
         end
         [ -z "$entries" ] || history delete -Ce $entries
-        echo all | history delete -p ';' (printf '%s \n' $history_ignore_commands) >/dev/null
+        echo all | history delete -p ';' './' (printf '%s \n' $history_ignore_commands) >/dev/null
     end
 
     ! type -q direnv || direnv hook fish | source
