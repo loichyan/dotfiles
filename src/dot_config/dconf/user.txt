@@ -59,3 +59,5 @@ show-extensions-notice=false
 [org/gnome/desktop/wm/keybindings]
 switch-to-workspace-left=['<Control><Super>comma']
 switch-to-workspace-right=['<Control><Super>period']
+move-to-workspace-left=['<Control><Super>Left']
+move-to-workspace-right=['<Control><Super>Right']
