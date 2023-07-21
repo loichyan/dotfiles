@@ -94,7 +94,6 @@ with builtins;
     ])
     # cargo ulities
     cargo-edit
-    cargo-nextest
     cargo-readme
     cargo-release
     cargo-tarpaulin

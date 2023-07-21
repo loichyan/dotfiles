@@ -22,8 +22,15 @@ if status is-interactive
     end
 
     abbr_cargo
-    abbr_cargo t nextest
-    abbr_cargo tr nextest run
+    abbr_cargo a add
+    abbr_cargo ab add --build
+    abbr_cargo ad add --dev
+    abbr_cargo b build
+    abbr_cargo br build --release
+    abbr_cargo c clippy
+    abbr_cargo r run
+    abbr_cargo rr run --release
+    abbr_cargo t test
 
     abbr_docker
     abbr_docker c compose
