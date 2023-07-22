@@ -117,9 +117,14 @@ with builtins;
     ghc
     haskell-language-server
 
+    # Golang
+    go
+    gopls
+
     # Dev Ops
-    caddy
     butane
+    caddy
+    hugo
     xray
 
     # Perl

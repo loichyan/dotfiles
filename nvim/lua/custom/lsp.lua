@@ -5,6 +5,7 @@ local Keymap = require("deltavim.core.keymap")
 local servers = {
   clangd = true,
   cssls = true,
+  gopls = true,
   hls = true,
   jsonls = {
     settings = { json = { validate = { enable = true } } },
