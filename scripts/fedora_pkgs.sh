@@ -13,7 +13,7 @@ rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklis
 
 ms_repo() {
   local repo=$1
-  sudo tee "/etc/yum.repos.d/_ms-$repo.repo" <<EOF
+  sudo tee "/etc/yum.repos.d/ms_$repo.repo" <<EOF
 [ms-$repo]
 name=ms-$repo
 baseurl=https://packages.microsoft.com/yumrepos/$repo
@@ -43,8 +43,8 @@ ms_repo edge
 ms_repo vscode
 # Personal packages
 source /etc/os-release &&
-  curl "https://copr.fedorainfracloud.org/coprs/loichyan/packages/repo/$ID-$VERSION_ID/dnf.repo" |
-  sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:loichyan:packages.repo
+  curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo" |
+  sudo tee /etc/yum.repos.d/home_loichyan.repo
 
 # Disable auto-update
 gsettings get org.gnome.software download-updates

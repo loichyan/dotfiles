@@ -36,17 +36,17 @@ nix run home-manager/master -- switch
 ./result/activate
 ```
 
-### Import Copr repository
+### Import OBS repository
 
-Check [the repo](https://github.com/loichyan/rpms) for more details.
+Check [the repo](https://github.com/loichyan/packages) for more details.
 
 ```sh
-sudo dnf copr enable loichyan/packages
+source /etc/os-release &&
+  dnf config-manager --add-repo https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo
 # Or download manually
 source /etc/os-release &&
-  curl "https://copr.fedorainfracloud.org/coprs/loichyan/packages/repo/$ID-$VERSION_ID/dnf.repo" |
-  sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:loichyan:packages.repo
-
+  curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo" |
+  sudo tee /etc/yum.repos.d/home_loichyan.repo
 ```
 
 ## ⚖️ License
