@@ -6,8 +6,7 @@ function docker_vrestore
     set -l dir (dirname $file)
     set -l base (basename $file)
     set -l volume $_flag_volume
-    set -l docker (if type -q podman; echo podman; else; echo docker; end)
-    $docker run --rm \
+    docker run --rm \
         -v $volume:/tmp/volume \
         -v $dir:/tmp/backup:ro,Z \
         alpine \

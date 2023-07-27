@@ -6,8 +6,7 @@ function docker_vbackup
     set -l dir (dirname $file)
     set -l base (basename $file)
     set -l volume $_flag_volume
-    set -l docker (if type -q podman; echo podman; else; echo docker; end)
-    $docker run --rm \
+    docker run --rm \
         -v $volume:/tmp/volume:ro \
         -v $dir:/tmp/backup:Z \
         alpine \

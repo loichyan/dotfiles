@@ -5,17 +5,22 @@ if status is-interactive
         end
     end
 
-    set -l prefix
     alias_command cp xcp
     alias_command du dust
     alias_command lg lazygit
     alias_command ls exa
     alias_command rm rm -I
     alias_command rm safe-rm -I
-    if [ "$TERM_PROGRAM" = WezTerm ]
-        set prefix 'TERM=wezterm'
+    prefix=(if [ "$TERM_PROGRAM" = WezTerm ]; echo 'TERM=wezterm'; end) \
+        alias_command nvim nvim --listen /tmp/nvim-server.sock
+
+    if ! type -q docker
+        alias_command docker podman
     end
-    prefix=$prefix alias_command nvim nvim --listen /tmp/nvim-server.sock
+    if ! type -q docker-compose
+        alias docker-compose \
+            (if type -q podman-compose; echo podman-compose; else; echo docker compose; end)
+    end
 
     functions -e alias_command
 end

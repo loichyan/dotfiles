@@ -4,11 +4,11 @@ if status is-interactive
     end
 
     function abbr_docker
-        abbr "$D$argv[1]" $docker $argv[2..]
+        abbr "D$argv[1]" docker $argv[2..]
     end
 
     function abbr_docker_compose
-        abbr "$D"c"$argv[1]" "$docker"-compose $argv[2..]
+        abbr "Dc$argv[1]" docker-compose $argv[2..]
     end
 
     function abbr_git
@@ -28,28 +28,18 @@ if status is-interactive
         abbr_cargo t test
     end
 
-    set -l cmds
     if type -q docker
-        set -a cmds docker,D
+        abbr_docker
+        abbr_docker c compose
+        abbr_docker i image
+        abbr_docker il image ls
+        abbr_docker r run -it --rm
     end
-    if type -q podman
-        set -a cmds podman,P
-    end
-    for cmd in $cmds
-        echo $cmd | read -d , docker D
-        docker=$docker D=$D begin
-            if type -q "$docker"-compose
-                alias "$docker"-compose "$docker compose"
-            end
-            abbr_docker
-            abbr_docker c compose
-            abbr_docker i image
-            abbr_docker il image ls
-            abbr_docker r run -it --rm
-            abbr_docker_compose
-            abbr_docker_compose l logs --tail=30 -f
-            abbr_docker_compose r restart
-        end
+
+    if type -q docker-compose
+        abbr_docker_compose
+        abbr_docker_compose l logs --tail=30 -f
+        abbr_docker_compose r restart
     end
 
     if type -q git
