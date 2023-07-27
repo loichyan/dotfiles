@@ -29,12 +29,18 @@ if status is-interactive
     end
 
     set -l cmds
-    ! type -q docker || set -a cmds docker,D
-    ! type -q podman || set -a cmds podman,P
+    if type -q docker
+        set -a cmds docker,D
+    end
+    if type -q podman
+        set -a cmds podman,P
+    end
     for cmd in $cmds
         echo $cmd | read -d , docker D
         docker=$docker D=$D begin
-            type -q "$docker"-compose || alias "$docker"-compose "$docker compose"
+            if type -q "$docker"-compose
+                alias "$docker"-compose "$docker compose"
+            end
             abbr_docker
             abbr_docker c compose
             abbr_docker i image

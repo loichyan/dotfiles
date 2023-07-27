@@ -14,11 +14,17 @@ if status is-interactive
     function __hook_drop_histories -e fish_exit
         set -l entries $history_ignore_commands
         for c in $__history_failures
-            contains $c $__history_successes || set -a entries $c
+            if ! contains $c $__history_successes
+                set -a entries $c
+            end
         end
-        [ -z "$entries" ] || history delete -Ce $entries
+        if [ -n "$entries" ]
+            history delete -Ce $entries
+        end
         echo all | history delete -p ';' (printf '%s \n' $history_ignore_commands) >/dev/null
     end
 
-    ! type -q direnv || direnv hook fish | source
+    if type -q direnv
+        direnv hook fish | source
+    end
 end

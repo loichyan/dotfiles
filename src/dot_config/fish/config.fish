@@ -1,4 +1,8 @@
 if status is-interactive
-    ! type -q zoxide || zoxide init fish | source
-    ! type -q starship || starship init fish | source
+    if type -q zoxide
+        zoxide init fish | source
+    end
+    if type -q starship
+        starship init fish | source
+    end
 end
