@@ -36,8 +36,8 @@ titlebar-font='Sans Bold 11'
 
 [org/gnome/shell/extensions/clipboard-indicator]
 display-mode=2
-next-entry=['<Super>j']
-prev-entry=['<Super>k']
+next-entry=['<Super>u']
+prev-entry=['<Super>d']
 toggle-menu=['<Super>z']
 
 [org/gnome/shell/extensions/user-theme]
@@ -61,3 +61,10 @@ switch-to-workspace-left=['<Control><Super>comma']
 switch-to-workspace-right=['<Control><Super>period']
 move-to-workspace-left=['<Control><Super>Left']
 move-to-workspace-right=['<Control><Super>Right']
+toggle-fullscreen=['<Super>Return']
+maximize=['<Super>k']
+unmaximize=['<Super>j']
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=['<Super>h']
+toggle-tiled-right=['<Super>l']
