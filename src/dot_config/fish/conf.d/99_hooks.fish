@@ -13,13 +13,14 @@ if status is-interactive
     end
 
 
-    function __hook_record_failures -e fish_postexec
+    function __hook_record_histories -e fish_postexec
         if set -l mat (string match -r '(ADD|DEL) (.+)' $argv[1])
+            set -l entry (eval "echo $mat[3]")
             switch $mat[2]
                 case ADD
-                    set -a __history_protected $mat[3]
+                    set -a __history_protected $entry
                 case DEL
-                    set -a __history_deletions $mat[3]
+                    set -a __history_deletions $entry
             end
         else if test $status -eq 0
             set -a __history_protected $argv[1]
@@ -28,7 +29,7 @@ if status is-interactive
         end
     end
 
-    function __hook_drop_histories -e fish_exit
+    function __hook_delete_histories -e fish_exit
         set -a history_ignored ADD DEL
         set -a __history_deletions $history_ignored
         for entry in $__history_failed
