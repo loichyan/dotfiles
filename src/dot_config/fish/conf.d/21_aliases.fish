@@ -11,8 +11,9 @@ if status is-interactive
     alias_command ls exa
     alias_command rm rm -I
     alias_command rm safe-rm -I
-    prefix=(if [ "$TERM_PROGRAM" = WezTerm ]; echo 'TERM=wezterm'; end) \
-        alias_command nvim nvim --listen /tmp/nvim-server.sock
+    if [ "$TERM_PROGRAM" = WezTerm ]
+        prefix='TERM=wezterm' alias_command nvim nvim
+    end
 
     if ! type -q docker
         alias_command docker podman
