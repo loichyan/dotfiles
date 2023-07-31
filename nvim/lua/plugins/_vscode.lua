@@ -12,6 +12,7 @@ local plugins = {
   { "catppuccin" },
   -- deltavim.plugins.editor
   { "neo-tree.nvim" },
+  { "toggleterm.nvim" },
   { "nvim-spectre" },
   { "telescope.nvim" },
   { "which-key.nvim" },
@@ -28,6 +29,7 @@ local plugins = {
   { "nvim-notify" },
   { "dressing.nvim" },
   { "bufferline.nvim" },
+  { "mini.bufremove" },
   { "barbecue.nvim" },
   { "lualine.nvim" },
   { "indent-blankline.nvim" },

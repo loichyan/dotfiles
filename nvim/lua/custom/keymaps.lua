@@ -29,11 +29,6 @@ return function()
     { "gc", "@comment.toggle" },
     { "gcc", "@comment.toggle_line" },
     { "gc", "@textobject.comment" },
-    -- copy/paste using system clipboard
-    { "<Leader>y", '"+y', mode = { "n", "x" } },
-    { "<Leader>Y", '"+Y', mode = { "n", "x" } },
-    { "<Leader>p", '"+p', mode = { "n", "x" } },
-    { "<Leader>P", '"+P', mode = { "n", "x" } },
     -- leap/flit
     { "s", "@leap.forward_to" },
     { "S", "@leap.backward_to" },
@@ -54,7 +49,7 @@ return function()
       { "<A-k>", "@smart_splits.resize_up", mode = nixt },
       { "<A-l>", "@smart_splits.resize_right", mode = nixt },
       { "<Leader>-", "@window.split" },
-      { "<Leader>|", "@window.vsplit" },
+      { "<Leader>\\", "@window.vsplit" },
       { "<Leader>w-", "@window.split" },
       { "<Leader>w|", "@window.vsplit" },
       { "<Leader>wq", "@window.close" },
@@ -270,8 +265,9 @@ return function()
     })
   end
   for _, k in ipairs({ "y", "Y", "d", "D", "p", "P" }) do
-    table.insert(keymaps, { k, '"0' .. k, mode = "n" })
-    table.insert(keymaps, { k, '"0' .. k, mode = "x" })
+    -- copy/paste using system clipboard
+    table.insert(keymaps, { "<A-" .. k .. ">", '"+' .. k, mode = { "n", "x" } })
+    table.insert(keymaps, { k, '"0' .. k, mode = { "n", "x" } })
   end
   return keymaps
 end

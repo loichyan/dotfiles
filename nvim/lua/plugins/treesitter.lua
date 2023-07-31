@@ -50,7 +50,7 @@ return {
         "yaml",
       },
       autotag = { enable = true },
-      highlight = { additional_vim_regex_highlighting = false },
+      highlight = { enable = NOT_VSCODE, additional_vim_regex_highlighting = false },
       matchup = { enable = true },
     },
   },
