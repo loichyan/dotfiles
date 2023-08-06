@@ -26,7 +26,7 @@ EOF
 
 google_repo() {
   local repo=$1
-  sudo tee "/etc/yum.repos.d/_google-$repo.repo" <<EOF
+  sudo tee "/etc/yum.repos.d/google-$repo.repo" <<EOF
 [google-$repo]
 name=google-$repo
 baseurl=https://dl.google.com/linux/$repo/rpm/stable/\$basearch
