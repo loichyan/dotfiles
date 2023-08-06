@@ -57,8 +57,8 @@ theme-variant='dark'
 show-extensions-notice=false
 
 [org/gnome/desktop/wm/keybindings]
-switch-to-workspace-left=['<Control><Super>comma']
-switch-to-workspace-right=['<Control><Super>period']
+switch-to-workspace-left=['<Super>comma']
+switch-to-workspace-right=['<Super>period']
 move-to-workspace-left=['<Control><Super>Left']
 move-to-workspace-right=['<Control><Super>Right']
 toggle-fullscreen=['<Super>Return']
