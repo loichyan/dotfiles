@@ -32,7 +32,38 @@ return {
   -- Performance
   front_end = "WebGpu",
   -- Keybindings
+  disable_default_key_bindings = true,
   keys = {
+    {
+      key = "C",
+      mods = "CTRL|SHIFT",
+      action = Act.CopyTo("Clipboard"),
+    },
+    {
+      key = "V",
+      mods = "CTRL|SHIFT",
+      action = Act.PasteFrom("Clipboard"),
+    },
+    {
+      key = "c",
+      mods = "ALT",
+      action = Act.CopyTo("PrimarySelection"),
+    },
+    {
+      key = "v",
+      mods = "ALT",
+      action = Act.PasteFrom("PrimarySelection"),
+    },
+    {
+      key = "M",
+      mods = "CTRL|SHIFT",
+      action = Act.TogglePaneZoomState,
+    },
+    {
+      key = "N",
+      mods = "CTRL|SHIFT",
+      action = Act.SpawnTab("CurrentPaneDomain"),
+    },
     {
       key = "|",
       mods = "CTRL|SHIFT",
@@ -49,7 +80,7 @@ return {
       action = Act.RotatePanes("Clockwise"),
     },
     {
-      key = "O",
+      key = "I",
       mods = "CTRL|SHIFT",
       action = Act.RotatePanes("CounterClockwise"),
     },
