@@ -3,8 +3,17 @@ if status is-interactive
     set -g __history_protected_this 0
     set -g __history_failed
     set -g __history_deletions
-    set -g history_ignored bat cat cd ch{con,grp,mod,own} \
-        cp echo l{s,l} mkdir mv history printf rm sudo
+    set -g __history_last
+
+    function ADD -d "Protect the last history"
+        echo $__history_last
+        set -a __history_protected $__history_last
+    end
+
+    function DEL -d "Delete the last history"
+        echo $__history_last
+        set -a __history_deletions $__history_last
+    end
 
     function __hook_fish_preexec -e fish_preexec
         set -g __history_protected_this 0
@@ -16,24 +25,26 @@ if status is-interactive
     end
 
     function __hook_fish_postexec -e fish_postexec
+        set -l hist $argv[1]
+        # Ignore some commands
+        if ! string match -qr '^(ADD|DEL|echo).*$' $hist
+            set -g __history_last $hist
+        end
         if [ "$status" = 0 ] || [ "$__history_protected_this" = 1 ]
-            set -a __history_protected $argv[1]
+            # Delete histories which match ignored prefix.
+            set -a __history_protected $hist
         else
-            set -a __history_failed $argv[1]
+            set -a __history_failed $hist
         end
     end
 
     function __hook_fish_exit -e fish_exit
-        set -a __history_deletions $history_ignored
-        for entry in $__history_failed
-            if ! contains $entry $__history_protected
-                set -a __history_deletions $entry
+        for hist in $__history_failed
+            if ! contains $hist $__history_protected
+                set -a __history_deletions $hist
             end
         end
-        if [ -n "$__history_deletions" ]
-            history delete -Ce $__history_deletions
-        end
-        echo all | history delete -p ';' (printf '%s \n' $history_ignored) >/dev/null
+        history delete -Ce ADD DEL $deletions
     end
 
     if type -q direnv
