@@ -1,0 +1,5 @@
+# geosite:cn
+https://doh.pub:443/dns-query->direct
+
+# geosite:geolocation-!cn
+https://doh.pub:443/dns-query->proxy
