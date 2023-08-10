@@ -1,0 +1,91 @@
+#== Theme ==#
+
+[org/gnome/desktop/interface]
+clock-format='12h'
+color-scheme='prefer-dark'
+cursor-theme='Yaru'
+gtk-theme='Yaru-dark'
+icon-theme='Yaru-dark'
+font-name='Sans 11'
+document-font-name='Sans 11'
+monospace-font-name='Monospace 10'
+
+[org/gnome/desktop/sound]
+theme-name='Yaru'
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+titlebar-font='Sans Bold 11'
+
+[org/gnome/shell/extensions/user-theme]
+name='Yaru-dark'
+
+[org/gnome/terminal/legacy]
+theme-variant='dark'
+
+#== Proxy ==#
+
+[system/proxy]
+mode='manual'
+
+[system/proxy/http]
+host='127.0.0.1'
+port={{ .proxy.http }}
+
+[system/proxy/https]
+host='127.0.0.1'
+port={{ .proxy.http }}
+
+[system/proxy/socks]
+host='127.0.0.1'
+port={{ .proxy.socks }}
+
+#== Input ==#
+
+[org/gnome/desktop/input-sources]
+xkb-options=['caps:ctrl_modifier']
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/mouse]
+natural-scroll=true
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+#== Extensions ==#
+
+[org/gnome/shell/extensions/clipboard-indicator]
+display-mode=2
+strip-text=true
+
+[org/gnome/shell/extensions/pop-shell]
+tile-by-default=true
+active-hint-border-radius=uint32 5
+gap-inner=uint32 0
+gap-outer=uint32 0
+
+#== Nautilus ==#
+
+[org/gnome/nautilus/compression]
+default-compression-format='zip'
+
+[org/gnome/nautilus/list-view]
+default-zoom-level='medium'
+use-tree-view=true
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+search-view='list-view'
+
+#== Misc ==#
+
+[org/gnome/desktop/datetime]
+automatic-timezone=true
+
+[org/gnome/software]
+download-updates=false
