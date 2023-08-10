@@ -11,24 +11,24 @@ let
 in
 {
   systemd.user.services = {
-    xray = {
-      Unit = {
-        Description = xray.meta.description;
-        After = "network.target";
-      };
-      Service = {
-        Environment = [
-          "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
-          "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
-        ];
-        Type = "exec";
-        Restart = "on-abort";
-        ExecStart = "${xray}/bin/.xray-wrapped";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-    };
+    # xray = {
+    #   Unit = {
+    #     Description = xray.meta.description;
+    #     After = "network.target";
+    #   };
+    #   Service = {
+    #     Environment = [
+    #       "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
+    #       "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
+    #     ];
+    #     Type = "exec";
+    #     Restart = "on-abort";
+    #     ExecStart = "${xray}/bin/.xray-wrapped";
+    #   };
+    #   Install = {
+    #     WantedBy = [ "default.target" ];
+    #   };
+    # };
     aria2 = {
       Unit = {
         Description = aria.meta.description;
@@ -57,33 +57,33 @@ in
         WantedBy = [ "default.target" ];
       };
     };
-    geodat = {
-      Unit = {
-        Description = "Download geodat";
-        After = "network.target";
-      };
-      Service = {
-        Environment = [
-          "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
-          "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
-        ];
-        Type = "exec";
-        ExecStart = "${geodat}";
-      };
-    };
+    # geodat = {
+    #   Unit = {
+    #     Description = "Download geodat";
+    #     After = "network.target";
+    #   };
+    #   Service = {
+    #     Environment = [
+    #       "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
+    #       "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
+    #     ];
+    #     Type = "exec";
+    #     ExecStart = "${geodat}";
+    #   };
+    # };
   };
   systemd.user.timers = {
-    geodat = {
-      Unit = {
-        Description = "Auto download geodat";
-        After = "network.target";
-      };
-      Timer = {
-        OnUnitActiveSec = "*-*-* 00:00:00";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-    };
+    # geodat = {
+    #   Unit = {
+    #     Description = "Auto download geodat";
+    #     After = "network.target";
+    #   };
+    #   Timer = {
+    #     OnUnitActiveSec = "*-*-* 00:00:00";
+    #   };
+    #   Install = {
+    #     WantedBy = [ "default.target" ];
+    #   };
+    # };
   };
 }

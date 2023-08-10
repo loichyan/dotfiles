@@ -53,6 +53,7 @@ gsettings get org.gnome.software download-updates
 rpm-ostree install \
   fish wezterm \
   gnome-tweaks yaru-theme ibus-rime \
+  xray v2raya \
   cascadia-code-fonts sarasa-gothic-fonts symbols-nerd-fonts \
   podman-compose wl-clipboard xclip \
   ffmepg mozilla-openh264 \

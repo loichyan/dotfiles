@@ -125,7 +125,6 @@ with builtins;
     butane
     caddy
     hugo
-    xray
 
     # Perl
     perl
