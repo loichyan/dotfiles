@@ -27,7 +27,12 @@ if status is-interactive
     function __hook_fish_postexec -e fish_postexec
         set -l hist $argv[1]
         # Ignore some commands
-        if ! string match -qr '^(ADD|DEL|echo).*$' $hist
+        if set -l mat (string match -r '^(;|ADD|DEL|echo ).*$' $hist)
+            if [ "$mat[2]" = ";" ]
+                echo $mat[2]
+                set -a __history_deletions $hist
+            end
+        else
             set -g __history_last $hist
         end
         if [ "$status" = 0 ] || [ "$__history_protected_this" = 1 ]
@@ -44,7 +49,7 @@ if status is-interactive
                 set -a __history_deletions $hist
             end
         end
-        history delete -Ce ADD DEL $deletions
+        history delete -Ce $__history_deletions
     end
 
     if type -q direnv
