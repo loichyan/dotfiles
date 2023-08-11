@@ -1,8 +1,24 @@
 local W = require("wezterm")
 local SplitKeys = require("split_keys")
 local Act = W.action
+local Mux = W.mux
+
+local function toggle_domain(name)
+  return W.action_callback(function(win, pane)
+    local domain = Mux.get_domain(name)
+    if domain:state() == "Attached" then
+      win:perform_action(Act.DetachDomain({ DomainName = name }), pane)
+    else
+      win:perform_action(Act.AttachDomain(name), pane)
+    end
+  end)
+end
 
 return {
+  -- Multiplexer
+  unix_domains = {
+    { name = "bg" },
+  },
   -- Colorscheme & font
   color_scheme = require("colorscheme"),
   font = W.font_with_fallback({
@@ -35,12 +51,12 @@ return {
   disable_default_key_bindings = true,
   keys = {
     {
-      key = "C",
+      key = "c",
       mods = "CTRL|SHIFT",
       action = Act.CopyTo("Clipboard"),
     },
     {
-      key = "V",
+      key = "v",
       mods = "CTRL|SHIFT",
       action = Act.PasteFrom("Clipboard"),
     },
@@ -55,12 +71,12 @@ return {
       action = Act.PasteFrom("PrimarySelection"),
     },
     {
-      key = "M",
+      key = "m",
       mods = "CTRL|SHIFT",
       action = Act.TogglePaneZoomState,
     },
     {
-      key = "N",
+      key = "n",
       mods = "CTRL|SHIFT",
       action = Act.SpawnTab("CurrentPaneDomain"),
     },
@@ -75,12 +91,12 @@ return {
       action = Act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
     {
-      key = "O",
+      key = "o",
       mods = "CTRL|SHIFT",
       action = Act.RotatePanes("Clockwise"),
     },
     {
-      key = "I",
+      key = "i",
       mods = "CTRL|SHIFT",
       action = Act.RotatePanes("CounterClockwise"),
     },
@@ -95,19 +111,29 @@ return {
       action = Act.ActivateTabRelative(1),
     },
     {
-      key = "D",
+      key = "d",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentPane({ confirm = true }),
     },
     {
-      key = "W",
+      key = "w",
       mods = "CTRL|SHIFT",
       action = Act.CloseCurrentTab({ confirm = true }),
     },
     {
-      key = "Y",
+      key = "y",
       mods = "CTRL|SHIFT",
       action = Act.ActivateCopyMode,
+    },
+    {
+      key = "b",
+      mods = "CTRL|SHIFT",
+      action = toggle_domain("bg"),
+    },
+    {
+      key = "p",
+      mods = "CTRL|SHIFT",
+      action = Act.ActivateCommandPalette,
     },
     table.unpack(SplitKeys),
   },
