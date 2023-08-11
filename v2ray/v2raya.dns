@@ -1,5 +1,0 @@
-# geosite:cn
-https://doh.pub/dns-query -> direct
-
-# geosite:geolocation-!cn
-https://1.1.1.1/dns-query -> proxy
