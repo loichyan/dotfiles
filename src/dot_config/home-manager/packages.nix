@@ -12,6 +12,7 @@ with builtins;
     chezmoi
 
     # Utils
+    cloudflared
     delta
     jq
     netcat
