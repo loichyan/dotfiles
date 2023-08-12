@@ -1,4 +1,5 @@
 default: proxy
+domain(${HOST}) -> direct
 domain(geosite:category-ads-all) -> block
 domain(geosite:cn) -> direct
 ip(geoip:cn) -> direct
