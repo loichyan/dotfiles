@@ -13,9 +13,11 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, fenix, ... }:
+  outputs = { nixpkgs, home-manager, fenix, nix-index-database, ... }:
     let
       data = import ./data.nix;
       stateVersion = "23.05";
@@ -57,6 +59,7 @@
               ./modules/misc/hm-session-vars.nix
               ./packages.nix
               ./services.nix
+              nix-index-database.hmModules.nix-index
             ];
           };
     };
