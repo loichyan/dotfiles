@@ -1,6 +1,5 @@
 if status is-interactive
     set -g __history_protected $history
-    set -g __history_protected_this 0
     set -g __history_failed
     set -g __history_deletions
     set -g __history_last
@@ -15,24 +14,16 @@ if status is-interactive
         set -a __history_deletions $__history_last
     end
 
-    function __hook_fish_preexec -e fish_preexec
-        set -g __history_protected_this 0
-    end
-
-    function __hook_sigint -s SIGINT
-        # Protect interrupted command.
-        set -g __history_protected_this 1
-    end
-
     function __hook_fish_postexec -e fish_postexec
         set -l hist $argv[1]
+        set -l exitcode $status
         # Ignore some commands
-        if string match -qr '^(;|ADD|DEL|echo ).*$' $hist
+        if string match -qr '^(;|ADD|DEL|echo |printf ).*$' $hist
             set -a __history_deletions $hist
         else
             set -g __history_last $hist
         end
-        if [ "$status" = 0 ] || [ "$__history_protected_this" = 1 ]
+        if [ "$exitcode" = 0 ]
             # Delete histories which match ignored prefix.
             set -a __history_protected $hist
         else

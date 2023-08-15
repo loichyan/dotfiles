@@ -5,8 +5,10 @@ if status is-interactive
         end
     end
 
+    alias_command cat bat
     alias_command cp xcp
     alias_command du dust
+    alias_command imgcat wezterm imgcat
     alias_command lg lazygit
     alias_command ls exa
     alias_command rm rm -I

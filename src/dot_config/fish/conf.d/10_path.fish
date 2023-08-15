@@ -11,7 +11,7 @@ if status is-login
     end
 
     # Local installed packages.
-    fish_add_path -gp ~/.local/bin ~/.cargo/bin ~/.pip/bin ~/.pnpm/bin
+    fish_add_path -gp ~/.local/bin ~/.cargo/bin ~/.go/bin ~/.pip/bin ~/.pnpm/bin
 end
 
 if status is-interactive

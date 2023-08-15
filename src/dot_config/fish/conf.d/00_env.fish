@@ -3,6 +3,9 @@ if status is-login
     set -gx EDITOR nvim
     set -gx VISUAL nvim
 
-    # Define python user base folder.
+    # Define Python user base folder.
     set -gx PYTHONUSERBASE ~/.pip
+
+    # Define Golang env variables
+    set -gx GOPATH ~/.go
 end
