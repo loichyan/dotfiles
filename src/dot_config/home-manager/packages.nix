@@ -59,7 +59,9 @@ with builtins;
     clang-tools
     cmake
     gnumake
-    (stdenvAdapters.useMoldLinker stdenv).cc
+    (stdenv.cc.override {
+      bintools = llvmPackages.bintools;
+    })
 
     # Nix
     rnix-lsp
