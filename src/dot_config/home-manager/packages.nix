@@ -1,10 +1,13 @@
 { pkgs, ... }:
 with builtins;
 {
-  # programs.cargo-nightly-expand.enable = true;
   programs.home-manager.enable = true;
+  services.tor.enable = true;
+  services.aria.enable = true;
   misc.completions.enable = true;
   misc.hm-session-vars.enable = true;
+  # programs.cargo-nightly-expand.enable = true;
+  # services.xray.enable = true;
 
   # Install packages.
   home.packages = with pkgs;  [

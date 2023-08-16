@@ -4,23 +4,23 @@
   inputs = {
     nixpkgs.url = "nixpkgs";
     home-manager = {
-      # TODO: switch back to release-23.05 util #4012 is merged
-      # url = "github:nix-community/home-manager/release-23.05";
-      url = "github:nix-community/home-manager/53ccbe0";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-index-database.url = "github:Mic92/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, fenix, nix-index-database, ... }:
     let
       data = import ./data.nix;
-      stateVersion = "23.05";
+      stateVersion = "23.11";
       username = data.user;
       homeDirectory = data.home;
       overlays = [
@@ -54,12 +54,14 @@
                 home = { inherit username homeDirectory stateVersion; };
                 nixpkgs = { inherit overlays; };
               }
-              ./modules/programs/cargo-nightly-expand.nix
-              ./modules/misc/completions.nix
-              ./modules/misc/hm-session-vars.nix
-              ./packages.nix
-              ./services.nix
               nix-index-database.hmModules.nix-index
+              ./programs/cargo-nightly-expand.nix
+              ./services/aria.nix
+              ./services/tor.nix
+              ./services/xray.nix
+              ./misc/completions.nix
+              ./misc/hm-session-vars.nix
+              ./packages.nix
             ];
           };
     };

@@ -17,7 +17,7 @@ let
 in
 {
   options.misc.completions = {
-    enable = mkEnableOption "Completions";
+    enable = mkEnableOption "Additional completions";
     pip = mkOption {
       type = types.bool;
       default = true;
