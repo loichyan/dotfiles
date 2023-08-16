@@ -3,7 +3,7 @@ with builtins;
 with lib;
 let
   cfg = config.services.xray;
-  inherit (pkgs) myData tor;
+  inherit (pkgs) myData aria;
 in
 {
   options.services.aria = {
