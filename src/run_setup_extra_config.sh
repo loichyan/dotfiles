@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 root=$(realpath "$CHEZMOI_SOURCE_DIR/..")
 
 warn() {
@@ -8,6 +10,10 @@ warn() {
 
 info() {
   printf "\e[36m[INFO]\e[0m %s\n" "$1"
+}
+
+has() {
+  return $(command -v "$1" &>/dev/null)
 }
 
 symlink() {
@@ -29,24 +35,6 @@ symlink() {
   ln -s "$src" "$dest"
 }
 
-has() {
-  return $(command -v "$1" &>/dev/null)
-}
-
-pnpm_pkg() {
-  local pkg
-  local -a to_install=()
-  for pkg in "$@"; do
-    if ! pnpm list -g | grep -F "$pkg" &>/dev/null; then
-      to_install+=("$pkg")
-    fi
-  done
-  if ((${#to_install[@]})); then
-    info "Install ${to_install[*]}"
-    pnpm install -g "${to_install[@]}"
-  fi
-}
-
 info "Setup extra configuration"
 
 # symlink directories
@@ -59,18 +47,11 @@ symlink private/ssh .ssh
 if [[ ! -d "$HOME/.plum" ]]; then
   info "Install rime/plum"
   git clone --depth 1 "https://github.com/rime/plum" ~/.plum
-  mkdir -p ~/.local/bin
-  ln -s ~/.plum/rime-install ~/.local/bin/rime-install
   info "Clone iDvel/rime-ice"
   bash ~/.plum/rime-install iDvel/rime-ice:others/recipes/full
 fi
 
-# Add pnpm completion
-if has pnpm && [[ ! -e ~/.config/tabtab/zsh/pnpm.zsh ]]; then
-  pnpm install-completion zsh
-fi
-
-# Install pnpm packages
-if has pnpm; then
-  pnpm_pkg @fsouza/prettierd
+# Add pnpm completions
+if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
+  pnpm install-completion fish
 fi

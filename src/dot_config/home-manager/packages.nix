@@ -1,7 +1,7 @@
 { pkgs, ... }:
 with builtins;
 {
-  programs.cargo-nightly-expand.enable = true;
+  # programs.cargo-nightly-expand.enable = true;
   programs.home-manager.enable = true;
   misc.completions.enable = true;
   misc.hm-session-vars.enable = true;
@@ -11,27 +11,14 @@ with builtins;
     # Dotfiles manager
     chezmoi
 
-    # Utils
-    cloudflared
-    delta
-    jq
-    netcat
-    safe-rm
-    tmux
-    tokei
-    wakatime
-    nodePackages.live-server
-
-    # Coreutil replacements
-    bat
-    bottom
-    broot
-    du-dust
-    exa
-    fd
-    htop
-    ripgrep
-    xcp
+    # Shell
+    direnv
+    nix-direnv
+    shellcheck
+    shfmt
+    starship
+    zoxide
+    #perl536Packages.JSONPP # Yarn completions
 
     # Git
     commitizen
@@ -41,105 +28,89 @@ with builtins;
     # Neovim
     neovim
     tree-sitter
-    # used by LuaSnip
-    luajitPackages.jsregexp
 
-    # Shell
-    direnv
-    nix-direnv
-    shellcheck
-    shfmt
-    starship
-    zoxide
+    # Dev tools
+    bat
+    bottom
+    cloudflared
+    erdtree
+    exa
+    fd
+    jq
+    netcat
+    ripgrep
+    tokei
 
-    # Dockerfile
-    hadolint
+    # Misc
+    wakatime
+    caddy
+    nodePackages.live-server
+
+    #== Languages support ==#
 
     # C/C++
-    clang-tools
     cmake
     gnumake
     (stdenv.cc.override {
       bintools = llvmPackages.bintools;
     })
 
-    # Nix
-    rnix-lsp
-
-    # Node
-    nodejs
-    nodePackages.pnpm
-    nodePackages.yarn
-    # lsp/formatter/linter
-    nodePackages.eslint
-    nodePackages.prettier
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-
-    # Prose linter & spell checker
-    nodePackages.cspell
-    vale
-
-    # Deno
-    deno
-
-    # Python
-    myPkgs.python3
-    nodePackages.pyright
-    poetry
-
     # Rust
     (with pkgs.fenix; with stable; combine [
       defaultToolchain
-      rust-src
       rust-analyzer
+      rust-src
     ])
-    # cargo ulities
+
+    # Cargo ulities
     cargo-edit
     cargo-readme
     cargo-release
     cargo-tarpaulin
     cargo-watch
-    # wasm
+
+    # Rust & WASM
     binaryen
     trunk
     wasm-bindgen-cli
     wasm-pack
-    # toml
-    taplo-cli
 
-    # Lua
-    stylua
+    # JavaScript
+    deno
+    nodejs
+    nodePackages.pnpm
+    nodePackages.yarn
+
+    # Python
+    poetry
+    myPkgs.python3
+    nodePackages.pyright
+
+    # Others
+    ghc
+    go
+    perl
+
+    # LSP servers
+    clang-tools
+    delve
+    gopls
+    hadolint
+    haskell-language-server
+    rnix-lsp
     sumneko-lua-language-server
 
-    # Java
-    jdk8
-
-    # Haskell
-    ghc
-    haskell-language-server
-
-    # Golang
-    delve
-    go
-    gopls
-
-    # Dev Ops
-    butane
-    caddy
-    hugo
-
-    # Perl
-    perl
-    # used by Yarn autocompleton
-    perl536Packages.JSONPP
-
-    # Cue
-    cue
+    # Formatter/linter
+    prettierd
+    stylua
+    taplo-cli
+    nodePackages.eslint
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
 
     # Document
-    texlive.combined.scheme-full
-    texlab
+    #texlive.combined.scheme-full
+    #texlab
   ];
 }

@@ -21,22 +21,11 @@ return {
             stylua = true,
           },
           diagnostics = {
-            cspell = {
-              filetypes = { "markdown" },
-              diagnostics_postprocess = function(diag)
-                diag.severity = vim.diagnostic.severity.WARN
-              end,
-            },
             cue_fmt = true,
             eslint = true,
             fish = true,
             hadolint = true,
             shellcheck = true,
-            vale = {
-              diagnostics_postprocess = function(diag)
-                diag.severity = vim.diagnostic.severity.HINT
-              end,
-            },
           },
           code_actions = {
             cspell = true,
