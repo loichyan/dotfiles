@@ -6,8 +6,8 @@ with builtins;
   services.aria.enable = true;
   misc.completions.enable = true;
   misc.hm-session-vars.enable = true;
-  # programs.cargo-nightly-expand.enable = true;
-  # services.xray.enable = true;
+  #programs.cargo-nightly-expand.enable = true;
+  #services.xray.enable = true;
 
   # Install packages.
   home.packages = with pkgs;  [
@@ -21,7 +21,6 @@ with builtins;
     shfmt
     starship
     zoxide
-    #perl536Packages.JSONPP # Yarn completions
 
     # Git
     commitizen
@@ -34,11 +33,11 @@ with builtins;
 
     # Dev tools
     bat
-    bottom
     cloudflared
     erdtree
     exa
     fd
+    htop
     jq
     netcat
     ripgrep
