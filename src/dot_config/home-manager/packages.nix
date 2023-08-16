@@ -86,8 +86,8 @@ with builtins;
 
     # Python
     myPkgs.python3
-    poetry
     nodePackages.pyright
+    poetry
 
     # Rust
     (with pkgs.fenix; with stable; combine [

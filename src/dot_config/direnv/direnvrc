@@ -1,1 +1,14 @@
+layout_poetry() {
+    VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
+    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+        log_status "No virtual environment exists."
+        poetry install
+        VIRTUAL_ENV=$(poetry env info --path)
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export POETRY_ACTIVE=1
+    export VIRTUAL_ENV
+}
+
 source $HOME/.nix-profile/share/nix-direnv/direnvrc

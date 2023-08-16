@@ -18,8 +18,12 @@ in
 {
   options.misc.completions = {
     enable = mkEnableOption "Completions";
+    pip = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
   config = mkIf cfg.enable {
-    home.packages = [ pip-completions ];
+    home.packages = (mkIf cfg.pip [ pip-completions ]);
   };
 }
