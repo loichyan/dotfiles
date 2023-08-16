@@ -9,3 +9,5 @@ if status is-login
     # Define Golang env variables
     set -gx GOPATH ~/.go
 end
+
+setproxy
