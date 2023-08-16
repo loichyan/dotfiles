@@ -98,7 +98,7 @@ return {
     "gitsigns.nvim",
     opts = { current_line_blame = true },
   },
-  { "flit.nvim" },
+  { "todo-comments.nvim", opts = { highlight = { multiline = false } } },
   ----------------
   -- My plugins --
   ----------------

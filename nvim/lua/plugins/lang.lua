@@ -33,7 +33,7 @@ return {
     cond = NOT_VSCODE,
     ft = { "markdown" },
     build = "deno task build:fast",
-    opts = { app = "firefox" },
+    opts = { app = "google-chrome" },
     config = function(_, opts)
       local function peek(name)
         return function()
