@@ -85,7 +85,7 @@ with builtins;
 
     # Python
     poetry
-    myPkgs.python3
+    python
     nodePackages.pyright
 
     # Others

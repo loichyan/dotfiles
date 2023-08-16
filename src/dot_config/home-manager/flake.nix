@@ -27,16 +27,14 @@
         fenix.overlays.default
         (_: prev: with prev; {
           myData = data;
-          myPkgs = {
-            python3 =
-              (prev.python3.withPackages (p: with p; [
-                black
-                ipython
-                numpy
-                pandas
-                pip
-              ]));
-          };
+          python =
+            (prev.python3.withPackages (p: with p; [
+              black
+              ipython
+              numpy
+              pandas
+              pip
+            ]));
         })
       ];
     in
