@@ -18,7 +18,7 @@ if status is-interactive
         set -l hist $argv[1]
         set -l exitcode $status
         # Ignore some commands
-        if string match -qr '^(;|ADD|DEL|echo |printf ).*$' $hist
+        if string match -qr '^(;|ADD|DEL|history |echo |printf ).*$' $hist
             set -a __history_deletions $hist
         else
             set -g __history_last $hist
