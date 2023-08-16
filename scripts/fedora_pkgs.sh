@@ -5,7 +5,7 @@ source /etc/os-release &&
   rpm-ostree install \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$VERSION_ID.noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$VERSION_ID.noarch.rpm
-#  Install Nvidia driver and setup secure boot.
+# Install Nvidia driver and setup secure boot.
 rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia
 sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau
@@ -62,6 +62,9 @@ rpm-ostree install \
 
 # Install Nix.
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+# Activate Home Manager
+nix run home-manager/master -- switch
 
 # Enable podman socket.
 systemctl --user enable --now podman.socket
