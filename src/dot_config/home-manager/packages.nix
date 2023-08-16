@@ -121,6 +121,7 @@ with builtins;
     haskell-language-server
 
     # Golang
+    delve
     go
     gopls
 
