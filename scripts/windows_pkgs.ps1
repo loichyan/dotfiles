@@ -12,3 +12,6 @@ winget install -i Netease.CloudMusic
 winget install -i voidtools.Everything.Lite
 winget install -i Tencent.WeChat
 winget install -i Tencent.QQ
+
+# Set Nerd Fonts fallback
+Set-ItemProperty -Path "HKCU:\EUDC\$(Get-ItemPropertyValue -Path HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage -Name OEMCP)" -Name SystemDefaultEUDCFont -Value SymbolsNerdFont-Regular.ttf
