@@ -2,12 +2,12 @@
 with builtins;
 {
   programs.home-manager.enable = true;
-  services.tor.enable = true;
   services.aria.enable = true;
+  services.tor.enable = true;
+  services.xray.enable = true;
   misc.completions.enable = true;
   misc.hm-session-vars.enable = true;
-  #programs.cargo-nightly-expand.enable = true;
-  #services.xray.enable = true;
+  # programs.cargo-nightly-expand.enable = true;
 
   # Install packages.
   home.packages = with pkgs;  [
