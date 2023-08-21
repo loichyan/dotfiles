@@ -2,7 +2,7 @@
 with builtins;
 with lib;
 let
-  cfg = config.services.xray;
+  cfg = config.services.tor;
   inherit (pkgs) myData tor;
 in
 {

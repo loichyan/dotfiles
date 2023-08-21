@@ -7,6 +7,7 @@ devDir: /home/user1/dev
 # Proxy ports
 proxy:
   outbound: xxxx
+  enabled: true
   http: 1080
   socks: 1079
   tor: 8090

@@ -1,6 +1,8 @@
 {
   user = "{{ .user }}";
   home = "{{ .home }}";
+  proxyEnabled = {{ .proxy.enabled }};
   httpProxy = "{{ .proxy.http }}";
   socksProxy = "{{ .proxy.socks }}";
+  torProxy = "{{ .proxy.tor }}";
 }

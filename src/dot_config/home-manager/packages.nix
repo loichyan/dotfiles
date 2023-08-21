@@ -1,10 +1,13 @@
 { pkgs, ... }:
 with builtins;
+let
+  inherit (pkgs) myData;
+in
 {
   programs.home-manager.enable = true;
   services.aria.enable = true;
   services.tor.enable = true;
-  services.xray.enable = true;
+  services.xray.enable = myData.proxyEnabled;
   misc.completions.enable = true;
   misc.hm-session-vars.enable = true;
   # programs.cargo-nightly-expand.enable = true;
