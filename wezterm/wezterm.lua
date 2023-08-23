@@ -19,6 +19,9 @@ return {
   unix_domains = {
     { name = "bg" },
   },
+  -- IME
+  use_ime = true,
+  ime_preedit_rendering = "Builtin",
   -- Colorscheme & font
   color_scheme = require("colorscheme"),
   font = W.font_with_fallback({
@@ -34,6 +37,7 @@ return {
   hide_mouse_cursor_when_typing = false,
   -- Title & tab bar
   window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+  window_background_opacity = 0.90,
   use_fancy_tab_bar = false,
   tab_max_width = 25,
   show_tab_index_in_tab_bar = false,
