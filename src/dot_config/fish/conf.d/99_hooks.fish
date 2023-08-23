@@ -41,6 +41,7 @@ if status is-interactive
     end
 
     if type -q direnv
+        set -g direnv_fish_mode eval_after_arrow
         direnv hook fish | source
     end
 end
