@@ -2,6 +2,12 @@ local H = require("deltavim.helpers")
 
 return {
   {
+    "nvim-notify",
+    opts = {
+      background_colour = "#000000",
+    },
+  },
+  {
     "lualine.nvim",
     opts = {
       options = {
