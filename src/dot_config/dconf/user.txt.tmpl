@@ -15,7 +15,7 @@ monospace-font-name='Monospace 10'
 theme-name='Yaru'
 
 [org/gnome/desktop/wm/preferences]
-button-layout='appmenu:minimize,maximize,close'
+button-layout='appmenu:close'
 titlebar-font='Sans Bold 11'
 
 [org/gnome/shell/extensions/user-theme]
@@ -44,6 +44,7 @@ port={{ .proxy.socks }}
 #== Input ==#
 
 [org/gnome/desktop/input-sources]
+sources=[('xkb', 'cn'), ('ibus', 'rime')]
 xkb-options=['caps:ctrl_modifier']
 
 [org/gnome/desktop/peripherals/keyboard]
@@ -63,10 +64,12 @@ display-mode=2
 strip-text=true
 
 [org/gnome/shell/extensions/pop-shell]
-tile-by-default=true
 active-hint-border-radius=uint32 5
-gap-inner=uint32 0
-gap-outer=uint32 0
+active-hint=true
+gap-inner=uint32 1
+gap-outer=uint32 1
+hint-color-rgba='rgba(251,184,108,0.75)'
+tile-by-default=true
 
 #== Nautilus ==#
 
@@ -84,6 +87,10 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 #== Misc ==#
+
+[org/gnome/shell]
+enabled-extensions=['background-logo@fedorahosted.org', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'clipboard-indicator@tudmotu.com', 'ssm-gnome@lgiki.net', 'trayIconsReloaded@selfmade.pl', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com']
+favorite-apps=['org.wezfurlong.wezterm.desktop', 'google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
 
 [org/gnome/desktop/datetime]
 automatic-timezone=true
