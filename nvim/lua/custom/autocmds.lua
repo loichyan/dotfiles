@@ -2,7 +2,7 @@ return {
   {
     "@rulers",
     ft = {
-      ["*"] = 100,
+      ["*"] = 80,
     },
   },
   { "@spell", false },
