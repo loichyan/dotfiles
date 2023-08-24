@@ -9,7 +9,8 @@ in
   services.tor.enable = true;
   services.xray.enable = myData.proxyEnabled;
   misc.completions.enable = true;
-  misc.hm-session-vars.enable = true;
+  # FIXME: enable in 23.11
+  # misc.hm-session-vars.enable = true;
   # programs.cargo-nightly-expand.enable = true;
 
   # Install packages.
@@ -56,9 +57,7 @@ in
     # C/C++
     cmake
     gnumake
-    (stdenv.cc.override {
-      bintools = llvmPackages.bintools;
-    })
+    (stdenvAdapters.useMoldLinker stdenv).cc
 
     # Rust
     (with pkgs.fenix; with stable; combine [
@@ -92,16 +91,14 @@ in
     nodePackages.pyright
 
     # Others
-    ghc
     go
     perl
-
     # LSP servers
     clang-tools
     delve
     gopls
-    hadolint
-    haskell-language-server
+    # FIXME: ilist is broken
+    # hadolint
     rnix-lsp
     sumneko-lua-language-server
 
@@ -114,8 +111,11 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
 
-    # Document
-    #texlive.combined.scheme-full
-    #texlab
+    # # Haskell
+    # ghc
+    # haskell-language-server
+    # # Document
+    # texlive.combined.scheme-full
+    # texlab
   ];
 }

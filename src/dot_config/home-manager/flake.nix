@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
@@ -20,7 +20,7 @@
   outputs = { nixpkgs, home-manager, fenix, nix-index-database, ... }:
     let
       data = import ./data.nix;
-      stateVersion = "23.11";
+      stateVersion = "23.05";
       username = data.user;
       homeDirectory = data.home;
       overlays = [
