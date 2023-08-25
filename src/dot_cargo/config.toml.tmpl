@@ -8,4 +8,4 @@ proxy = "http://127.0.0.1:{{ .proxy.http }}"
 protocol = "sparse"
 
 [target.x86_64-unknown-linux-gnu]
-rustflags = ["-Clink-arg=-fuse-ld=lld"]
+rustflags = ["-Clink-arg=-fuse-ld=mold"]
