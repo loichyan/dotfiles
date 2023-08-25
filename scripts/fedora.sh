@@ -24,21 +24,7 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 }
 
-google_repo() {
-  local repo=$1
-  sudo tee "/etc/yum.repos.d/google-$repo.repo" <<EOF
-[google-$repo]
-name=google-$repo
-baseurl=https://dl.google.com/linux/$repo/rpm/stable/\$basearch
-skip_if_unavailable=True
-enabled=1
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-EOF
-}
-
 # Import Microsoft repos.
-google_repo chrome
 ms_repo edge
 ms_repo vscode
 # Personal packages
@@ -46,19 +32,12 @@ source /etc/os-release &&
   curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo" |
   sudo tee /etc/yum.repos.d/home_loichyan.repo
 
-# Disable auto-update
-gsettings get org.gnome.software download-updates
-
 # Install common packages.
 rpm-ostree install \
-  fish wezterm \
-  gnome-tweaks yaru-theme ibus-rime \
-  gnome-shell-extension-pop-shell pop-launcher qalculate \
-  xray v2raya \
-  cascadia-code-fonts sarasa-gothic-fonts symbols-nerd-fonts \
-  podman-compose wl-clipboard xclip \
-  ffmepg mozilla-openh264 \
-  code
+  fish wezterm wl-clipboard \
+  v2raya xray \
+  code podman-compose \
+  mygnome cascadia-code-fonts sarasa-gothic-fonts symbols-nerd-fonts
 
 # Install Nix.
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
