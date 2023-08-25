@@ -7,9 +7,11 @@ if status is-login
     set -gx PYTHONUSERBASE ~/.pip
 
     # iBus
-    export GTK_IM_MODULE=xim
-    export QT_IM_MODULE=xim
-    export XMODIFIERS=@im=ibus
+    if ! isatty
+        set -gx GTK_IM_MODULE ibus
+        set -gx QT_IM_MODULE ibus
+        set -gx XMODIFIERS @im=ibus
+    end
 
     # Define Golang env variables
     set -gx GOPATH ~/.go

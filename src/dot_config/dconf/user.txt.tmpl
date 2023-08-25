@@ -1,22 +1,22 @@
 #== Theme ==#
 
-[org/gnome/desktop/interface]
-clock-format='12h'
-color-scheme='prefer-dark'
-cursor-theme='Yaru'
-gtk-theme='Yaru-dark'
-gtk-key-theme='Emacs'
-icon-theme='Yaru-dark'
-font-name='Sans 11'
-document-font-name='Sans 11'
-monospace-font-name='Monospace 10'
-
-[org/gnome/desktop/sound]
-theme-name='Yaru'
-
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:close'
 titlebar-font='Sans Bold 11'
+
+[org/gnome/desktop/interface]
+clock-format='12h'
+color-scheme='prefer-dark'
+font-name='Sans 11'
+document-font-name='Sans 11'
+monospace-font-name='Monospace 10'
+cursor-theme='Yaru'
+gtk-theme='Yaru-dark'
+icon-theme='Yaru-dark'
+gtk-key-theme='Emacs'
+
+[org/gnome/desktop/sound]
+theme-name='Yaru'
 
 [org/gnome/shell/extensions/user-theme]
 name='Yaru-dark'
@@ -59,17 +59,72 @@ two-finger-scrolling-enabled=true
 
 #== Extensions ==#
 
+[org/gnome/shell/extensions/appindicator]
+legacy-tray-enabled=true
+tray-pos='right'
+
 [org/gnome/shell/extensions/clipboard-indicator]
 display-mode=2
 strip-text=true
+next-entry=['<Super>bracketright']
+prev-entry=['<Super>bracketleft']
+
+[org/gnome/shell/extensions/dash-to-panel]
+animate-appicon-hover=true
+appicon-margin=4
+appicon-padding=4
+dot-position='BOTTOM'
+group-apps=true
+hot-keys=false
+multi-monitors=false
+panel-lengths='{"0":100,"1":100}'
+panel-positions='{"0":"TOP","1":"TOP"}'
+panel-sizes='{"0":32,"1":32}'
+scroll-icon-action='CYCLE_WINDOWS'
+scroll-panel-action='SWITCH_WORKSPACE'
+show-appmenu=false
+
+[org/gnome/shell/extensions/simple-system-monitor]
+cpu-usage-text='󰈐'
+memory-usage-text='󰍛'
+download-speed-text='󰇚'
+upload-speed-text='󰕒'
+extension-position='right'
+font-family='Sans'
+font-size=' 13'
+font-weight=600
+is-cpu-usage-enable=true
+is-download-speed-enable=true
+is-memory-usage-enable=true
+is-upload-speed-enable=true
+item-separator='  '
+refresh-interval=1
+show-extra-spaces=true
+show-percent-sign=true
 
 [org/gnome/shell/extensions/pop-shell]
 active-hint-border-radius=uint32 5
 active-hint=true
-gap-inner=uint32 1
-gap-outer=uint32 1
-hint-color-rgba='rgba(251,184,108,0.75)'
+gap-inner=uint32 2
+gap-outer=uint32 2
+hint-color-rgba='rgba(132,160,198,0.95)'
 tile-by-default=true
+show-title=false
+smart-gaps=true
+activate-launcher=['<Super>d']
+tile-enter=['<Super>r']
+tile-move-left-global=['<Shift><Super>Left', '<Shift><Super>h']
+tile-move-up-global=['<Shift><Super>Up', '<Shift><Super>j']
+tile-move-down-global=['<Shift><Super>Down', '<Shift><Super>k']
+tile-move-right-global=['<Shift><Super>Right', '<Shift><Super>l']
+tile-resize-left=['Left', 'h']
+tile-resize-up=['Up', 'j']
+tile-resize-down=['Down', 'k']
+tile-resize-right=['Right', 'l']
+tile-move-left=@as []
+tile-move-up=@as []
+tile-move-down=@as []
+tile-move-right=@as []
 
 #== Nautilus ==#
 
@@ -86,14 +141,48 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 search-view='list-view'
 
-#== Misc ==#
+#== Custom keybindings ==
 
-[org/gnome/shell]
-enabled-extensions=['background-logo@fedorahosted.org', 'caffeine@patapon.info', 'blur-my-shell@aunetx', 'clipboard-indicator@tudmotu.com', 'ssm-gnome@lgiki.net', 'trayIconsReloaded@selfmade.pl', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com']
-favorite-apps=['org.wezfurlong.wezterm.desktop', 'google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
+[org/gnome/desktop/wm/keybindings]
+move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-2=['<Shift><Super>2']
+move-to-workspace-3=['<Shift><Super>3']
+move-to-workspace-4=['<Shift><Super>4']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+email=@as []
+home=['<Super>e']
+www=['<Super>f']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal]
+name='Open terminal'
+command='wezterm'
+binding='<Super>Return'
+
+[org/gnome/shell/keybindings]
+toggle-overview=@as []
+
+#== Misc ==#
 
 [org/gnome/desktop/datetime]
 automatic-timezone=true
+
+[org/gnome/desktop/default-applications/terminal]
+exec='wezterm'
+exec-arg=''
+
+[org/gnome/shell]
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'dash-to-panel@jderose9.github.com', 'pop-shell@system76.com', 'ssm-gnome@lgiki.net', 'trayIconsReloaded@selfmade.pl', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['org.wezfurlong.wezterm.desktop', 'google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
+
+[org/gnome/mutter]
+dynamic-workspaces=true
+edge-tiling=false
 
 [org/gnome/software]
 download-updates=false
