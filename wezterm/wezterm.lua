@@ -53,6 +53,13 @@ return {
   front_end = "WebGpu",
   -- Keybindings
   disable_default_key_bindings = true,
+  mouse_bindings = {
+    {
+      event = { Up = { streak = 1, button = "Left" } },
+      mods = "NONE",
+      action = Act.Nop,
+    },
+  },
   keys = {
     {
       key = "c",
