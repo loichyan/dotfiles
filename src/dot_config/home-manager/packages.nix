@@ -43,7 +43,9 @@ in
     fd
     htop
     jq
+    just
     netcat
+    p7zip
     ripgrep
     tokei
 
