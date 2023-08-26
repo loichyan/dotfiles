@@ -24,7 +24,21 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 }
 
+google_repo() {
+  local repo=$1
+  sudo tee "/etc/yum.repos.d/google-$repo.repo" <<EOF
+[google-$repo]
+name=google-$repo
+baseurl=https://dl.google.com/linux/$repo/rpm/stable/\$basearch
+skip_if_unavailable=True
+enabled=1
+gpgcheck=1
+gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+EOF
+}
+
 # Import Microsoft repos.
+google_repo chrome
 ms_repo edge
 ms_repo vscode
 # Personal packages
