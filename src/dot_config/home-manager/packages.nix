@@ -41,6 +41,7 @@ in
     erdtree
     exa
     fd
+    fzf
     htop
     jq
     just
