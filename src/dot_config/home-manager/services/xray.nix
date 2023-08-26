@@ -58,7 +58,7 @@ in
           After = "network.target";
         };
         Timer = {
-          OnUnitActiveSec = "*-*-* 00:00:00";
+          OnBootSec = "1h";
         };
         Install = {
           WantedBy = [ "default.target" ];

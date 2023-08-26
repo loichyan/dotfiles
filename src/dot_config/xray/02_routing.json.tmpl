@@ -9,6 +9,16 @@
       },
       {
         "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "domain": ["domain:doh.hub", "domain:alidns.com"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
         "domain": ["geosite:cn"],
         "outboundTag": "direct"
       },
@@ -16,11 +26,6 @@
         "type": "field",
         "ip": ["geoip:cn", "geoip:private"],
         "outboundTag": "direct"
-      },
-      {
-        "type": "field",
-        "protocol": ["bittorrent"],
-        "outboundTag": "block"
       },
       {
         "type": "field",

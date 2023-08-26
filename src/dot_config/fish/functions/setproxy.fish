@@ -1,7 +1,7 @@
 function setproxy
-    set -f proxy (if [ -n "$argv" ]; echo $argv; else; echo $MY_HTTP_PROXY; end)
-    set -gx HTTP_PROXY $proxy
-    set -gx http_proxy $proxy
-    set -gx HTTPS_PROXY $proxy
-    set -gx https_proxy $proxy
+    set -f proxy (if [ -n "$argv" ]; echo $argv; else; echo $MY_SOCKS_PROXY; end)
+    for v in {all,ftp,http,https}_proxy
+        set -gx $v $proxy
+        set -gx (string upper $v) $proxy
+    end
 end

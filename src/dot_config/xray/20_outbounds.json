@@ -1,6 +1,10 @@
 {
   "outbounds": [
-    { "tag": "direct", "protocol": "freedom" },
-    { "tag": "block", "protocol": "blackhole" }
+    { "tag": "block", "protocol": "blackhole" },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": { "domainStrategy": "UseIP" }
+    }
   ]
 }
