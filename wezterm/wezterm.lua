@@ -13,7 +13,7 @@ local function toggle_domain(name)
     end
   end)
 end
-
+-- 牛逼哈哈昂
 return {
   -- Multiplexer
   unix_domains = {
@@ -26,7 +26,7 @@ return {
   color_scheme = require("colorscheme"),
   font = W.font_with_fallback({
     { family = "monospace" },
-    { family = "Sarasa UI SC" },
+    { family = "Noto Sans CJK SC" },
   }),
   font_size = 11.0,
   line_height = 1.1,
