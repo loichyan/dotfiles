@@ -13,6 +13,9 @@ if status is-login
         set -gx XMODIFIERS @im=ibus
     end
 
+    # ripgrep
+    set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/ripgreprc
+
     # Define Golang env variables
     set -gx GOPATH ~/.go
 end
