@@ -6,6 +6,9 @@ home: /home/user1
 devDir: /home/user1/dev
 # Proxy ports
 proxy:
+  domains:
+    - full:aa.bb.cc
+    - full:xx.yy.zz
   outbound: xxxx
   enabled: true
   http: 1080

@@ -1,0 +1,21 @@
+{
+  "dns": {
+    "hosts": {
+      "dns.alidns.com": ["223.5.5.5", "223.6.6.6"],
+      "doh.pub": ["119.29.29.29"]
+    },
+    "servers": [
+      {
+        "address": "fakedns",
+        "domains": ["geosite:geolocation-!cn"]
+      },
+      {
+        "address": "localhost",
+        "domains": {{ toJson .proxy.domains }}
+      },
+      "https://dns.alidns.com/dns-query",
+      "https://doh.pub/dns-query",
+      "localhost"
+    ]
+  }
+}
