@@ -2,13 +2,13 @@
 with builtins;
 with lib;
 let
-  inherit (pkgs) writeShellApplication fenix cargo-expand;
+  inherit (pkgs) writeShellApplication fenix-monthly cargo-expand;
   cfg = config.programs.cargo-nightly-expand;
   cargo-nightly-expand =
     writeShellApplication {
       name = "cargo-nightly-expand";
       runtimeInputs = [
-        fenix.minimal.toolchain
+        fenix-monthly.minimal.toolchain
         cargo-expand
       ];
       text = ''

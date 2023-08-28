@@ -11,13 +11,24 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix-monthly = {
+      url = "github:nix-community/fenix/monthly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, fenix, nix-index-database, ... }:
+  outputs =
+    { nixpkgs
+    , home-manager
+    , fenix
+    , fenix-monthly
+    , nix-index-database
+    , ...
+    }:
     let
       data = import ./data.nix;
       stateVersion = "23.05";
@@ -35,6 +46,7 @@
               pandas
               pip
             ]));
+          fenix-monthly = fenix-monthly.packages.${prev.system};
         })
       ];
     in
@@ -54,6 +66,7 @@
               }
               nix-index-database.hmModules.nix-index
               ./programs/cargo-nightly-expand.nix
+              ./programs/cargo-nightly-udeps.nix
               ./services/aria.nix
               ./services/tor.nix
               ./services/xray.nix
