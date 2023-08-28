@@ -1,4 +1,5 @@
 if status is-interactive
+    setproxy $MY_HTTP_PROXY
     if type -q zoxide
         zoxide init fish | source
     end
