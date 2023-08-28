@@ -85,8 +85,6 @@ return {
     { event = { Up = { streak = 1, button = "Left" } }, action = Act.Nop },
   },
   keys = {
-    { key = "<", mods = "CTRL|SHIFT", action = Act.ActivateTabRelative(-1) },
-    { key = ">", mods = "CTRL|SHIFT", action = Act.ActivateTabRelative(1) },
     { key = "_", mods = "CTRL|SHIFT", action = Act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "b", mods = "CTRL|SHIFT", action = toggle_domain("bg") },
     { key = "c", mods = "CTRL|SHIFT", action = Act.CopyTo("Clipboard") },
@@ -101,6 +99,8 @@ return {
     { key = "w", mods = "CTRL|SHIFT", action = Act.CloseCurrentTab({ confirm = true }) },
     { key = "y", mods = "CTRL|SHIFT", action = Act.ActivateCopyMode },
     { key = "|", mods = "CTRL|SHIFT", action = Act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "h", mods = "ALT", action = Act.ActivateTabRelative(-1) },
+    { key = "l", mods = "ALT", action = Act.ActivateTabRelative(1) },
     { key = "c", mods = "ALT", action = Act.CopyTo("PrimarySelection") },
     { key = "v", mods = "ALT", action = Act.PasteFrom("PrimarySelection") },
     table.unpack(SplitKeys),

@@ -3,42 +3,48 @@
 -- Upstream: https://github.com/mrjones2014/smart-splits.nvim
 
 local W = require("wezterm")
-local Act = W.action
+-- local Act = W.action
 
 local function is_vim(pane)
   return pane:get_user_vars().IS_NVIM == "true"
 end
 
-local key_directions = {
-  h = "Left",
-  j = "Down",
-  k = "Up",
-  l = "Right",
+local direction_keys = {
+  Left = "h",
+  Down = "j",
+  Up = "k",
+  Right = "l",
 }
 
----@param action "resize"|"move"
----@param key string
-local function smart(action, key)
-  local mods
-  local act
-  local dir = key_directions[key]
-  if action == "move" then
-    mods = "CTRL"
-    act = { ActivatePaneDirection = dir }
-  elseif action == "resize" then
-    mods = "ALT"
-    act = { AdjustPaneSize = { dir, 3 } }
-  end
-  local act_vim = { SendKey = { key = key, mods = mods } }
+---@param dir string
+---@param mods string?
+local function move(dir, mods)
+  local key = direction_keys[dir]
   return {
     key = key,
     mods = mods,
     action = W.action_callback(function(win, pane)
       if is_vim(pane) then
-        -- pass the keys through to vim/nvim
-        win:perform_action(act_vim, pane)
+        win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
       else
-        win:perform_action(act, pane)
+        win:perform_action({ ActivatePaneDirection = dir }, pane)
+      end
+    end),
+  }
+end
+
+---@param dir string
+---@param mods string?
+local function resize(dir, mods)
+  local key = direction_keys[dir]
+  return {
+    key = key,
+    mods = mods,
+    action = W.action_callback(function(win, pane)
+      if is_vim(pane) then
+        win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
+      else
+        win:perform_action({ AdjustPaneSize = { dir, 3 } }, pane)
       end
     end),
   }
@@ -46,13 +52,13 @@ end
 
 return {
   -- move between split panes
-  smart("move", "h"),
-  smart("move", "j"),
-  smart("move", "k"),
-  smart("move", "l"),
+  move("Left", "CTRL"),
+  move("Up", "CTRL"),
+  move("Down", "CTRL"),
+  move("Right", "CTRL"),
   -- resize panes
-  smart("resize", "h"),
-  smart("resize", "j"),
-  smart("resize", "k"),
-  smart("resize", "l"),
+  resize("Left", "CTRL|SHIFT"),
+  resize("Up", "CTRL|SHIFT"),
+  resize("Down", "CTRL|SHIFT"),
+  resize("Right", "CTRL|SHIFT"),
 }
