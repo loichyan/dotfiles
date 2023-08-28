@@ -1,3 +1,14 @@
+: "${XDG_CACHE_HOME:="${HOME}/.cache"}"
+declare -A direnv_layout_dirs
+direnv_layout_dir() {
+    local hash path
+    echo "${direnv_layout_dirs[$PWD]:=$(
+        hash="$(sha1sum - <<< "$PWD" | head -c40)"
+        path="$(basename "$PWD")"
+        echo "${XDG_CACHE_HOME}/direnv/layouts/${hash}-${path}"
+    )}"
+}
+
 layout_poetry() {
     VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
     if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
