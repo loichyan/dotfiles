@@ -51,7 +51,7 @@ rpm-ostree install \
   fish wezterm wl-clipboard \
   v2raya xray \
   code podman-compose \
-  mygnome cascadia-code-fonts symbols-nerd-fonts
+  mygnome cascadia-code-fonts google-noto-serif-cjk-vf-fonts symbols-nerd-fonts
 
 # Install Nix.
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
