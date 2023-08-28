@@ -1,17 +1,17 @@
 if status is-interactive
-    set -g __history_protected $history
-    set -g __history_failed
-    set -g __history_deletions
-    set -g __history_last
+    set -g __hist_protected $history
+    set -g __hist_failed
+    set -g __hist_deletions
+    set -g __hist_last
 
     function ADD -d "Protect the last history"
-        echo $__history_last
-        set -a __history_protected $__history_last
+        echo $__hist_last
+        set -a __hist_protected $__hist_last
     end
 
     function DEL -d "Delete the last history"
-        echo $__history_last
-        set -a __history_deletions $__history_last
+        echo $__hist_last
+        set -a __hist_deletions $__hist_last
     end
 
     function __hook_fish_postexec -e fish_postexec
@@ -19,25 +19,25 @@ if status is-interactive
         set -l exitcode $status
         # Ignore some commands
         if string match -qr '^(;|ADD|DEL|history |echo |printf ).*$' $hist
-            set -a __history_deletions $hist
+            set -a __hist_deletions $hist
         else
-            set -g __history_last $hist
+            set -g __hist_last $hist
         end
         if [ "$exitcode" = 0 ]
             # Delete histories which match ignored prefix.
-            set -a __history_protected $hist
+            set -a __hist_protected $hist
         else
-            set -a __history_failed $hist
+            set -a __hist_failed $hist
         end
     end
 
     function __hook_fish_exit -e fish_exit
-        for hist in $__history_failed
-            if ! contains $hist $__history_protected
-                set -a __history_deletions $hist
+        for hist in $__hist_failed
+            if ! contains $hist $__hist_protected
+                set -a __hist_deletions $hist
             end
         end
-        history delete -Ce '' $__history_deletions
+        history delete -Ce '' $__hist_deletions
     end
 
     if type -q direnv
