@@ -2,6 +2,7 @@
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:close'
+num-workspaces=4
 titlebar-font='Sans Bold 11'
 
 [org/gnome/desktop/interface]
@@ -44,8 +45,8 @@ port={{ .proxy.socks }}
 #== Input ==#
 
 [org/gnome/desktop/input-sources]
-sources=[('xkb', 'cn'), ('ibus', 'rime')]
-xkb-options=['caps:ctrl_modifier']
+sources=['ctrl:nocaps', 'caps:ctrl_modifier', 'shift:both_capslock']
+xkb-options=['ctrl:nocaps']
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=true
@@ -148,10 +149,10 @@ search-view='list-view'
 #== Custom keybindings ==
 
 [org/gnome/desktop/wm/keybindings]
-move-to-workspace-1=['<Shift><Super>1']
-move-to-workspace-2=['<Shift><Super>2']
-move-to-workspace-3=['<Shift><Super>3']
-move-to-workspace-4=['<Shift><Super>4']
+move-to-workspace-1=['<Ctrl><Super>1']
+move-to-workspace-2=['<Ctrl><Super>2']
+move-to-workspace-3=['<Ctrl><Super>3']
+move-to-workspace-4=['<Ctrl><Super>4']
 switch-to-workspace-1=['<Super>1']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
@@ -189,8 +190,10 @@ enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@f
 favorite-apps=['org.wezfurlong.wezterm.desktop', 'google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
 
 [org/gnome/mutter]
-dynamic-workspaces=true
+attach-modal-dialogs=false
+dynamic-workspaces=false
 edge-tiling=false
+workspaces-only-on-primary=true
 
 [org/gnome/software]
 download-updates=false
