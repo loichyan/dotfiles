@@ -7,11 +7,9 @@ if status is-login
     set -gx PYTHONUSERBASE ~/.pip
 
     # iBus
-    if ! isatty
-        set -gx GTK_IM_MODULE xim
-        set -gx QT_IM_MODULE xim
-        set -gx XMODIFIERS @im=ibus
-    end
+    set -gx GTK_IM_MODULE ibus
+    set -gx QT_IM_MODULE ibus
+    set -gx XMODIFIERS @im=ibus
 
     # ripgrep
     set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/ripgreprc
