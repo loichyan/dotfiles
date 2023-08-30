@@ -50,10 +50,7 @@ return function()
       { "<C-S-l>", "@smart_splits.resize_right", mode = nixt },
       { "<Leader>-", "@window.split" },
       { "<Leader>\\", "@window.vsplit" },
-      { "<Leader>w-", "@window.split" },
-      { "<Leader>w|", "@window.vsplit" },
-      { "<Leader>wq", "@window.close" },
-      { "<Leader>ww", "@window.switch_back" },
+      { "<Leader>W", "@window.close" },
       -- ui
       { "<Leader>ua", "@ui.alpha" },
       { "<Leader>uc", "@toggle.conceallevel" },
@@ -218,8 +215,7 @@ return function()
       { "<C-,>", "@buffer.prev" },
       { "<C-.>", "@buffer.next" },
       { "<Leader>`", "@buffer.switch_back" },
-      { "<Leader>d", "@buffer.close" },
-      { "<Leader>D", "@buffer.close_force" },
+      { "<Leader>w", "@buffer.close" },
       { "<Leader>bb", "@buffer.switch_back" },
       { "<Leader>bh", "@buffer.close_left" },
       { "<Leader>bl", "@buffer.close_right" },
@@ -266,8 +262,8 @@ return function()
   end
   for _, k in ipairs({ "y", "Y", "d", "D", "p", "P" }) do
     -- copy/paste using system clipboard
-    table.insert(keymaps, { "<A-" .. k .. ">", '"+' .. k, mode = { "n", "x" } })
-    table.insert(keymaps, { k, '"0' .. k, mode = { "n", "x" } })
+    table.insert(keymaps, { "<Space>" .. k, '"+' .. k, mode = { "n", "x" } })
+    table.insert(keymaps, { k, '"*' .. k, mode = { "n", "x" } })
   end
   return keymaps
 end
