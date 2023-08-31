@@ -47,11 +47,7 @@ source /etc/os-release &&
   sudo tee /etc/yum.repos.d/home_loichyan.repo
 
 # Install common packages.
-rpm-ostree install \
-  fish wezterm wl-clipboard \
-  v2raya xray \
-  code podman-compose \
-  mygnome cascadia-code-fonts google-noto-serif-cjk-vf-fonts symbols-nerd-fonts
+rpm-ostree install mygnome mysilverblue
 
 # Install Nix.
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
