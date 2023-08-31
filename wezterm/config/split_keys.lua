@@ -3,50 +3,46 @@
 -- Upstream: https://github.com/mrjones2014/smart-splits.nvim
 
 local W = require("wezterm")
--- local Act = W.action
 
-local function is_vim(pane)
-  return pane:get_user_vars().IS_NVIM == "true"
-end
-
-local direction_keys = {
+local DIRECTION_KEYS = {
   Left = "h",
   Down = "j",
   Up = "k",
   Right = "l",
 }
 
+---@param key string
+---@param mods string?
+---@param fb table
+local function send_to_vim(key, mods, fb)
+  return W.action_callback(function(win, pane)
+    if pane:get_user_vars().IS_NVIM == "true" then
+      win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
+    else
+      win:perform_action(fb, pane)
+    end
+  end)
+end
+
 ---@param dir string
 ---@param mods string?
 local function move(dir, mods)
-  local key = direction_keys[dir]
+  local key = DIRECTION_KEYS[dir]
   return {
     key = key,
     mods = mods,
-    action = W.action_callback(function(win, pane)
-      if is_vim(pane) then
-        win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
-      else
-        win:perform_action({ ActivatePaneDirection = dir }, pane)
-      end
-    end),
+    action = send_to_vim(key, mods, { ActivatePaneDirection = dir }),
   }
 end
 
 ---@param dir string
 ---@param mods string?
 local function resize(dir, mods)
-  local key = direction_keys[dir]
+  local key = DIRECTION_KEYS[dir]
   return {
     key = key,
     mods = mods,
-    action = W.action_callback(function(win, pane)
-      if is_vim(pane) then
-        win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
-      else
-        win:perform_action({ AdjustPaneSize = { dir, 3 } }, pane)
-      end
-    end),
+    action = send_to_vim(key, mods, { AdjustPaneSize = { dir, 3 } }),
   }
 end
 

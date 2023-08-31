@@ -1,62 +1,4 @@
 local W = require("wezterm")
-local SplitKeys = require("split_keys")
-local Act = W.action
-local Mux = W.mux
-
-local function toggle_domain(name)
-  return W.action_callback(function(win, pane)
-    local domain = Mux.get_domain(name)
-    if domain:state() == "Attached" then
-      win:perform_action(Act.DetachDomain({ DomainName = name }), pane)
-    else
-      win:perform_action(Act.AttachDomain(name), pane)
-    end
-  end)
-end
-
-local key_tables = W.gui.default_key_tables()
-local accept_pattern = Act.Multiple({
-  Act.CopyMode("ClearSelectionMode"),
-  Act.CopyMode("AcceptPattern"),
-})
-local clear_pattern = Act.Multiple({
-  Act.CopyMode("ClearPattern"),
-  Act.CopyMode("ClearSelectionMode"),
-  Act.CopyMode("AcceptPattern"),
-})
-local my_key_tables = {
-  copy_mode = {
-    { key = "/", action = Act.Search({ CaseInSensitiveString = "" }) },
-    { key = "n", action = Act.CopyMode("NextMatch") },
-    { key = "n", mods = "SHIFT", action = Act.CopyMode("PriorMatch") },
-    { key = "c", mods = "CTRL", action = clear_pattern },
-    {
-      key = "y",
-      action = Act.Multiple({
-        { CopyTo = "PrimarySelection" },
-        { CopyMode = "Close" },
-      }),
-    },
-  },
-  search_mode = {
-    { key = "Enter", action = accept_pattern },
-    { key = "c", mods = "CTRL", action = clear_pattern },
-  },
-}
-for k, list in pairs(my_key_tables) do
-  for _, kb in ipairs(list) do
-    table.insert(key_tables[k], kb)
-  end
-end
-
-local tab_keys = {}
-for i = 1, 9 do
-  table.insert(tab_keys, {
-    key = tostring(i),
-    mods = "ALT",
-    action = Act.ActivateTab(i - 1),
-  })
-end
 
 return {
   -- Multiplexer
@@ -67,7 +9,7 @@ return {
   use_ime = true,
   ime_preedit_rendering = "Builtin",
   -- Colorscheme & font
-  color_scheme = require("colorscheme"),
+  color_scheme = require("config.colorscheme"),
   font = W.font_with_fallback({
     { family = "monospace" },
     { family = "Noto Sans CJK SC" },
@@ -98,29 +40,8 @@ return {
   -- Keybindings
   disable_default_key_bindings = true,
   mouse_bindings = {
-    { event = { Up = { streak = 1, button = "Left" } }, action = Act.Nop },
+    { event = { Up = { streak = 1, button = "Left" } }, action = "Nop" },
   },
-  keys = {
-    { key = "\\", mods = "ALT", action = Act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "-", mods = "ALT", action = Act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = "b", mods = "ALT", action = toggle_domain("bg") },
-    { key = "c", mods = "ALT", action = Act.CopyTo("PrimarySelection") },
-    { key = "w", mods = "ALT", action = Act.CloseCurrentPane({ confirm = true }) },
-    { key = "f", mods = "ALT", action = Act.Search({ CaseInSensitiveString = "" }) },
-    { key = "h", mods = "ALT", action = Act.ActivateTabRelative(-1) },
-    { key = "i", mods = "ALT", action = Act.RotatePanes("CounterClockwise") },
-    { key = "l", mods = "ALT", action = Act.ActivateTabRelative(1) },
-    { key = "m", mods = "ALT", action = Act.TogglePaneZoomState },
-    { key = "n", mods = "ALT", action = Act.SpawnTab("CurrentPaneDomain") },
-    { key = "o", mods = "ALT", action = Act.RotatePanes("Clockwise") },
-    { key = "p", mods = "ALT", action = Act.ActivateCommandPalette },
-    { key = "v", mods = "ALT", action = Act.PasteFrom("PrimarySelection") },
-    { key = "y", mods = "ALT", action = Act.ActivateCopyMode },
-    { key = "w", mods = "ALT|SHIFT", action = Act.CloseCurrentTab({ confirm = true }) },
-    { key = "v", mods = "CTRL|SHIFT", action = Act.PasteFrom("Clipboard") },
-    { key = "c", mods = "CTRL|SHIFT", action = Act.CopyTo("Clipboard") },
-    table.unpack(SplitKeys),
-    table.unpack(tab_keys),
-  },
-  key_tables = key_tables,
+  keys = require("config.keys"),
+  key_tables = require("config.key_tables"),
 }
