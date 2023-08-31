@@ -1,7 +1,11 @@
 return {
   {
     "nvim-treesitter",
-    dependencies = { "windwp/nvim-ts-autotag", "andymass/vim-matchup" },
+    dependencies = {
+      "andymass/vim-matchup",
+      "windwp/nvim-ts-autotag",
+      "tree-sitter-just",
+    },
     opts = {
       ensure_installed = {
         "bash",
@@ -54,4 +58,5 @@ return {
       matchup = { enable = true },
     },
   },
+  { "IndianBoy42/tree-sitter-just", config = true },
 }
