@@ -45,8 +45,9 @@ port={{ .proxy.socks }}
 #== Input ==#
 
 [org/gnome/desktop/input-sources]
-sources=['ctrl:nocaps', 'caps:ctrl_modifier', 'shift:both_capslock']
-xkb-options=['ctrl:nocaps']
+show-all-sources=true
+sources=[('xkb', 'us'), ('ibus', 'rime')]
+xkb-options=['ctrl:nocaps', 'caps:ctrl_modifier', 'shift:both_capslock']
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=true
