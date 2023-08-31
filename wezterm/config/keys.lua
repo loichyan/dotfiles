@@ -22,24 +22,24 @@ for i = 1, 9 do
 end
 
 local keys = {
-  { key = "\\", mods = "ALT", action = { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+  { key = ",", mods = "ALT", action = { ActivateTabRelative = -1 } },
   { key = "-", mods = "ALT", action = { SplitVertical = { domain = "CurrentPaneDomain" } } },
+  { key = ".", mods = "ALT", action = { ActivateTabRelative = 1 } },
+  { key = "\\", mods = "ALT", action = { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
   { key = "b", mods = "ALT", action = toggle_domain("bg") },
-  { key = "c", mods = "ALT", action = { CopyTo = "PrimarySelection" } },
-  { key = "w", mods = "ALT", action = { CloseCurrentPane = { confirm = true } } },
   { key = "f", mods = "ALT", action = { Search = { CaseInSensitiveString = "" } } },
   { key = "i", mods = "ALT", action = { RotatePanes = "CounterClockwise" } },
   { key = "m", mods = "ALT", action = "TogglePaneZoomState" },
   { key = "n", mods = "ALT", action = { SpawnTab = "CurrentPaneDomain" } },
   { key = "o", mods = "ALT", action = { RotatePanes = "Clockwise" } },
-  { key = "p", mods = "ALT", action = "ActivateCommandPalette" },
-  { key = "v", mods = "ALT", action = { PasteFrom = "PrimarySelection" } },
-  { key = "y", mods = "ALT", action = "ActivateCopyMode" },
-  { key = "h", mods = "ALT|SHIFT", action = { ActivateTabRelative = -1 } },
-  { key = "l", mods = "ALT|SHIFT", action = { ActivateTabRelative = 1 } },
+  { key = "p", mods = "ALT", action = { PasteFrom = "PrimarySelection" } },
+  { key = "u", mods = "ALT", action = "ActivateCopyMode" },
+  { key = "w", mods = "ALT", action = { CloseCurrentPane = { confirm = true } } },
+  { key = "y", mods = "ALT", action = { CopyTo = "PrimarySelection" } },
+  { key = ":", mods = "ALT|SHIFT", action = "ActivateCommandPalette" },
   { key = "w", mods = "ALT|SHIFT", action = { CloseCurrentTab = { confirm = true } } },
-  { key = "v", mods = "CTRL|SHIFT", action = { PasteFrom = "Clipboard" } },
   { key = "c", mods = "CTRL|SHIFT", action = { CopyTo = "Clipboard" } },
+  { key = "v", mods = "CTRL|SHIFT", action = { PasteFrom = "Clipboard" } },
 }
 
 return Util.list_extend(keys, tab_keys, require("config.split_keys"))

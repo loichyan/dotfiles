@@ -4,13 +4,6 @@
 
 local W = require("wezterm")
 
-local DIRECTION_KEYS = {
-  Left = "h",
-  Down = "j",
-  Up = "k",
-  Right = "l",
-}
-
 ---@param key string
 ---@param mods string?
 ---@param fb table
@@ -25,9 +18,9 @@ local function send_to_vim(key, mods, fb)
 end
 
 ---@param dir string
+---@param key string
 ---@param mods string?
-local function move(dir, mods)
-  local key = DIRECTION_KEYS[dir]
+local function move(dir, key, mods)
   return {
     key = key,
     mods = mods,
@@ -36,9 +29,9 @@ local function move(dir, mods)
 end
 
 ---@param dir string
+---@param key string
 ---@param mods string?
-local function resize(dir, mods)
-  local key = DIRECTION_KEYS[dir]
+local function resize(dir, key, mods)
   return {
     key = key,
     mods = mods,
@@ -48,13 +41,13 @@ end
 
 return {
   -- move between split panes
-  move("Left", "CTRL"),
-  move("Up", "CTRL"),
-  move("Down", "CTRL"),
-  move("Right", "CTRL"),
+  move("Left", "h", "CTRL"),
+  move("Down", "j", "CTRL"),
+  move("Up", "k", "CTRL"),
+  move("Right", "l", "CTRL"),
   -- resize panes
-  resize("Left", "ALT"),
-  resize("Up", "ALT"),
-  resize("Down", "ALT"),
-  resize("Right", "ALT"),
+  resize("Left", "h", "ALT"),
+  resize("Down", "j", "ALT"),
+  resize("Up", "k", "ALT"),
+  resize("Right", "l", "ALT"),
 }
