@@ -53,8 +53,8 @@ return {
   move("Down", "CTRL"),
   move("Right", "CTRL"),
   -- resize panes
-  resize("Left", "CTRL|SHIFT"),
-  resize("Up", "CTRL|SHIFT"),
-  resize("Down", "CTRL|SHIFT"),
-  resize("Right", "CTRL|SHIFT"),
+  resize("Left", "ALT"),
+  resize("Up", "ALT"),
+  resize("Down", "ALT"),
+  resize("Right", "ALT"),
 }
