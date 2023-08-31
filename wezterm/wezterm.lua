@@ -30,6 +30,13 @@ local my_key_tables = {
     { key = "n", action = Act.CopyMode("NextMatch") },
     { key = "n", mods = "SHIFT", action = Act.CopyMode("PriorMatch") },
     { key = "c", mods = "CTRL", action = clear_pattern },
+    {
+      key = "y",
+      action = Act.Multiple({
+        { CopyTo = "PrimarySelection" },
+        { CopyMode = "Close" },
+      }),
+    },
   },
   search_mode = {
     { key = "Enter", action = accept_pattern },
@@ -40,6 +47,15 @@ for k, list in pairs(my_key_tables) do
   for _, kb in ipairs(list) do
     table.insert(key_tables[k], kb)
   end
+end
+
+local tab_keys = {}
+for i = 1, 9 do
+  table.insert(tab_keys, {
+    key = tostring(i),
+    mods = "ALT",
+    action = Act.ActivateTab(i - 1),
+  })
 end
 
 return {
@@ -104,6 +120,7 @@ return {
     { key = "v", mods = "CTRL|SHIFT", action = Act.PasteFrom("Clipboard") },
     { key = "c", mods = "CTRL|SHIFT", action = Act.CopyTo("Clipboard") },
     table.unpack(SplitKeys),
+    table.unpack(tab_keys),
   },
   key_tables = key_tables,
 }
