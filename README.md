@@ -41,11 +41,9 @@ nix run home-manager/master -- switch
 Check [the repo](https://github.com/loichyan/packages) for more details.
 
 ```sh
-source /etc/os-release &&
-  dnf config-manager --add-repo https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo
+dnf config-manager --add-repo "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo"
 # Or download manually
-source /etc/os-release &&
-  curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$VERSION_ID/home:loichyan.repo" |
+curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" |
   sudo tee /etc/yum.repos.d/home_loichyan.repo
 ```
 
