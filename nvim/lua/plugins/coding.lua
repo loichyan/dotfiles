@@ -36,7 +36,7 @@ return {
   {
     "max397574/better-escape.nvim",
     cond = NOT_VSCODE,
-    opts = { mapping = { "jk", "jj" } },
+    opts = { mapping = { "jk" } },
     event = "InsertEnter",
   },
 }

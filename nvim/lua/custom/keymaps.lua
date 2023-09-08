@@ -233,7 +233,7 @@ return function()
       { "[[", "@goto.prev_reference" },
       { "]]", "@goto.next_reference" },
       -- util
-      { "jj", "@util.escape_insert" },
+      -- { "jj", "@util.escape_insert" },
       { "jk", "@util.escape_insert" },
       { "<C-s>", "@util.save" },
       { "<Esc><Esc>", "@util.escape_terminal" },
