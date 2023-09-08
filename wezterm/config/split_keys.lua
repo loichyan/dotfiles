@@ -8,35 +8,38 @@ local W = require("wezterm")
 ---@param mods string?
 ---@param fb table
 local function send_to_vim(key, mods, fb)
-  return W.action_callback(function(win, pane)
-    if pane:get_user_vars().IS_NVIM == "true" then
-      win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
-    else
-      win:perform_action(fb, pane)
-    end
-  end)
+  return {
+    key = key,
+    mods = mods,
+    action = W.action_callback(function(win, pane)
+      if pane:get_user_vars().IS_NVIM == "true" then
+        win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
+      else
+        win:perform_action(fb, pane)
+      end
+    end),
+  }
 end
 
 ---@param dir string
 ---@param key string
 ---@param mods string?
 local function move(dir, key, mods)
-  return {
-    key = key,
-    mods = mods,
-    action = send_to_vim(key, mods, { ActivatePaneDirection = dir }),
-  }
+  return send_to_vim(key, mods, { ActivatePaneDirection = dir })
 end
 
 ---@param dir string
 ---@param key string
 ---@param mods string?
 local function resize(dir, key, mods)
-  return {
-    key = key,
-    mods = mods,
-    action = send_to_vim(key, mods, { AdjustPaneSize = { dir, 3 } }),
-  }
+  return send_to_vim(key, mods, { AdjustPaneSize = { dir, 3 } })
+end
+
+---@param dir number
+---@param key string
+---@param mods string?
+local function tab(dir, key, mods)
+  return send_to_vim(key, mods, { ActivateTabRelative = dir })
 end
 
 return {
@@ -50,4 +53,7 @@ return {
   resize("Down", "j", "ALT"),
   resize("Up", "k", "ALT"),
   resize("Right", "l", "ALT"),
+  -- switch tabs
+  tab(-1, ",", "CTRL"),
+  tab(1, ".", "CTRL"),
 }
