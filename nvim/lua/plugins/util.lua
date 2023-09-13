@@ -1,4 +1,3 @@
-local Util = require("deltavim.util")
 local Keymap = require("deltavim.core.keymap")
 
 return {
