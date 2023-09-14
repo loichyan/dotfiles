@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
-with builtins;
-with lib;
+{ pkgs, ... }:
 let
-  cfg = config.services.xray;
   inherit (pkgs) myData writeScript xray;
   updateGeodat = writeScript "geodat"
     ''
@@ -13,57 +10,53 @@ let
     '';
 in
 {
-  options.services.xray = {
-    enable = mkEnableOption "XRay proxy server";
-  };
-  config = mkIf cfg.enable {
-    systemd.user.services = {
-      xray = {
-        Unit = {
-          Description = xray.meta.description;
-          After = "network.target";
-        };
-        Service = {
-          Environment = [
-            "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
-            "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
-          ];
-          Type = "exec";
-          Restart = "on-abort";
-          ExecStart = "${xray}/bin/.xray-wrapped";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
+  systemd.user.services = {
+    xray = {
+      Unit = {
+        Description = xray.meta.description;
+        After = "network.target";
       };
-      geodat = {
-        Unit = {
-          Description = "Download geodat";
-          After = "network.target";
-        };
-        Service = {
-          Environment = [
-            "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
-            "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
-          ];
-          Type = "exec";
-          ExecStart = "${updateGeodat}";
-        };
+      Service = {
+        Environment = [
+          "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
+          "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
+        ];
+        Type = "exec";
+        Restart = "on-abort";
+        ExecStart = "${xray}/bin/.xray-wrapped";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
       };
     };
-    systemd.user.timers = {
-      geodat = {
-        Unit = {
-          Description = "Auto download geodat";
-          After = "network.target";
-        };
-        Timer = {
-          OnBootSec = "1h";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
+    geodat = {
+      Unit = {
+        Description = "Download geodat";
+        After = "network.target";
+      };
+      Service = {
+        Environment = [
+          "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
+          "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
+        ];
+        Type = "exec";
+        ExecStart = "${updateGeodat}";
       };
     };
   };
+  systemd.user.timers = {
+    geodat = {
+      Unit = {
+        Description = "Auto download geodat";
+        After = "network.target";
+      };
+      Timer = {
+        OnBootSec = "1h";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+  };
+
 }

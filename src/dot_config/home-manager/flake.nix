@@ -24,28 +24,29 @@
   outputs =
     { nixpkgs
     , home-manager
+    , nix-index-database
     , fenix
     , fenix-monthly
-    , nix-index-database
     , ...
-    }:
+    } @ inputs:
     let
       data = import ./data.nix;
       stateVersion = "23.05";
       username = data.user;
       homeDirectory = data.home;
       overlays = [
-        fenix.overlays.default
-        (_: prev: with prev; {
+        (_: prev: {
           myData = data;
           python =
-            (prev.python3.withPackages (p: with p; [
-              black
-              ipython
-              numpy
-              pandas
-              pip
-            ]));
+            (prev.python3.withPackages
+              (p: with p; [
+                black
+                ipython
+                numpy
+                pandas
+                pip
+              ]));
+          fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};
         })
       ];
@@ -63,15 +64,16 @@
               {
                 home = { inherit username homeDirectory stateVersion; };
                 nixpkgs = { inherit overlays; };
+                programs.home-manager.enable = true;
               }
               nix-index-database.hmModules.nix-index
-              ./programs/cargo-nightly-expand.nix
-              ./programs/cargo-nightly-udeps.nix
+              ./programs/cargo-nightly-tools.nix
               ./services/aria.nix
               ./services/tor.nix
               ./services/xray.nix
-              ./misc/completions.nix
-              ./misc/hm-session-vars.nix
+              ./misc/extra-completions.nix
+              # FIXME: enable in 23.11
+              # ./misc/hm-session-vars.nix
               ./packages.nix
             ];
           };

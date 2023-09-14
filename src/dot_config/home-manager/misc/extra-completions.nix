@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
-with builtins;
-with lib;
+{ pkgs, ... }:
 let
-  cfg = config.misc.completions;
   inherit (pkgs) stdenv babelfish python erdtree;
   pip-completions = stdenv.mkDerivation {
     name = "pip-completions";
@@ -26,22 +23,8 @@ let
   };
 in
 {
-  options.misc.completions = {
-    enable = mkEnableOption "Additional completions";
-    pip = mkOption {
-      type = types.bool;
-      default = true;
-    };
-    erdtree = mkOption {
-      type = types.bool;
-      default = true;
-    };
-  };
-  config = mkIf cfg.enable {
-    home.packages = mkMerge [
-      (mkIf cfg.pip [ pip-completions ])
-      (mkIf cfg.erdtree [ erdtree-completions ])
-    ]
-    ;
-  };
+  home.packages = [
+    pip-completions
+    erdtree-completions
+  ];
 }

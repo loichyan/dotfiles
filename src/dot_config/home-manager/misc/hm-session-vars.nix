@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
-with builtins;
-with lib;
+{ pkgs, ... }:
 let
-  cfg = config.misc.hm-session-vars;
   inherit (pkgs) stdenv babelfish;
   hm-session-vars = stdenv.mkDerivation {
     name = "hm-session-vars";
@@ -17,10 +14,5 @@ let
   };
 in
 {
-  options.misc.hm-session-vars = {
-    enable = mkEnableOption "Home Manager session variables";
-  };
-  config = mkIf cfg.enable {
-    home.packages = [ hm-session-vars ];
-  };
+  home.packages = [ hm-session-vars ];
 }
