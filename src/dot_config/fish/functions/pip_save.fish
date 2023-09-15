@@ -1,8 +1,8 @@
 function pip_save -d "Save Python dependencies"
-    if [ -z "$argv" ] || ! argparse o/output= -- $argv
+    if test -z "$argv" || ! argparse o/output= -- $argv
         return
     end
-    set -l out (if [ -n "$_flag_output" ]; echo $_flag_output; else; echo requirements.txt; end)
+    set -l out (if test -n "$_flag_output"; echo $_flag_output; else; echo requirements.txt; end)
     set -l installed (pip freeze)
     for pname in $argv
         if set -l pversion (string match -ei $pname $installed)

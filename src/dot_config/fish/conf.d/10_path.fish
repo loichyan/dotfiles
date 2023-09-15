@@ -5,7 +5,7 @@ if status is-login
     for profile in \
         $nix_profile/etc/profile.d/nix.fish \
         $nix_profile/etc/profile.d/hm-session-vars.fish
-        if [ -f $profile ]
+        if test -f $profile
             source $profile
         end
     end

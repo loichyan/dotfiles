@@ -1,5 +1,5 @@
 function docker_vbackup -d "Backup a docker volume"
-    if [ -z "$argv" ] || ! argparse f/file= v/volume= -- $argv
+    if test -z "$argv" || ! argparse f/file= v/volume= -- $argv
         echo -n "\
 Usage:
 

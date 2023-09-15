@@ -23,7 +23,7 @@ if status is-interactive
         else
             set -g __hist_last $hist
         end
-        if [ "$exitcode" = 0 ]
+        if test "$exitcode" = 0
             # Delete histories which match ignored prefix.
             set -a __hist_protected $hist
         else

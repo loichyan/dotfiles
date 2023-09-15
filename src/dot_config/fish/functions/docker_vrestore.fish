@@ -1,5 +1,5 @@
 function docker_vrestore -d "Restore a docker volume"
-    if [ -z "$argv" ] || ! argparse f/file= v/volume= -- $argv
+    if test -z "$argv" || ! argparse f/file= v/volume= -- $argv
         echo -n "\
 Usage:
 

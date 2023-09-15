@@ -11,7 +11,7 @@ if status is-interactive
     alias_command lg lazygit
     alias_command ls lsd
     alias_command rm rm -I
-    if [ "$TERM_PROGRAM" = WezTerm ]
+    if test "$TERM_PROGRAM" = WezTerm
         prefix='TERM=wezterm' alias_command nvim nvim
     end
 
