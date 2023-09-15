@@ -1,5 +1,11 @@
-function docker_vbackup
+function docker_vbackup -d "Backup a docker volume"
     if [ -z "$argv" ] || ! argparse f/file= v/volume= -- $argv
+        echo -n "\
+Usage:
+
+-f/--file:   Output file (gzip compressed tarball)
+-v/--volume: Volume to backup
+"
         return
     end
     set -l file (realpath $_flag_file)
