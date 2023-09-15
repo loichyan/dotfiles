@@ -6,11 +6,10 @@ if status is-interactive
     end
 
     alias_command cat bat
-    alias_command cp xcp
-    alias_command du dust
+    alias_command du dust --no-percent-bars --reverse
     alias_command imgcat wezterm imgcat
     alias_command lg lazygit
-    alias_command ls exa
+    alias_command ls lsd
     alias_command rm rm -I
     if [ "$TERM_PROGRAM" = WezTerm ]
         prefix='TERM=wezterm' alias_command nvim nvim

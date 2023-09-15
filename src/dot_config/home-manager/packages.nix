@@ -28,13 +28,13 @@ in
     # Dev tools
     bat
     cloudflared
-    erdtree
-    exa
+    du-dust
     fd
     fzf
     htop
     jq
     just
+    lsd
     netcat
     p7zip
     ripgrep
