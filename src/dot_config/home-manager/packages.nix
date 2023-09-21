@@ -29,12 +29,12 @@ in
     bat
     cloudflared
     du-dust
+    eza
     fd
     fzf
     htop
     jq
     just
-    lsd
     netcat
     p7zip
     ripgrep

@@ -9,7 +9,7 @@ if status is-interactive
     alias_command du dust --no-percent-bars --reverse
     alias_command imgcat wezterm imgcat
     alias_command lg lazygit
-    alias_command ls lsd
+    alias_command ls eza
     alias_command rm rm -I
     if test "$TERM_PROGRAM" = WezTerm
         prefix='TERM=wezterm' alias_command nvim nvim
