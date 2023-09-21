@@ -1,10 +1,8 @@
-set -l nix_profile ~/.nix-profile
-
 if status is-login
     # Setup environment variables for Nix and Home Manager.
     for profile in \
-        $nix_profile/etc/profile.d/nix.fish \
-        $nix_profile/etc/profile.d/hm-session-vars.fish
+        $NIX_PROFILE_HOME/etc/profile.d/nix.fish \
+        $NIX_PROFILE_HOME/etc/profile.d/hm-session-vars.fish
         if test -f $profile
             source $profile
         end
