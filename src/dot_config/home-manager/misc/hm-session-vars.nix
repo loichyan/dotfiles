@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   inherit (pkgs) stdenv babelfish;
   hm-session-vars = stdenv.mkDerivation {

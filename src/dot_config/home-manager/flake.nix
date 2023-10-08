@@ -2,9 +2,9 @@
   description = "Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
@@ -73,8 +73,7 @@
               ./services/tor.nix
               ./services/xray.nix
               ./misc/extra-completions.nix
-              # FIXME: enable in 23.11
-              # ./misc/hm-session-vars.nix
+              ./misc/hm-session-vars.nix
               ./packages.nix
             ];
           };

@@ -5,6 +5,8 @@ in
 {
   # Install packages.
   home.packages = with pkgs; [
+    cachix
+
     # Dotfiles manager
     chezmoi
 
