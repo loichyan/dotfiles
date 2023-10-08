@@ -23,7 +23,7 @@ local plugins = {
   { "todo-comments.nvim" },
   -- deltavim.plugins.lsp
   { "nvim-lspconfig" },
-  { "null-ls.nvim" },
+  { "none-ls.nvim" },
   { "mason.nvim" },
   -- deltavim.plugins.ui
   { "nvim-notify" },

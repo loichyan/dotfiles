@@ -7,7 +7,7 @@ return {
     opts = { servers = require("custom.lsp") },
   },
   {
-    "null-ls.nvim",
+    "none-ls.nvim",
     opts = function(_, opts)
       return Util.merge({}, opts, {
         sources_with = {
@@ -34,6 +34,6 @@ return {
       })
     end,
   },
-  { "mason.nvim", enabled = false },
+  { "mason.nvim",           enabled = false },
   { "mason-lspconfig.nvim", enabled = false },
 }
