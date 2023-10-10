@@ -14,6 +14,6 @@ end
 
 if status is-interactive
     # Vendor completions and functions
-    set -ga fish_complete_path $nix_profile/share/fish/vendor_completions.d
-    set -ga fish_function_path $nix_profile/share/fish/vendor_functions.d
+    set -ga fish_complete_path $NIX_PROFILE_HOME/share/fish/vendor_completions.d
+    set -ga fish_function_path $NIX_PROFILE_HOME/share/fish/vendor_functions.d
 end
