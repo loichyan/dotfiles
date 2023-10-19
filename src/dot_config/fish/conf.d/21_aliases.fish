@@ -11,6 +11,11 @@ if status is-interactive
     alias_command lg lazygit
     alias_command ls eza
     alias_command rm rm -I
+
+    if test -x /usr/bin/bash
+        alias bash /usr/bin/bash
+    end
+
     if test "$TERM_PROGRAM" = WezTerm
         prefix='TERM=wezterm' alias_command nvim nvim
     end
@@ -18,6 +23,7 @@ if status is-interactive
     if ! type -q docker
         alias_command docker podman
     end
+
     if ! type -q docker-compose
         alias docker-compose \
             (if type -q podman-compose; echo podman-compose; else; echo docker compose; end)
