@@ -45,7 +45,7 @@ in
     # Misc
     wakatime
     caddy
-    nodePackages.live-server
+    dufs
 
     #== Languages support ==#
 
