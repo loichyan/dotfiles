@@ -91,7 +91,6 @@ return function()
       { "<C-t>", "@terminal.hide" },
       { "<Leader>e", "@explorer.focus" },
       { "<Leader>E", "@explorer.focus_cwd" },
-      { "<Leader>,", "@search.autofiles" },
       { "<Leader>fe", "@explorer.focus" },
       { "<Leader>fE", "@explorer.focus_cwd" },
       { "<Leader>ff", "@search.autofiles" },
@@ -102,6 +101,7 @@ return function()
       { "<Leader>ft", "@terminal.select" },
       { "<Leader>fT", "@terminal.open_cwd" },
       -- search
+      { "<Leader>,", "@search.buffers_all" },
       { "<Leader>:", "@search.command_history" },
       { "<Leader>sa", "@search.autocommands" },
       { "<Leader>sc", "@search.command_history" },
@@ -130,7 +130,7 @@ return function()
       { "<Leader>sW", "@search.workspace_warnings" },
       { "<Leader>sx", "@search.document_diagnostics" },
       { "<Leader>sX", "@search.workspace_diagnostics" },
-      { "<Leader><Leader>", "@search.buffers_all" },
+      { "<Leader><Leader>", "@search.autofiles" },
       -- git
       { "[g", "@goto.prev_hunk" },
       { "]g", "@goto.next_hunk" },
