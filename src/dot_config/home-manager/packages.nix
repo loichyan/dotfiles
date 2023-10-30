@@ -46,6 +46,7 @@ in
     wakatime
     caddy
     dufs
+    xray
 
     #== Languages support ==#
 
