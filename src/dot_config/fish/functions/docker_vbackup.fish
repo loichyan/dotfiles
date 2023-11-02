@@ -3,10 +3,10 @@ function docker_vbackup -d "Backup a docker volume"
         echo -n "\
 Usage:
 
--f/--file:   Output file (gzip compressed tarball)
+-f/--file  : Output file (gzip compressed tarball)
 -v/--volume: Volume to backup
 "
-        return
+        return 1
     end
     set -l file (realpath $_flag_file)
     set -l dir (dirname $file)
