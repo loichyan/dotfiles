@@ -32,7 +32,7 @@ return {
     opts = {
       scope = {
         enabled = true,
-        include = { node_type = { ["*"] = { "*" } } },
+        -- include = { node_type = { ["*"] = { "*" } } },
         show_start = false,
         show_end = false,
       },
