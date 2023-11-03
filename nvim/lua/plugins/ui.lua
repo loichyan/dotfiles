@@ -44,16 +44,16 @@ return {
     end,
   },
   { "mini.indentscope", enabled = false },
-  -- { "noice.nvim", enabled = false },
+  { "noice.nvim", enabled = false },
   ----------------
   -- My plugins --
   ----------------
-  -- {
-  --   "j-hui/fidget.nvim",
-  --   -- TODO: switch back to main brach
-  --   branch = "legacy",
-  --   cond = NOT_VSCODE,
-  --   event = "VeryLazy",
-  --   opts = { window = { blend = 0 } },
-  -- },
+  {
+    "j-hui/fidget.nvim",
+    -- TODO: switch back to main brach
+    branch = "legacy",
+    cond = NOT_VSCODE,
+    event = "VeryLazy",
+    opts = { window = { blend = 0 } },
+  },
 }
