@@ -35,6 +35,7 @@ in
     fd
     fzf
     htop
+    hugo
     jq
     just
     netcat
