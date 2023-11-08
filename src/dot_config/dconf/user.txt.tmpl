@@ -11,16 +11,9 @@ color-scheme='prefer-dark'
 font-name='Sans 11'
 document-font-name='Sans 11'
 monospace-font-name='Monospace 10'
-cursor-theme='Yaru'
-gtk-theme='Yaru-dark'
-icon-theme='Yaru-dark'
-gtk-key-theme='Default'
 
 [org/gnome/desktop/sound]
 theme-name='freedesktop'
-
-[org/gnome/shell/extensions/user-theme]
-name='Yaru-dark'
 
 [org/gnome/terminal/legacy]
 theme-variant='dark'
@@ -98,23 +91,8 @@ window-gap-size-increment=uint32 1
 primary-layout-mode='tiling'
 tiling-mode-enabled=true
 
-[org/gnome/shell/extensions/simple-system-monitor]
-cpu-usage-text='󰈐'
-memory-usage-text='󰍛'
-download-speed-text='󰇚'
-upload-speed-text='󰕒'
-extension-position='right'
-font-family='Sans'
-font-size=' 13'
-font-weight=600
-is-cpu-usage-enable=true
-is-download-speed-enable=true
-is-memory-usage-enable=true
-is-upload-speed-enable=true
-item-separator='  '
-refresh-interval=1
-show-extra-spaces=true
-show-percent-sign=true
+[org/gnome/shell/extensions/vitals]
+position-in-panel=1
 
 #== Nautilus ==#
 
@@ -235,7 +213,7 @@ exec='wezterm'
 exec-arg=''
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'forge@jmmaranan.com', 'ssm-gnome@lgiki.net', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'forge@jmmaranan.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']
 favorite-apps=['org.wezfurlong.wezterm.desktop', 'google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
 
 [org/gnome/shell/app-switcher]
