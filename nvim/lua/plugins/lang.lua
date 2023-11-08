@@ -29,20 +29,12 @@ return {
   },
   -- Markdown
   {
-    "toppair/peek.nvim",
-    cond = NOT_VSCODE,
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = "deno task build:fast",
-    opts = { app = "google-chrome" },
-    config = function(_, opts)
-      local function peek(name)
-        return function()
-          require("peek")[name]()
-        end
-      end
-      vim.api.nvim_create_user_command("PeekOpen", peek("open"), {})
-      vim.api.nvim_create_user_command("PeekClose", peek("close"), {})
-      require("peek").setup(opts)
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
   -- Repl
