@@ -15,7 +15,7 @@ return {
     { family = "Noto Sans CJK SC" },
   }),
   font_size = 11.0,
-  line_height = 1.1,
+  line_height = 1,
   -- Cursor style
   cursor_blink_rate = 500,
   cursor_blink_ease_in = "Constant",
