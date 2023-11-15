@@ -12,8 +12,14 @@ return {
       },
     },
   },
-  { "catppuccin", opts = {
-    flavour = Colorscheme.catppuccin_style,
-    transparent_background = true,
-  } },
+  {
+    "catppuccin",
+    opts = {
+      flavour = Colorscheme.catppuccin_style,
+      transparent_background = true,
+      styles = {
+        comments = {},
+      },
+    },
+  },
 }
