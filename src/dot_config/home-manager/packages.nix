@@ -40,6 +40,7 @@ in
     just
     netcat
     p7zip
+    patchelf
     ripgrep
     tokei
 
