@@ -6,14 +6,28 @@
       "doh.pub": ["119.29.29.29"]
     },
     "servers": [
-      // {
-      //   "address": "https://cloudflare-dns.com/dns-query",
-      //   "domains": ["geosite:geolocation-!cn"]
-      // },
       "fakedns",
-      "https://dns.alidns.com/dns-query",
-      "https://doh.pub/dns-query",
-      "localhost"
+      {
+        "address": "https://cloudflare-dns.com/dns-query",
+        "domains": ["geosite:geolocation-!cn"],
+        "expectIPs": ["geoip:!cn"]
+      },
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": ["geosite:cn"],
+        "expectIPs": ["geoip:cn"],
+        "skipFallback": true
+      },
+      {
+        "address": "https://doh.pub/dns-query",
+        "domains": ["geosite:cn"],
+        "expectIPs": ["geoip:cn"],
+        "skipFallback": true
+      },
+      {
+        "address": "localhost",
+        "skipFallback": true
+      }
     ]
   }
 }
