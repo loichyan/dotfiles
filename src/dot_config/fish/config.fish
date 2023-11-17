@@ -1,5 +1,7 @@
 if status is-interactive
-    setproxy $MY_HTTP_PROXY
+    if echo exit | curl -s telnet://$MY_HTTP_PROXY_ADDR
+        setproxy $MY_HTTP_PROXY
+    end
     if type -q zoxide
         zoxide init fish | source
     end
