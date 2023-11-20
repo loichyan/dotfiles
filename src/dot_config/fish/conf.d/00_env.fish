@@ -29,4 +29,8 @@ if status is-login
 
     # Define Golang env variables
     set -gx GOPATH ~/.go
+
+    # Don't proxy localhost requests
+    set -gx no_proxy localhost,127.0.0.1,::1
+    set -gx NO_PROXY $no_proxy
 end
