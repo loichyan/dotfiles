@@ -10,7 +10,7 @@ return {
     tex_flavor = "latex",
   },
   o = {
-    clipboard = "",
+    clipboard = "unnamed",
     conceallevel = 0,
     -- Enable mode shapes, "Cursor" highlight, and blinking
     guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"

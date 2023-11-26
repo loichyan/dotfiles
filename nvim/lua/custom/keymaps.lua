@@ -73,8 +73,8 @@ return function()
       { "<Leader><Tab>q", "@tab.close" },
       { "<Leader><Tab><Tab>", "@tab.new" },
       -- cmp/snippet
-      { true, "@cmp.super_tab" },
-      { true, "@cmp.super_stab" },
+      { "<Tab>", "@snippet.next_node" },
+      { "<S-Tab>", "@snippet.prev_node" },
       { "<Down>", "@cmp.next_item" },
       { "<Up>", "@cmp.prev_item" },
       { "<CR>", "@cmp.confirm" },
@@ -262,7 +262,6 @@ return function()
   for _, k in ipairs({ "y", "Y", "d", "D", "p", "P" }) do
     -- copy/paste using system clipboard
     table.insert(keymaps, { "<LocalLeader>" .. k, '"+' .. k, mode = { "n", "x" } })
-    table.insert(keymaps, { k, '"*' .. k, mode = { "n", "x" } })
   end
   return keymaps
 end
