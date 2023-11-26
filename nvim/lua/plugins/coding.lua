@@ -27,6 +27,14 @@ return {
       history = false,
     },
   },
+  {
+    "mini.pairs",
+    config = function(_, opts)
+      local pairs = require("mini.pairs")
+      pairs.setup(opts)
+      pairs.unmap("i", "'", "'")
+    end,
+  },
   ----------------
   -- My plugins --
   ----------------
