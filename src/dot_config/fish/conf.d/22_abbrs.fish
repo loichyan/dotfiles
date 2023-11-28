@@ -26,6 +26,7 @@ if status is-interactive
         abbr_cargo r run
         abbr_cargo rr run --release
         abbr_cargo t test
+        abbr CC cargo_captured
     end
 
     if type -q docker
