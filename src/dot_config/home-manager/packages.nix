@@ -34,6 +34,7 @@ in
     eza
     fd
     fzf
+    gh
     htop
     hugo
     jq
