@@ -35,6 +35,8 @@ local servers = {
         checkOnSave = { command = "clippy" },
         check = { command = "clippy" },
         procMacro = { enable = true, attributes = { enable = true } },
+        typing = { autoClosingAngleBrackets = { enable = true } },
+        imports = { granularity = { enforce = true } },
       },
     },
     on_attach = function(_, bufnr)
