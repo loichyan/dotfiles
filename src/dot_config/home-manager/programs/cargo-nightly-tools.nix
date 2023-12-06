@@ -6,7 +6,8 @@ let
     cargo-expand
     cargo-udeps
     cargo-watch;
-  rustToolchain = fenix-monthly.default.toolchain;
+  rustToolchain =
+    with fenix-monthly; complete.withComponents [ "cargo" "rustc" "rustfmt" "miri" ];
   cargo-nightly =
     writeShellApplication {
       name = "cargo-nightly";
