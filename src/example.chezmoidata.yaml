@@ -2,6 +2,7 @@
 user: user1
 email: user1@example.com
 signingkey: xxxxxxxx
+ariaToken: xxxxxxxx
 home: /home/user1
 devDir: /home/user1/dev
 # Proxy ports

@@ -1,5 +1,6 @@
 all-proxy=http://127.0.0.1:{{ .proxy.http }}
 enable-rpc=true
+rpc-secret={{ .ariaToken }}
 dir={{ .home }}/Downloads
 continue=true
 split=8
