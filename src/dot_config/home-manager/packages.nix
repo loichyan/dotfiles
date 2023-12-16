@@ -96,8 +96,7 @@ in
     clang-tools
     delve
     gopls
-    # FIXME: ilist is broken
-    # hadolint
+    hadolint
     rnix-lsp
     sumneko-lua-language-server
 
