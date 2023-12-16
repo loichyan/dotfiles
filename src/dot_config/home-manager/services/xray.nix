@@ -5,8 +5,8 @@ let
     ''
       #!/usr/bin/env bash
       mkdir -p ${myData.home}/.local/share/xray
-      curl -L https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o ${myData.home}/.local/share/xray/geoip.dat
-      curl -L https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o ${myData.home}/.local/share/xray/geosite.dat
+      curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o ${myData.home}/.local/share/xray/geoip.dat
+      curl -L https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o ${myData.home}/.local/share/xray/geosite.dat
     '';
 in
 {
@@ -36,8 +36,8 @@ in
       };
       Service = {
         Environment = [
-          "HTTP_PROXY=http://127.0.0.1:${myData.httpProxy}"
-          "HTTPS_PROXY=http://127.0.0.1:${myData.httpProxy}"
+          "http_proxy=http://127.0.0.1:${myData.httpProxy}"
+          "https_proxy=http://127.0.0.1:${myData.httpProxy}"
         ];
         Type = "exec";
         ExecStart = "${updateGeodat}";
