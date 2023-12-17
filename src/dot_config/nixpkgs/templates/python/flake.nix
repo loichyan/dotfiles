@@ -8,11 +8,14 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        inherit (pkgs) mkShell;
+        pyLibs = with pkgs; [ stdenv.cc.cc ];
       in
       {
-        devShells.default = mkShell {
-          buildInputs = with pkgs; [ python3 ];
+        devShells.default = with pkgs; mkShell {
+          buildInputs = [ python3 ];
+          shellHook = ''
+            export LD_LIBRARY_PATH=${lib.makeLibraryPath pyLibs}:$LD_LIBRARY_PATH
+          '';
         };
       }
     )
