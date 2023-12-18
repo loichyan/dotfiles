@@ -23,9 +23,9 @@ if status is-interactive
     if ! set -l docker (type -p docker)
         alias_command docker podman
     else if string match -q 'podman*' (docker --version 2>/dev/null)
-        function docker -w podman
-            command $docker
-        end
+        eval "function docker -w podman
+            command $docker \$argv
+        end"
     end
 
     if ! type -q docker-compose
