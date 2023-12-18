@@ -35,13 +35,6 @@ local function resize(dir, key, mods)
   return send_to_vim(key, mods, { AdjustPaneSize = { dir, 3 } })
 end
 
----@param dir number
----@param key string
----@param mods string?
-local function tab(dir, key, mods)
-  return send_to_vim(key, mods, { ActivateTabRelative = dir })
-end
-
 return {
   -- move between split panes
   move("Left", "h", "CTRL"),
@@ -53,7 +46,4 @@ return {
   resize("Down", "j", "ALT"),
   resize("Up", "k", "ALT"),
   resize("Right", "l", "ALT"),
-  -- switch tabs
-  tab(-1, ",", "CTRL"),
-  tab(1, ".", "CTRL"),
 }
