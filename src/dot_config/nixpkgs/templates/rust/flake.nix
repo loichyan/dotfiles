@@ -19,7 +19,8 @@
             # inputs.ra-flake.overlays.default
           ];
         };
-        inherit (pkgs) fenix ra-flake;
+        inherit (pkgs) fenix;
+        # inherit (pkgs) ra-flake;
         inherit (pkgs.lib) importTOML;
 
         # Rust toolchain
