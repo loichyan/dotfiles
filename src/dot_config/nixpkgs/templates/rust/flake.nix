@@ -24,22 +24,28 @@
         inherit (pkgs.lib) importTOML;
 
         # Rust toolchain
-        rustChannel = (importTOML ./rust-toolchain).toolchain.channel;
-        rustToolchain = fenix.toolchainOf {
-          channel = rustChannel;
-          sha256 = "";
+        rustChannel = {
+          channel = (importTOML ./rust-toolchain).toolchain.channel;
+          sha256 = "sha256-PjvuouwTsYfNKW5Vi5Ye7y+lL7SsWGBxCtBOOm2z14c=";
         };
+        rustToolchain = fenix.toolchainOf rustChannel;
+        # Additional targets
+        # rustWasmToolChain = fenix.targets.wasm32-unknown-unknown.toolchainOf rustChannel;
+
         # For development
         rust-dev = fenix.combine (with rustToolchain; [
           defaultToolchain
           rust-src
           rust-analyzer
+          # rustWasmToolChain.rust-std
         ]);
+
         # Earlier Rust toolchains doesn't provide rust-analyzer
         # rust-analyzer = ra-flake.make {
         #   version.rust = rustChannel;
         #   sha256 = "";
         # };
+
         # For building packages
         rust-minimal = rustToolchain.minimalToolchain;
         rustPlatform = pkgs.makeRustPlatform {
