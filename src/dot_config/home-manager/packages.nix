@@ -30,6 +30,7 @@ in
     # Dev tools
     bat
     cloudflared
+    delta
     distrobox
     du-dust
     eza
