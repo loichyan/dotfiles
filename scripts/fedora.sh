@@ -12,7 +12,7 @@ rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklis
 
 ms_repo() {
   local repo=$1
-  sudo tee "/etc/yum.repos.d/ms_$repo.repo" <<EOF
+  sudo tee "/etc/yum.repos.d/ms-$repo.repo" <<EOF
 [ms-$repo]
 name=ms-$repo
 baseurl=https://packages.microsoft.com/yumrepos/$repo
@@ -42,7 +42,7 @@ ms_repo edge
 ms_repo vscode
 # Personal packages
 curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" |
-  sudo tee /etc/yum.repos.d/home_loichyan.repo
+  sudo tee /etc/yum.repos.d/home-loichyan.repo
 
 # Install common packages.
 rpm-ostree install mygnome mysilverblue
