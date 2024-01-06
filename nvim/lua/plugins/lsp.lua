@@ -1,4 +1,3 @@
-local Keymap = require("deltavim.core.keymap")
 local Util = require("deltavim.util")
 
 return {
@@ -34,6 +33,6 @@ return {
       })
     end,
   },
-  { "mason.nvim",           enabled = false },
+  { "mason.nvim", enabled = false },
   { "mason-lspconfig.nvim", enabled = false },
 }

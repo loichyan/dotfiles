@@ -10,13 +10,40 @@ return {
   },
   -- Rust
   {
-    "simrat39/rust-tools.nvim",
+    "mrcjkb/rustaceanvim",
     cond = NOT_VSCODE,
     event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      tools = { inlay_hints = { auto = true, highlight = "LspInlayHint" } },
-      server = require("custom.lsp").rust_analyzer,
-    },
+    ft = { "rust" },
+    init = function()
+      vim.g.rustaceanvim = {
+        server = {
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = { command = "clippy" },
+              check = { command = "clippy" },
+              procMacro = { enable = true, attributes = { enable = true } },
+              typing = { autoClosingAngleBrackets = { enable = true } },
+              imports = { granularity = { enforce = true } },
+            },
+          },
+          on_attach = function(_, bufnr)
+            ---@param act string
+            local rustLsp = function(act)
+              return function()
+                vim.cmd.RustLsp(act)
+              end
+            end
+
+            Keymap.Collector()
+              :map({
+                { "@rust.expand_macro", rustLsp("expandMacro") },
+                { "@rust.open_cargo", rustLsp("openCargo") },
+              })
+              :collect_and_set({ buffer = bufnr })
+          end,
+        },
+      }
+    end,
   },
   {
     "Saecki/crates.nvim",

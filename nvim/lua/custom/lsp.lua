@@ -29,26 +29,6 @@ local servers = {
   },
   pyright = true,
   rnix = true,
-  rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = { command = "clippy" },
-        check = { command = "clippy" },
-        procMacro = { enable = true, attributes = { enable = true } },
-        typing = { autoClosingAngleBrackets = { enable = true } },
-        imports = { granularity = { enforce = true } },
-      },
-    },
-    on_attach = function(_, bufnr)
-      Keymap.Collector()
-        :map({
-          { "@rust.expand_macro", "<CMD>RustExpandMacro<CR>" },
-          { "@rust.open_cargo", "<CMD>RustOpenCargo<CR>" },
-          { "@rust.reload_workspace", "<CMD>RustReloadWorkspace<CR>" },
-        })
-        :collect_and_set({ buffer = bufnr })
-    end,
-  },
   taplo = true,
   texlab = true,
   tsserver = true,
