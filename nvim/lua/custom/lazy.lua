@@ -32,7 +32,7 @@ require("lazy").setup({
   },
   defaults = { lazy = true, version = false },
   install = { missing = NOT_VSCODE, colorscheme = { COLORSCHEME } },
-  checker = { enabled = NOT_VSCODE },
+  checker = { enabled = false },
   performance = {
     rtp = {
       -- Disable some rtp plugins
