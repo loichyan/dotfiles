@@ -24,7 +24,7 @@ in
     lazygit
 
     # Neovim
-    neovim
+    neovim-nightly
     tree-sitter
 
     # Dev tools

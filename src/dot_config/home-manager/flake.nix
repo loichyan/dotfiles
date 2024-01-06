@@ -19,6 +19,10 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,6 +31,7 @@
     , nix-index-database
     , fenix
     , fenix-monthly
+    , neovim-nightly
     , ...
     } @ inputs:
     let
@@ -49,6 +54,7 @@
           fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};
         })
+        neovim-nightly.overlays.default
       ];
     in
     {
