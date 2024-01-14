@@ -18,4 +18,6 @@ function fish_user_key_bindings
         end
         bind -M insert \cr fzf-history-widget
     end
+
+    set -g fish_sequence_key_delay_ms 200
 end
