@@ -58,10 +58,12 @@ return {
   ----------------
   {
     "j-hui/fidget.nvim",
-    -- TODO: switch back to main brach
-    branch = "legacy",
     cond = NOT_VSCODE,
     event = "VeryLazy",
-    opts = { window = { blend = 0 } },
+    opts = {
+      notification = {
+        window = { winblend = 0 },
+      },
+    },
   },
 }
