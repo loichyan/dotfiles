@@ -12,6 +12,6 @@ if status is-interactive
     # Use gpg-agent as default
     if test -d ~/.gnupg && type -q gpg-connect-agent
         set -gx GPG_TTY (tty)
-        gpg-connect-agent updatestartuptty /bye >/dev/null
+        gpg-connect-agent updatestartuptty /bye &>/dev/null
     end
 end
