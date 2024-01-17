@@ -21,6 +21,12 @@ for i = 1, 9 do
   })
 end
 
+---@param args string[]
+---@return table
+local function open_command(args)
+  return { SpawnCommandInNewTab = { args = args } }
+end
+
 local keys = {
   { key = ",", mods = "ALT", action = { ActivateTabRelative = -1 } },
   { key = "-", mods = "ALT", action = { SplitVertical = { domain = "CurrentPaneDomain" } } },
@@ -28,6 +34,7 @@ local keys = {
   { key = "\\", mods = "ALT", action = { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
   { key = "b", mods = "ALT", action = toggle_domain("bg") },
   { key = "f", mods = "ALT", action = { Search = { CaseInSensitiveString = "" } } },
+  { key = "g", mods = "CTRL", action = open_command({ "lazygit" }) },
   { key = "i", mods = "ALT", action = { RotatePanes = "CounterClockwise" } },
   { key = "m", mods = "ALT", action = "TogglePaneZoomState" },
   { key = "n", mods = "ALT", action = { SpawnTab = "CurrentPaneDomain" } },
