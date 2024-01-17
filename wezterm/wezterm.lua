@@ -35,6 +35,7 @@ return {
     top = 3,
     bottom = 3,
   },
+  switch_to_last_active_tab_when_closing_tab = true,
   -- Performance
   front_end = "WebGpu",
   -- Keybindings
