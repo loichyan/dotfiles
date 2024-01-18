@@ -141,8 +141,6 @@ return function()
       { "<Leader>gC", "@search.git_status" },
       { "<Leader>gd", "@diffview.open" },
       { "<Leader>gD", "@diffview.open_last" },
-      { "<Leader>gg", "@terminal.lazygit" },
-      { "<Leader>gG", "@terminal.lazygit_cwd" },
       { "<Leader>gh", "@diffview.file_histroy" },
       { "<Leader>gp", "@git.preview_hunk" },
       { "<Leader>gR", "@git.reset_buffer" },
