@@ -28,6 +28,7 @@ return {
   tab_max_width = 25,
   show_tab_index_in_tab_bar = false,
   hide_tab_bar_if_only_one_tab = false,
+  switch_to_last_active_tab_when_closing_tab = true,
   -- Window & pane style
   window_padding = {
     left = 3,
@@ -35,7 +36,10 @@ return {
     top = 3,
     bottom = 3,
   },
-  switch_to_last_active_tab_when_closing_tab = true,
+  inactive_pane_hsb = {
+    saturation = 0.75,
+    brightness = 0.75,
+  },
   -- Performance
   front_end = "WebGpu",
   -- Keybindings
