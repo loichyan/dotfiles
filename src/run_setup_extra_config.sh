@@ -55,3 +55,13 @@ fi
 if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
   pnpm install-completion fish
 fi
+
+# https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
+autostart="$HOME/.config/autostart"
+sysconf="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
+userconf="$autostart/gnome-keyring-ssh.desktop"
+if [[ -e "$sysconf" ]] && [[ ! -e "$userconf" ]]; then
+  mkdir -p "$autostart/"
+  cp "$sysconf" "$autostart/"
+  echo "Hidden=true" >>"$userconf"
+fi

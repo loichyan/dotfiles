@@ -1,17 +1,15 @@
 if status is-login || status is-interactive
-    # Use gpg-agent as default
-    if test -d ~/.gnupg && type -q gpgconf
+    if test -d ~/.gnupg && type -q gpgconf && type -q gpg-connect-agent
+        # https://wiki.archlinux.org/title/GnuPG#SSH_agent
         set -e SSH_AGENT_PID
-        if test -z $gnupg_SSH_AUTH_SOCK_BY; or test $gnupg_SSH_AUTH_SOCK_BY -ne $fish_pid
+        if test -z $gnupg_SSH_AUTH_SOCK_BY || test $gnupg_SSH_AUTH_SOCK_BY -ne $fish_pid
             set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
         end
-    end
-end
 
-if status is-interactive
-    # Use gpg-agent as default
-    if test -d ~/.gnupg && type -q gpg-connect-agent
-        set -gx GPG_TTY (tty)
-        gpg-connect-agent updatestartuptty /bye &>/dev/null
+        if status is-interactive
+            # Configure pinentry to use the correct TTY
+            set -gx GPG_TTY (tty)
+            gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
+        end
     end
 end
