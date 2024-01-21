@@ -7,13 +7,14 @@ home: /home/user1
 devDir: /home/user1/dev
 # Proxy ports
 proxy:
-  domains:
-    - full:aa.bb.cc
-    - full:xx.yy.zz
-  outbound: xxxx
   enabled: true
   http: 1080
   socks: 1079
   tor: 8090
+  outbound: xxxx
+  routingRules:
+    - type: "field"
+      domains: ["domain:aa.bb", "domain:xx.yy"]
+      outboundTag: "direct"
 # Some private services
 wakamimeApiKey: xxxxxxxx

@@ -20,11 +20,9 @@
         ],
         "outboundTag": "direct"
       },
-      {
-        "type": "field",
-        "domains": {{ toJson .proxy.domains }},
-        "outboundTag": "direct"
-      },
+      {{ range .proxy.routingRules }}
+      {{ printf "%s," (toJson .) }}
+      {{ end }}
       {
         "type": "field",
         "domain": ["geosite:cn", "geosite:private"],
