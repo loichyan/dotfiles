@@ -7,7 +7,8 @@ in
     aria2 = {
       Unit = {
         Description = aria.meta.description;
-        After = "network.target";
+        Wants = "network.target";
+        After = "network-online.target";
       };
       Service = {
         Type = "exec";

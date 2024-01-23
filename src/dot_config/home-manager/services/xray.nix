@@ -14,7 +14,8 @@ in
     xray = {
       Unit = {
         Description = xray.meta.description;
-        After = "network.target";
+        Wants = "network.target";
+        After = "network-online.target";
       };
       Service = {
         Environment = [
@@ -48,7 +49,8 @@ in
     geodat = {
       Unit = {
         Description = "Auto download geodat";
-        After = "network.target";
+        Wants = "network.target";
+        After = "network-online.target";
       };
       Timer = {
         OnBootSec = "1h";

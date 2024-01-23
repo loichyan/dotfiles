@@ -7,7 +7,8 @@ in
     tor = {
       Unit = {
         Description = tor.meta.description;
-        After = "network.target";
+        Wants = "network.target";
+        After = "network-online.target";
       };
       Service = {
         Type = "exec";
