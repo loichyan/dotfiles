@@ -47,6 +47,7 @@ local keys = {
   { key = "w", mods = "ALT|SHIFT", action = { CloseCurrentTab = { confirm = true } } },
   { key = "c", mods = "CTRL|SHIFT", action = { CopyTo = "Clipboard" } },
   { key = "v", mods = "CTRL|SHIFT", action = { PasteFrom = "Clipboard" } },
+  { key = "Enter", mods = "ALT", action = "ToggleFullScreen" },
 }
 
 return Util.list_extend(keys, tab_keys, require("config.split_keys"))
