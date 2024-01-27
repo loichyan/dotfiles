@@ -27,6 +27,7 @@ Session.vim
 .chezmoidata.*
 /private
 fish_variables
+fish_history
 
 ## Misc
 foo.*
