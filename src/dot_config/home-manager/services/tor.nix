@@ -12,7 +12,7 @@ in
       };
       Service = {
         Type = "exec";
-        Restart = "on-abort";
+        Restart = "on-failure";
         ExecStart = "${tor}/bin/tor";
       };
       Install = {

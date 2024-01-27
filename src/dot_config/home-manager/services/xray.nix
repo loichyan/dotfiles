@@ -23,7 +23,7 @@ in
           "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray"
         ];
         Type = "exec";
-        Restart = "on-abort";
+        Restart = "on-failure";
         ExecStart = "${xray}/bin/.xray-wrapped";
       };
       Install = {

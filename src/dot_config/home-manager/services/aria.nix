@@ -12,7 +12,7 @@ in
       };
       Service = {
         Type = "exec";
-        Restart = "on-abort";
+        Restart = "on-failure";
         ExecStart = "${aria}/bin/aria2c";
       };
       Install = {
