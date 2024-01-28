@@ -27,11 +27,10 @@ in
     neovim-nightly
     tree-sitter
 
-    # Dev tools
+    # Tools
     bat
     cloudflared
     delta
-    distrobox
     du-dust
     eza
     fd
@@ -46,6 +45,7 @@ in
     patchelf
     ripgrep
     tokei
+    yazi
 
     # Misc
     wakatime
