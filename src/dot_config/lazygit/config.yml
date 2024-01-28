@@ -1,5 +1,11 @@
+gui:
+  nerdFontsVersion: "3"
+  border: rounded
 git:
   overrideGpg: true
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 customCommands:
   - key: "C"
     command: "cz c"
