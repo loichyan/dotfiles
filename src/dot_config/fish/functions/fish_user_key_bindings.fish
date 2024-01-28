@@ -1,9 +1,17 @@
 function fish_user_key_bindings
+    function __bind_i_escape
+        if commandline -P
+            commandline -f cancel
+        else
+            set fish_bind_mode default
+            commandline -f backward-char repaint-mode
+        end
+    end
+
     fish_vi_key_bindings
-    set -l esc (bind -M insert \e | string match -r '\'(.*)\'$')[2]
     fish_default_key_bindings -M insert
-    bind -M insert JJ "$esc"
-    bind -M insert JK "$esc"
+    bind -M insert JJ __bind_i_escape
+    bind -M insert JK __bind_i_escape
     bind -M insert \ce end-of-line
     bind -M insert \cw backward-kill-path-component
     bind -M insert \cb backward-kill-word
