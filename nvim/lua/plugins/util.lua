@@ -1,4 +1,5 @@
 local Keymap = require("deltavim.core.keymap")
+local Util = require("deltavim.util")
 
 return {
   ----------------
@@ -54,5 +55,18 @@ return {
         :collect_lazy()
     end,
     config = true,
+  },
+  {
+    "subnut/nvim-ghost.nvim",
+    lazy = false,
+    config = function()
+      -- vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", {})
+      Util.autocmd("User", function()
+        vim.bo.filetype = "markdown"
+      end, {
+        pattern = "*.*",
+        group = "nvim_ghost_user_autocommands",
+      })
+    end,
   },
 }
