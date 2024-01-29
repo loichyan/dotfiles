@@ -61,11 +61,8 @@ in
     (stdenvAdapters.useMoldLinker stdenv).cc
 
     # Rust
-    (with pkgs.fenix; with stable; combine [
-      defaultToolchain
-      rust-analyzer
-      rust-src
-    ])
+    (with fenix.stable; fenix.combine [ defaultToolchain rust-src ])
+    fenix-monthly.rust-analyzer
 
     # Cargo ulities
     cargo-edit
