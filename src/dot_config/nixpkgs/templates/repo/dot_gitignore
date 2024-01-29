@@ -1,8 +1,8 @@
-## File system
+# File system
 .DS_Store
 desktop.ini
 
-## Editor
+# Editor
 *.iml
 *.swo
 *.swp
@@ -15,12 +15,12 @@ desktop.ini
 .vscode
 Session.vim
 
-## Evn files
+# Evn files
 .direnv
 .envrc
 
-## Logs
+# Logs
 *.log
 
-## Misc
+# Misc
 foo.*
