@@ -1,0 +1,16 @@
+# File system
+.DS_Store
+[Dd]esktop.ini
+
+# Editor
+.vscode
+
+# Waktime
+.wakatime-project
+
+# Evn files
+.direnv
+.envrc
+
+# Misc
+foo.*
