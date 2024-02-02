@@ -35,6 +35,20 @@ symlink() {
   ln -s "$src" "$dest"
 }
 
+pnpm_add() {
+  local pkg
+  local -a to_install=()
+  for pkg in "$@"; do
+    if ! pnpm list -g | grep -F "$pkg" &>/dev/null; then
+      to_install+=("$pkg")
+    fi
+  done
+  if ((${#to_install[@]})); then
+    info "Install ${to_install[*]}"
+    pnpm install -g "${to_install[@]}"
+  fi
+}
+
 info "Setup extra configuration"
 
 # symlink directories
@@ -54,6 +68,7 @@ fi
 # Add pnpm completions
 if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
   pnpm install-completion fish
+  pnpm_add @fsouza/prettierd czg
 fi
 
 # https://wiki.archlinux.org/title/GNOME/Keyring#Disabling

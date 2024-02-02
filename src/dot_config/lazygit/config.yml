@@ -7,9 +7,9 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 customCommands:
-  - key: "C"
-    command: "cz c"
-    description: "commit with commitizen"
-    context: "files"
-    loadingText: "opening commitizen commit tool"
+  - key: C
+    command: czg
+    description: commit with commitizen
+    context: files
+    loadingText: opening commitizen cli
     subprocess: true

@@ -19,7 +19,6 @@ in
     zoxide
 
     # Git
-    commitizen
     git
     lazygit
 
