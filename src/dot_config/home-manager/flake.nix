@@ -73,7 +73,7 @@
                 programs.home-manager.enable = true;
               }
               nix-index-database.hmModules.nix-index
-              ./programs/arrow-tools.nix
+              # ./programs/arrow-tools.nix
               ./programs/cargo-nightly-tools.nix
               ./services/aria.nix
               ./services/tor.nix
