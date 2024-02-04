@@ -46,7 +46,7 @@ return {
   -- Keybindings
   disable_default_key_bindings = true,
   mouse_bindings = {
-    { event = { Up = { streak = 1, button = "Left" } }, action = "Nop" },
+    { event = { Up = { streak = 1, button = "Left" } }, action = "OpenLinkAtMouseCursor" },
   },
   keys = require("config.keys"),
   key_tables = require("config.key_tables"),
