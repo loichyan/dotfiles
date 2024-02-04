@@ -63,6 +63,7 @@ return {
       -- vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", {})
       Util.autocmd("User", function()
         vim.bo.filetype = "markdown"
+        vim.bo.textwidth = 0
       end, {
         pattern = "*.*",
         group = "nvim_ghost_user_autocommands",
