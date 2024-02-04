@@ -42,7 +42,7 @@ return {
   },
   -- Rendering
   front_end = "OpenGL",
-  freetype_load_flags = "NO_HINTING",
+  -- freetype_load_flags = "NO_HINTING",
   -- Keybindings
   disable_default_key_bindings = true,
   mouse_bindings = {
