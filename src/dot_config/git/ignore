@@ -11,6 +11,3 @@
 # Evn files
 .direnv
 .envrc
-
-# Misc
-foo.*
