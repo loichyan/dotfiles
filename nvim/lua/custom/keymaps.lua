@@ -29,11 +29,12 @@ return function()
     { "gc", "@comment.toggle" },
     { "gcc", "@comment.toggle_line" },
     { "gc", "@textobject.comment" },
-    -- flash
-    { "s", mode = { "n" }, "@flash.forward_to" },
-    { "S", mode = { "n" }, "@flash.backward_to" },
-    { "s", mode = { "x", "o" }, "@flash.forward_till" },
-    { "S", mode = { "x", "o" }, "@flash.backward_till" },
+    -- leap/flit
+    { "s", mode = { "n" }, "@leap.forward_to" },
+    { "S", mode = { "n" }, "@leap.backward_to" },
+    { "s", mode = { "x", "o" }, "@leap.forward_till" },
+    { "S", mode = { "x", "o" }, "@leap.backward_till" },
+    { "gs", "@leap.from_window" },
     -- util
     { "gw", "@util.search_this" },
   }

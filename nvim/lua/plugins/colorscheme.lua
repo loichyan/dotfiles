@@ -20,11 +20,6 @@ return {
       styles = {
         comments = {},
       },
-      custom_highlights = function(C)
-        return {
-          LspInlayHint = { fg = C.surface1, italic = true },
-        }
-      end,
     },
   },
 }
