@@ -16,8 +16,8 @@ if status is-login
     set -gx PYTHONUSERBASE ~/.pip
 
     # iBus
-    set -gx GTK_IM_MODULE xim
-    set -gx QT_IM_MODULE xim
+    set -gx GTK_IM_MODULE ibus
+    set -gx QT_IM_MODULE ibus
     set -gx XMODIFIERS @im=ibus
 
     # ripgrep
