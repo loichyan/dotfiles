@@ -34,7 +34,7 @@ local keys = {
   { key = "\\", mods = "ALT", action = { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
   { key = "b", mods = "ALT", action = toggle_domain("bg") },
   { key = "e", mods = "ALT", action = open_command({ "yazi" }) },
-  { key = "f", mods = "ALT", action = { Search = { CaseInSensitiveString = "" } } },
+  { key = "f", mods = "ALT", action = { Search = "CurrentSelectionOrEmptyString" } },
   { key = "g", mods = "ALT", action = open_command({ "lazygit" }) },
   { key = "i", mods = "ALT", action = { RotatePanes = "CounterClockwise" } },
   { key = "m", mods = "ALT", action = "TogglePaneZoomState" },
