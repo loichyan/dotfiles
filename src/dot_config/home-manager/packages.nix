@@ -39,6 +39,7 @@ in
     hugo
     jq
     just
+    kondo
     netcat
     p7zip
     patchelf
