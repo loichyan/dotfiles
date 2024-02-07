@@ -88,15 +88,16 @@ scroll-icon-action='CYCLE_WINDOWS'
 scroll-panel-action='SWITCH_WORKSPACE'
 show-appmenu=false
 
-[org/gnome/shell/extensions/forge]
-focus-border-toggle=true
-tiling-mode-enabled=true
-resize-amount=uint32 30
-window-gap-hidden-on-single=false
-window-gap-size=uint32 3
-window-gap-size-increment=uint32 1
-primary-layout-mode='tiling'
-tiling-mode-enabled=true
+[org/gnome/shell/extensions/paperwm]
+cycle-height-steps=[0.25, 0.5, 0.75]
+cycle-width-steps=[0.25, 0.5, 0.75]
+horizontal-margin=10
+show-window-position-bar=true
+show-workspace-indicator=false
+vertical-margin=5
+vertical-margin-bottom=5
+window-gap=10
+winprops=@as []
 
 #== Nautilus ==#
 
@@ -113,89 +114,124 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 search-view='list-view'
 
-[org/gnome/shell/extensions/forge/keybindings]
-focus-border-toggle=@as []
-window-gap-size-increase=@as []
-window-gap-size-decrease=@as []
-con-split-layout-toggle=@as []
-con-split-horizontal=@as []
-con-split-vertical=@as []
-con-stacked-layout-toggle=['<Super>s']
-con-tabbed-layout-toggle=['<Super>t']
-con-tabbed-showtab-decoration-toggle=@as []
-window-swap-left=@as []
-window-swap-down=@as []
-window-swap-up=@as []
-window-swap-right=@as []
-window-move-left=['<Super><Shift>h', '<Super><Shift>Left']
-window-move-down=['<Super><Shift>j', '<Super><Shift>Down']
-window-move-up=['<Super><Shift>k', '<Super><Shift>Up']
-window-move-right=['<Super><Shift>l', '<Super><Shift>Right']
-window-focus-left=['<Super>h', '<Super>Left']
-window-focus-down=['<Super>j', '<Super>Down']
-window-focus-up=['<Super>k', '<Super>Up']
-window-focus-right=['<Super>l', '<Super>Right']
-window-toggle-float=['<Super>g']
-window-toggle-always-float=@as []
-workspace-active-tile-toggle=@as []
-prefs-tiling-toggle=@as []
-mod-mask-mouse-tile='None'
-window-swap-last-active=@as []
-window-resize-left-increase=['<Super><Ctrl>h', '<Super><Ctrl>Left']
-window-resize-down-increase=['<Super><Ctrl>j', '<Super><Ctrl>Down']
-window-resize-up-increase=['<Super><Ctrl>k', '<Super><Ctrl>Up']
-window-resize-right-increase=['<Super><Ctrl>l', '<Super><Ctrl>Right']
-window-resize-left-decrease=['<Super><Ctrl><Shift>l', '<Super><Ctrl><Shift>Left']
-window-resize-down-decrease=['<Super><Ctrl><Shift>k', '<Super><Ctrl><Shift>Down']
-window-resize-up-decrease=['<Super><Ctrl><Shift>j', '<Super><Ctrl><Shift>Up']
-window-resize-right-decrease=['<Super><Ctrl><Shift>h', '<Super><Ctrl><Shift>Right']
-window-snap-center=@as []
-window-snap-one-third-left=@as []
-window-snap-one-third-right=@as []
-window-snap-two-third-left=@as []
-window-snap-two-third-right=@as []
-
 #== Custom keybindings ==
 
 [org/gnome/desktop/wm/keybindings]
-close=['<Super>w']
+close=@as []
+maximize=@as []
 minimize=@as []
+move-to-monitor-down=@as []
+move-to-monitor-left=@as []
+move-to-monitor-right=@as []
+move-to-monitor-up=@as []
+move-to-workspace-last=@as []
+move-to-workspace-left=@as []
+move-to-workspace-right=@as []
+switch-applications-backward=@as []
+switch-applications=@as []
+switch-group-backward=@as []
+switch-group=@as []
+switch-to-workspace-last=@as []
+switch-to-workspace-left=@as []
+switch-to-workspace-right=@as []
+toggle-fullscreen=@as []
+toggle-maximized=@as []
+unmaximize=@as []
 {{ range $i := untilStep 1 10 1 }}
 move-to-workspace-{{ $i }}=['<Super><Shift>{{ $i }}']
 switch-to-workspace-{{ $i }}=['<Super>{{ $i }}']
 {{ end }}
-toggle-fullscreen=['<Super>f']
-toggle-maximized=['<Super>m']
 
 [org/gnome/mutter/keybindings]
+cancel-input-capture=@as []
 toggle-tiled-left=@as []
 toggle-tiled-right=@as []
 
+[org/gnome/mutter/wayland/keybindings]
+restore-shortcuts=@as []
+
 [org/gnome/settings-daemon/plugins/media-keys]
 email=@as []
-screensaver=['<Super>q']
 home=['<Super>e']
+rotate-video-lock-static=@as []
+screensaver=['<Super>q']
 www=['<Super>b']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/toggle-launcher/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal]
 name='Open terminal'
 command='wezterm'
 binding='<Super>Return'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/toggle-launcher]
-name='Toggle launcher'
-command='ulauncher-toggle'
-binding='<Super>d'
+[org/gnome/shell/extensions/paperwm/keybindings]
+barf-out=['<Super>o']
+center-horizontally=['']
+close-window=['<Super>w']
+cycle-height=['<Super>v']
+cycle-height-backwards=['<Shift><Super>v']
+cycle-width=['<Super>r']
+cycle-width-backwards=['<Shift><Super>r']
+live-alt-tab=['<Super>comma']
+live-alt-tab-backward=['<Super>period']
+move-down=['<Shift><Super>k']
+move-down-workspace=['']
+move-left=['<Shift><Super>h']
+move-monitor-above=['']
+move-monitor-below=['']
+move-monitor-left=['']
+move-monitor-right=['']
+move-previous-workspace=['']
+move-previous-workspace-backward=['']
+move-right=['<Shift><Super>l']
+move-up=['<Shift><Super>j']
+move-up-workspace=['']
+new-window=['<Super>n']
+paper-toggle-fullscreen=['<Shift><Super>m']
+previous-workspace=['<Super>grave']
+previous-workspace-backward=['<Shift><Super>asciitilde']
+resize-h-dec=['<Shift><Super>underscore']
+resize-h-inc=['<Shift><Super>plus']
+resize-w-dec=['<Super>minus']
+resize-w-inc=['<Super>equal']
+slurp-in=['<Super>i']
+swap-monitor-above=['']
+swap-monitor-below=['']
+swap-monitor-left=['']
+swap-monitor-right=['']
+switch-down=['<Super>k']
+switch-down-workspace=['']
+switch-down-workspace-from-all-monitors=['']
+switch-first=['<Super>Home']
+switch-focus-mode=['<Super>c']
+switch-last=['<Shift><Super>End']
+switch-left=['<Super>h']
+switch-monitor-above=['']
+switch-monitor-below=['']
+switch-monitor-left=['']
+switch-monitor-right=['']
+switch-next=['']
+switch-previous=['']
+switch-right=['<Super>l']
+switch-up=['<Super>j']
+switch-up-workspace=['']
+switch-up-workspace-from-all-monitors=['']
+take-window=['<Super>t']
+toggle-maximize-width=['<Super>m']
+toggle-scratch=['<Super>g']
+toggle-scratch-layer=['<Shift><Super>g']
+toggle-scratch-window=['']
 
 [org/gnome/shell/keybindings]
 focus-active-notification=@as []
-{{ range $i := untilStep 1 10 1 }}
-switch-to-application-{{ $i }}=@as []
-{{ end }}
+shift-overview-down=@as []
+shift-overview-up=@as []
 toggle-application-view=@as []
 toggle-message-tray=@as []
 toggle-overview=@as []
+toggle-quick-settings=@as []
+{{ range $i := untilStep 1 10 1 }}
+switch-to-application-{{ $i }}=@as []
+{{ end }}
 
 #== Misc ==#
 
@@ -207,8 +243,8 @@ exec='wezterm'
 exec-arg=''
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'forge@jmmaranan.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']
-favorite-apps=['org.wezfurlong.wezterm.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop']
+disable-user-extensions=false
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'paperwm@paperwm.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
@@ -217,7 +253,9 @@ current-workspace-only=true
 attach-modal-dialogs=false
 dynamic-workspaces=false
 edge-tiling=false
+overlay-key=''
 workspaces-only-on-primary=false
 
 [org/gnome/software]
 download-updates=false
+download-updates-notify=false
