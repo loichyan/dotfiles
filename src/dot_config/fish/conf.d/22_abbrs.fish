@@ -45,7 +45,7 @@ if status is-interactive
 
     if type -q git
         abbr_git
-        abbr_git c commit
+        abbr_git c clone
         abbr_git f fetch
         abbr_git l log
         abbr_git m merge
