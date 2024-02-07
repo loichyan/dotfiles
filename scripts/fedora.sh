@@ -64,3 +64,7 @@ sudo dconf update
 
 # Load .config/dconf/user.txt
 echo 'service-db:keyfile/user' | sudo tee -a /etc/dconf/profile/user
+
+# Auto backup
+sudo btrfs subvolmue create "$HOME/dev"
+sudo systemctl enable snapper-cleanup.timer snapper-timeline.timer
