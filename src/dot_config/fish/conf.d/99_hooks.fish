@@ -16,7 +16,7 @@ if status is-interactive
 
     function __hook_fish_postexec -e fish_postexec
         set -l exitcode $status
-        set -l hist (string trim $argv[1])
+        set -l hist (string trim $argv[1] | string collect --allow-empty)
         # Delete histories with ignored prefixes.
         if string match -qr '^(;|ADD|DEL|history |echo |printf ).*$' $hist
             set -a __hist_deletions $hist
