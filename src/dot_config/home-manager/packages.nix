@@ -108,6 +108,9 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
 
+    # Lua
+    lua
+
     # # Haskell
     # ghc
     # haskell-language-server
