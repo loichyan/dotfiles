@@ -30,6 +30,7 @@ in
     bat
     cloudflared
     delta
+    distrobox
     du-dust
     eza
     fd
