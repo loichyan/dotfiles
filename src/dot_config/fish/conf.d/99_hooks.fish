@@ -18,7 +18,7 @@ if status is-interactive
         set -l exitcode $status
         set -l hist (string trim $argv[1] | string collect --allow-empty)
         # Delete histories with ignored prefixes.
-        if string match -qr '^(;|ADD|DEL|history |echo |printf ).*$' $hist
+        if string match -qr '^(;|ADD|DEL|(cd|cp|echo|history|ls|mv|printf|rm) ).*$' $hist
             set -a __hist_deletions $hist
             return
         end
