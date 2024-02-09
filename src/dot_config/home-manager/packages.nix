@@ -34,6 +34,7 @@ in
     du-dust
     eza
     fd
+    jellyfin-ffmpeg
     fzf
     gh
     htop
