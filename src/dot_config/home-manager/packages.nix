@@ -46,6 +46,7 @@ in
     p7zip
     patchelf
     ripgrep
+    tealdeer
     tokei
     yazi
 
