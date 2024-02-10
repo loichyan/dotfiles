@@ -58,7 +58,7 @@ if status is-interactive
         abbr_git sw checkout
     end
 
-    abbr Hdp history delete --prefix
+    abbr Hdp history delete -Cp
 
     functions -e abbr_{command,docker,compose,git}
 end
