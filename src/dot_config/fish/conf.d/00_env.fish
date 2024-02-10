@@ -15,11 +15,6 @@ if status is-login
     # Define Python user base folder.
     set -gx PYTHONUSERBASE ~/.pip
 
-    # iBus
-    set -gx GTK_IM_MODULE ibus
-    set -gx QT_IM_MODULE ibus
-    set -gx XMODIFIERS @im=ibus
-
     # ripgrep
     set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/ripgreprc
 
