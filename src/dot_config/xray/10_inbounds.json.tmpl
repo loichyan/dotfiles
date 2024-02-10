@@ -2,7 +2,6 @@
   "inbounds": [
     {
       "tag": "socks-in",
-      "listen": "127.0.0.1",
       "port": {{ .proxy.socks }},
       "protocol": "socks",
       "settings": { "udp": true },
@@ -14,7 +13,6 @@
     },
     {
       "tag": "http-in",
-      "listen": "127.0.0.1",
       "port": {{ .proxy.http }},
       "protocol": "http",
       "sniffing": {

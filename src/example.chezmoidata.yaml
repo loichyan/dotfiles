@@ -13,9 +13,12 @@ proxy:
   socks: 1079
   tor: 8090
   outbound: xxxx
+  dnsHosts:
+    aa.bb: [1.2.3.4]
+    xx.yy: [5.6.7.8]
   routingRules:
     - type: "field"
-      domains: ["domain:aa.bb", "domain:xx.yy"]
-      outboundTag: "direct"
+      domains: [domain:aa.bb, domain:xx.yy]
+      outboundTag: direct
 # Some private services
 wakamimeApiKey: xxxxxxxx
