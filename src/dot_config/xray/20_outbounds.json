@@ -4,7 +4,7 @@
     {
       "tag": "direct",
       "protocol": "freedom",
-      "settings": { "domainStrategy": "UseIP" }
+      "settings": { "domainStrategy": "UseIPv4v6" }
     }
   ]
 }
