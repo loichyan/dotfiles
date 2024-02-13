@@ -27,7 +27,7 @@ if status is-interactive
     end
 
     function __hook_fish_preexec -e fish_preexec
-        set __hist (string trim -c ' ' $argv[1] | string collect --allow-empty)
+        set __hist (string trim -c ' ' $argv[1] | string collect)
     end
 
     function __hook_fish_postexec -e fish_postexec
