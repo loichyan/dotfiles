@@ -1,5 +1,6 @@
 if status is-interactive
-    set -g __hist_ignored '^(;|ADD|DEL|cat|cd|cp|echo|history|ll|ls|mkdir|mv|printf|rm|sudo).*'
+    set -g __hist_ignored \
+        '^(;|ADD|DEL|cat|cd|cp|echo|history|ll|ls|mkdir|mv|printf|rm|sudo|wl-copy|wl-paste).*'
     set -g __hist_protected $history
     set -g __hist_failed
     set -g __hist_deletions
