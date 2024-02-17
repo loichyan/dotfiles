@@ -1,5 +1,5 @@
 if status is-interactive
-    if echo exit | curl -s telnet://$MY_HTTP_PROXY_ADDR
+    if type -q curl && echo exit | curl -s telnet://$MY_PROXY_ADDR
         setproxy $MY_HTTP_PROXY
     end
     if type -q zoxide

@@ -1,0 +1,44 @@
+{
+  "route": {
+    "rules": [
+      {{ range .proxy.routingRules }}
+      {{ printf "%s," (toJson .) }}
+      {{ end }}
+      {
+        "rule_set": ["category-ads-all"],
+        "outbound": "block"
+      },
+      {
+        "rule_set": ["private"],
+        "outbound": "direct_local"
+      },
+      {
+        "rule_set": ["cn"],
+        "domain_suffix": [".cn"],
+        "invert": true,
+        "outbound": "proxy"
+      }
+    ],
+    "final": "direct",
+    "rule_set": [
+      {
+        "tag": "cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/mixed/cn.srs"
+      },
+      {
+        "tag": "private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/mixed/private.srs"
+      },
+      {
+        "tag": "category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+      }
+    ]
+  }
+}

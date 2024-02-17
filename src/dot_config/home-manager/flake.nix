@@ -76,8 +76,8 @@
               # ./programs/arrow-tools.nix
               ./programs/cargo-nightly-tools.nix
               ./services/aria.nix
+              ./services/sing-box.nix
               ./services/tor.nix
-              ./services/xray.nix
               ./misc/extra-completions.nix
               ./misc/hm-session-vars.nix
               ./packages.nix

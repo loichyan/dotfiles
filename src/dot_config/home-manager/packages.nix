@@ -28,15 +28,11 @@ in
 
     # Tools
     bat
-    cloudflared
     delta
-    distrobox
     du-dust
     eza
     fd
-    jellyfin-ffmpeg
     fzf
-    gh
     htop
     hugo
     jq
@@ -51,10 +47,14 @@ in
     yazi
 
     # Misc
-    wakatime
     caddy
+    cloudflared
+    distrobox
     dufs
-    xray
+    gh
+    jellyfin-ffmpeg
+    sing-box
+    wakatime
 
     #== Languages support ==#
 
