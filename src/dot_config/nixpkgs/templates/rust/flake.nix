@@ -13,7 +13,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = with inputs; [
+          overlays = [
             inputs.fenix.overlays.default
           ];
         };
@@ -21,8 +21,9 @@
         inherit (pkgs.lib) importTOML;
 
         # Rust toolchain
+        rustToolchainFile = importTOML ./rust-toolchain.toml;
         rustChannel = {
-          channel = (importTOML ./rust-toolchain).toolchain.channel;
+          channel = rustToolchainFile.toolchain.channel;
           sha256 = "sha256-PjvuouwTsYfNKW5Vi5Ye7y+lL7SsWGBxCtBOOm2z14c=";
         };
         rustToolchain = fenix.toolchainOf rustChannel;
