@@ -30,10 +30,8 @@ return function()
     { "gcc", "@comment.toggle_line" },
     { "gc", "@textobject.comment" },
     -- leap/flit
-    { "s", mode = { "n" }, "@leap.forward_to" },
-    { "S", mode = { "n" }, "@leap.backward_to" },
-    { "s", mode = { "x", "o" }, "@leap.forward_till" },
-    { "S", mode = { "x", "o" }, "@leap.backward_till" },
+    { "s", "@leap.forward_to" },
+    { "S", "@leap.backward_to" },
     { "gs", "@leap.from_window" },
     -- util
     { "gw", "@util.search_this" },
