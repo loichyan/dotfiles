@@ -24,7 +24,7 @@
         rustToolchainFile = importTOML ./rust-toolchain.toml;
         rustChannel = {
           channel = rustToolchainFile.toolchain.channel;
-          sha256 = "sha256-PjvuouwTsYfNKW5Vi5Ye7y+lL7SsWGBxCtBOOm2z14c=";
+          sha256 = "";
         };
         rustToolchain = fenix.toolchainOf rustChannel;
         # Additional targets
