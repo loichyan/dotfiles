@@ -28,6 +28,7 @@ in
 
     # Tools
     bat
+    degit
     delta
     du-dust
     eza
