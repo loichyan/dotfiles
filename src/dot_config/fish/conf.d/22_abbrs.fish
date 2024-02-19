@@ -59,6 +59,7 @@ if status is-interactive
     end
 
     abbr Hdp history delete -Cp
+    abbr FP exec fish -P
 
     functions -e abbr_{command,docker,compose,git}
 end
