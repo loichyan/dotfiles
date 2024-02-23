@@ -1,5 +1,5 @@
 if status is-interactive
-    if type -q curl && echo exit | curl -s telnet://$MY_PROXY_ADDR
+    if test $MY_PROXY_ENABLED = true
         setproxy $MY_HTTP_PROXY
     end
     if type -q zoxide
