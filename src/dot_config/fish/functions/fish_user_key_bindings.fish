@@ -16,6 +16,8 @@ function fish_user_key_bindings
     bind -M insert \cw backward-kill-path-component
     bind -M insert \cb backward-kill-word
     bind -M insert \cf forward-bigword
+    bind -M default yy fish_clipboard_copy
+    bind -M default Y fish_clipboard_copy
 
     if type -q fzf
         function fzf-history-widget -d "Show command history"
