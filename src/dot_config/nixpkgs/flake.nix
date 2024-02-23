@@ -1,5 +1,5 @@
 {
-  description = "My nixpkgs registry";
+  description = "My nixpkgs flake";
 
   outputs = { ... }: {
     templates = {
