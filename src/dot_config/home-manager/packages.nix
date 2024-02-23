@@ -28,6 +28,7 @@ in
 
     # Tools
     bat
+    cocogitto
     degit
     delta
     du-dust

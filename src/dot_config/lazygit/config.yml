@@ -8,8 +8,50 @@ git:
     pager: delta --dark --paging=never
 customCommands:
   - key: C
-    command: czg
-    description: commit with commitizen
     context: files
+    description: commit with commitizen
     loadingText: opening commitizen cli
+    prompts:
+      - key: Type
+        type: menu
+        title: Select the type of change that you're committing
+        options:
+          - value: feat
+            description: A new feature
+          - value: fix
+            description: A bug fix
+          - value: docs
+            description: Documentation only changes
+          - value: style
+            description: Changes that do not affect the meaning of the code
+          - value: refactor
+            description:
+              A code change that neither fixes a bug nor adds a feature
+          - value: perf
+            description: A code change that improves performance
+          - value: test
+            description: Adding missing tests or correcting existing tests
+          - value: build
+            description:
+              Changes that affect the build system or external dependencies
+          - value: ci
+            description: Changes to our CI configuration files and scripts
+          - value: chore
+            description: Other changes that don't modify src or test files
+          - value: revert
+            description: Reverts a previous commit
+      - key: IsBreaking
+        type: menu
+        title: Are there any breaking changes?
+        options:
+          - value: no
+          - value: yes
+      - key: Scope
+        type: input
+        title: What is the scope of this change
+      - key: Message
+        type: input
+        title: Write a short, imperative tense description of the change
+    command: |
+      cog commit {{if eq .Form.IsBreaking "yes"}} -B {{end}} {{.Form.Type | quote}} {{.Form.Message | quote}} {{with .Form.Scope}} {{. | quote}} {{end}}
     subprocess: true
