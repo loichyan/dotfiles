@@ -69,6 +69,8 @@
             modules = [
               {
                 home = { inherit username homeDirectory stateVersion; };
+                nix.registry.nixpkgs.to = { type = "path"; path = "${nixpkgs}"; };
+                nix.registry.my.to = { type = "path"; path = "${homeDirectory}/.config/nixpkgs"; };
                 nixpkgs = { inherit overlays; };
                 programs.home-manager.enable = true;
               }
