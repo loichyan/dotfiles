@@ -1,6 +1,6 @@
 if status is-interactive
     set -g __hist_ignored \
-        '^(;|ADD|DEL|cat|cd|cp|echo|history|ll|ls|mkdir|mv|printf|rm|sudo|wl-copy|wl-paste).*'
+        '^(;|\./|ADD|DEL|cat|cd|cp|echo|history|ll|ls|mkdir|mv|printf|rm|sudo|wl-copy|wl-paste).*'
     set -g __hist_protected $history
     set -g __hist_failed
     set -g __hist_deletions
@@ -13,8 +13,8 @@ if status is-interactive
             set -a __hist_protected $__hist_last
         else
             set -a __hist_protected $hist
-            return 0
         end
+        return 0
     end
 
     function DEL -d "Delete a history"
@@ -23,8 +23,8 @@ if status is-interactive
             set -a __hist_deletions $__hist_last
         else
             set -a __hist_deletions $hist
-            return 0
         end
+        return 0
     end
 
     function __hook_fish_preexec -e fish_preexec
