@@ -11,18 +11,4 @@ proxy:
   enabled: true
   port: 1080
   tor_port: 1089
-  outbounds:
-    - server_a
-    - server_b
-  defaultOutbound: server_a
-  dnsRules:
-    - domain_suffix:
-        - aa.bb
-        - cc.dd
-      server: local
-  routingRules:
-    - domain_suffix:
-        - aa.bb
-        - cc.dd
-      outbound: direct
 wakamimeApiKey: xxxxxxxx
