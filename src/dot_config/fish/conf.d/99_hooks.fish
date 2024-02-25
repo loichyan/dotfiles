@@ -29,6 +29,10 @@ if status is-interactive
 
     function __hook_fish_preexec -e fish_preexec
         set __hist (string trim -c ' ' $argv[1] | string collect)
+        # Manually trigger exit hooks before `exec` a command
+        if test (string sub -e 4 $__hist) = exec
+            __hook_fish_exit
+        end
     end
 
     function __hook_fish_postexec -e fish_postexec
