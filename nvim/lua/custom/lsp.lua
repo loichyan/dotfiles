@@ -3,8 +3,10 @@ local Keymap = require("deltavim.core.keymap")
 
 ---@type lspconfig.options|table<string,boolean>
 local servers = {
+  bashls = true,
   clangd = true,
   cssls = true,
+  eslint = true,
   gopls = true,
   hls = true,
   jsonls = {

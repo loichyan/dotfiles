@@ -14,17 +14,14 @@ return {
             black = true,
             cue_fmt = true,
             fish_indent = true,
-            latexindent = true,
             prettierd = true,
             shfmt = true,
             stylua = true,
           },
           diagnostics = {
             cue_fmt = true,
-            eslint = true,
             fish = true,
             hadolint = true,
-            shellcheck = true,
           },
           code_actions = {
             cspell = true,

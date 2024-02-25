@@ -108,6 +108,7 @@ in
     prettierd
     stylua
     taplo-cli
+    nodePackages.bash-language-server
     nodePackages.eslint
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
