@@ -1,3 +1,4 @@
+local Util = require("deltavim.util")
 local Keymap = require("deltavim.core.keymap")
 local Util = require("deltavim.util")
 

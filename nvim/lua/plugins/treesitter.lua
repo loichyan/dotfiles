@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter",
     dependencies = {
-      -- "tandymass/vim-matchup",
+      "andymass/vim-matchup",
       "windwp/nvim-ts-autotag",
       "tree-sitter-just",
     },
@@ -57,7 +57,7 @@ return {
       },
       autotag = { enable = true },
       highlight = { enable = NOT_VSCODE, additional_vim_regex_highlighting = false },
-      -- matchup = { enable = true },
+      matchup = { enable = true },
     },
   },
   { "IndianBoy42/tree-sitter-just", config = true },
