@@ -23,9 +23,6 @@ return {
             fish = true,
             hadolint = true,
           },
-          code_actions = {
-            cspell = true,
-          },
         },
       })
     end,
