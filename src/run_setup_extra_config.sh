@@ -13,6 +13,7 @@ info() {
 }
 
 has() {
+  # shellcheck disable=SC2046
   return $(command -v "$1" &>/dev/null)
 }
 
@@ -20,19 +21,19 @@ symlink() {
   src="$root/$1"
   dest="$HOME/$2"
 
-  if [ ! -e "$src" ]; then
-    warn "Skip non-existent path '$src'"
+  if [[ ! -e "$src" ]]; then
+    warn "skip non-existent path '$src'"
     return
-  elif [ -h "$dest" ]; then
-    return
-  elif [ -e "$dest" ]; then
-    warn "Skip existing path '$dest'"
+  elif [[ -L "$dest" ]]; then
+    info "update symlink '$dest'"
+  elif [[ -e "$dest" ]]; then
+    warn "skip existing path '$dest'"
     return
   else
-    info "Create symlink '$dest'"
+    info "create symlink '$dest'"
   fi
 
-  ln -s "$src" "$dest"
+  ln -sf "$src" "$dest"
 }
 
 pnpm_add() {
@@ -44,12 +45,12 @@ pnpm_add() {
     fi
   done
   if ((${#to_install[@]})); then
-    info "Install ${to_install[*]}"
+    info "install ${to_install[*]}"
     pnpm install -g "${to_install[@]}"
   fi
 }
 
-info "Setup extra configuration"
+info "setup extra configuration"
 
 # symlink directories
 symlink nvim .config/nvim
@@ -59,16 +60,16 @@ symlink private/ssh .ssh
 
 # Install plum and rime-ice
 if [[ ! -d "$HOME/.plum" ]]; then
-  info "Install rime/plum"
+  info "install rime/plum"
   git clone --depth 1 "https://github.com/rime/plum" ~/.plum
-  info "Clone iDvel/rime-ice"
+  info "clone iDvel/rime-ice"
   bash ~/.plum/rime-install iDvel/rime-ice:others/recipes/full
 fi
 
 # Add pnpm completions
 if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
   pnpm install-completion fish
-  pnpm_add @fsouza/prettierd czg
+  pnpm_add @fsouza/prettierd
 fi
 
 # https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
