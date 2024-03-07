@@ -1,14 +1,14 @@
 # Your profile
+user: yourname
 name: Your Name
-user: user1
-email: user1@example.com
-signingkey: xxxxxxxx
+email: yourname@example.com
+home: /home/yourname
+sourceDir: /home/yourname/dotfiles
 ariaToken: xxxxxxxx
-home: /home/user1
-devDir: /home/user1/dev
+signingkey: xxxxxxxx
+wakamimeApiKey: xxxxxxxx
 # Proxy ports
 proxy:
   enabled: true
   port: 1080
   tor_port: 1089
-wakamimeApiKey: xxxxxxxx
