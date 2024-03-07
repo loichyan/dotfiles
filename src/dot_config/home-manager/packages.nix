@@ -83,6 +83,7 @@ in
     wasm-pack
 
     # JavaScript
+    bun
     deno
     nodejs
     nodePackages.pnpm
