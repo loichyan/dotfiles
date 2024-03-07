@@ -13,13 +13,16 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
+  dev = {
+    path = "~/dev/nvim",
+  },
   spec = {
     {
-      --"loichyan/DeltaVim",
-      name = "DeltaVim",
-      dir = "~/dev/lua/DeltaVim",
+      "loichyan/DeltaVim",
+      dev = true,
       import = "deltavim.plugins",
     },
+    { "DeltaVim", dev = true, },
     { import = "plugins" },
     -- {
     --   name = "LazyVim",

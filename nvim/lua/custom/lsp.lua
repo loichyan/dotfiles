@@ -6,6 +6,7 @@ local servers = {
   bashls = true,
   clangd = true,
   cssls = true,
+  denols = true,
   eslint = true,
   gopls = true,
   hls = true,
