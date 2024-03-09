@@ -33,7 +33,7 @@ symlink() {
     info "create symlink '$dest'"
   fi
 
-  ln -sf "$src" "$dest"
+  ln -sf -T "$src" "$dest"
 }
 
 pnpm_add() {
