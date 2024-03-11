@@ -33,6 +33,7 @@ local servers = {
   pyright = true,
   rnix = true,
   taplo = true,
+  tailwindcss = true,
   texlab = true,
   tsserver = true,
   yamlls = {

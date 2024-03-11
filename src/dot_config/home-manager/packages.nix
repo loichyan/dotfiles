@@ -88,6 +88,7 @@ in
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
+    tailwindcss-language-server
 
     # Python
     poetry
