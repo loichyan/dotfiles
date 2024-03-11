@@ -3,7 +3,7 @@ return {
     "nvim-treesitter",
     dependencies = {
       "andymass/vim-matchup",
-      "windwp/nvim-ts-autotag",
+      "nvim-ts-autotag",
       "tree-sitter-just",
     },
     opts = {
@@ -61,4 +61,13 @@ return {
     },
   },
   { "IndianBoy42/tree-sitter-just", config = true },
+  {
+    "nvim-ts-autotag",
+    config = function()
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+          update_in_insert = true,
+        })
+    end,
+  },
 }

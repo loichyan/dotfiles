@@ -22,7 +22,7 @@ require("lazy").setup({
       dev = true,
       import = "deltavim.plugins",
     },
-    { "DeltaVim", dev = true, },
+    { "DeltaVim", dev = true },
     { import = "plugins" },
     -- {
     --   name = "LazyVim",
