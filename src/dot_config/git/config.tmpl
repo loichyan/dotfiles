@@ -9,9 +9,9 @@
 [commit]
 	gpgsign = true
 [http]
-	proxy = socks5h://127.0.0.1:{{ .proxy.port }}
+	proxy = socks5://127.0.0.1:{{ .proxy.port }}
 [https]
-	proxy = socks5h://127.0.0.1:{{ .proxy.port }}
+	proxy = socks5://127.0.0.1:{{ .proxy.port }}
 [pull]
 	rebase = true
 [push]

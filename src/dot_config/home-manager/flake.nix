@@ -51,6 +51,7 @@
                 numpy
                 pandas
                 pip
+                pysocks
               ]));
           fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};
