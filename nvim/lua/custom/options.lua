@@ -5,6 +5,8 @@ else
   timeoutlen = 500
 end
 
+vim.filetype.add({ extension = { json = "jsonc" } })
+
 return {
   g = {
     tex_flavor = "latex",
