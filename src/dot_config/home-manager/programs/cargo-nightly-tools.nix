@@ -49,6 +49,14 @@ let
         cargo watch "$@"
       '';
     };
+  rustfmt-nightly =
+    writeShellApplication {
+      name = "rustfmt-nightly";
+      runtimeInputs = [ rustToolchain ];
+      text = ''
+        rustfmt "$@"
+      '';
+    };
 in
 {
   home.packages = [
@@ -56,5 +64,6 @@ in
     cargo-nightly-expand
     cargo-nightly-udeps
     cargo-nightly-watch
+    rustfmt-nightly
   ];
 }
