@@ -50,7 +50,6 @@ in
 
     # Misc
     caddy
-    cloudflared
     distrobox
     dufs
     gh
