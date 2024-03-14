@@ -21,7 +21,7 @@ return {
           settings = {
             ["rust-analyzer"] = {
               check = { command = "clippy" },
-              rustfmt = { overrideCommand = "rustfmt-nightly" },
+              rustfmt = { overrideCommand = { "rustfmt-nightly" } },
               procMacro = { enable = true, attributes = { enable = true } },
               typing = { autoClosingAngleBrackets = { enable = true } },
               imports = { granularity = { enforce = true } },
