@@ -102,7 +102,7 @@ in
     delve
     gopls
     hadolint
-    rnix-lsp
+    nil
     sumneko-lua-language-server
 
     # Formatter/linter
