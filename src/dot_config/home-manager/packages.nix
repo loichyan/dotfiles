@@ -5,16 +5,16 @@ in
 {
   # Install packages.
   home.packages = with pkgs; [
+    # Nix
     cachix
+    nil
+    nix-direnv
 
     # Dotfiles manager
     chezmoi
 
     # Shell
     direnv
-    nix-direnv
-    shellcheck
-    shfmt
     starship
     zoxide
 
@@ -22,11 +22,7 @@ in
     git
     lazygit
 
-    # Neovim
-    neovim-nightly
-    tree-sitter
-
-    # Tools
+    # CLI tools
     bat
     cocogitto
     degit
@@ -36,7 +32,7 @@ in
     fd
     fzf
     htop
-    hugo
+    #hugo
     jq
     just
     kondo
@@ -59,7 +55,17 @@ in
 
     #== Languages support ==#
 
+    # Neovim
+    neovim-nightly
+    tree-sitter
+
+    # Shell
+    nodePackages.bash-language-server
+    shellcheck
+    shfmt
+
     # C/C++
+    clang-tools
     cmake
     gnumake
     (stdenvAdapters.useMoldLinker stdenv).cc
@@ -70,8 +76,8 @@ in
 
     # Cargo ulities
     cargo-edit
-    cargo-readme
-    cargo-release
+    #cargo-readme
+    #cargo-release
     cargo-tarpaulin
     cargo-watch
 
@@ -81,48 +87,46 @@ in
     wasm-bindgen-cli
     wasm-pack
 
-    # JavaScript
-    bun
+    # Javascript/HTML/CSS
+    #bun
     deno
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
-    tailwindcss-language-server
 
-    # Python
-    poetry
-    python
-    nodePackages.pyright
-
-    # Others
-    go
-    perl
-    # LSP servers
-    clang-tools
-    delve
-    gopls
-    hadolint
-    nil
-    sumneko-lua-language-server
-
-    # Formatter/linter
     prettierd
-    stylua
-    taplo-cli
-    nodePackages.bash-language-server
     nodePackages.eslint
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
+    tailwindcss-language-server
+
+    # Python
+    python
+    poetry
+    nodePackages.pyright
 
     # Lua
     lua
+    stylua
+    sumneko-lua-language-server
 
-    # # Haskell
-    # ghc
-    # haskell-language-server
-    # # Document
-    # texlive.combined.scheme-full
-    # texlab
+    ## Haskell
+    #ghc
+    #haskell-language-server
+
+    # Golang
+    go
+    gopls
+    delve
+
+    # Etc
+    perl
+    hadolint
+    taplo-cli
+    nodePackages.yaml-language-server
+
+    ## Document
+    #texlive.combined.scheme-full
+    #texlab
   ];
 }
