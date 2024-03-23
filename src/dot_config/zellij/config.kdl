@@ -1,0 +1,143 @@
+// Appearance
+theme "catppuccin-macchiato"
+default_layout "compact"
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
+
+// Keymaps
+keybinds clear-defaults=true {
+    scroll {
+        bind "Enter" { EditScrollback; SwitchToMode "Normal"; }
+
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+
+        bind "l" { PageScrollDown; }
+        bind "h" { PageScrollUp; }
+
+        bind "n" { Search "Down"; }
+        bind "N" { Search "Up"; }
+
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+
+        bind "Ctrl i" { SearchToggleOption "CaseSensitivity"; }
+        bind "Ctrl w" { SearchToggleOption "Wrap"; }
+        bind "Ctrl o" { SearchToggleOption "WholeWord"; }
+    }
+
+    entersearch {
+        bind "Enter" { SwitchToMode "Scroll"; }
+    }
+
+    resize {
+        bind "=" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
+
+        bind "h" { Resize "Increase Left"; }
+        bind "j" { Resize "Increase Down"; }
+        bind "k" { Resize "Increase Up"; }
+        bind "l" { Resize "Increase Right"; }
+        bind "H" { Resize "Decrease Right"; }
+        bind "J" { Resize "Decrease Up"; }
+        bind "K" { Resize "Decrease Down"; }
+        bind "L" { Resize "Decrease Left"; }
+    }
+
+    move {
+        bind "h" { MovePane "Left"; }
+        bind "j" { MovePane "Down"; }
+        bind "k" { MovePane "Up"; }
+        bind "l" { MovePane "Right"; }
+    }
+
+    shared {
+        // Modes
+        bind "Alt u" { SwitchToMode "scroll"; }
+        bind "Alt R" { SwitchToMode "Resize"; }
+
+        // Session
+        bind "Alt D" { Detach; }
+        bind "Alt q" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
+
+        // Pane
+        bind "Alt -" { NewPane "Down"; }
+        bind "Alt \\" { NewPane "Right"; }
+        bind "Alt m" { ToggleFocusFullscreen; }
+        bind "Alt w" { CloseFocus; }
+
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+
+        bind "Alt H" { MovePane "Left"; }
+        bind "Alt L" { MovePane "Right"; }
+        bind "Alt J" { MovePane "Down"; }
+        bind "Alt K" { MovePane "Up"; }
+
+        // Tab
+        bind "Alt n" { NewTab; }
+        bind "Alt W" { CloseTab; }
+
+        bind "Alt >" { GoToNextTab; }
+        bind "Alt <" { GoToPreviousTab; }
+
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        bind "Alt 6" { GoToTab 6; }
+        bind "Alt 7" { GoToTab 7; }
+        bind "Alt 8" { GoToTab 8; }
+        bind "Alt 9" { GoToTab 9; }
+
+        // Popups
+        bind "Alt t" { ToggleFloatingPanes; }
+
+        bind "Alt g" {
+            Run "lazygit" {
+                name "Lazygit";
+                floating true;
+                close_on_exit true;
+                width "90%";
+                height "90%";
+            }
+            // TODO: width/height should be implemented in the next release
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+        }
+
+        bind "Alt e" {
+            Run "yazi" {
+                name "Yazi";
+                floating true;
+                close_on_exit true;
+                width "90%";
+                height "90%";
+            }
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+            Resize "Increase"; Resize "Increase"; Resize "Increase";
+        }
+    }
+
+    shared_except "normal" {
+        bind "Ctrl c" "Esc" "q" { SwitchToMode "Normal"; }
+    }
+}
+
+// Misc
+scrollback_editor "nvim -R --clean"

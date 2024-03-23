@@ -52,6 +52,7 @@ return {
           { "@smart_splits.resize_down", cmd("resize_down"), "Resize window down" },
           { "@smart_splits.resize_left", cmd("resize_left"), "Resize window left" },
           { "@smart_splits.resize_right", cmd("resize_right"), "Resize window right" },
+          { "@smart_splits.resize_mode", cmd("start_resize_mode"), "Resize window right" },
         })
         :collect_lazy()
     end,

@@ -26,6 +26,7 @@ EOF
   echo
 }
 
+# Neovim
 {
   cat <<EOF
 return {
@@ -36,6 +37,7 @@ return {
 EOF
 } >nvim/lua/custom/colorscheme.lua
 
+# WezTerm
 {
   case "$colorscheme" in
   catppuccin)
@@ -50,3 +52,43 @@ EOF
     ;;
   esac
 } >wezterm/config/colorscheme.lua
+
+# Zellij
+{
+  case "$colorscheme" in
+  catppuccin)
+    t="catppuccin-$catppuccin_style"
+    ;;
+  tokyonight)
+    t="tokyonight-$tokyonight_style"
+    ;;
+  esac
+  sed -e "s/theme \".*\"/theme \"$t\"/" -i src/dot_config/zellij/config.kdl
+}
+
+# Kitty
+{
+  banner kitty
+  case "$colorscheme" in
+  catppuccin)
+    t="Catppuccin-${catppuccin_style^}"
+    ;;
+  tokyonight)
+    t="tokyo_night_$tokyonight_style"
+    ;;
+  esac
+  kitten themes --dump-theme "$t"
+} >src/dot_config/kitty/colorscheme.conf
+
+# Tmux
+{
+  case "$colorscheme" in
+  catppuccin)
+    sed -e "s/\(set -g @catppuccin_flavour \)\".*\"/\1\"$catppuccin_style\"/" -i src/dot_tmux.conf
+    ;;
+  tokyonight)
+    echo "Tokyonight theme is not supported for Tmux" >&2
+    ;;
+  esac
+
+}
