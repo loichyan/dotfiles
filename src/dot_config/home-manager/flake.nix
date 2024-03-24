@@ -65,9 +65,9 @@
             programs.home-manager.enable = true;
           }
           nix-index-database.hmModules.nix-index
-          # ./programs/arrow-tools.nix
+          #./programs/arrow-tools.nix
           ./programs/cargo-nightly-tools.nix
-          ./programs/zellij-nightly.nix
+          #./programs/zellij-nightly.nix
           ./services/aria.nix
           ./services/sing-box.nix
           ./services/tor.nix

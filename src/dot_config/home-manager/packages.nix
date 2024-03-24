@@ -13,8 +13,9 @@
     # Shell
     direnv
     starship
+    tmux
+    #zellij
     zoxide
-    # zellij
 
     # Git
     git

@@ -1,6 +1,5 @@
 local Util = require("deltavim.util")
 local Keymap = require("deltavim.core.keymap")
-local Util = require("deltavim.util")
 
 return {
   ----------------
@@ -29,7 +28,13 @@ return {
     "mrjones2014/smart-splits.nvim",
     cond = NOT_VSCODE,
     -- build = "./kitty/install-kittens.bash",
-    lazy = false,
+    opts = {
+      resize_mode = {
+        quit_key = "q",
+        silent = true,
+      },
+      multiplexer_integration = false,
+    },
     keys = function()
       ---@param f string
       ---@param args? any
