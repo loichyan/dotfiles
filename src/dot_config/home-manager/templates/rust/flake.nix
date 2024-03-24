@@ -8,14 +8,12 @@
     };
   };
 
-  outputs = { nixpkgs, flake-utils, ... } @ inputs:
+  outputs = { nixpkgs, flake-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
-            inputs.fenix.overlays.default
-          ];
+          overlays = [ inputs.fenix.overlays.default ];
         };
         inherit (pkgs) fenix;
         inherit (pkgs.lib) importTOML;
@@ -43,19 +41,14 @@
           cargo = rust-minimal;
           rustc = rust-minimal;
         };
-      in
-      {
+      in {
         packages.default = rustPlatform.buildRustPackage {
           pname = "CRATE";
           version = "0.0.0";
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
         };
-        devShells.default = with pkgs; mkShell {
-          nativeBuildInputs = [
-            rust-dev
-          ];
-        };
-      }
-    );
+        devShells.default = with pkgs;
+          mkShell { nativeBuildInputs = [ rust-dev ]; };
+      });
 }

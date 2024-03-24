@@ -1,8 +1,6 @@
 { pkgs, ... }:
-let
-  inherit (pkgs) myData sing-box;
-in
-{
+let inherit (pkgs) myData sing-box;
+in {
   systemd.user.services = {
     sing-box = {
       Unit = {
@@ -16,9 +14,7 @@ in
         ExecStart =
           "${sing-box}/bin/sing-box -C ${myData.home}/.config/sing-box -D ${myData.home}/.local/share/sing-box run";
       };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
+      Install = { WantedBy = [ "default.target" ]; };
     };
   };
 }

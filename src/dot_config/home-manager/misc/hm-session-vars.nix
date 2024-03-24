@@ -12,7 +12,4 @@ let
         >$out/etc/profile.d/hm-session-vars.fish
     '';
   };
-in
-{
-  home.packages = [ hm-session-vars ];
-}
+in { home.packages = [ hm-session-vars ]; }

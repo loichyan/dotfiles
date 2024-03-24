@@ -67,6 +67,7 @@ return {
             black = true,
             cue_fmt = true,
             fish_indent = true,
+            nixfmt = true,
             prettierd = true,
             shfmt = true,
             stylua = true,

@@ -21,10 +21,4 @@ let
         >$out/share/fish/vendor_completions.d/erd.fish
     '';
   };
-in
-{
-  home.packages = [
-    pip-completions
-    erdtree-completions
-  ];
-}
+in { home.packages = [ pip-completions erdtree-completions ]; }

@@ -1,14 +1,13 @@
 { pkgs, ... }:
-let
-  inherit (pkgs) myData;
-in
-{
+let inherit (pkgs) myData;
+in {
   # Install packages.
   home.packages = with pkgs; [
     # Nix
     cachix
     nil
     nix-direnv
+    nixfmt
 
     # Dotfiles manager
     chezmoi
