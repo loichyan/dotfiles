@@ -14,7 +14,7 @@
     direnv
     starship
     zoxide
-    zellij
+    # zellij
 
     # Git
     git

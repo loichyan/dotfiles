@@ -111,13 +111,11 @@ keybinds clear-defaults=true {
                 name "Lazygit";
                 floating true;
                 close_on_exit true;
+                x "5%";
+                y "5%";
                 width "90%";
                 height "90%";
             }
-            // TODO: width/height should be implemented in the next release
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
         }
 
         bind "Alt e" {
@@ -125,12 +123,11 @@ keybinds clear-defaults=true {
                 name "Yazi";
                 floating true;
                 close_on_exit true;
+                x "5%";
+                y "5%";
                 width "90%";
                 height "90%";
             }
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
-            Resize "Increase"; Resize "Increase"; Resize "Increase";
         }
     }
 
