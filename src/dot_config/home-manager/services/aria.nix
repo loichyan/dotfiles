@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let inherit (pkgs) myData aria;
+let inherit (pkgs) aria;
 in {
   systemd.user.services = {
     aria2 = {

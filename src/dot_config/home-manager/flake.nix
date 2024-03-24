@@ -26,7 +26,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nix-index-database, fenix
-    , fenix-monthly, neovim-nightly, ... }@inputs:
+    , fenix-monthly, neovim-nightly, ... }:
     let
       data = import ./data.nix;
       stateVersion = "23.11";

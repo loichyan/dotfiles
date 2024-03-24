@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) stdenv babelfish python erdtree;
+  inherit (pkgs) stdenv python erdtree;
   pip-completions = stdenv.mkDerivation {
     name = "pip-completions";
     unpackPhase = "true";

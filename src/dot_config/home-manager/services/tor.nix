@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let inherit (pkgs) myData tor;
+let inherit (pkgs) tor;
 in {
   systemd.user.services = {
     tor = {

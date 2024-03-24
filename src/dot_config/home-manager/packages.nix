@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-let inherit (pkgs) myData;
-in {
+{ pkgs, ... }: {
   # Install packages.
   home.packages = with pkgs; [
     # Nix

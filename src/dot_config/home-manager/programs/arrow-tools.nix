@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) rustPlatform fetchCrate fetchFromGitHub symlinkJoin;
+  inherit (pkgs) rustPlatform fetchCrate fetchFromGitHub;
   datafusion-cli = rustPlatform.buildRustPackage rec {
     pname = "datafusion-cli";
     version = "33.0.0";
