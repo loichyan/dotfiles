@@ -1,1 +1,1 @@
-return "Catppuccin Macchiato"
+return "Catppuccin Frappe"
