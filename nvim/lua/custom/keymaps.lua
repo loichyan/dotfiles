@@ -208,8 +208,8 @@ return function()
       { "<Leader>nh", "@notify.history" },
       { "<Leader>nl", "@notify.last" },
       -- buffer
-      { "<A-,>", "@buffer.prev" },
-      { "<A-.>", "@buffer.next" },
+      { "<S-h>", "@buffer.prev" },
+      { "<S-l>", "@buffer.next" },
       { "<Leader>`", "@buffer.switch_back" },
       { "<Leader>w", "@buffer.close" },
       { "<Leader>bb", "@buffer.switch_back" },
