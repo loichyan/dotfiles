@@ -3,6 +3,10 @@ if status is-interactive
         echo all | history delete --prefix ';' >/dev/null
     end
 
+    if type -q atuin
+        atuin init fish | source
+    end
+
     if type -q direnv
         set -g direnv_fish_mode eval_after_arrow
         direnv hook fish | source

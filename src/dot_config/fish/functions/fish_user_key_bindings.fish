@@ -19,7 +19,7 @@ function fish_user_key_bindings
     bind -M default yy fish_clipboard_copy
     bind -M default Y fish_clipboard_copy
 
-    if type -q fzf
+    if ! type -q atuin && type -q fzf
         function fzf-history-widget -d "Show command history"
             set -lx FZF_DEFAULT_OPTS "--height 50% $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore +m"
             history -z | eval fzf --read0 --print0 -q '(commandline)' | read -lz result

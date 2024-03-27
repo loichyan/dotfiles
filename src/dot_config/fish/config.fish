@@ -1,6 +1,6 @@
 if status is-interactive
     if test $MY_PROXY_ENABLED = true
-        setproxy $MY_SOCKS_PROXY
+        setproxy $MY_HTTP_PROXY
     end
     if type -q zoxide
         zoxide init fish | source

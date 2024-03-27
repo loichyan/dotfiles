@@ -11,6 +11,7 @@
     chezmoi
 
     # Shell
+    atuin
     direnv
     starship
     tmux
