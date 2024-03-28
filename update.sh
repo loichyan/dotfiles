@@ -8,18 +8,18 @@ banner() {
   case "$colorscheme" in
   catppuccin)
     cat <<EOF
-## Name:     Catppuccin ${catppuccin_style^}
-## Author:   Catppuccin Org
-## License:  MIT
-## Upstream: https://github.com/catppuccin/$1
+# Name:     Catppuccin ${catppuccin_style^}
+# Author:   Catppuccin Org
+# License:  MIT
+# Upstream: https://github.com/catppuccin/$1
 EOF
     ;;
   tokyonight)
     cat <<EOF
-## Name:     Tokyo Night ${tokyonight_style^}
-## Author:   Folke Lemaitre
-## License:  MIT
-## Upstream: https://github.com/folke/tokyonight.nvim
+# Name:     Tokyo Night ${tokyonight_style^}
+# Author:   Folke Lemaitre
+# License:  MIT
+# Upstream: https://github.com/folke/tokyonight.nvim
 EOF
     ;;
   esac
@@ -71,13 +71,12 @@ EOF
   banner kitty
   case "$colorscheme" in
   catppuccin)
-    t="Catppuccin-${catppuccin_style^}"
+    curl -fsSL "https://github.com/catppuccin/kitty/raw/main/themes/$catppuccin_style.conf" | tail -n +11
     ;;
   tokyonight)
-    t="tokyo_night_$tokyonight_style"
+    curl -fsSL "https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty/tokyonight_$tokyonight_style.conf" | tail -n +9
     ;;
   esac
-  kitten themes --dump-theme "$t"
 } >src/dot_config/kitty/colorscheme.conf
 
 # Tmux
@@ -92,3 +91,16 @@ EOF
   esac
 
 }
+
+# Yazi
+{
+  banner yazi
+  case "$colorscheme" in
+  catppuccin)
+    curl -fsSL "https://github.com/catppuccin/yazi/raw/main/themes/${catppuccin_style}.toml"
+    ;;
+  tokyonight)
+    echo "Tokyonight theme is not supported for Yazi" >&2
+    ;;
+  esac
+} >src/dot_config/yazi/theme.toml
