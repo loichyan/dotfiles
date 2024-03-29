@@ -86,7 +86,7 @@ EOF
     sed -e "s/\(set -g @catppuccin_flavour \)\".*\"/\1\"$catppuccin_style\"/" -i src/dot_tmux.conf
     ;;
   tokyonight)
-    echo "Tokyonight theme is not supported for Tmux" >&2
+    echo "Tokyo Night theme is not supported for Tmux" >&2
     ;;
   esac
 
@@ -100,7 +100,21 @@ EOF
     curl -fsSL "https://github.com/catppuccin/yazi/raw/main/themes/${catppuccin_style}.toml"
     ;;
   tokyonight)
-    echo "Tokyonight theme is not supported for Yazi" >&2
+    echo "Tokyo Night theme is not supported for Yazi" >&2
     ;;
   esac
 } >src/dot_config/yazi/theme.toml
+
+# Delta
+{
+  banner delta
+  case "$colorscheme" in
+  catppuccin)
+    curl -fsSL "https://github.com/catppuccin/delta/raw/main/catppuccin.gitconfig"
+    sed -i -e "s/\(features =\) .*/\1 catppuccin-$catppuccin_style/" src/dot_config/git/config.tmpl
+    ;;
+  tokyonight)
+    echo "Tokyo Night theme is not supported for Delta" >&2
+    ;;
+  esac
+} >src/dot_config/git/catppuccin.gitconfig
