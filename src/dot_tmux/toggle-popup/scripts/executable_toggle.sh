@@ -4,7 +4,7 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$CURRENT_DIR/helpers.sh"
 
-DEFAULT_FORMAT='popups/#{session_name}/#{@popup_name}'
+DEFAULT_FORMAT='popup/#{session_name}/#{@popup_name}'
 DEFAULT_ON_OPEN='set status off'
 DEFAULT_ON_CLOSE=''
 
