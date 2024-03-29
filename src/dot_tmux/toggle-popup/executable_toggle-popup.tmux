@@ -2,13 +2,11 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-showopt() {
-	tmux show -gqv "$1"
-}
+source "$CURRENT_DIR/scripts/helpers.sh"
 
 for name in $(showopt @popup-bind | tr "," $"\n"); do
 	cmd="$(showopt "@popup-bind-$name")"
-	table="$(showopt "@popup-bind-$name-T")"
+	table="$(showopt "@popup-bind-$name-T" 'prefix')"
 	key="$(showopt "@popup-bind-$name-key")"
 
 	tmux bind \
