@@ -37,7 +37,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$__tmux_popup_name" = "$name" ]]; then
+if [[ "$(tmux show -qv @__popup_name)" = "$name" ]]; then
   on_close=$(showopt_hook @popup-on-close "$DEFAULT_ON_CLOSE")
 
   eval "tmux $on_close \; detach"
@@ -48,5 +48,5 @@ else
 
   tmux popup \
     "${popup_args[@]}" \
-    "tmux new -e __tmux_popup_name='$name' -ADs '$popup_id' $cmd \; $on_open"
+    "tmux new -ADs '$popup_id' $cmd \; set @__popup_name '$name' \; $on_open"
 fi
