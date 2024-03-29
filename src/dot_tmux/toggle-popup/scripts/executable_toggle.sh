@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# USAGE:
+#
+# toggle.sh [OPTIONS] [COMMAND]...
+#
+# OPTIONS:
+#
+# --name <name>  Popup name [Default: "default"]
+# -* [value]     Flag or option passed to display-popup
+#
+# EXAMPLES:
+#
+# toggle.sh --name bash -E -d '#{current_pane_path}' bash
+
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$CURRENT_DIR/helpers.sh"
@@ -37,16 +50,20 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$(tmux show -qv @__popup_name)" = "$name" ]]; then
-  on_close=$(showopt_hook @popup-on-close "$DEFAULT_ON_CLOSE")
+flag="@popup-$name-opened"
 
-  eval "tmux $on_close \; detach"
+if [[ "$(tmux show -qv "$flag")" = 1 ]]; then
+  on_close=$(showhook @popup-on-close "$DEFAULT_ON_CLOSE")
+
+  # Clear the flag to prevent a manually attached session from being detached by
+  # the keybinding.
+  eval "tmux $on_close \; set -u '$flag' \; detach"
 else
   format="$(showopt @popup-format "$DEFAULT_FORMAT")"
-  on_open="$(showopt_hook @popup-on-open "$DEFAULT_ON_OPEN")"
+  on_open="$(showhook @popup-on-open "$DEFAULT_ON_OPEN")"
   popup_id="$(tmux set @popup_name "$name" \; display -p "$format" \; set -u @popup_name)"
 
   tmux popup \
     "${popup_args[@]}" \
-    "tmux new -ADs '$popup_id' $cmd \; set @__popup_name '$name' \; $on_open"
+    "tmux new -ADs '$popup_id' $cmd \; set '$flag' 1 \; $on_open"
 fi

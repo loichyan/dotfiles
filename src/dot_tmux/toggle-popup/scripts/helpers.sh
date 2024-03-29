@@ -5,7 +5,7 @@ showopt() {
   echo "${v:-"$2"}"
 }
 
-showopt_hook() {
+showhook() {
   showopt "$@" | xargs printf '%q '
 }
 
