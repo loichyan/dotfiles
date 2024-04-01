@@ -93,6 +93,29 @@ vertical-margin-bottom=5
 window-gap=10
 winprops=@as []
 
+[org/gnome/shell/extensions/switcher]
+activate-by-key=uint32 2
+fade-enable=false
+font-size=uint32 16
+icon-size=uint32 16
+matching=uint32 1
+max-width-percentage=uint32 60
+on-active-display=true
+only-current-workspace=false
+ordering=uint32 1
+show-executables=false
+show-original-names=false
+show-switcher=['<Super>f']
+workspace-indicator=false
+
+[org/gnome/shell/extensions/vitals]
+fixed-widths=true
+hide-icons=false
+hide-zeros=false
+icon-style=1
+menu-centered=false
+position-in-panel=1
+
 #== Nautilus ==#
 
 [org/gnome/nautilus/compression]
@@ -225,21 +248,6 @@ toggle-scratch-layer=['<Shift><Super>g']
 toggle-scratch-window=@as []
 toggle-scratch=['<Super>g']
 
-[org/gnome/shell/extensions/switcher]
-activate-by-key=uint32 2
-fade-enable=false
-font-size=uint32 16
-icon-size=uint32 16
-matching=uint32 1
-max-width-percentage=uint32 60
-on-active-display=true
-only-current-workspace=false
-ordering=uint32 1
-show-executables=false
-show-original-names=false
-show-switcher=['<Super>f']
-workspace-indicator=false
-
 [org/gnome/shell/keybindings]
 focus-active-notification=@as []
 shift-overview-down=@as []
@@ -264,7 +272,7 @@ exec-arg=''
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=['background-logo@fedorahosted.org']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
