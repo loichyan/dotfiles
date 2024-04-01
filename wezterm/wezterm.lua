@@ -9,7 +9,7 @@ return {
   use_ime = true,
   ime_preedit_rendering = "Builtin",
   -- Colorscheme & font
-  color_scheme = require("config.colorscheme"),
+  color_scheme = "Catppuccin Frappe",
   font = W.font_with_fallback({
     { family = "monospace" },
     { family = "Noto Sans CJK SC" },
