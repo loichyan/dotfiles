@@ -2,5 +2,5 @@
 
 [[manager.append_keymap]]
 on = ["g", "n"]
-exec = "shell --block --confirm 'open .'"
+exec = "shell --block --confirm 'xdg-open .'"
 desc = "Open Nautilus"
