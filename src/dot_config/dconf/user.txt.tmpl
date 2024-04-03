@@ -76,11 +76,19 @@ restore-state=true
 toggle-state=true
 user-enabled=true
 
-[org/gnome/shell/extensions/clipboard-indicator]
+[org/gnome/shell/extensions/clipboard-history]
+clear-history=@as []
+disable-down-arrow=true
 display-mode=2
-strip-text=true
 next-entry=['<Super>bracketright']
+notify-on-copy=false
 prev-entry=['<Super>bracketleft']
+process-primary-selection=false
+strip-text=false
+toggle-menu=@as []
+toggle-private-mode=@as []
+topbar-preview-size=15
+window-width-percentage=25
 
 [org/gnome/shell/extensions/paperwm]
 cycle-height-steps=[0.35, 0.5, 0.65]
@@ -272,7 +280,7 @@ exec-arg=''
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=['background-logo@fedorahosted.org']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'gsconnect@andyholmes.github.io', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
