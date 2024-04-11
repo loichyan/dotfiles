@@ -1,9 +1,20 @@
 { pkgs, ... }:
 let
   inherit (pkgs)
-    writeShellApplication fenix-monthly cargo-expand cargo-udeps cargo-watch;
-  rustToolchain = with fenix-monthly;
-    complete.withComponents [ "cargo" "rustc" "rustfmt" "miri" ];
+    writeShellApplication
+    fenix-monthly
+    cargo-expand
+    cargo-udeps
+    cargo-watch
+    ;
+  rustToolchain =
+    with fenix-monthly;
+    complete.withComponents [
+      "cargo"
+      "rustc"
+      "rustfmt"
+      "miri"
+    ];
   cargo-nightly = writeShellApplication {
     name = "cargo-nightly";
     runtimeInputs = [ rustToolchain ];
@@ -13,21 +24,30 @@ let
   };
   cargo-nightly-expand = writeShellApplication {
     name = "cargo-nightly-expand";
-    runtimeInputs = [ rustToolchain cargo-expand ];
+    runtimeInputs = [
+      rustToolchain
+      cargo-expand
+    ];
     text = ''
       cargo expand "$@"
     '';
   };
   cargo-nightly-udeps = writeShellApplication {
     name = "cargo-nightly-udeps";
-    runtimeInputs = [ rustToolchain cargo-udeps ];
+    runtimeInputs = [
+      rustToolchain
+      cargo-udeps
+    ];
     text = ''
       cargo udeps "$@"
     '';
   };
   cargo-nightly-watch = writeShellApplication {
     name = "cargo-nightly-watch";
-    runtimeInputs = [ rustToolchain cargo-watch ];
+    runtimeInputs = [
+      rustToolchain
+      cargo-watch
+    ];
     text = ''
       cargo watch "$@"
     '';
@@ -39,7 +59,8 @@ let
       rustfmt "$@"
     '';
   };
-in {
+in
+{
   home.packages = [
     cargo-nightly
     cargo-nightly-expand

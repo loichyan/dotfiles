@@ -8,8 +8,10 @@
     };
   };
 
-  outputs = { nixpkgs, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    { nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -29,11 +31,14 @@
         # rustWasmToolChain = fenix.targets.wasm32-unknown-unknown.toolchainOf rustChannel;
 
         # For development
-        rust-dev = fenix.combine (with rustToolchain; [
-          defaultToolchain
-          rust-src
-          # rustWasmToolChain.rust-std
-        ]);
+        rust-dev = fenix.combine (
+          with rustToolchain;
+          [
+            defaultToolchain
+            rust-src
+            # rustWasmToolChain.rust-std
+          ]
+        );
 
         # For building packages
         rust-minimal = rustToolchain.minimalToolchain;
@@ -41,14 +46,15 @@
           cargo = rust-minimal;
           rustc = rust-minimal;
         };
-      in {
+      in
+      {
         packages.default = rustPlatform.buildRustPackage {
           pname = "CRATE";
           version = "0.0.0";
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
         };
-        devShells.default = with pkgs;
-          mkShell { nativeBuildInputs = [ rust-dev ]; };
-      });
+        devShells.default = with pkgs; mkShell { nativeBuildInputs = [ rust-dev ]; };
+      }
+    );
 }

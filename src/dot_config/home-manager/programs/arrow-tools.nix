@@ -22,4 +22,11 @@ let
     cargoHash = "sha256-tDBDG76zY1vjTNkbpIIVwWPLDhgA/NAXTCABqm95V/A=";
     cargoBuildFlags = [ "--all" ];
   };
-in { home.packages = [ arrow-tools datafusion-cli pkgs.pqrs ]; }
+in
+{
+  home.packages = [
+    arrow-tools
+    datafusion-cli
+    pkgs.pqrs
+  ];
+}

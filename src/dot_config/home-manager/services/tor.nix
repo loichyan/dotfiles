@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let inherit (pkgs) tor;
-in {
+let
+  inherit (pkgs) tor;
+in
+{
   systemd.user.services = {
     tor = {
       Unit = {
@@ -13,7 +15,9 @@ in {
         Restart = "on-failure";
         ExecStart = "${tor}/bin/tor";
       };
-      Install = { WantedBy = [ "default.target" ]; };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }

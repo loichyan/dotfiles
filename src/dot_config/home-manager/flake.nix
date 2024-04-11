@@ -25,8 +25,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, fenix
-    , fenix-monthly, neovim-nightly, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-index-database,
+      fenix,
+      fenix-monthly,
+      neovim-nightly,
+      ...
+    }:
     let
       data = import ./data.nix;
       stateVersion = "23.11";
@@ -35,47 +44,63 @@
       overlays = [
         (_: prev: {
           myData = data;
-          python = (prev.python3.withPackages
-            (p: with p; [ black ipython numpy pandas pip ]));
+          python = (
+            prev.python3.withPackages (
+              p: with p; [
+                black
+                ipython
+                numpy
+                pandas
+                pip
+              ]
+            )
+          );
           fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};
         })
         neovim-nightly.overlays.default
       ];
-    in {
-      homeConfigurations.${username} = let
-        system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
-      in home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          {
-            home = { inherit username homeDirectory stateVersion; };
-            nix.registry = {
-              nixpkgs.to = {
-                type = "path";
-                path = "${nixpkgs}";
+    in
+    {
+      homeConfigurations.${username} =
+        let
+          system = "x86_64-linux";
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            {
+              home = {
+                inherit username homeDirectory stateVersion;
               };
-              my.to = {
-                type = "path";
-                path = "${self}";
+              nix.registry = {
+                nixpkgs.to = {
+                  type = "path";
+                  path = "${nixpkgs}";
+                };
+                my.to = {
+                  type = "path";
+                  path = "${self}";
+                };
               };
-            };
-            nixpkgs = { inherit overlays; };
-            programs.home-manager.enable = true;
-          }
-          nix-index-database.hmModules.nix-index
-          #./programs/arrow-tools.nix
-          ./programs/cargo-nightly-tools.nix
-          #./programs/zellij-nightly.nix
-          ./services/aria.nix
-          ./services/sing-box.nix
-          ./services/tor.nix
-          ./misc/extra-completions.nix
-          ./misc/hm-session-vars.nix
-          ./packages.nix
-        ];
-      };
+              nixpkgs = {
+                inherit overlays;
+              };
+              programs.home-manager.enable = true;
+            }
+            nix-index-database.hmModules.nix-index
+            #./programs/arrow-tools.nix
+            ./programs/cargo-nightly-tools.nix
+            #./programs/zellij-nightly.nix
+            ./services/aria.nix
+            ./services/sing-box.nix
+            ./services/tor.nix
+            ./misc/extra-completions.nix
+            ./misc/hm-session-vars.nix
+            ./packages.nix
+          ];
+        };
       templates = {
         basic = {
           path = ./templates/basic;

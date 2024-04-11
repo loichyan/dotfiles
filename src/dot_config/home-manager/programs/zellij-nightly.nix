@@ -3,8 +3,19 @@ with builtins;
 let
   # Stolen from: https://github.com/NixOS/nixpkgs/blob/44d0940/pkgs/tools/misc/zellij/default.nix
   inherit (pkgs)
-    lib fetchFromGitHub rustPlatform stdenv installShellFiles perl pkg-config
-    libiconv openssl DiskArbitration Foundation mandown;
+    lib
+    fetchFromGitHub
+    rustPlatform
+    stdenv
+    installShellFiles
+    perl
+    pkg-config
+    libiconv
+    openssl
+    DiskArbitration
+    Foundation
+    mandown
+    ;
 
   rev = "5fb75ab6d13bd6e22790224a8a0541a8ac73be60";
   zellij-nightly = rustPlatform.buildRustPackage {
@@ -20,10 +31,20 @@ let
 
     cargoHash = "sha256-qX0Adrbu1smJ0/3U9tX494m9Z2X+CmMRPxFAjj24tgc=";
 
-    nativeBuildInputs = [ mandown installShellFiles perl pkg-config ];
+    nativeBuildInputs = [
+      mandown
+      installShellFiles
+      perl
+      pkg-config
+    ];
 
-    buildInputs = [ openssl ]
-      ++ lib.optionals stdenv.isDarwin [ libiconv DiskArbitration Foundation ];
+    buildInputs =
+      [ openssl ]
+      ++ lib.optionals stdenv.isDarwin [
+        libiconv
+        DiskArbitration
+        Foundation
+      ];
 
     preCheck = ''
       HOME=$TMPDIR
@@ -46,4 +67,7 @@ let
       mainProgram = "zellij";
     };
   };
-in { home.packages = [ zellij-nightly ]; }
+in
+{
+  home.packages = [ zellij-nightly ];
+}

@@ -1,11 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Install packages.
   home.packages = with pkgs; [
     # Nix
     cachix
     nil
     nix-direnv
-    nixfmt
+    nixfmt-rfc-style
 
     # Dotfiles manager
     chezmoi
@@ -71,7 +72,13 @@
     (stdenvAdapters.useMoldLinker stdenv).cc
 
     # Rust
-    (with fenix.stable; fenix.combine [ defaultToolchain rust-src ])
+    (
+      with fenix.stable;
+      fenix.combine [
+        defaultToolchain
+        rust-src
+      ]
+    )
     fenix-monthly.rust-analyzer
     sccache
 

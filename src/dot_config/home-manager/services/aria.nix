@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let inherit (pkgs) aria;
-in {
+let
+  inherit (pkgs) aria;
+in
+{
   systemd.user.services = {
     aria2 = {
       Unit = {
@@ -13,7 +15,9 @@ in {
         Restart = "on-failure";
         ExecStart = "${aria}/bin/aria2c";
       };
-      Install = { WantedBy = [ "default.target" ]; };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }
