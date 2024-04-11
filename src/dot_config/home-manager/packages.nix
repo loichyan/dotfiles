@@ -73,6 +73,7 @@
     # Rust
     (with fenix.stable; fenix.combine [ defaultToolchain rust-src ])
     fenix-monthly.rust-analyzer
+    sccache
 
     # Cargo ulities
     cargo-edit
