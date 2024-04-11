@@ -16,8 +16,9 @@ return {
     config = true,
   },
   {
-    "tpope/vim-sleuth",
+    "nmac427/guess-indent.nvim",
     event = "VeryLazy",
+    config = true,
   },
   {
     "wakatime/vim-wakatime",
@@ -76,5 +77,13 @@ return {
         group = "nvim_ghost_user_autocommands",
       })
     end,
+  },
+  {
+    "renerocksai/telekasten.nvim",
+    cmd = "Telekasten",
+    opts = {
+      home = vim.fn.expand("~/Documents/zettelkasten"),
+    },
+    dependencies = { "nvim-telescope/telescope.nvim" },
   },
 }
