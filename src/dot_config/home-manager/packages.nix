@@ -128,9 +128,10 @@
     delve
 
     # Etc
-    perl
     hadolint
+    perl
     taplo-cli
+    typos-lsp
     nodePackages.yaml-language-server
 
     ## Document

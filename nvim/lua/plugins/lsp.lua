@@ -1,6 +1,7 @@
 local Util = require("deltavim.util")
 
 ---@type lspconfig.options|table<string,boolean>
+---@diagnostic disable:missing-fields
 local servers = {
   bashls = true,
   clangd = true,
@@ -35,6 +36,7 @@ local servers = {
   tailwindcss = true,
   texlab = true,
   tsserver = true,
+  typos_lsp = true,
   yamlls = {
     settings = { yaml = { validate = true, keyOrdering = false } },
     on_attach = function(client)
