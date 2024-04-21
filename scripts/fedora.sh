@@ -8,7 +8,7 @@ rpm-ostree install \
 rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda
 sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau
-rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1 initcall_blacklist=simpledrm_platform_driver_init
+rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
 
 ms_repo() {
   local repo=$1

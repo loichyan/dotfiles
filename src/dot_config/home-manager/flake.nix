@@ -3,9 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     fenix = {
       url = "github:nix-community/fenix";
@@ -30,6 +36,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixgl,
       nix-index-database,
       fenix,
       fenix-monthly,
@@ -42,6 +49,8 @@
       username = data.user;
       homeDirectory = data.home;
       overlays = [
+        nixgl.overlays.default
+        neovim-nightly.overlays.default
         (_: prev: {
           myData = data;
           python = (
@@ -58,7 +67,6 @@
           fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};
         })
-        neovim-nightly.overlays.default
       ];
     in
     {

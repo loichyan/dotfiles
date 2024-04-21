@@ -7,6 +7,7 @@
     nil
     nix-direnv
     nixfmt-rfc-style
+    nixgl.auto.nixGLDefault
 
     # Dotfiles manager
     chezmoi
