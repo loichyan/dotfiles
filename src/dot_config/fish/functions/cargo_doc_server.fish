@@ -1,12 +1,17 @@
 function cargo_doc_server -d "Start a server for Cargo documentation"
     if test -z "$argv" || ! argparse "p/port=" -- $argv
         echo -n "\
-Usage:
+USAGE:
 
--p/--port: Port to listen on
+cargo_doc_server -p <int>
+
+OPTION:
+
+-p/--port <int>  Port to listen on
 "
         return 1
     end
+
     set -l port $_flag_port
     fish -c "
     cargo-nightly-watch -E RUSTFLAGS='--cfg doc_cfg' -x doc &

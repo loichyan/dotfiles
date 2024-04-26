@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-# USAGE:
-#
-# toggle.sh [OPTIONS] [COMMAND]...
-#
-# OPTIONS:
-#
-# --name <name>  Popup name [Default: "default"]
-# -* [value]     Flag or option passed to display-popup
-#
-# EXAMPLES:
-#
-# toggle.sh --name bash -E -d '#{current_pane_path}' bash
-
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$CURRENT_DIR/helpers.sh"
@@ -40,7 +27,22 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   -*)
-    echo "Unknown argument '$1'" >&2
+    cat <<EOF >&2
+Unknown argument '$1'
+
+USAGE:
+
+toggle.sh [OPTION]... [COMMAND]...
+
+OPTION:
+
+--name <name>  Popup name [Default: "default"]
+-* [value]     Flag or option passed to display-popup
+
+EXAMPLES:
+
+toggle.sh --name bash -E -d '#{current_pane_path}' bash
+EOF
     exit 1
     ;;
   *)
