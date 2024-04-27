@@ -1,4 +1,6 @@
-#== Theme ==#
+#-----------
+#-- Theme --
+#-----------
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:close'
@@ -7,25 +9,24 @@ titlebar-font='Sans Bold 11'
 
 [org/gnome/desktop/interface]
 clock-format='12h'
-color-scheme='prefer-dark'
-font-name='Sans 11'
+cursor-blink=true
+cursor-blink-time=500
 document-font-name='Sans 11'
+font-name='Sans 11'
 monospace-font-name='Monospace 10'
-cursor-theme='Yaru'
-gtk-theme='Yaru-dark'
-icon-theme='Yaru-dark'
+# Theme
+color-scheme='prefer-dark'
+cursor-theme='Adwaita'
 gtk-key-theme='Default'
+gtk-theme='Adwaita'
+icon-theme='Adwaita'
 
 [org/gnome/desktop/sound]
 theme-name='freedesktop'
 
-[org/gnome/shell/extensions/user-theme]
-name='Yaru-dark'
-
-[org/gnome/terminal/legacy]
-theme-variant='dark'
-
-#== Proxy ==#
+#-----------
+#-- Proxy --
+#-----------
 
 [system/proxy]
 #mode='none'
@@ -47,7 +48,9 @@ port={{ .proxy.port }}
 host='127.0.0.1'
 port={{ .proxy.port }}
 
-#== Input ==#
+#-----------
+#-- Input --
+#-----------
 
 [org/gnome/desktop/input-sources]
 show-all-sources=true
@@ -65,7 +68,9 @@ disable-while-typing=true
 tap-to-click=true
 two-finger-scrolling-enabled=true
 
-#== Extensions ==#
+#----------------
+#-- Extensions --
+#----------------
 
 [org/gnome/shell/extensions/appindicator]
 legacy-tray-enabled=true
@@ -124,7 +129,9 @@ icon-style=1
 menu-centered=false
 position-in-panel=1
 
-#== Nautilus ==#
+#--------------
+#-- Nautilus --
+#--------------
 
 [org/gnome/nautilus/compression]
 default-compression-format='zip'
@@ -139,7 +146,9 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 search-view='list-view'
 
-#== Custom keybindings ==
+#-----------------
+#-- Keybindings --
+#-----------------
 
 [org/gnome/desktop/wm/keybindings]
 close=@as []
@@ -268,7 +277,9 @@ toggle-quick-settings=@as []
 switch-to-application-{{ $i }}=@as []
 {{ end }}
 
-#== Misc ==#
+#----------
+#-- Misc --
+#----------
 
 [org/gnome/desktop/datetime]
 automatic-timezone=true
@@ -280,7 +291,7 @@ exec-arg=''
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=['background-logo@fedorahosted.org']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'gsconnect@andyholmes.github.io', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'gsconnect@andyholmes.github.io', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true

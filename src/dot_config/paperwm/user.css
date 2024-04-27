@@ -1,5 +1,12 @@
 .paperwm-selection {
   background-color: transparent;
   border-width: 5px;
-  border-color: rgba(239, 159, 118, 0.5);
+  border-color: rgba(53, 132, 228, 0.35);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.paperwm-window-position-bar {
+  border: 0;
+  border-radius: 1px;
+  background-color: rgba(53, 132, 228, 0.35);
 }
