@@ -140,7 +140,7 @@ return function()
       { "<Leader>gC", "@search.git_status" },
       { "<Leader>gd", "@diffview.open" },
       { "<Leader>gD", "@diffview.open_last" },
-      { "<Leader>gh", "@diffview.file_histroy" },
+      { "<Leader>gh", "@diffview.file_history" },
       { "<Leader>gp", "@git.preview_hunk" },
       { "<Leader>gR", "@git.reset_buffer" },
       { "<Leader>gr", "@git.reset_hunk" },
@@ -199,7 +199,7 @@ return function()
       { "<Leader>ii", "@iron.visual_send" },
       { "<Leader>i<CR>", "@iron.cr" },
       -- treesitter
-      { "<C-Space>", "@treesitter.icrement_selection" },
+      { "<C-Space>", "@treesitter.increment_selection" },
       { "<BS>", "@treesitter.decrement_selection" },
       -- notify
       { "<S-Enter>", "@notify.redirect" },

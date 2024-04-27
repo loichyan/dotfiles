@@ -1,0 +1,2 @@
+[default]
+extend-ignore-words-re = ["noice", "fo", "nd", "Evn", "ue"]

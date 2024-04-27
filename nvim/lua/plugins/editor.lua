@@ -119,7 +119,7 @@ return {
         :map({
           { "@diffview.open", "<Cmd>DiffviewOpen<CR>", "Open diffview" },
           { "@diffview.open_last", "<Cmd>DiffviewOpen HEAD~1<CR>", "Open diffview with last commit" },
-          { "@diffview.file_histroy", "<Cmd>DiffviewFileHistory %<CR>", "File histroy" },
+          { "@diffview.file_history", "<Cmd>DiffviewFileHistory %<CR>", "File history" },
         })
         :collect_lazy()
     end,
