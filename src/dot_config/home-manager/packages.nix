@@ -132,6 +132,7 @@
     hadolint
     perl
     taplo-cli
+    typos
     typos-lsp
     nodePackages.yaml-language-server
 
