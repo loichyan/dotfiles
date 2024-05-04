@@ -124,7 +124,11 @@
         };
         repo = {
           path = ./templates/repo;
-          description = "Repository starter";
+          description = "Repository starter with MIT OR Apache-2.0 license";
+        };
+        repo-gpl = {
+          path = ./templates/repo-gpl;
+          description = "Repository starter with GPL-3.0 license";
         };
         rust = {
           path = ./templates/rust;
