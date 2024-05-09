@@ -4,7 +4,7 @@ loichyan's dotfiles.
 
 ## 📸 Showcase
 
-![wezterm](assets/wezterm.png)
+![wezterm](assets/overview.png)
 
 ## ✨ Overview
 
