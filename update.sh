@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-flavour=frappe
+flavour=mocha
 
 banner() {
   cat <<EOF
@@ -29,9 +29,9 @@ ghdown() {
 }
 
 # Neovim
-{
-  sed -e "s/\(flavour\) = \".*\"/\1 = \"$flavour\"/" -i nvim/lua/plugins/colorscheme.lua
-}
+# {
+#   sed -e "s/\(flavour\) = \".*\"/\1 = \"$flavour\"/" -i nvim/lua/plugins/colorscheme.lua
+# }
 
 # WezTerm
 {
@@ -51,7 +51,7 @@ ghdown() {
 
 # Tmux
 {
-  sed -e "s/\(set -g @catppuccin_flavour\) \".*\"/\1 \"$flavour\"/" -i src/dot_tmux.conf
+  sed -e "s/\(@catppuccin_flavour\) \".*\"/\1 \"$flavour\"/" -i src/dot_tmux.conf
 }
 
 # Yazi
