@@ -53,6 +53,7 @@ pnpm_add() {
 info "setup extra configuration"
 
 # symlink directories
+symlink nvim .config/nvim
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
 symlink private/ssh .ssh

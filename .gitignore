@@ -1,40 +1,16 @@
-## File system
-.DS_Store
-desktop.ini
-
-## Editor
-*.iml
-*.swo
-*.swp
-.cproject
-.favorites.json
-.idea
-.project
-.settings
-.vs
-.vscode
-Session.vim
-
-## Evn files
-.direnv
-.envrc
-
-## Logs
-*.log
-
-## Private data
+# Private data
+/private
 *_private.*
 .chezmoidata.*
-/private
 fish_variables
 fish_history
 
-## Misc
-foo.*
+# External project
+/nvim
 
-## Nix
+# Nix
 flake.lock
 result
 
-## Node.js
+# Node.js
 node_modules
