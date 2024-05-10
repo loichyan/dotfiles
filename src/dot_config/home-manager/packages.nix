@@ -58,7 +58,7 @@
     #== Languages support ==#
 
     # Neovim
-    neovim-nightly
+    neovim
     tree-sitter
 
     # Shell
