@@ -9,7 +9,6 @@ fish_history
 /nvim
 
 # Nix
-flake.lock
 result
 
 # Node.js
