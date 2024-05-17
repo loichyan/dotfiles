@@ -126,6 +126,7 @@
     # Golang
     go
     gopls
+    gofumpt
     delve
 
     # Etc
