@@ -103,6 +103,7 @@
             #./programs/zellij-nightly.nix
             ./services/aria.nix
             ./services/sing-box.nix
+            #./services/tmux.nix
             ./services/tor.nix
             ./misc/extra-completions.nix
             ./misc/hm-session-vars.nix
