@@ -47,6 +47,7 @@
     yazi
 
     # Misc
+    aria2
     caddy
     distrobox
     dufs

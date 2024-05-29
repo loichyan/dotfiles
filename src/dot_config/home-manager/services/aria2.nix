@@ -1,19 +1,19 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) aria;
+  inherit (pkgs) aria2;
 in
 {
   systemd.user.services = {
     aria2 = {
       Unit = {
-        Description = aria.meta.description;
+        Description = aria2.meta.description;
         Wants = "network.target";
         After = "network-online.target";
       };
       Service = {
         Type = "exec";
         Restart = "on-failure";
-        ExecStart = "${aria}/bin/aria2c";
+        ExecStart = "${aria2}/bin/aria2c";
       };
       Install = {
         WantedBy = [ "default.target" ];

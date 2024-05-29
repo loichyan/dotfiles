@@ -101,7 +101,7 @@
             #./programs/arrow-tools.nix
             ./programs/cargo-nightly-tools.nix
             #./programs/zellij-nightly.nix
-            ./services/aria.nix
+            ./services/aria2.nix
             ./services/sing-box.nix
             #./services/tmux.nix
             ./services/tor.nix

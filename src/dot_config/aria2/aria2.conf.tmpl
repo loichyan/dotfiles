@@ -1,9 +1,35 @@
+# Credit: https://gist.github.com/qzm/a54559726896d5e6bf21adf2363ad334#file-aria2-conf
+
+# Basic
 all-proxy=http://127.0.0.1:{{ .proxy.port }}
+dir={{ .home }}/Downloads
+input-file={{ .home }}/.local/share/aria2/session
+save-session={{ .home }}/.local/share/aria2/session
+save-session-interval=60
+max-concurrent-downloads=5
+continue=true
+max-overall-download-limit=0
+max-download-limit=0
+
+# RPC
 enable-rpc=true
 rpc-allow-origin-all=true
 rpc-listen-all=false
 rpc-listen-port={{ .ariaPort }}
 rpc-secret={{ .ariaToken }}
-dir={{ .home }}/Downloads
-continue=true
-split=8
+
+# Advanced
+allow-overwrite=true
+allow-piece-length-change=true
+always-resume=true
+async-dns=false
+auto-file-renaming=true
+content-disposition-default-utf8=true
+disk-cache=64M
+file-allocation=falloc
+no-file-allocation-limit=8M
+
+# HTTP/FTP/SFTP
+max-connection-per-server=16
+min-split-size=8M
+split=32
