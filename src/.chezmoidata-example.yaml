@@ -5,6 +5,7 @@ email: yourname@example.com
 home: /home/yourname
 sourceDir: /home/yourname/dotfiles
 atuinSyncAddress: https://api.atuin.sh
+ariaPort: 6800
 ariaToken: xxxxxxxx
 signingkey: xxxxxxxx
 wakamimeApiKey: xxxxxxxx
