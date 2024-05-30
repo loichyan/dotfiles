@@ -12,7 +12,13 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        devShells.default = with pkgs; mkShell { };
+        devShells.default =
+          with pkgs;
+          mkShell {
+            packages = [ ];
+            inputsFrom = [ ];
+            shellHook = '''';
+          };
       }
     );
 }

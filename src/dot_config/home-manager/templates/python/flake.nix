@@ -18,7 +18,7 @@
         devShells.default =
           with pkgs;
           mkShell {
-            buildInputs = [ python3 ];
+            packages = [ python3 ];
             shellHook = ''
               export LD_LIBRARY_PATH=${ldPaths}:$LD_LIBRARY_PATH
             '';

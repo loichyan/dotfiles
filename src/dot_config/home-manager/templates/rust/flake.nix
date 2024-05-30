@@ -54,7 +54,7 @@
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
         };
-        devShells.default = with pkgs; mkShell { nativeBuildInputs = [ rust-dev ]; };
+        devShells.default = with pkgs; mkShell { packages = [ rust-dev ]; };
       }
     );
 }
