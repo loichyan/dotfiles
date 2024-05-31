@@ -6,6 +6,7 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #ra-flake.url = "github:loichyan/ra-flake";
   };
 
   outputs =
@@ -15,20 +16,23 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ inputs.fenix.overlays.default ];
+          overlays = [
+            inputs.fenix.overlays.default
+            #inputs.ra-flake.overlays.default
+          ];
         };
-        inherit (pkgs) fenix;
-        inherit (pkgs.lib) importTOML;
+        inherit (pkgs) fenix lib;
+        #inherit (pkgs) ra-flake;
 
         # Rust toolchain
-        rustToolchainFile = importTOML ./rust-toolchain.toml;
+        rustToolchainFile = lib.importTOML ./rust-toolchain.toml;
         rustChannel = {
           channel = rustToolchainFile.toolchain.channel;
           sha256 = "";
         };
         rustToolchain = fenix.toolchainOf rustChannel;
         # Additional targets
-        # rustWasmToolChain = fenix.targets.wasm32-unknown-unknown.toolchainOf rustChannel;
+        #rustWasmToolChain = fenix.targets.wasm32-unknown-unknown.toolchainOf rustChannel;
 
         # For development
         rust-dev = fenix.combine (
@@ -36,9 +40,15 @@
           [
             defaultToolchain
             rust-src
-            # rustWasmToolChain.rust-std
+            #rust-analyzer
+            #rustWasmToolChain.rust-std
           ]
         );
+        # Earlier Rust toolchains doesn't provide rust-analyzer
+        #rust-analyzer = ra-flake.make {
+        #  version.rust = rustChannel;
+        #  sha256 = "";
+        #};
 
         # For building packages
         rust-minimal = rustToolchain.minimalToolchain;
@@ -54,7 +64,14 @@
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
         };
-        devShells.default = with pkgs; mkShell { packages = [ rust-dev ]; };
+        devShells.default =
+          with pkgs;
+          mkShell {
+            packages = [
+              rust-dev
+              #rust-analyzer
+            ];
+          };
       }
     );
 }
