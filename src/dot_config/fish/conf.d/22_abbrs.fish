@@ -58,6 +58,7 @@ if status is-interactive
         abbr_git sw checkout
     end
 
+    abbr Hdc history_delete -c
     abbr Hdp history_delete -p
     abbr FP exec fish -P
 
