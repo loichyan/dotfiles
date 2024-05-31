@@ -72,6 +72,9 @@ if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
   pnpm_add @fsouza/prettierd
 fi
 
+# Create an empty Aria2 session file
+touch ~/.local/share/aria2/session
+
 # https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
 autostart="$HOME/.config/autostart"
 sysconf="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
