@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipfail
+
 # Import RPM Fusion
 rpm-ostree install \
   "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
@@ -47,24 +49,5 @@ curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm 
 # Install common packages.
 rpm-ostree install mygnome mysilverblue
 
-# Install Nix.
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-
-# Activate Home Manager
-nix run home-manager/master -- switch
-
 # Enable podman socket.
 systemctl --user enable --now podman.socket
-
-# Enable tap-to-click
-sudo tee /etc/dconf/db/gdm.d/06-tap-to-click <<<"\
-[org/gnome/desktop/peripherals/touchpad]
-tap-to-click=true"
-sudo dconf update
-
-# Load .config/dconf/user.txt
-echo 'service-db:keyfile/user' | sudo tee -a /etc/dconf/profile/user
-
-# Auto backup
-sudo btrfs subvolmue create "$HOME/dev"
-sudo systemctl enable snapper-cleanup.timer snapper-timeline.timer

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipfail
+
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y "org.fedoraproject.Platform//f$(rpm -E %fedora)" \
   org.gnome.Calculator \

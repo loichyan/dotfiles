@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipfail
+
 cat <<EOF | sudo tee /etc/sysctl.d/99-custom.conf
 # QUIC buffer
 net.core.rmem_max = 2500000

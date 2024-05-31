@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipfail
+
 rpm-ostree upgrade &
 flatpak update &
 
