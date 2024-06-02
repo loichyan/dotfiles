@@ -1,3 +1,5 @@
+# vim:ft=ini
+
 #-----------
 #-- Theme --
 #-----------
@@ -99,8 +101,12 @@ window-width-percentage=25
 cycle-height-steps=[0.35, 0.5, 0.65]
 cycle-width-steps=[0.35, 0.5, 0.65]
 horizontal-margin=10
+open-window-position=0
+selection-border-radius-bottom=3
+selection-border-radius-top=3
+selection-border-size=10
 show-window-position-bar=true
-show-workspace-indicator=true
+show-workspace-indicator=false
 vertical-margin=5
 vertical-margin-bottom=5
 window-gap=10
@@ -172,10 +178,10 @@ switch-to-workspace-right=@as []
 toggle-fullscreen=@as []
 toggle-maximized=@as []
 unmaximize=@as []
-{{ range $i := untilStep 1 7 1 }}
+#{{ range $i := untilStep 1 7 1 }}
 move-to-workspace-{{ $i }}=['<Super><Shift>{{ $i }}']
 switch-to-workspace-{{ $i }}=['<Super>{{ $i }}']
-{{ end }}
+#{{ end }}
 
 [org/gnome/mutter/keybindings]
 cancel-input-capture=@as []
@@ -286,9 +292,9 @@ toggle-application-view=@as ['<Super>a']
 toggle-message-tray=@as []
 toggle-overview=@as ['<Super>d']
 toggle-quick-settings=@as []
-{{ range $i := untilStep 1 7 1 }}
+#{{ range $i := untilStep 1 7 1 }}
 switch-to-application-{{ $i }}=@as []
-{{ end }}
+#{{ end }}
 
 #----------
 #-- Misc --
