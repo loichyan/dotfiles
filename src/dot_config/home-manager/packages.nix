@@ -26,7 +26,7 @@
 
     # CLI tools
     bat
-    cocogitto
+    commitizen
     degit
     delta
     du-dust
