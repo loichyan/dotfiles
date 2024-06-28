@@ -113,7 +113,7 @@
     # Python
     python
     poetry
-    nodePackages.pyright
+    pyright
 
     # Lua
     lua
