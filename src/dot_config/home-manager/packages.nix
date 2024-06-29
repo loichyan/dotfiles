@@ -22,12 +22,12 @@
 
     # Git
     git
+    cz-cli
+    degit
     lazygit
 
     # CLI tools
     bat
-    commitizen
-    degit
     delta
     du-dust
     eza
