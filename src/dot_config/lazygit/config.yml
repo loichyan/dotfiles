@@ -8,6 +8,8 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  commit:
+    autoWrapCommitMessage: false
 keybinding:
   universal:
     toggleRangeSelect: V
