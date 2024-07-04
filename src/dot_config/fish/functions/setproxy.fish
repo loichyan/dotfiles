@@ -4,4 +4,8 @@ function setproxy -d "Set proxy variables"
         set -gx $v $proxy
         set -gx (string upper $v) $proxy
     end
+
+    # Don't proxy localhost requests
+    set -gx no_proxy localhost,127.0.0.1,::1,0.0.0.0,::
+    set -gx NO_PROXY $no_proxy
 end
