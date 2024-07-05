@@ -7,7 +7,8 @@ history_delete [OPTION]...
 
 OPTION:
 
--p/--prefix  Search histories by prefix
+-p/--prefix    Search histories by prefix
+-c/--contains  Search histories by keyword
 '
         return 1
     end
