@@ -10,8 +10,8 @@ function fish_user_key_bindings
 
     fish_vi_key_bindings
     fish_default_key_bindings -M insert
-    bind -M insert JJ __bind_i_escape
-    bind -M insert JK __bind_i_escape
+    bind -M insert jj __bind_i_escape
+    bind -M insert jk __bind_i_escape
     bind -M insert \ce end-of-line
     bind -M insert \cw backward-kill-path-component
     bind -M insert \cb backward-kill-word
@@ -29,5 +29,5 @@ function fish_user_key_bindings
         bind -M insert \cr fzf-history-widget
     end
 
-    set -g fish_sequence_key_delay_ms 200
+    set -g fish_sequence_key_delay_ms 100
 end
