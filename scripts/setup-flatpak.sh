@@ -22,4 +22,6 @@ flatpak install -y "org.fedoraproject.Platform//f$(rpm -E %fedora)" \
   org.gnome.baobab \
   org.gnome.clocks \
   org.gnome.font-viewer \
+  com.brave.Browser \
+  org.libreoffice.LibreOffice \
   org.mozilla.Thunderbird
