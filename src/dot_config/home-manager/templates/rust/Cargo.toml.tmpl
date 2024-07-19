@@ -1,0 +1,18 @@
+[package]
+name = "CRATE"
+version = "0.0.0"
+authors = ["{{ .name }} <{{ .email }}>"]
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "MSRV"
+
+description = "MY AWESOME CRATE"
+keywords = []
+categories = []
+repository = "https://github.com/{{ .user }}/CRATE"
+
+# Enable some optimizations in binary crate
+#[profile.release]
+#lto = true
+#codegen-units = 1
+#strip = true
