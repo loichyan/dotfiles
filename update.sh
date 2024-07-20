@@ -63,7 +63,8 @@ ghdown() {
 # Delta
 {
   banner delta
-  ghdown "catppuccin/delta/raw/main/catppuccin.gitconfig"
+  ghdown "catppuccin/delta/raw/main/catppuccin.gitconfig" |
+    sed -ze 's/\\\n\t\+//g' # join multiple lines
 } >src/dot_config/git/catppuccin.gitconfig
 
 # Delta
