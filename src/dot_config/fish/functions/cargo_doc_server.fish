@@ -14,7 +14,7 @@ OPTION:
 
     set -l port $_flag_port
     fish -c "
-    cargo-nightly-watch -E RUSTFLAGS='--cfg doc_cfg' -x 'doc --document-private-items' &
+    cargo-nightly-watch -E RUSTFLAGS='--cfg doc_cfg' -x 'doc $argv' &
     dufs -p $port[1] --allow-search --enable-cors --render-spa --render-try-index target
     "
 end
