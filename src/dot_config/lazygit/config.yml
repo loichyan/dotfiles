@@ -10,7 +10,7 @@ git:
     pager: delta --dark --paging=never
   commit:
     autoWrapCommitMessage: false
-  truncateCopiedCommitHashesTo: 7
+  truncateCopiedCommitHashesTo: 12
 keybinding:
   universal:
     toggleRangeSelect: V
