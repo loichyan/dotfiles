@@ -22,6 +22,10 @@ flatpak install -y "org.fedoraproject.Platform//f$(rpm -E %fedora)" \
   org.gnome.baobab \
   org.gnome.clocks \
   org.gnome.font-viewer \
-  com.brave.Browser \
+  org.mozilla.Thunderbird \
   org.libreoffice.LibreOffice \
-  org.mozilla.Thunderbird
+  com.brave.Browser \
+  com.github.tchx84.Flatseal
+flatpak override --user \
+  --filesystem=/nix:ro \
+  --filesystem=xdg-config/fontconfig:ro
