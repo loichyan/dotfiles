@@ -7,4 +7,4 @@ _just := quote(just_executable()) + ' --justfile=' + quote(justfile())
 _setup_bash := 'set -euo pipefail'
 
 _default:
-    @{{ _just }} --list
+    @command {{ _just }} --list
