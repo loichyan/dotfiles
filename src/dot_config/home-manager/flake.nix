@@ -53,16 +53,11 @@
         # neovim-nightly.overlays.default
         (_: prev: {
           myData = data;
-          python = (
-            prev.python3.withPackages (
-              p: with p; [
-                black
-                ipython
-                numpy
-                pandas
-                pip
-              ]
-            )
+          python = prev.python3.withPackages (
+            p: with p; [
+              ipython
+              pip
+            ]
           );
           fenix = fenix.packages.${prev.system};
           fenix-monthly = fenix-monthly.packages.${prev.system};

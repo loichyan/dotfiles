@@ -112,8 +112,8 @@
 
     # Python
     python
-    poetry
-    pyright
+    basedpyright
+    ruff-lsp
 
     # Lua
     lua
