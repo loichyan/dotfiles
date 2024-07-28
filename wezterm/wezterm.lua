@@ -2,12 +2,11 @@ local W = require("wezterm")
 
 return {
   -- Multiplexer
-  unix_domains = {
-    { name = "bg" },
-  },
+  --unix_domains = {
+  --  { name = "bg" },
+  --},
   -- IME
   use_ime = true,
-  ime_preedit_rendering = "Builtin",
   -- Colorscheme & font
   color_scheme = "Catppuccin Mocha",
   font = W.font_with_fallback({
@@ -16,14 +15,15 @@ return {
   }),
   font_size = 11.0,
   line_height = 1,
-  -- Cursor style
+  --Cursor style
   cursor_blink_rate = 500,
   cursor_blink_ease_in = "Constant",
   cursor_blink_ease_out = "Constant",
   hide_mouse_cursor_when_typing = false,
   -- Title & tab bar
-  window_decorations = "INTEGRATED_BUTTONS|RESIZE",
-  window_background_opacity = 0.95,
+  window_decorations = "RESIZE",
+  --window_background_opacity = 1,
+  enable_tab_bar = false,
   use_fancy_tab_bar = false,
   tab_max_width = 25,
   show_tab_index_in_tab_bar = false,
@@ -41,13 +41,15 @@ return {
     brightness = 0.75,
   },
   -- Rendering
-  front_end = "OpenGL",
-  -- freetype_load_flags = "NO_HINTING",
+  front_end = "WebGpu",
+  --freetype_load_flags = "NO_HINTING",
   -- Keybindings
   disable_default_key_bindings = true,
   mouse_bindings = {
     { event = { Up = { streak = 1, button = "Left" } }, action = "OpenLinkAtMouseCursor" },
   },
-  keys = require("config.keys"),
-  key_tables = require("config.key_tables"),
+  --keys = require("config.keys"),
+  --key_tables = require("config.key_tables"),
+  default_prog = { "tmux", "new", "-Ads", "main" },
+  enable_csi_u_key_encoding = true,
 }
