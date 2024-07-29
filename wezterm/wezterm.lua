@@ -56,6 +56,6 @@ return {
   },
   --keys = require("config.keys"),
   --key_tables = require("config.key_tables"),
-  default_prog = { "tmux", "new", "-Ads", "main" },
+  default_prog = { "tmux", "new", "-A" },
   enable_csi_u_key_encoding = true,
 }
