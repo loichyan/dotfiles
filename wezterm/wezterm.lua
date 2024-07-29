@@ -1,6 +1,12 @@
 local W = require("wezterm")
 
+local home = assert(os.getenv("HOME"))
 return {
+  term = "wezterm",
+  set_environment_variables = {
+    -- TODO: maybe unnecessary if NixOS/nixpkgs#307484 is merged?
+    TERMINFO_DIRS = home .. "/.nix-profile/share/terminfo:/usr/share/terminfo",
+  },
   -- Multiplexer
   --unix_domains = {
   --  { name = "bg" },
