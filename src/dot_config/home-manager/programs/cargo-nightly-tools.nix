@@ -9,11 +9,9 @@ let
     ;
   rustToolchain =
     with fenix-monthly;
-    complete.withComponents [
-      "cargo"
-      "rustc"
-      "rustfmt"
-      "miri"
+    combine [
+      default.toolchain
+      complete.miri
     ];
   cargo-nightly = writeShellApplication {
     name = "cargo-nightly";
