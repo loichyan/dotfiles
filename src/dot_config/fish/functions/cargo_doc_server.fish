@@ -15,6 +15,7 @@ OPTION:
     set -l port $_flag_port
     fish -c "
     cargo-nightly-watch -E RUSTFLAGS='--cfg docsrs' -x 'doc $argv' &
+    mkdir -p target
     dufs -p $port[1] --allow-search --enable-cors --render-spa --render-try-index target
     "
 end
