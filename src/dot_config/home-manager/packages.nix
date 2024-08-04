@@ -79,9 +79,9 @@
       fenix.combine [
         defaultToolchain
         rust-src
+        rust-analyzer
       ]
     )
-    fenix-monthly.rust-analyzer
     sccache
 
     # Cargo ulities
