@@ -106,6 +106,7 @@
 
     prettierd
     nodePackages.eslint
+    nodePackages.prettier
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     tailwindcss-language-server
