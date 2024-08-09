@@ -3,7 +3,7 @@
 flavour=mocha
 
 banner() {
-  cat <<EOF
+	cat <<EOF
 # Name:     Catppuccin ${flavour^}
 # Author:   Catppuccin Org
 # License:  MIT
@@ -13,7 +13,7 @@ EOF
 }
 
 banner_xml() {
-  cat <<EOF
+	cat <<EOF
 <!--
  Name:     Catppuccin ${flavour^}
  Author:   Catppuccin Org
@@ -25,7 +25,7 @@ EOF
 }
 
 ghdown() {
-  curl -fsSL "https://github.com/$1" "${@:2}"
+	curl -fsSL "https://github.com/$1" "${@:2}"
 }
 
 # Neovim
@@ -35,40 +35,40 @@ ghdown() {
 
 # WezTerm
 {
-  sed -e "s/\(color_scheme\) = \".*\"/\1 = \"Catppuccin ${flavour^}\"/" -i wezterm/wezterm.lua
+	sed -e "s/\(color_scheme\) = \".*\"/\1 = \"Catppuccin ${flavour^}\"/" -i wezterm/wezterm.lua
 }
 
 # Zellij
 {
-  sed -e "s/\(theme\) \".*\"/\1 \"catppuccin-$flavour\"/" -i src/dot_config/zellij/config.kdl
+	sed -e "s/\(theme\) \".*\"/\1 \"catppuccin-$flavour\"/" -i src/dot_config/zellij/config.kdl
 }
 
 # Kitty
 {
-  banner kitty
-  ghdown "catppuccin/kitty/raw/main/themes/$flavour.conf" | tail -n +11
+	banner kitty
+	ghdown "catppuccin/kitty/raw/main/themes/$flavour.conf" | tail -n +11
 } >src/dot_config/kitty/colorscheme.conf
 
 # Tmux
 {
-  sed -e "s/\(@catppuccin_flavour\) \".*\"/\1 \"$flavour\"/" -i src/dot_tmux.conf
+	sed -e "s/\(@catppuccin_flavour\) \".*\"/\1 \"$flavour\"/" -i src/dot_tmux.conf
 }
 
 # Yazi
 {
-  banner yazi
-  ghdown "catppuccin/yazi/raw/main/themes/${flavour}.toml"
+	banner yazi
+	ghdown "catppuccin/yazi/raw/main/themes/${flavour}.toml"
 } >src/dot_config/yazi/theme.toml
 
 # Delta
 {
-  banner delta
-  ghdown "catppuccin/delta/raw/main/catppuccin.gitconfig" |
-    sed -ze 's/\\\n\t\+//g' # join multiple lines
+	banner delta
+	ghdown "catppuccin/delta/raw/main/catppuccin.gitconfig" |
+		sed -ze 's/\\\n\t\+//g' # join multiple lines
 } >src/dot_config/git/catppuccin.gitconfig
 
 # Delta
 {
-  banner_xml delta
-  ghdown "catppuccin/bat/raw/main/themes/Catppuccin%20${flavour^}.tmTheme"
+	banner_xml delta
+	ghdown "catppuccin/bat/raw/main/themes/Catppuccin%20${flavour^}.tmTheme"
 } >src/dot_config/bat/themes/catppuccin.tmTheme
