@@ -126,6 +126,10 @@
           path = ./templates/repo-gpl;
           description = "Repository starter with GPL-3.0 license";
         };
+        repo-unlicense = {
+          path = ./templates/repo-unlicense;
+          description = "Repository starter with Unlicense license";
+        };
         rust = {
           path = ./templates/rust;
           description = "Rust library starter";
