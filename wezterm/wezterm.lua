@@ -57,20 +57,9 @@ return {
   --keys = require("config.keys"),
   --key_tables = require("config.key_tables"),
   default_prog = { "tmux", "new", "-A" },
+  enable_csi_u_key_encoding = true,
   keys = {
     { key = "c", mods = "CTRL|SHIFT", action = { CopyTo = "Clipboard" } },
     { key = "v", mods = "CTRL|SHIFT", action = { PasteFrom = "Clipboard" } },
-
-    { key = ",", mods = "CTRL", action = { SendString = "\x1b[44;5u" } },
-    { key = ".", mods = "CTRL", action = { SendString = "\x1b[46;5u" } },
-    { key = ";", mods = "CTRL", action = { SendString = "\x1b[59;5u" } },
-
-    { key = "i", mods = "CTRL|SHIFT", action = { SendString = "\x1b[105;5u" } },
-    { key = "m", mods = "CTRL|SHIFT", action = { SendString = "\x1b[109;5u" } },
-
-    { key = "h", mods = "CTRL|SHIFT", action = { SendString = "\x1b[72;6u" } },
-    { key = "j", mods = "CTRL|SHIFT", action = { SendString = "\x1b[74;6u" } },
-    { key = "k", mods = "CTRL|SHIFT", action = { SendString = "\x1b[75;6u" } },
-    { key = "l", mods = "CTRL|SHIFT", action = { SendString = "\x1b[76;6u" } },
   },
 }
