@@ -12,7 +12,7 @@ OPTION:
         return 1
     end
 
-    set -l out (if test -n "$_flag_output"; echo $_flag_output; else; echo requirements.txt; end)
+    set -l out (test -n "$_flag_output" && echo $_flag_output || echo requirements.txt)
     set -l installed (pip freeze)
 
     for pname in $argv

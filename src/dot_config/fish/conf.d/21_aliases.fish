@@ -31,7 +31,7 @@ if status is-interactive
 
     if ! type -q docker-compose
         alias docker-compose \
-            (if type -q podman-compose; echo podman-compose; else; echo docker compose; end)
+            (type -q podman-compose && echo podman-compose || echo docker compose)
     end
 
     functions -e alias_command
