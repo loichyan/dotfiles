@@ -36,19 +36,19 @@ mode='manual'
 
 [system/proxy/http]
 host='127.0.0.1'
-port={{ .proxy.port }}
+port={{ .proxy.httpPort }}
 
 [system/proxy/https]
 host='127.0.0.1'
-port={{ .proxy.port }}
+port={{ .proxy.httpPort }}
 
 [system/proxy/ftp]
 host='127.0.0.1'
-port={{ .proxy.port }}
+port={{ .proxy.httpPort }}
 
 [system/proxy/socks]
 host='127.0.0.1'
-port={{ .proxy.port }}
+port={{ .proxy.socksPort }}
 
 #-----------
 #-- Input --

@@ -1,5 +1,3 @@
 set -g MY_PROXY_ENABLED {{ .proxy.enabled }}
-set -g MY_PROXY_ADDR 127.0.0.1:{{ .proxy.port }}
-
-set -g MY_HTTP_PROXY http://$MY_PROXY_ADDR
-set -g MY_SOCKS_PROXY socks5://$MY_PROXY_ADDR
+set -g MY_HTTP_PROXY http://127.0.0.1:{{ .proxy.httpPort }}
+set -g MY_SOCKS_PROXY socks5h://127.0.0.1:{{ .proxy.socksPort }}

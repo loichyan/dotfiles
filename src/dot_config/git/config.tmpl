@@ -13,9 +13,9 @@
 
 # Network
 [http]
-	proxy = socks5://127.0.0.1:{{ .proxy.port }}
+	proxy = socks5h://127.0.0.1:{{ .proxy.socksPort }}
 [https]
-	proxy = socks5://127.0.0.1:{{ .proxy.port }}
+	proxy = socks5h://127.0.0.1:{{ .proxy.socksPort }}
 
 # Remote
 [pull]

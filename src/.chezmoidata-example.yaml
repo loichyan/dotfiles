@@ -12,5 +12,6 @@ wakamimeApiKey: xxxxxxxx
 # Proxy ports
 proxy:
   enabled: true
-  port: 1080
-  tor_port: 1089
+  httpPort: 1080
+  socksPort: 1079
+  torPort: 1089
