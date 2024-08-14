@@ -17,3 +17,7 @@ proxy:
 tor:
   enabled: false
   port: 1089
+geodat:
+  enabled: false
+  ip: https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
+  domain: https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat
