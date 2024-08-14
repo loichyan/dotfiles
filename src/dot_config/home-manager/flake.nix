@@ -44,15 +44,15 @@
       ...
     }:
     let
-      data = import ./data.nix;
+      myData = import ./data.nix;
       stateVersion = "23.11";
-      username = data.user;
-      homeDirectory = data.home;
+      username = myData.user;
+      homeDirectory = myData.home;
       overlays = [
         nixgl.overlays.default
         # neovim-nightly.overlays.default
         (_: prev: {
-          myData = data;
+          inherit myData;
           python = prev.python3.withPackages (
             p: with p; [
               ipython
@@ -93,15 +93,13 @@
               programs.home-manager.enable = true;
             }
             nix-index-database.hmModules.nix-index
-            #./programs/arrow-tools.nix
-            ./programs/cargo-nightly-tools.nix
-            #./programs/zellij-nightly.nix
-            ./services/aria2.nix
-            ./services/sing-box.nix
-            #./services/tmux.nix
-            ./services/tor.nix
             ./misc/extra-completions.nix
             ./misc/hm-session-vars.nix
+            ./services/aria2.nix
+            ./services/sing-box.nix
+            ./services/tor.nix
+            # ./services/tmux.nix
+            ./programs/cargo-nightly-tools.nix
             ./packages.nix
           ];
         };

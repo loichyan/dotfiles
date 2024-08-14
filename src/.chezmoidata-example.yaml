@@ -14,4 +14,6 @@ proxy:
   enabled: true
   httpPort: 1080
   socksPort: 1079
-  torPort: 1089
+tor:
+  enabled: false
+  port: 1089

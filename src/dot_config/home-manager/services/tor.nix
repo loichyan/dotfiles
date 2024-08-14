@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) tor;
+  inherit (pkgs) myData tor;
 in
 {
   systemd.user.services = {
@@ -15,9 +15,7 @@ in
         Restart = "on-failure";
         ExecStart = "${tor}/bin/tor";
       };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
+      Install = if myData.torEnabled then { WantedBy = [ "default.target" ]; } else { };
     };
   };
 }

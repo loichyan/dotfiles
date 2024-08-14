@@ -2,7 +2,5 @@
   user = "{{ .user }}";
   home = "{{ .home }}";
   proxyEnabled = {{ .proxy.enabled }};
-  httpProxyPort = "{{ .proxy.httpPort }}";
-  socksProxyPort = "{{ .proxy.socksPort }}";
-  torProxyPort = "{{ .proxy.torPort }}";
+  torEnabled = {{ .tor.enabled }};
 }
