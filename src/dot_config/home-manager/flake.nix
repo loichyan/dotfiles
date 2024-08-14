@@ -96,9 +96,9 @@
             ./misc/extra-completions.nix
             ./misc/hm-session-vars.nix
             ./services/aria2.nix
-            ./services/sing-box.nix
             ./services/tor.nix
             # ./services/tmux.nix
+            ./services/xray.nix
             ./programs/cargo-nightly-tools.nix
             ./packages.nix
           ];
