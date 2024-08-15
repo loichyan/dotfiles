@@ -28,7 +28,7 @@ return {
   hide_mouse_cursor_when_typing = false,
   -- Title & tab bar
   window_decorations = "RESIZE",
-  --window_background_opacity = 1,
+  window_background_opacity = 0.75,
   enable_tab_bar = false,
   use_fancy_tab_bar = false,
   tab_max_width = 25,
