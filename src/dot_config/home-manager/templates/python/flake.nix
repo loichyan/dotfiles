@@ -10,19 +10,17 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        inherit (pkgs) lib;
+        inherit (pkgs) lib mkShell;
 
-        ldPaths = lib.makeLibraryPath (with pkgs; [ stdenv.cc.cc ]);
+        libPath = lib.makeLibraryPath (with pkgs; [ stdenv.cc.cc ]);
       in
       {
-        devShells.default =
-          with pkgs;
-          mkShell {
-            packages = [ python3 ];
-            shellHook = ''
-              export LD_LIBRARY_PATH=${ldPaths}:$LD_LIBRARY_PATH
-            '';
-          };
+        devShells.default = mkShell {
+          packages = with pkgs; [ python3 ];
+          shellHook = ''
+            export LD_LIBRARY_PATH=${libPath}:$LD_LIBRARY_PATH
+          '';
+        };
       }
     );
 }

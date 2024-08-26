@@ -1,2 +1,2 @@
 use flake
-layout python
+VIRTUAL_ENV=.venv layout python3
