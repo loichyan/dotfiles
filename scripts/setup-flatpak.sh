@@ -3,7 +3,7 @@
 set -euxo pipfail
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y "org.fedoraproject.Platform//f$(rpm -E %fedora)" \
+flatpak install -y \
 	org.gnome.Calculator \
 	org.gnome.Calendar \
 	org.gnome.Characters \
