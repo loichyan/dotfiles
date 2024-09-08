@@ -1,0 +1,4 @@
+# Rust
+/target
+# Exclude lock file from a library crate
+#/Cargo.lock
