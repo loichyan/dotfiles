@@ -56,7 +56,7 @@ return {
   },
   --keys = require("config.keys"),
   --key_tables = require("config.key_tables"),
-  default_prog = { "tmux", "new", "-A" },
+  default_prog = { "tmux", "new", "-ADs", "main" },
   enable_csi_u_key_encoding = true,
   keys = {
     { key = "c", mods = "CTRL|SHIFT", action = { CopyTo = "Clipboard" } },
