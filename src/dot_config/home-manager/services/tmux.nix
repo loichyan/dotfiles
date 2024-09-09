@@ -6,7 +6,7 @@ let
     name = "tmux-start-server";
     # make sure tmux is in $PATH
     runtimeInputs = [ tmux ];
-    text = "tmux new-session -ds main";
+    text = "tmux new-session -ds main || true";
   };
 in
 {
