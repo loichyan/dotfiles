@@ -1,3 +1,5 @@
+set -gx __fish_did_init 1
+
 if status is-interactive
     if test $MY_PROXY_ENABLED = true
         setproxy $MY_HTTP_PROXY
