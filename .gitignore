@@ -1,6 +1,6 @@
 # Private data
 /private
-*_private.*
+*_private*
 .chezmoidata.*
 fish_variables
 fish_history
