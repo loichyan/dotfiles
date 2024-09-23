@@ -47,7 +47,7 @@ return {
     brightness = 0.75,
   },
   -- Rendering
-  front_end = "WebGpu",
+  --front_end = "WebGpu",
   --freetype_load_flags = "NO_HINTING",
   -- Keybindings
   disable_default_key_bindings = true,
