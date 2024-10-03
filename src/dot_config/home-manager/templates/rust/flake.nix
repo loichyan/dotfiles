@@ -21,8 +21,12 @@
             #inputs.ra-flake.overlays.default
           ];
         };
-        inherit (pkgs) fenix lib;
-        #inherit (pkgs) ra-flake;
+        inherit (pkgs)
+          lib
+          mkShell
+          fenix
+          #ra-flake
+          ;
 
         # Rust toolchain
         rustToolchainFile = lib.importTOML ./rust-toolchain.toml;
@@ -40,11 +44,11 @@
           [
             defaultToolchain
             rust-src
-            #rust-analyzer
             #rustWasmToolChain.rust-std
           ]
         );
-        # Earlier Rust toolchains doesn't provide rust-analyzer
+        rust-analyzer = rustToolchain.rust-analyzer;
+        # rust-analyzer is not available before Rust 1.64
         #rust-analyzer = ra-flake.make {
         #  version.rust = rustChannel;
         #  sha256 = "";
@@ -58,20 +62,22 @@
         };
       in
       {
+
         packages.default = rustPlatform.buildRustPackage {
           pname = "CRATE";
           version = "0.0.0";
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
         };
-        devShells.default =
-          with pkgs;
-          mkShell {
-            packages = [
-              rust-dev
-              #rust-analyzer
-            ];
-          };
+        devShells.with-rust-analyzer = mkShell {
+          packages = [
+            rust-dev
+            rust-analyzer
+          ];
+        };
+        devShells.default = mkShell {
+          packages = [ rust-dev ];
+        };
       }
     );
 }

@@ -10,15 +10,13 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
+        inherit (pkgs) mkShell;
       in
       {
-        devShells.default =
-          with pkgs;
-          mkShell {
-            packages = [ ];
-            inputsFrom = [ ];
-            shellHook = '''';
-          };
+        devShells.default = mkShell {
+          packages = with pkgs; [ ];
+          shellHook = '''';
+        };
       }
     );
 }
