@@ -29,6 +29,10 @@ if status is-interactive
         abbr CC cargo_captured
     end
 
+    if type -q cargo-nextest
+        abbr_cargo t nextest run
+    end
+
     if type -q docker
         abbr_docker
         abbr_docker c compose

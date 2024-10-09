@@ -87,8 +87,7 @@
 
     # Cargo ulities
     cargo-edit
-    #cargo-readme
-    #cargo-release
+    cargo-nextest
     cargo-tarpaulin
     cargo-watch
 
