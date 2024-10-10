@@ -1,2 +1,2 @@
 [toolchain]
-channel = "MSRV"
+channel = "{MSRV}"
