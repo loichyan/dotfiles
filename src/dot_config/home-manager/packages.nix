@@ -27,6 +27,7 @@
     lazygit
 
     # CLI tools
+    ast-grep
     bat
     delta
     du-dust
