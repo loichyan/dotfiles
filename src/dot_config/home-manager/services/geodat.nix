@@ -6,8 +6,8 @@ let
     runtimeInputs = [ curl ];
     text = ''
       mkdir -p ${myData.home}/.local/share/xray
-      curl -L "${myData.geodatIp}" -o ${myData.home}/.local/share/xray/geoip.dat
-      curl -L "${myData.geodatDomain}" -o ${myData.home}/.local/share/xray/geosite.dat
+      curl -fL "${myData.geodatIp}" -o ${myData.home}/.local/share/xray/geoip.dat
+      curl -fL "${myData.geodatDomain}" -o ${myData.home}/.local/share/xray/geosite.dat
     '';
   };
 in
