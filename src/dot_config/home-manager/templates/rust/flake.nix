@@ -29,9 +29,10 @@
           ;
 
         # Rust toolchain
-        rustToolchainFile = lib.importTOML ./rust-toolchain.toml;
+        cargoTOML = lib.importTOML ./Cargo.toml;
+        msrv = cargoTOML.package.rust-version;
         rustChannel = {
-          channel = rustToolchainFile.toolchain.channel;
+          channel = msrv;
           sha256 = "";
         };
         rustToolchain = fenix.toolchainOf rustChannel;
