@@ -69,7 +69,6 @@
     clang-tools
     cmake
     gnumake
-    (stdenvAdapters.useMoldLinker stdenv).cc
 
     # Rust
     (
