@@ -97,6 +97,7 @@
             ./misc/hm-session-vars.nix
             ./services/aria2.nix
             ./services/geodat.nix
+            ./services/sing-box.nix
             ./services/tor.nix
             ./services/xray.nix
             ./programs/cargo-nightly-tools.nix

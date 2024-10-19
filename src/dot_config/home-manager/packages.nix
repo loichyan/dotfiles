@@ -54,9 +54,7 @@
     dufs
     gh
     jellyfin-ffmpeg
-    sing-box
     wakatime
-    xray
 
     #== Languages support ==#
 

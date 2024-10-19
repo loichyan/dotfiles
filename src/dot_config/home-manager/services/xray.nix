@@ -1,9 +1,11 @@
 { pkgs, ... }:
 let
   inherit (pkgs) lib myData xray;
+  enabled = myData.proxyEnabled && (myData.proxyBackend == "xray");
 in
 {
-  systemd.user.services = {
+  home.packages = lib.optional enabled pkgs.xray;
+  systemd.user.services = lib.optionalAttrs enabled {
     xray = {
       Unit = {
         Description = xray.meta.description;
@@ -18,7 +20,9 @@ in
         ] ++ (lib.optional myData.geodatEnabled "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray");
         ExecStart = "${xray}/bin/xray run";
       };
-      Install = if myData.proxyEnabled then { WantedBy = [ "default.target" ]; } else { };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }

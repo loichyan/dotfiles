@@ -12,6 +12,7 @@ wakamimeApiKey: xxxxxxxx
 # Proxy ports
 proxy:
   enabled: true
+  backend: xray
   httpPort: 1080
   socksPort: 1079
 tor:

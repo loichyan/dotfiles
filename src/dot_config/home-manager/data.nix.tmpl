@@ -2,8 +2,9 @@
   user = "{{ .user }}";
   home = "{{ .home }}";
   proxyEnabled = {{ .proxy.enabled }};
+  proxyBackend = "{{ .proxy.backend }}";
+  geodatIp = "{{ .geodat.ip }}";
+  geodatDomain = "{{ .geodat.domain }}";
   torEnabled = {{ .tor.enabled }};
   geodatEnabled = {{ .geodat.enabled }};
-  geodatIp = {{ .geodat.ip }};
-  geodatDomain = {{ .geodat.domain }};
 }
