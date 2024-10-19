@@ -29,10 +29,9 @@
           ;
 
         # Rust toolchain
-        cargoTOML = lib.importTOML ./Cargo.toml;
-        msrv = cargoTOML.package.rust-version;
+        crate = (lib.importTOML ./Cargo.toml).package;
         rustChannel = {
-          channel = msrv;
+          channel = crate.rust-version;
           sha256 = "";
         };
         rustToolchain = fenix.toolchainOf rustChannel;
@@ -63,21 +62,29 @@
         };
       in
       {
-
         packages.default = rustPlatform.buildRustPackage {
-          pname = "{CRATE}";
-          version = "0.0.0";
+          pname = crate.name;
+          version = crate.version;
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
+          meta = {
+            description = crate.description;
+            homepage = crate.repository;
+            license = with lib.licenses; [
+              mit
+              asl20
+            ];
+          };
+        };
+
+        devShells.default = mkShell {
+          packages = [ rust-dev ];
         };
         devShells.with-rust-analyzer = mkShell {
           packages = [
             rust-dev
             rust-analyzer
           ];
-        };
-        devShells.default = mkShell {
-          packages = [ rust-dev ];
         };
       }
     );
