@@ -1,19 +1,19 @@
 { pkgs, ... }:
 {
-  # Install packages.
+  # install packages
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    # Nix
+    # nix
     cachix
     nil
     nix-direnv
     nixfmt-rfc-style
     nixgl.auto.nixGLDefault
 
-    # Dotfiles manager
+    # dotfiles manager
     chezmoi
 
-    # Shell
+    # shell ulities
     atuin
     direnv
     starship
@@ -21,41 +21,37 @@
     #zellij
     zoxide
 
-    # Git
+    # git tools
     git
     cz-cli
-    degit
     lazygit
 
-    # CLI tools
+    # dev tools
     ast-grep
     bat
+    bottom
     delta
+    distrobox
     du-dust
     eza
     fd
     fzf
-    htop
-    #hugo
     jq
     just
     kondo
-    netcat
-    p7zip
     patchelf
     ripgrep
-    tealdeer
     tokei
-    yazi
 
-    # Misc
+    # misc apps
     aria2
-    caddy
-    distrobox
     dufs
     gh
     jellyfin-ffmpeg
+    netcat
+    p7zip
     wakatime
+    yazi
 
     #== Languages support ==#
 
@@ -64,9 +60,10 @@
     tree-sitter
 
     # Shell
-    nodePackages.bash-language-server
+    perl
     shellcheck
     shfmt
+    nodePackages.bash-language-server
 
     # C/C++
     clang-tools
@@ -91,25 +88,18 @@
     cargo-tarpaulin
     cargo-watch
 
-    # Rust & WASM
-    binaryen
-    trunk
-    wasm-bindgen-cli
-    wasm-pack
-
     # Javascript/HTML/CSS
-    #bun
     deno
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
 
     prettierd
+    tailwindcss-language-server
     nodePackages.eslint
     nodePackages.prettier
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
-    tailwindcss-language-server
 
     # Python
     python
@@ -133,7 +123,6 @@
 
     # Etc
     hadolint
-    perl
     taplo-cli
     typos
     typos-lsp
