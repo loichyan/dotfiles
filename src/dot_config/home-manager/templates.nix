@@ -3,9 +3,9 @@
     path = ./templates/basic;
     description = "Nix project starter";
   };
-  justfile = {
-    path = ./templates/justfile;
-    description = "Justfile starter";
+  just = {
+    path = ./templates/just;
+    description = "Just starter";
   };
   python = {
     path = ./templates/python;
