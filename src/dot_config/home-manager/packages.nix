@@ -23,6 +23,7 @@
 
     # git tools
     git
+    git-cliff
     cz-cli
     lazygit
 
