@@ -1,13 +1,13 @@
 function set_container_file -d "(Un)set container file labels"
     if ! argparse e/earse -- $argv
         echo -n "
-USAGE:
+Usage:
 
-set_container_file [-e/--earse] <files>...
+  set_container_file [OPTIONS] <FILE>...
 
-OPTION:
+Options:
 
--e/--earse            Clear labels
+  -e/--earse  Clear labels
 "
         return 1
     end

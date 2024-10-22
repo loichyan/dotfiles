@@ -1,13 +1,13 @@
 function pip_save -d "Save Python dependencies"
     if test -z "$argv" || ! argparse o/output= -- $argv
         echo -n "\
-USAGE:
+Usage:
 
-pip_save -o <file>
+  pip_save [OPTIONS]
 
-OPTION:
+Options:
 
--o/--output <file>  Output file (default is \"requirements.txt\")
+  -o/--output <file>  Output file [Default: \"requirements.txt\"]
 "
         return 1
     end

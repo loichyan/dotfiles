@@ -1,14 +1,14 @@
 function git_sync_mirror -d "Sync mirror repo"
     if test -z "$argv" || ! argparse s/src= d/dest= -- $argv
         echo -n "\
-USAGE:
+Usage:
 
-git_sync_mirror -s <repo> -d <repo>
+  git_sync_mirror [OPTIONS]
 
-OPTION:
+Options:
 
--s/--src <repo>   Source repository
--d/--dest <repo>  Destination repository
+  -s/--src <repo>   Source repository
+  -d/--dest <repo>  Destination repository
 "
         return
     end

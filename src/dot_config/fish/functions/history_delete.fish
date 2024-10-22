@@ -1,14 +1,14 @@
 function history_delete -d "Delete history entries"
     if test -z "$argv" || ! argparse p/prefix=+ c/contains=+ -- $argv
         echo -n '\
-USAGE:
+Usage:
 
-history_delete [OPTION]...
+  history_delete [OPTIONS]
 
-OPTION:
+Options:
 
--p/--prefix    Search histories by prefix
--c/--contains  Search histories by keyword
+  -p/--prefix    Search histories by prefix
+  -c/--contains  Search histories by keyword
 '
         return 1
     end

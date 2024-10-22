@@ -1,14 +1,14 @@
 function docker_ipush -d "Push an image to a SSH server"
     if test -z "$argv" || ! argparse i/image= d/dest= -- $argv
         echo -n "\
-USAGE:
+Usage:
 
-docker_ipush -i <image> -d <dest>
+  docker_ipush [OPTIONS]
 
-OPTION:
+Options:
 
--i/--image <image>  Image to be pushed
--d/--dest <dest>    Destination SSH server
+  -i/--image <image>  Image to be pushed
+  -d/--dest <dest>    Destination SSH server
 "
         return 1
     end

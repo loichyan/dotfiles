@@ -1,15 +1,15 @@
 function cargo_doc_server -d "Start a server for Cargo documentation"
-    if test -z "$argv" || ! argparse nightly cfg-docsrs "p/port=" -- $argv
+    if test -z "$argv" || ! argparse nightly cfg-docsrs p/port= -- $argv
         echo -n "\
-USAGE:
+Usage:
 
-cargo_doc_server -p <int>
+  cargo_doc_server [OPTIONS]
 
-OPTION:
+Options:
 
--p/--port <int>  Port to listen on
---nightly        Use nightly Rust toolchain
---cfg-docsrs     Set `docsrs` cfg flag
+  -p/--port <int>  Port to listen on
+  --nightly        Use nightly Rust toolchain
+  --cfg-docsrs     Set `--cfg=docsrs` flag
 "
         return 1
     end

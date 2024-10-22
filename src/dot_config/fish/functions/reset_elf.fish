@@ -1,22 +1,13 @@
 function reset_elf -d "Clear /nix/* interpreter and RPATHs"
     if test -z "$argv" || ! argparse -N1 -X1 p/rpath -- $argv
         echo -n "\
-USAGE:
-
-reset_elf [OPTION]... <exeutable>
-
-OPTION:
-
--p/--rpath  Remove all hardcoded RPATHs
-"
-        return 1
-    end
-
-    if test -z "$argv" || ! argparse prefix=+ -- $argv
-        echo -n "\
 Usage:
 
---prefix: Search histories by prefix
+  reset_elf [OPTIONS] <EXEUTABLE>
+
+Options:
+
+  -p/--rpath  Remove all hardcoded RPATHs
 "
         return 1
     end

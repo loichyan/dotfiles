@@ -5,7 +5,7 @@ function git_rewrite_remote -d "Rewrite Git remotes in batch"
         echo -n "\
 Usage:
 
-  git-rewrite-remote.fish [options]... [path]...
+  git-rewrite-remote.fish [OPTIONS] [PATH]...
 
 Options:
 

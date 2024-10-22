@@ -1,14 +1,14 @@
 function docker_vbackup -d "Backup a docker volume"
     if test -z "$argv" || ! argparse f/file= v/volume= -- $argv
         echo -n "\
-USAGE:
+Usage:
 
-docker_vbackup -v <volume> -f <file>
+  docker_vbackup [OPTIONS]
 
-OPTION:
+Options:
 
--f/--file <file>      Output file (gzip compressed tarball)
--v/--volume <volume>  Volume to backup
+  -f/--file <file>      Output file (gzip compressed tarball)
+  -v/--volume <volume>  Volume to backup
 "
         return 1
     end

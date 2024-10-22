@@ -1,13 +1,13 @@
 function setproxy -d "Set proxy variables"
     if ! argparse -X1 e/earse -- $argv
         echo -n "
-USAGE:
+Usage:
 
-setproxy [-e/--earse] <proxy_url>
+  setproxy [OPTIONS] <PROXY_URL>
 
-OPTION:
+Options:
 
--e/--earse            Clear proxy variables
+  -e/--earse  Clear proxy variables
 "
         return 1
     end
