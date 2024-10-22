@@ -32,3 +32,5 @@ OPTION:
     cd $CWD
     rm -rf $workdir
 end
+
+git_sync_mirror $argv
