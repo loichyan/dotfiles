@@ -4,6 +4,7 @@ gui:
   border: rounded
   theme:
     selectedLineBgColor: [black]
+    inactiveBorderColor: [black]
 git:
   overrideGpg: true
   paging:
