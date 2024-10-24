@@ -72,3 +72,9 @@ ghdown() {
 	banner_xml delta
 	ghdown "catppuccin/bat/raw/main/themes/Catppuccin%20${flavour^}.tmTheme"
 } >src/dot_config/bat/themes/catppuccin.tmTheme
+
+# Alacritty
+{
+	banner alacritty
+	ghdown "catppuccin/alacritty/raw/main/catppuccin-${flavour}.toml"
+} >src/dot_config/alacritty/catppuccin.toml

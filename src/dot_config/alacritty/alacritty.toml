@@ -1,0 +1,13 @@
+import = ["~/.config/alacritty/catppuccin.toml"]
+shell = { program = "tmux", args = ["new", "-ADs", "main"] }
+
+[window]
+opacity = 0.75
+blur = true
+decorations = "none"
+padding = { x = 2, y = 2 }
+
+[font]
+normal.family = "monospace"
+size = 11
+builtin_box_drawing = true
