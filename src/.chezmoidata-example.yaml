@@ -17,6 +17,7 @@ atuin:
 wakatime:
   address: https://api.wakatime.com/api/v1
   token: xxxxxxxx
+terminal: kitty
 
 # proxy services
 proxy:

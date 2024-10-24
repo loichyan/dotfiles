@@ -84,10 +84,10 @@ settings-version=2
 [org/gnome/shell/extensions/blur-my-shell/applications]
 blur=true
 blur-on-overview=false
-brightness=0.65
+brightness=0.75
 dynamic-opacity=false
-opacity=245
-sigma=15
+opacity=240
+sigma=20
 whitelist=['Alacritty', 'kitty', 'org.wezfurlong.wezterm']
 
 [org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab]
@@ -235,7 +235,7 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal]
 name='Open terminal'
-command='kitty'
+command='{{ .terminal }}'
 binding='<Super>Return'
 
 [org/gnome/shell/extensions/paperwm/keybindings]
@@ -363,7 +363,7 @@ switch-to-application-{{ $i }}=@as []
 automatic-timezone=true
 
 [org/gnome/desktop/default-applications/terminal]
-exec='wezterm'
+exec='{{ .terminal }}'
 exec-arg=''
 
 [org/gnome/shell]
