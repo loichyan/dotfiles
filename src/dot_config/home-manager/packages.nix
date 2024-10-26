@@ -1,14 +1,21 @@
 { pkgs, ... }:
 {
-  # install packages
   programs.home-manager.enable = true;
+
+  nixGL.defaultWrapper = "mesa";
+  nixGL.offloadWrapper = "nvidia";
+  nixGL.installScripts = [
+    "mesa"
+    "nvidia"
+  ];
+
+  # install packages
   home.packages = with pkgs; [
     # nix
     cachix
     nil
     nix-direnv
     nixfmt-rfc-style
-    nixgl.auto.nixGLDefault
 
     # dotfiles manager
     chezmoi

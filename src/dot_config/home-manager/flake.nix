@@ -47,7 +47,6 @@
       myData = import ./data.nix;
       username = myData.user;
       overlays = [
-        nixgl.overlays.default
         # neovim-nightly.overlays.default
         (_: prev: {
           inherit myData;
@@ -90,6 +89,7 @@
               nixpkgs = {
                 inherit overlays;
               };
+              nixGL.packages = nixgl.packages;
             }
             nix-index-database.hmModules.nix-index
             ./misc/extra-completions.nix
