@@ -1,4 +1,7 @@
-import = ["~/.config/alacritty/catppuccin.toml"]
+[general]
+import = ["catppuccin.toml"]
+
+[terminal]
 shell = { program = "tmux", args = ["new", "-ADs", "main"] }
 
 [window]
