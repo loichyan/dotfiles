@@ -6,7 +6,7 @@
       <string>sans-serif</string>
     </test>
     <edit name="family" mode="prepend" binding="strong">
-      <string>Noto Sans CJK SC</string>
+      <string>{{ .font.sansSerif }}</string>
       <string>Noto Sans</string>
       <string>Symbols Nerd Font</string>
     </edit>
@@ -16,7 +16,7 @@
       <string>serif</string>
     </test>
     <edit name="family" mode="prepend" binding="strong">
-      <string>Noto Serif CJK SC</string>
+      <string>{{ .font.serif }}</string>
       <string>Noto Serif</string>
       <string>Symbols Nerd Font</string>
     </edit>
@@ -34,8 +34,8 @@
       <string>monospace</string>
     </test>
     <edit name="family" mode="prepend" binding="strong">
-      <string>Rec Mono Duotone</string>
-      <string>Noto Sans CJK SC</string>
+      <string>{{ .font.monospace }}</string>
+      <string>{{ .font.sansSerif }}</string>
       <string>Noto Sans</string>
       <string>Symbols Nerd Font</string>
     </edit>

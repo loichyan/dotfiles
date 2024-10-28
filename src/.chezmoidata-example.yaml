@@ -19,6 +19,11 @@ wakatime:
   token: xxxxxxxx
 terminal: kitty
 
+font:
+  monospace: Rec Mono Duotone
+  sansSerif: Noto Sans CJK SC
+  serif: Noto Serif CJK SC
+
 # proxy services
 proxy:
   enabled: true
