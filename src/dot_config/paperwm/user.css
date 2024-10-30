@@ -1,10 +1,11 @@
 .paperwm-selection {
   background-color: transparent;
-  border-width: 10px;
-  border-color: rgba(53, 132, 228, 0.35);
+  border-width: 7px;
+  /* https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/css-variables.html#accent-colors */
+  border-color: rgba(145, 65, 172, 0.35);
 }
 
 .paperwm-window-position-bar {
   border: 0;
-  background-color: rgba(53, 132, 228, 0.35);
+  background-color: rgba(145, 65, 172, 0.35);
 }
