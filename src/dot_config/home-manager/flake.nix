@@ -2,8 +2,7 @@
   description = "Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +10,10 @@
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
       url = "github:nix-community/fenix";
@@ -21,14 +23,6 @@
       url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-index-database = {
-      url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # neovim-nightly = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
@@ -40,69 +34,55 @@
       nix-index-database,
       fenix,
       fenix-monthly,
-      # neovim-nightly,
       ...
     }:
     let
       myData = import ./data.nix;
       username = myData.user;
-      overlays = [
-        # neovim-nightly.overlays.default
-        (_: prev: {
-          inherit myData;
-          python = prev.python3.withPackages (
-            p: with p; [
-              ipython
-              pip
-            ]
-          );
-          fenix = fenix.packages.${prev.system};
-          fenix-monthly = fenix-monthly.packages.${prev.system};
-        })
-      ];
+      homeDirectory = myData.home;
+      system = "x86_64-linux";
     in
     {
-      homeConfigurations.${username} =
-        let
-          system = "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            {
-              home = {
-                inherit username;
-                stateVersion = "23.11";
-                homeDirectory = myData.home;
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          {
+            home = {
+              inherit username homeDirectory;
+              stateVersion = "24.11";
+            };
+            nix.registry = {
+              nixpkgs.to = {
+                type = "path";
+                path = "${nixpkgs}";
               };
-              nix.registry = {
-                nixpkgs.to = {
-                  type = "path";
-                  path = "${nixpkgs}";
-                };
-                my.to = {
-                  type = "path";
-                  path = "${self}";
-                };
+              my.to = {
+                type = "path";
+                path = "${self}";
               };
-              nixpkgs = {
-                inherit overlays;
-              };
-              nixGL.packages = nixgl.packages;
-            }
-            nix-index-database.hmModules.nix-index
-            ./misc/extra-completions.nix
-            ./misc/hm-session-vars.nix
-            ./services/aria2.nix
-            ./services/geodat.nix
-            ./services/sing-box.nix
-            ./services/tor.nix
-            ./services/xray.nix
-            ./programs/cargo-nightly-tools.nix
-            ./packages.nix
-          ];
-        };
+            };
+            nixpkgs = {
+              overlays = [
+                (_: prev: {
+                  inherit myData;
+                  fenix = fenix.packages.${prev.system};
+                  fenix-monthly = fenix-monthly.packages.${prev.system};
+                })
+              ];
+            };
+            nixGL.packages = nixgl.packages;
+          }
+          nix-index-database.hmModules.nix-index
+          ./services/aria2.nix
+          ./services/geodat.nix
+          ./services/sing-box.nix
+          ./services/tor.nix
+          ./services/xray.nix
+          ./programs/cargo-nightly-tools.nix
+          ./misc/hm-session-vars.nix
+          ./packages.nix
+        ];
+      };
       templates = import ./templates.nix;
     };
 }

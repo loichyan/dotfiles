@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   programs.home-manager.enable = true;
+  programs.nix-index.enable = true;
 
   nixGL.defaultWrapper = "mesa";
   nixGL.offloadWrapper = "nvidia";
@@ -109,7 +110,12 @@
     nodePackages.vscode-langservers-extracted
 
     # Python
-    python
+    (python3.withPackages (
+      p: with p; [
+        ipython
+        pip
+      ]
+    ))
     basedpyright
     ruff-lsp
 
