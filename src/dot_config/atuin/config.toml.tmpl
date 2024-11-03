@@ -1,15 +1,20 @@
-# Network
+# sync
 sync_address = "{{ .atuin.address }}"
 update_check = false
+sync.records = true
 
-# Appearance
+# ui/ux
+enter_accept = false
+history_format = "{time} {command}"
 inline_height = 15
 style = "compact"
-history_format = "{time} {command}"
 
-# Search and filter
+# search
 search_mode = "skim"
-history_filter = ["^;.*"]
 
-# Misc
-enter_accept = false
+# filter
+filter_mode = "host"
+history_filter = ["^;.*"]
+secrets_filter = true
+store_failed = true
+
