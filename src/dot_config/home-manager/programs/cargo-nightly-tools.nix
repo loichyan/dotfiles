@@ -1,53 +1,18 @@
 { pkgs, ... }:
 let
-  inherit (pkgs)
-    writeShellApplication
-    fenix-monthly
-    cargo-expand
-    cargo-udeps
-    cargo-watch
-    ;
+  inherit (pkgs) writeShellApplication fenix-monthly;
   rustToolchain =
     with fenix-monthly;
     combine [
       default.toolchain
       complete.miri
+      complete.llvm-tools
     ];
   cargo-nightly = writeShellApplication {
     name = "cargo-nightly";
     runtimeInputs = [ rustToolchain ];
     text = ''
       cargo "$@"
-    '';
-  };
-  cargo-nightly-expand = writeShellApplication {
-    name = "cargo-nightly-expand";
-    runtimeInputs = [
-      rustToolchain
-      cargo-expand
-    ];
-    text = ''
-      cargo expand "$@"
-    '';
-  };
-  cargo-nightly-udeps = writeShellApplication {
-    name = "cargo-nightly-udeps";
-    runtimeInputs = [
-      rustToolchain
-      cargo-udeps
-    ];
-    text = ''
-      cargo udeps "$@"
-    '';
-  };
-  cargo-nightly-watch = writeShellApplication {
-    name = "cargo-nightly-watch";
-    runtimeInputs = [
-      rustToolchain
-      cargo-watch
-    ];
-    text = ''
-      cargo watch "$@"
     '';
   };
   rustfmt-nightly = writeShellApplication {
@@ -57,13 +22,24 @@ let
       rustfmt "$@"
     '';
   };
+  cargoCommand =
+    { name }:
+    writeShellApplication {
+      name = "cargo-nightly-${name}";
+      runtimeInputs = [
+        rustToolchain
+        pkgs."cargo-${name}"
+      ];
+      text = ''cargo ${name} "$@"'';
+    };
 in
 {
   home.packages = [
     cargo-nightly
-    cargo-nightly-expand
-    cargo-nightly-udeps
-    cargo-nightly-watch
     rustfmt-nightly
+    (cargoCommand { name = "expand"; })
+    (cargoCommand { name = "llvm-cov"; })
+    (cargoCommand { name = "udeps"; })
+    (cargoCommand { name = "watch"; })
   ];
 }
