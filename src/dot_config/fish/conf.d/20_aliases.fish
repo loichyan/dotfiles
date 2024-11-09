@@ -21,18 +21,5 @@ if status is-interactive
         prefix='TERM=wezterm' alias_command nvim nvim
     end
 
-    if ! set -l docker (type -p docker)
-        alias_command docker podman
-    else if string match -q 'podman*' (docker --version 2>/dev/null)
-        eval "function docker -w podman
-            command $docker \$argv
-        end"
-    end
-
-    if ! type -q docker-compose
-        alias docker-compose \
-            (type -q podman-compose && echo podman-compose || echo docker compose)
-    end
-
     functions -e alias_command
 end

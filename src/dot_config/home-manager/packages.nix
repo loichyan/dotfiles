@@ -52,8 +52,9 @@
     ripgrep
     tokei
 
-    # misc apps
+    # misc tools
     aria2
+    docker-compose
     dufs
     gh
     jellyfin-ffmpeg

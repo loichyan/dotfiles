@@ -39,12 +39,10 @@ if status is-interactive
         abbr_docker i image
         abbr_docker il image ls
         abbr_docker r run -it --rm
-    end
 
-    if type -q docker-compose
-        abbr_docker_compose
-        abbr_docker_compose l logs --tail=30 -f
-        abbr_docker_compose r restart
+        abbr_docker c compose
+        abbr_docker cl compose logs --tail=30 -f
+        abbr_docker cr compose restart
     end
 
     if type -q git
