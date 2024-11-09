@@ -79,6 +79,7 @@
           ./services/tor.nix
           ./services/xray.nix
           ./programs/cargo-nightly-tools.nix
+          ./misc/extra-completions.nix
           ./misc/hm-session-vars.nix
           ./packages.nix
         ];
