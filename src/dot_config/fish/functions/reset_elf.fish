@@ -11,7 +11,10 @@ Options:
 "
         return 1
     end
+    set path $argv
 
-    patchelf --set-interpreter /lib64/ld-linux-x86-64.so.2 $argv
-    and patchelf --remove-rpath $argv
+    patchelf --set-interpreter /lib64/ld-linux-x86-64.so.2 $path
+    if set -q _flag_rpath
+        patchelf --remove-rpath $path
+    end
 end
