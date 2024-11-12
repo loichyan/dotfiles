@@ -16,7 +16,7 @@ if not set -q __fish_did_init
     end
 
     # local installed packages
-    fish_add_path -gp ~/.local/bin ~/.cargo/bin ~/.pnpm/bin
+    fish_add_path -gp ~/.local/bin ~/.scripts ~/.cargo/bin ~/.pnpm/bin
 
     # set default editor
     if type -q nvim

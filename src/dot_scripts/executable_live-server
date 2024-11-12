@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Start a file server of a local directory
+dufs --allow-search --enable-cors --render-spa --render-try-index "$@"

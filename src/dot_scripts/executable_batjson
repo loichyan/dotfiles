@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Show formatted JSON with highlight
+jq "$@" | bat -l json

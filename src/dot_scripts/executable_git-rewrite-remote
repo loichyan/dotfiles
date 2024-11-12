@@ -1,0 +1,38 @@
+#!/usr/bin/env fish
+
+# Rewrite Git remotes in batch
+if ! argparse from= to= dry-run -- $argv
+    echo -n "\
+Usage:
+
+  git-rewrite-remote.fish [OPTIONS] [PATH]...
+
+Options:
+
+  --from <pattern>  Regex to match remote URLs
+  --to <repl>       New URL to be set
+  --dry-run         Do not change remote URLs
+"
+    return 1
+end
+
+set from $_flag_from '^ssh://([\w._-]+)/([\w_]+)/([\w._-]+)$'
+set to $_flag_to '$1:$2/$3'
+
+for project in (fd -H --type directory '^.git$' $argv)
+    cd (dirname $project)
+    set reponame (basename $PWD)
+
+    for remote in (git remote show)
+        set remote_url (git remote get-url $remote)
+        echo -e "[$reponame] found remote:\t$remote\t$remote_url"
+
+        if set new_url (string replace -r $from[1] $to[1] -- $remote_url)
+            echo -e "\033[0;32m[$reponame] update remote:\t$remote\t$new_url\033[0m"
+
+            if not set -q _flag_dry_run
+                git remote set-url $remote $new_url
+            end
+        end
+    end
+end

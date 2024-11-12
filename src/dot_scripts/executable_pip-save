@@ -1,0 +1,27 @@
+#!/usr/bin/env fish
+
+if test -z "$argv" || ! argparse o/output= -- $argv
+    echo -n "\
+Save Python dependencies
+
+Usage:
+
+  pip_save [OPTIONS] [PACKAGE]...
+
+Options:
+
+  -o/--output <file>  Output file [default: \"requirements.txt\"]
+"
+    return 1
+end
+
+set out (test -n "$_flag_output" && echo $_flag_output || echo requirements.txt)
+set installed (pip freeze)
+
+for pname in $argv
+    if set pversion (string match -ei $pname $installed)
+        echo $pversion | tee -a "$out"
+    else
+        echo "Package $pname not found!" >&2
+    end
+end

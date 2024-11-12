@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Update rime-ice
+~/.plum/rime-install iDvel/rime-ice:others/recipes/full

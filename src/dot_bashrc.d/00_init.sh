@@ -11,8 +11,8 @@ done
 unset profile
 
 # user specific environment
-path="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.pnpm/bin"
-if [[ ! "$PATH" =~ "$path:" ]]; then
+path="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
+if [[ ! $PATH =~ $path ]]; then
 	PATH="$path:$PATH"
 fi
 unset path
