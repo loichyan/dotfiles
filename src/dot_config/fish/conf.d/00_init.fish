@@ -5,7 +5,7 @@ if not set -q __fish_did_init
         $NIX_PROFILE_HOME/etc/profile.d/nix.fish \
         $NIX_PROFILE_HOME/etc/profile.d/hm-session-vars.fish
         if test -f $profile
-            source $profile
+            . $profile
         end
     end
 
@@ -16,11 +16,13 @@ if not set -q __fish_did_init
     end
 
     # local installed packages
-    fish_add_path -gp ~/.local/bin ~/.cargo/bin ~/.go/bin ~/.pip/bin ~/.pnpm/bin
+    fish_add_path -gp ~/.local/bin ~/.cargo/bin ~/.pnpm/bin
 
     # set default editor
-    set -gx EDITOR nvim
-    set -gx VISUAL nvim
+    if type -q nvim
+        set -gx EDITOR nvim
+        set -gx VISUAL nvim
+    end
 
     # XDG base directories
     set -gx XDG_CONFIG_HOME ~/.config
