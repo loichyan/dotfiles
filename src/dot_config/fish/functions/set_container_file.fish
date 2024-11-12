@@ -1,4 +1,4 @@
-function set_container_file -d "(Un)set container file labels"
+function set_container_file -d "Set container file labels"
     if ! argparse e/earse -- $argv
         echo -n "
 Usage:

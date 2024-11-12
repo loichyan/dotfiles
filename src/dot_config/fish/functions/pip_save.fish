@@ -7,7 +7,7 @@ Usage:
 
 Options:
 
-  -o/--output <file>  Output file [Default: \"requirements.txt\"]
+  -o/--output <file>  Output file [default: \"requirements.txt\"]
 "
         return 1
     end
