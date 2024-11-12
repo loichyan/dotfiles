@@ -6,10 +6,8 @@ if status is-login || status is-interactive
             set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
         end
 
-        if status is-interactive
-            # Configure pinentry to use the correct TTY
-            set -gx GPG_TTY (tty)
-            gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
-        end
+        # Configure pinentry to use the correct TTY
+        set -gx GPG_TTY (tty)
+        gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
     end
 end
