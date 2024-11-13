@@ -1,34 +1,34 @@
 {
   basic = {
     path = ./templates/basic;
-    description = "Nix project starter";
-  };
-  just = {
-    path = ./templates/just;
-    description = "Just starter";
-  };
-  python = {
-    path = ./templates/python;
-    description = "Python project starter";
+    description = "Project starter powered by Nix";
   };
   repo = {
     path = ./templates/repo;
-    description = "Repository starter with MIT OR Apache-2.0 license";
+    description = "Repository starter with essential files";
   };
-  repo-gpl = {
-    path = ./templates/repo-gpl;
-    description = "Repository starter with GPL-3.0 license";
+  license = {
+    path = ./templates/license;
+    description = "Repository with MIT OR Apache-2.0 license";
   };
-  repo-unlicense = {
+  license-gpl = {
+    path = ./templates/license-gpl;
+    description = "Repository with GPL-3.0 license";
+  };
+  unlicense = {
     path = ./templates/repo-unlicense;
-    description = "Repository starter with Unlicense license";
+    description = "Repository with Unlicense license";
+  };
+  just = {
+    path = ./templates/just;
+    description = "Justfile starter";
   };
   rust = {
     path = ./templates/rust;
     description = "Rust library starter";
   };
-  rust-bin = {
-    path = ./templates/rust-bin;
-    description = "Rust binary starter";
+  python = {
+    path = ./templates/python;
+    description = "Python project starter";
   };
 }
