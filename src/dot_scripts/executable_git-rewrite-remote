@@ -1,11 +1,12 @@
 #!/usr/bin/env fish
 
-# Rewrite Git remotes in batch
 if ! argparse from= to= dry-run -- $argv
     echo -n "\
+Rewrite Git remotes in batch
+
 Usage:
 
-  git-rewrite-remote.fish [OPTIONS] [PATH]...
+  git-rewrite-remote [OPTIONS] [PATH]...
 
 Options:
 

@@ -6,7 +6,7 @@ Save Python dependencies
 
 Usage:
 
-  pip_save [OPTIONS] [PACKAGE]...
+  pip-save [OPTIONS] [PACKAGE]...
 
 Options:
 

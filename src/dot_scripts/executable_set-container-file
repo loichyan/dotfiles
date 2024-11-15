@@ -6,7 +6,7 @@ Set container file labels
 
 Usage:
 
-  set_container_file [OPTIONS] <FILE>...
+  set-container-file [OPTIONS] <FILE>...
 
 Options:
 

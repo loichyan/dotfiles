@@ -6,7 +6,7 @@ Clear /nix/* interpreter and RPATHs
 
 Usage:
 
-  reset_elf [OPTIONS] <EXEUTABLE>
+  reset-elf [OPTIONS] <EXEUTABLE>
 
 Options:
 

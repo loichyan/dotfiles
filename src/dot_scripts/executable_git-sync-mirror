@@ -1,11 +1,12 @@
 #!/usr/bin/env fish
 
-# Sync mirror repo
 if test -z "$argv" || ! argparse s/src= d/dest= -- $argv
     echo -n "\
+Sync Git mirror repositories
+
 Usage:
 
-  git_sync_mirror [OPTIONS]
+  git-sync-mirror [OPTIONS]
 
 Options:
 

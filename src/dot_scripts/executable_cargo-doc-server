@@ -6,7 +6,7 @@ Start a server for Cargo documentation
 
 Usage:
 
-  cargo_doc_server [OPTIONS]
+  cargo-doc-server [OPTIONS]
 
 Options:
 
