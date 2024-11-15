@@ -1,0 +1,22 @@
+#!/usr/bin/env fish
+
+# Rewrite Git remotes in batch
+if ! argparse m/message -- $argv
+    echo -n "\
+Initialize an empty Git repository
+
+Usage:
+
+  git-ini-empty [OPTIONS]
+
+Options:
+
+  -m/--message <string>  Initial commit message
+"
+    return 1
+end
+
+set -p _flag_message "chore: initial commit"
+
+git init
+and git commit --allow-empty --message $_flag_message[1]
