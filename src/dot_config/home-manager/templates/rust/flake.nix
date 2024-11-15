@@ -50,7 +50,7 @@
         rust-analyzer = rustToolchain.rust-analyzer;
         # rust-analyzer is not available before Rust 1.64
         #rust-analyzer = ra-flake.make {
-        #  version.rust = rustChannel;
+        #  version.rust = crate.rust-version;
         #  sha256 = "";
         #};
 
