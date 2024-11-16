@@ -29,3 +29,7 @@ noticeable to end-users since the last release. For developers, this project fol
 
 [1.0.0]: https://github.com/user/repo/compare/v0.0.0..v1.0.0
 -->
+
+## [Unreleased]
+
+[Unreleased]: https://github.com/{USER}/{REPO}/compare/v0.0.0..HEAD
