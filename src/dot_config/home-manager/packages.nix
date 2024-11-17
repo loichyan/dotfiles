@@ -96,6 +96,7 @@
     cargo-edit
     cargo-flamegraph
     cargo-nextest
+    cargo-show-asm
     cargo-watch
 
     # Javascript/HTML/CSS
