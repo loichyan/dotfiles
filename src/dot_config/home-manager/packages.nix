@@ -118,7 +118,7 @@
       ]
     ))
     basedpyright
-    ruff-lsp
+    ruff
 
     # Lua
     lua
