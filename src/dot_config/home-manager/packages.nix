@@ -34,6 +34,7 @@
     git-cliff
     cz-cli
     lazygit
+    husky
 
     # dev tools
     ast-grep
