@@ -93,8 +93,8 @@
 
     # Cargo ulities
     cargo-edit
+    cargo-flamegraph
     cargo-nextest
-    cargo-tarpaulin
     cargo-watch
 
     # Javascript/HTML/CSS
