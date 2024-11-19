@@ -6,6 +6,7 @@ name: Your Name
 email: yourname@example.com
 home: /home/yourname
 signingkey: xxxxxxxx
+hostname: Your_Machine
 
 # customization
 aria:

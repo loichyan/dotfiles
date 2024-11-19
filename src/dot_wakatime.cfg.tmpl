@@ -2,12 +2,10 @@
 api_url = {{ .wakatime.address }}
 api_key = {{ .wakatime.token }}
 proxy = socks5://127.0.0.1:{{ .proxy.socksPort }}
+hostname = {{ .hostname }}
 hide_project_folder = true
 hide_project_names = false
 hide_branch_names = false
-hide_file_names = true
-include_only_with_project_file = true
-exclude_unknown_project = true
-exclude =
-  /private/
-  /draft/
+hide_file_names = false
+include_only_with_project_file = false
+exclude_unknown_project = false
