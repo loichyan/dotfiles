@@ -12,20 +12,20 @@ noticeable to end-users since the last release. For developers, this project fol
 
 ## [1.0.0] - YYYY-MM-DD
 
-### ✨ Added
+### Added
 
 - [**breaking**] Always place breaking changes at the top.
 - Append other changes in chronological order under the relevant subsections.
 
-### 🔧 Changed
+### Changed
 
-### 🗑️ Deprecated
+### Deprecated
 
-### ❌ Removed
+### Removed
 
-### 🐛 Fixed
+### Fixed
 
-### 🔒 Security
+### Security
 
 [1.0.0]: https://github.com/user/repo/compare/v0.0.0..v1.0.0
 -->
