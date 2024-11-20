@@ -43,11 +43,14 @@
 
         # Rust toolchain of MSRV
         rust-msrv =
-          (fenix.toolchainOf {
-            channel = crate.rust-version;
-            sha256 = "";
-          }).minimalToolchain;
-
+          if crate.rust-version == rustChannel.channel then
+            # Reuse the development toolchain if possible
+            rust-dev
+          else
+            (fenix.toolchainOf {
+              channel = crate.rust-version;
+              sha256 = "";
+            }).minimalToolchain;
       in
       {
         packages.default = pkgs.rustPlatform.buildRustPackage {
