@@ -18,9 +18,9 @@ flathub|Flathub:     https://flathub.org/apps/search?q=$s
 pkg|Packages:        https://pkgs.org/search/?q=$s
 
 # nixpkgs
-hm|home-manager|HomeManager: https://home-manager-options.extranix.com/?query=$s
-nix|Nixpkgs:                 https://search.nixos.org/packages?channel=unstable&query=$s
-nixver|NixVersions:          https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=$s
+home-manager|HomeManager: https://home-manager-options.extranix.com/?query=$s
+nix|Nixpkgs:              https://search.nixos.org/packages?channel=unstable&query=$s
+nix-version|NixVersions:  https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=$s
 
 # rust
 crate|Crates.io:  https://crates.io/search?q=$s
@@ -28,5 +28,5 @@ rs|Docs.rs:       https://docs.rs/releases/search?query=$s RustDocs
 std|stdrs|Std.rs: https://doc.rust-lang.org/std/index.html?search=$s RustStd
 
 # misc
-docker|DockerHub: https://hub.docker.com/search?q=$s
-emoji|Emoji:      https://unicode.party/?query=$s
+dockerh|DockerHub: https://hub.docker.com/search?q=$s
+emoji|Emoji:       https://unicode.party/?query=$s
