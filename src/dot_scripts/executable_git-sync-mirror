@@ -28,7 +28,7 @@ set workdir (mktemp -d)
 cd $workdir
 
 git clone --mirror $src .
-# delete PRs
+# Delete PRs
 git for-each-ref --format="delete %(refname)" refs/pull | git update-ref --stdin
 git push --mirror $dest
 

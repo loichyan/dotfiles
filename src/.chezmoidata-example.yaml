@@ -1,6 +1,6 @@
 sourceDir: /home/yourname/dotfiles
 
-# personal info
+# Personal info
 user: yourname
 name: Your Name
 email: yourname@example.com
@@ -8,7 +8,7 @@ home: /home/yourname
 signingkey: xxxxxxxx
 hostname: Your_Machine
 
-# customization
+# Customization
 aria:
   port: 6800
   token: xxxxxxxx
@@ -25,7 +25,7 @@ font:
   sansSerif: Noto Sans CJK SC
   serif: Noto Serif CJK SC
 
-# proxy services
+# Proxy services
 proxy:
   enabled: true
   backend: xray

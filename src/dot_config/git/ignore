@@ -1,12 +1,12 @@
-# file system
+# File system
 .DS_Store
 [Dd]esktop.ini
 
-# editor
+# Editor
 .vscode
 
-# waktime
+# Waktime
 .wakatime-project
 
-# env files
+# Env files
 .direnv

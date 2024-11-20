@@ -41,7 +41,7 @@
             defaultToolchain
             rust-src
           ]
-          # add additional targets
+          # Add additional targets
           ++ (builtins.map (target: fenix.targets."${target}".toolchainOf rustChannel) [
             "wasm32-unknown-unknown"
           ])

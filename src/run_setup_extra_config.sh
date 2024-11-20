@@ -52,7 +52,7 @@ pnpm_add() {
 
 info "setup extra configuration"
 
-# symlink directories
+# Symlink directories
 symlink nvim .config/nvim
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
@@ -75,7 +75,7 @@ fi
 # Create an empty Aria2 session file
 touch ~/.local/share/aria2/session
 
-# https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
+# c.f. https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
 autostart="$HOME/.config/autostart"
 sysconf="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
 userconf="$autostart/gnome-keyring-ssh.desktop"

@@ -1,5 +1,5 @@
 if not set -q __fish_did_init
-    # setup environment variables for Nix and Home Manager
+    # Setup environment variables for Nix and Home Manager
     set -gx NIX_PROFILE_HOME ~/.nix-profile
     for profile in \
         $NIX_PROFILE_HOME/etc/profile.d/nix.fish \
@@ -9,36 +9,36 @@ if not set -q __fish_did_init
         end
     end
 
-    # vendored completions and functions
+    # Add vendored completions and functions from Nixpkgs
     for p in (string split ' ' -- $NIX_PROFILES)
         set -gp fish_complete_path $p/share/fish/vendor_completions.d
         set -gp fish_function_path $p/share/fish/vendor_functions.d
     end
 
-    # local installed packages
+    # Search local installed binaries
     fish_add_path -gp ~/.local/bin ~/.scripts ~/.cargo/bin ~/.pnpm/bin
 
-    # set default editor
+    # Set default editor
     if type -q nvim
         set -gx EDITOR nvim
         set -gx VISUAL nvim
     end
 
-    # XDG base directories
+    # Set XDG base directories
     set -gx XDG_CONFIG_HOME ~/.config
     set -gx XDG_CACHE_HOME ~/.cache
     set -gx XDG_DATA_HOME ~/.local/share
     set -gx XDG_STATE_HOME ~/.local/state
 
-    # set Python user base folder
+    # Set Python user base folder
     set -gx PYTHONUSERBASE ~/.pip
-    # ripgrep config path
+    # Set ripgrep config path
     set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/ripgreprc
-    # fzf options
+    # Export fzf options
     set -gx FZF_DEFAULT_OPTS "--color 16"
-    # set default Golang module directory
+    # Set default Golang module directory
     set -gx GOPATH ~/.go
 
-    # prevent duplicate initialization
+    # Prevent duplicate initialization
     set -gx __fish_did_init 1
 end

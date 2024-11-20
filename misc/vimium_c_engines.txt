@@ -1,32 +1,32 @@
 # Search engines for https://github.com/gdh1995/vimium-c
 
-# common search engines
+# Common search engines
 bd|Baidu:      https://www.baidu.com/s?wd=$s
 bi|Bing:       https://www.bing.com/search?q=$s
 gg|Google:     https://www.google.com/search?q=$s
 dd|DuckDuckGo: https://duckduckgo.com/?q=$s
 sx|SearXNG:    https://searxng.site/search?q=$s
 
-# web/js
+# Web/JS
 mdn|MDN: https://developer.mozilla.org/en-US/search?q=$s
 npm|NPM: https://www.npmjs.com/search?q=$s
 
-# packages
+# Packages
 cnf|CommandNotFound: https://command-not-found.com/$s
 fedora|Fedora:       https://packages.fedoraproject.org/search?query=$s
 flathub|Flathub:     https://flathub.org/apps/search?q=$s
 pkg|Packages:        https://pkgs.org/search/?q=$s
 
-# nixpkgs
+# Nixpkgs
 home-manager|HomeManager: https://home-manager-options.extranix.com/?query=$s
 nix|Nixpkgs:              https://search.nixos.org/packages?channel=unstable&query=$s
 nix-version|NixVersions:  https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=$s
 
-# rust
+# Rust
 crate|Crates.io:  https://crates.io/search?q=$s
 rs|Docs.rs:       https://docs.rs/releases/search?query=$s RustDocs
 std|stdrs|Std.rs: https://doc.rust-lang.org/std/index.html?search=$s RustStd
 
-# misc
+# Misc
 dockerh|DockerHub: https://hub.docker.com/search?q=$s
 emoji|Emoji:       https://unicode.party/?query=$s

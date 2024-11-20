@@ -12,5 +12,5 @@ flatpak update &
 
 nvim --headless +'Lazy update' +q &
 
-# update tmux plugins
+# Update tmux plugins
 bash ~/.tmux/plugins/tpm/bin/update_plugins all

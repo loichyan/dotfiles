@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export NIX_PROFILE_HOME="$HOME/.nix-profile"
 for profile in \
 	"$NIX_PROFILE_HOME/etc/profile.d/nix.sh" \
@@ -10,7 +8,7 @@ for profile in \
 done
 unset profile
 
-# user specific environment
+# Search local installed binaries
 path="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
 if [[ ! $PATH =~ $path ]]; then
 	PATH="$path:$PATH"

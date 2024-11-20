@@ -10,18 +10,18 @@
     "nvidia"
   ];
 
-  # install packages
+  # Install packages
   home.packages = with pkgs; [
-    # nix
+    # Nix
     cachix
     nil
     nix-direnv
     nixfmt-rfc-style
 
-    # dotfiles manager
+    # Dotfiles manager
     chezmoi
 
-    # shell ulities
+    # Shell ulities
     atuin
     direnv
     starship
@@ -29,14 +29,14 @@
     #zellij
     zoxide
 
-    # git tools
+    # Git tools
     git
     git-cliff
     cz-cli
     lazygit
     husky
 
-    # dev tools
+    # Dev tools
     ast-grep
     bat
     bottom
@@ -53,7 +53,7 @@
     ripgrep
     tokei
 
-    # misc tools
+    # Misc tools
     aria2
     docker-compose
     dufs
@@ -137,7 +137,7 @@
     gofumpt
     delve
 
-    # Etc
+    # Configuration file linters
     hadolint
     taplo-cli
     typos

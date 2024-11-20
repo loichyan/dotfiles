@@ -1,6 +1,6 @@
--- Desc: smart-splits.nvim integration for wezterm
--- License: MIT
--- Upstream: https://github.com/mrjones2014/smart-splits.nvim
+-- Description: smart-splits.nvim integration for wezterm
+-- License:     MIT
+-- Upstream:    https://github.com/mrjones2014/smart-splits.nvim
 
 local W = require("wezterm")
 

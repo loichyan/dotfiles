@@ -1,6 +1,5 @@
 #!/usr/bin/env fish
 
-# Rewrite Git remotes in batch
 if ! argparse m/message -- $argv
     echo -n "\
 Initialize an empty Git repository

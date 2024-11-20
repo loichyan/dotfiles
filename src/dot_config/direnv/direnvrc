@@ -1,6 +1,7 @@
 : "${XDG_DATA_HOME:="${HOME}/.local/share"}"
 : "${NIX_PROFILE_HOME:="${HOME}/.nix-profile"}"
 
+# Use ~/.local/share/direnv/layouts as the layout direcotory
 declare -A direnv_layout_dirs
 direnv_layout_dir() {
     local hash path

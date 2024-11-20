@@ -6,7 +6,7 @@ set -euxo pipfail
 rpm-ostree install \
 	"https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
 	"https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
-# Install Nvidia driver and setup secure boot.
+# Install Nvidia driver and setup secure boot
 rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda
 sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau
@@ -38,16 +38,16 @@ gpgkey=https://dl.google.com/linux/linux_signing_key.pub
 EOF
 }
 
-# Import Microsoft repos.
+# Import Microsoft repos
 google_repo chrome
 ms_repo edge
 ms_repo vscode
-# Personal packages
+# Install personal packages
 curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" |
 	sudo tee /etc/yum.repos.d/home-loichyan.repo
 
-# Install common packages.
+# Install common packages
 rpm-ostree install mygnome mysilverblue
 
-# Enable podman socket.
+# Enable podman socket
 systemctl --user enable --now podman.socket
