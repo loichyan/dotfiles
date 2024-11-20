@@ -15,15 +15,9 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
-            inputs.fenix.overlays.default
-          ];
+          overlays = [ inputs.fenix.overlays.default ];
         };
-        inherit (pkgs)
-          lib
-          mkShell
-          fenix
-          ;
+        inherit (pkgs) lib mkShell fenix;
 
         toolchainFile = (lib.importTOML ./rust-toolchain.toml);
         cargoManifest = (lib.importTOML ./Cargo.toml);
