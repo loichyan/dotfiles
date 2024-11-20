@@ -25,20 +25,26 @@
           fenix
           ;
 
+        toolchainFile = (lib.importTOML ./rust-toolchain.toml);
         cargoManifest = (lib.importTOML ./Cargo.toml);
         crate = cargoManifest.package;
 
         # Rust toolchain for development
-        rustToolchain = fenix.stable;
-        # additional targets
-        #rustWasmToolChain = fenix.targets.wasm32-unknown-unknown.stable;
+        rustChannel = {
+          channel = toolchainFile.toolchain.channel;
+          sha256 = "";
+        };
+        rustToolchain = fenix.toolchainOf rustChannel;
         rust-dev = fenix.combine (
           with rustToolchain;
           [
             defaultToolchain
             rust-src
-            #rustWasmToolChain.rust-std
           ]
+          # add additional targets
+          ++ (builtins.map (target: fenix.targets."${target}".toolchainOf rustChannel) [
+            "wasm32-unknown-unknown"
+          ])
         );
 
         # Rust toolchain of MSRV
@@ -48,6 +54,7 @@
             sha256 = "";
           }).minimalToolchain;
 
+        # TODO: use nixpkgs's builtin platform
         # Rust toolchain to build packages
         rust-minimal = rustToolchain.minimalToolchain;
         rustPlatform = pkgs.makeRustPlatform {
