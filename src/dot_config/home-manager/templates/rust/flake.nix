@@ -48,16 +48,9 @@
             sha256 = "";
           }).minimalToolchain;
 
-        # TODO: use nixpkgs's builtin platform
-        # Rust toolchain to build packages
-        rust-minimal = rustToolchain.minimalToolchain;
-        rustPlatform = pkgs.makeRustPlatform {
-          cargo = rust-minimal;
-          rustc = rust-minimal;
-        };
       in
       {
-        packages.default = rustPlatform.buildRustPackage {
+        packages.default = pkgs.rustPlatform.buildRustPackage {
           pname = crate.name;
           version = crate.version;
           src = ./.;
