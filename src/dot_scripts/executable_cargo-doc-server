@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
-if test -z "$argv" || ! argparse nightly cfg-docsrs p/port= -- $argv
-    echo -n "\
+function main
+    if test -z "$argv" || ! argparse nightly cfg-docsrs p/port= -- $argv
+        echo -n "\
 Start a server for Cargo documentation
 
 Usage:
@@ -14,20 +15,23 @@ Options:
   --nightly        Use nightly Rust toolchain
   --cfg-docsrs     Set `--cfg=docsrs` flag
 "
-    return 1
+        return 1
+    end
+
+    set port $_flag_port
+    set cargo_watch (set -q _flag_nightly && echo "cargo-nightly-watch" || echo "cargo-watch")
+    set rustflags
+
+    if set -q _flag_cfg_docsrs
+        set -a rustflags --cfg docsrs
+    end
+
+    # Start a new shell instance so that we can CTRL_C to stop the whole server.
+    bash -c "
+        $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' &
+        mkdir -p target
+        dufs -p $port[1] --allow-search --enable-cors --render-spa --render-try-index target
+    "
 end
 
-set port $_flag_port
-set cargo_watch (set -q _flag_nightly && echo "cargo-nightly-watch" || echo "cargo-watch")
-set rustflags
-
-if set -q _flag_cfg_docsrs
-    set -a rustflags --cfg docsrs
-end
-
-# Start a new shell instance so that we can CTRL_C to stop the whole server.
-bash -c "
-    $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' &
-    mkdir -p target
-    dufs -p $port[1] --allow-search --enable-cors --render-spa --render-try-index target
-"
+main $argv

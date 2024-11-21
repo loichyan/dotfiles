@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
-if ! argparse m/message -- $argv
-    echo -n "\
+function main
+    if ! argparse m/message -- $argv
+        echo -n "\
 Initialize an empty Git repository
 
 Usage:
@@ -12,10 +13,13 @@ Options:
 
   -m/--message <string>  Initial commit message
 "
-    return 1
+        return 1
+    end
+
+    set -p _flag_message "chore: initial commit"
+
+    git init
+    and git commit --allow-empty --message $_flag_message[1]
 end
 
-set -p _flag_message "chore: initial commit"
-
-git init
-and git commit --allow-empty --message $_flag_message[1]
+main $argv

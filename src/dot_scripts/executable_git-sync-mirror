@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
-if test -z "$argv" || ! argparse s/src= d/dest= -- $argv
-    echo -n "\
+function main
+    if test -z "$argv" || ! argparse s/src= d/dest= -- $argv
+        echo -n "\
 Sync Git mirror repositories
 
 Usage:
@@ -13,24 +14,27 @@ Options:
   -s/--src <repo>   Source repository
   -d/--dest <repo>  Destination repository
 "
-    return
+        return 1
+    end
+
+    set src $_flag_src
+    set dest $_flag_dest
+    if test -z "$src" || test -z "$dest"
+        echo "'--src/--dest' must be specified"
+        return 1
+    end
+
+    pushd .
+    set workdir (mktemp -d)
+    cd $workdir
+
+    git clone --mirror $src .
+    # Delete PRs
+    git for-each-ref --format="delete %(refname)" refs/pull | git update-ref --stdin
+    git push --mirror $dest
+
+    popd
+    rm -rf $workdir
 end
 
-set src $_flag_src
-set dest $_flag_dest
-if test -z "$src" || test -z "$dest"
-    echo "'--src/--dest' must be specified"
-    return 1
-end
-
-pushd .
-set workdir (mktemp -d)
-cd $workdir
-
-git clone --mirror $src .
-# Delete PRs
-git for-each-ref --format="delete %(refname)" refs/pull | git update-ref --stdin
-git push --mirror $dest
-
-popd
-rm -rf $workdir
+main $argv

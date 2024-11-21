@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
-if test -z "$argv" || ! argparse o/output= -- $argv
-    echo -n "\
+function main
+    if test -z "$argv" || ! argparse o/output= -- $argv
+        echo -n "\
 Save Python dependencies
 
 Usage:
@@ -12,16 +13,19 @@ Options:
 
   -o/--output <file>  Output file [default: \"requirements.txt\"]
 "
-    return 1
-end
+        return 1
+    end
 
-set out (test -n "$_flag_output" && echo $_flag_output || echo requirements.txt)
-set installed (pip freeze)
+    set out (test -n "$_flag_output" && echo $_flag_output || echo requirements.txt)
+    set installed (pip freeze)
 
-for pname in $argv
-    if set pversion (string match -ei $pname $installed)
-        echo $pversion | tee -a "$out"
-    else
-        echo "Package $pname not found!" >&2
+    for pname in $argv
+        if set pversion (string match -ei $pname $installed)
+            echo $pversion | tee -a "$out"
+        else
+            echo "Package $pname not found!" >&2
+        end
     end
 end
+
+main $argv
