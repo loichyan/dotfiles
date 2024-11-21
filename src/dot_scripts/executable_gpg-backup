@@ -1,0 +1,37 @@
+#!/usr/bin/env fish
+
+function main
+    if ! argparse f/file= k/key= x/extract -- $argv
+        echo -n "\
+Create backup encrypted archives with GunPG
+
+Usage:
+
+  gpg-backup [OPTIONS] [PATH]...
+
+Options:
+
+  -f/--file <path>   Path of archive (gzip compressed)
+  -k/--key <string>  GunPG key used for encryption
+  -x/--extract       Decrypt and extract the given archive
+"
+        exit 1
+    end
+
+    if not set -q _flag_file
+        echo "--file is required"
+        exit 1
+    end
+
+    if set -q _flag_key
+        set -p gpg_flags --default-recipient $_flag_key
+    end
+
+    if set -q _flag_extract
+        gpg $gpg_flags -d $_flag_file | tar -xzf - $argv
+    else
+        tar -czf - $argv | gpg $gpg_flags -e -o $_flag_file
+    end
+end
+
+main $argv
