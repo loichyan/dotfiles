@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -euxo pipfail
+set -euxo pipefail
 
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+# Gnome packages
 flatpak install -y \
 	org.gnome.Calculator \
 	org.gnome.Calendar \
@@ -23,9 +23,12 @@ flatpak install -y \
 	org.gnome.clocks \
 	org.gnome.font-viewer \
 	org.mozilla.Thunderbird \
-	org.libreoffice.LibreOffice \
-	com.brave.Browser \
 	com.github.tchx84.Flatseal
+
+# Additional packages from Flathub
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y com.brave.Browser md.obsidian.Obsidian
+
 flatpak override --user \
 	--filesystem=/nix:ro \
 	--filesystem=xdg-config/fontconfig:ro

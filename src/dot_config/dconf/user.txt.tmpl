@@ -10,6 +10,7 @@ num-workspaces=6
 titlebar-font='Sans Bold 11'
 
 [org/gnome/desktop/interface]
+accent-color='purple'
 clock-format='12h'
 cursor-blink=true
 cursor-blink-time=500
@@ -185,6 +186,10 @@ default-folder-viewer='list-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 search-view='list-view'
+
+[org/gtk/gtk4/settings/file-chooser]
+show-hidden=false
+sort-directories-first=true
 
 #-----------------
 #-- Keybindings --
@@ -368,8 +373,8 @@ exec-arg=''
 
 [org/gnome/shell]
 disable-user-extensions=false
-disabled-extensions=['background-logo@fedorahosted.org']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'Vitals@CoreCoding.com']
+disabled-extensions=@as []
+enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst', 'appindicatorsupport@rgcjonas.gmail.com', 'background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true

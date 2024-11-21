@@ -93,7 +93,6 @@
     sccache
 
     # Cargo ulities
-    cargo-edit
     cargo-flamegraph
     cargo-nextest
     cargo-show-asm

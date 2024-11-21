@@ -1,16 +1,13 @@
 if not set -q __fish_did_init
     # Setup environment variables for Nix and Home Manager
-    set -gx NIX_PROFILE_HOME ~/.nix-profile
-    for profile in \
-        $NIX_PROFILE_HOME/etc/profile.d/nix.fish \
-        $NIX_PROFILE_HOME/etc/profile.d/hm-session-vars.fish
-        if test -f $profile
-            . $profile
-        end
+    if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     end
-
-    # Add vendored completions and functions from Nixpkgs
     for p in (string split ' ' -- $NIX_PROFILES)
+        if test -f $p/etc/profile.d/hm-session-vars.fish
+            . $p/etc/profile.d/hm-session-vars.fish
+        end
+        # Add vendored completions and functions from Nixpkgs
         set -gp fish_complete_path $p/share/fish/vendor_completions.d
         set -gp fish_function_path $p/share/fish/vendor_functions.d
     end

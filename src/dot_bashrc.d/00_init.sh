@@ -1,17 +1,19 @@
-export NIX_PROFILE_HOME="$HOME/.nix-profile"
-for profile in \
-	"$NIX_PROFILE_HOME/etc/profile.d/nix.sh" \
-	"$NIX_PROFILE_HOME/etc/profile.d/hm-session-vars.sh"; do
-	if [[ -f $profile ]]; then
-		. "$profile"
+if [[ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish ]]; then
+	. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
+
+# Load nix-direnv
+for p in $NIX_PROFILES; do
+	if [[ -f $p/etc/profile.d/hm-session-vars.sh ]]; then
+		. "$p/etc/profile.d/hm-session-vars.sh"
 	fi
 done
-unset profile
 
 # Search local installed binaries
-path="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
-if [[ ! $PATH =~ $path ]]; then
-	PATH="$path:$PATH"
+p="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
+if [[ ! $PATH =~ $p ]]; then
+	PATH="$p:$PATH"
 fi
-unset path
+
+unset p
 export PATH

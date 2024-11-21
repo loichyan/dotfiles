@@ -2,7 +2,7 @@
 
 set -e
 
-root=$(realpath "$CHEZMOI_SOURCE_DIR/..")
+root="$(cd "$(dirname "$CHEZMOI_SOURCE_DIR")" && pwd)"
 
 warn() {
 	printf "\e[33m[WARN]\e[0m %s\n" "$1"
@@ -36,20 +36,6 @@ symlink() {
 	ln -sf -T "$src" "$dest"
 }
 
-pnpm_add() {
-	local pkg
-	local -a to_install=()
-	for pkg in "$@"; do
-		if ! pnpm list -g | grep -F "$pkg" &>/dev/null; then
-			to_install+=("$pkg")
-		fi
-	done
-	if ((${#to_install[@]})); then
-		info "install ${to_install[*]}"
-		pnpm install -g "${to_install[@]}"
-	fi
-}
-
 info "setup extra configuration"
 
 # Symlink directories
@@ -57,6 +43,10 @@ symlink nvim .config/nvim
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
 symlink private/ssh .ssh
+for p in "$root"/private/config/*; do
+	f="$(basename "$p")"
+	symlink "private/config/$f" ".config/$f"
+done
 
 # Install plum and rime-ice
 if [[ ! -d "$HOME/.plum" ]]; then
@@ -66,13 +56,8 @@ if [[ ! -d "$HOME/.plum" ]]; then
 	bash ~/.plum/rime-install iDvel/rime-ice:others/recipes/full
 fi
 
-# Add pnpm completions
-if has pnpm && [[ ! -e ~/.config/tabtab/fish/pnpm.fish ]]; then
-	pnpm install-completion fish
-	pnpm_add @fsouza/prettierd
-fi
-
 # Create an empty Aria2 session file
+mkdir -p ~/.local/share/aria2
 touch ~/.local/share/aria2/session
 
 # c.f. https://wiki.archlinux.org/title/GNOME/Keyring#Disabling

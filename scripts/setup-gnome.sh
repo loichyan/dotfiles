@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipfail
+set -euxo pipefail
 
 # Enable tap-to-click
 sudo tee /etc/dconf/db/gdm.d/06-tap-to-click <<EOF
