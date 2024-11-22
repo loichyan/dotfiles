@@ -50,16 +50,14 @@ Check [the repo](https://github.com/loichyan/packages) for more details.
 ```sh
 dnf config-manager --add-repo "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo"
 # or download manually
-curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" |
-  sudo tee /etc/yum.repos.d/home_loichyan.repo
+curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" | sudo tee /etc/yum.repos.d/home_loichyan.repo
 ```
 
 ## ⚖️ License
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or
-  <http://www.apache.org/licenses/LICENSE-2.0>)
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
