@@ -7,9 +7,6 @@ if not set -q __fish_did_init
         if test -f $p/etc/profile.d/hm-session-vars.fish
             . $p/etc/profile.d/hm-session-vars.fish
         end
-        # Add vendored completions and functions from Nixpkgs
-        set -gp fish_complete_path $p/share/fish/vendor_completions.d
-        set -gp fish_function_path $p/share/fish/vendor_functions.d
     end
 
     # Search local installed binaries

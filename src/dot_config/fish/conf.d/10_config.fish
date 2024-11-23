@@ -8,4 +8,10 @@ if status is-interactive
     set -g fish_cursor_insert line blink
     set -g fish_cursor_visual block
     set -g fish_cursor_replace_one underscore
+
+    # Add vendored completions and functions from Nixpkgs
+    for p in (string split ' ' -- $NIX_PROFILES)
+        set -gp fish_complete_path $p/share/fish/vendor_completions.d
+        set -gp fish_function_path $p/share/fish/vendor_functions.d
+    end
 end
