@@ -16,6 +16,9 @@ if not set -q __fish_did_init
     if type -q nvim
         set -gx EDITOR nvim
         set -gx VISUAL nvim
+    else if type -q vim
+        set -gx EDITOR vim
+        set -gx VISUAL vim
     end
 
     # Set XDG base directories
