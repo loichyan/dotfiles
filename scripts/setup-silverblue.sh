@@ -13,15 +13,24 @@ sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau
 rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
 
-# Import my personal packages
-cat <<-INI | sudo tee /etc/yum.repos.d/home_loichyan.repo
-	[home_loichyan]
-	name=home:loichyan (Fedora_\$releasever)
-	type=rpm-md
-	baseurl=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/
+# Import VS Code's repository
+cat <<-INI | sudo tee /etc/yum.repos.d/vscode.repo
+	[vscode]
+	name=vscode
+	baseurl=https://packages.microsoft.com/yumrepos/vscode
+	gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+	enabled=1
 	gpgcheck=1
+INI
+
+# Import my personal packages
+cat <<-INI | sudo tee /etc/yum.repos.d/obs-loichyan.repo
+	[obs-loichyan]
+	name=obs:loichyan (Fedora_\$releasever)
+	baseurl=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/
 	gpgkey=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/repodata/repomd.xml.key
 	enabled=1
+	gpgcheck=1
 INI
 
 # Install common packages
