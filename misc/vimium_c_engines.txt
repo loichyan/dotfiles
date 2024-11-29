@@ -16,6 +16,7 @@ cnf|CommandNotFound: https://command-not-found.com/$s
 fedora|Fedora:       https://packages.fedoraproject.org/search?query=$s
 flathub|Flathub:     https://flathub.org/apps/search?q=$s
 pkg|Packages:        https://pkgs.org/search/?q=$s
+alpine|Aline         https://pkgs.alpinelinux.org/packages?name=$s
 
 # Nixpkgs
 home-manager|HomeManager: https://home-manager-options.extranix.com/?query=$s
