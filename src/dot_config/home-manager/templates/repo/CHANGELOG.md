@@ -14,7 +14,7 @@ are noticeable to end-users since the last release. For developers, this project
 
 ### Added
 
-- [**breaking**] Always place breaking changes at the top.
+- (**breaking**) Always place breaking changes at the top.
 - Append other changes in chronological order under the relevant subsections.
 
 ### Changed
