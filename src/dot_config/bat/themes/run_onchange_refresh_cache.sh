@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-has() {
-	# shellcheck disable=SC2046
-	return $(command -v "$1" &>/dev/null)
-}
-
 # Update bat cache
-if has bat; then
+if command -v bat &>/dev/null; then
 	bat cache --build
 fi
