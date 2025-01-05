@@ -5,11 +5,15 @@
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
-	signingkey = {{ .signingkey }}
+	{{ if .gpg.enabled }}
+	signingkey = {{ .gpg.signingkey }}
+	{{ end }}
 [tag]
 	forceSignAnnotated = true
 [commit]
+	{{ if .gpg.enabled }}
 	gpgsign = true
+	{{ end }}
 
 # Network
 {{ if .proxy.enabled }}

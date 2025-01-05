@@ -5,7 +5,6 @@ user: yourname
 name: Your Name
 email: yourname@example.com
 home: /home/yourname
-signingkey: xxxxxxxx
 hostname: Your_Machine
 
 # Customization
@@ -15,10 +14,13 @@ aria:
 atuin:
   address: https://api.atuin.sh
   token: xxxxxxxx
+gpg:
+  enabled: true
+  signingkey: xxxxxxxx
 wakatime:
   address: https://api.wakatime.com/api/v1
   token: xxxxxxxx
-terminal: kitty
+terminal: kitty # "alacritty", "kitty", "wezterm"
 
 font:
   monospace: Rec Mono Duotone
@@ -28,13 +30,13 @@ font:
 # Proxy services
 proxy:
   enabled: true
-  backend: xray
+  backend: xray # "sing-box", "xray"
   httpPort: 1080
   socksPort: 1079
 tor:
-  enabled: false
+  enabled: true
   port: 1089
 geodat:
-  enabled: false
+  enabled: true
   ip: https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
   domain: https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat
