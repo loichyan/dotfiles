@@ -3,12 +3,25 @@ if [[ -f /etc/bashrc ]]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
+# Load environment variables of Nixx
+for p in /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ~/.nix-profile/etc/profile.d/nix.sh; do
+	if [[ -f $p ]]; then
+		. $p
+		break
+	fi
+done
+# Load sesion variables of Homee Manager
+for p in $NIX_PROFILES; do
+	if [[ -f $p/etc/profile.d/hm-session-vars.sh ]]; then
+		. "$p/etc/profile.d/hm-session-vars.sh"
+	fi
+done
+
+# Search local installed binaries
+p="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
+if [[ ! $PATH =~ $p ]]; then
+	PATH="$p:$PATH"
+    export PATH
 fi
-unset rc
+
+unset p
