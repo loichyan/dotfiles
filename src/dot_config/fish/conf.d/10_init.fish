@@ -29,7 +29,7 @@ if not set -q __fish_did_init
     end
 
     # Set the default pager
-    set -gx PAGER (type -p less)
+    set -gx PAGER 'less -R'
 
     # Set XDG base directories
     set -gx XDG_CONFIG_HOME ~/.config
