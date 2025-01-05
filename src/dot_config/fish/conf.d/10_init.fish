@@ -16,14 +16,20 @@ if not set -q __fish_did_init
     # Search local installed binaries
     fish_add_path -gp ~/.local/bin ~/.scripts ~/.cargo/bin ~/.pnpm/bin
 
-    # Set default editor
+    # Set the default editor
     if type -q nvim
         set -gx EDITOR nvim
         set -gx VISUAL nvim
     else if type -q vim
         set -gx EDITOR vim
         set -gx VISUAL vim
+    else if type -q vi
+        set -gx EDITOR vi
+        set -gx VISUAL vi
     end
+
+    # Set the default pager
+    set -gx PAGER (type -p less)
 
     # Set XDG base directories
     set -gx XDG_CONFIG_HOME ~/.config
