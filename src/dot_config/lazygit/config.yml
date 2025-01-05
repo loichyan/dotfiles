@@ -14,6 +14,7 @@ git:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
   truncateCopiedCommitHashesTo: 7
+  autoFetch: false
 keybinding:
   universal:
     toggleRangeSelect: V
