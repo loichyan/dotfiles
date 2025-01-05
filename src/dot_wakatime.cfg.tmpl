@@ -1,7 +1,9 @@
 [settings]
 api_url = {{ .wakatime.address }}
 api_key = {{ .wakatime.token }}
+{{ if .proxy.enabled }}
 proxy = socks5://127.0.0.1:{{ .proxy.socksPort }}
+{{ end }}
 hostname = {{ .hostname }}
 hide_project_folder = true
 hide_project_names = false

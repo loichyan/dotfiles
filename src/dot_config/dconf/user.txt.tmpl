@@ -35,6 +35,7 @@ theme-name='freedesktop'
 #mode='none'
 mode='manual'
 
+{{ if .proxy.enabled }}
 [system/proxy/http]
 host='127.0.0.1'
 port={{ .proxy.httpPort }}
@@ -50,6 +51,7 @@ port={{ .proxy.httpPort }}
 [system/proxy/socks]
 host='127.0.0.1'
 port={{ .proxy.socksPort }}
+{{ end }}
 
 #-----------
 #-- Input --
@@ -217,10 +219,10 @@ switch-to-workspace-right=@as []
 toggle-fullscreen=@as []
 toggle-maximized=@as []
 unmaximize=@as []
-#{{ range $i := untilStep 1 7 1 }}
+{{ range $i := untilStep 1 7 1 }}
 move-to-workspace-{{ $i }}=['<Super><Shift>{{ $i }}']
 switch-to-workspace-{{ $i }}=['<Super>{{ $i }}']
-#{{ end }}
+{{ end }}
 
 [org/gnome/mutter/keybindings]
 cancel-input-capture=@as []
@@ -356,9 +358,9 @@ toggle-application-view=@as ['<Super>a']
 toggle-message-tray=@as []
 toggle-overview=@as ['<Super>d']
 toggle-quick-settings=@as []
-#{{ range $i := untilStep 1 7 1 }}
+{{ range $i := untilStep 1 7 1 }}
 switch-to-application-{{ $i }}=@as []
-#{{ end }}
+{{ end }}
 
 #----------
 #-- Misc --

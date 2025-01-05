@@ -1,2 +1,4 @@
 SocksPort {{ .tor.port }}
+{{ if .proxy.enabled }}
 Socks5Proxy 127.0.0.1:{{ .proxy.socksPort }}
+{{ end }}

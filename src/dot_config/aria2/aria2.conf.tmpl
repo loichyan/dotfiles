@@ -1,7 +1,9 @@
 # Stolen from: https://gist.github.com/qzm/a54559726896d5e6bf21adf2363ad334#file-aria2-conf
 
 # Basic
+{{ if .proxy.enabled }}
 all-proxy=http://127.0.0.1:{{ .proxy.httpPort }}
+{{ end }}
 dir={{ .home }}/Downloads
 input-file={{ .home }}/.local/share/aria2/session
 save-session={{ .home }}/.local/share/aria2/session

@@ -1,8 +1,9 @@
+{{ if .proxy.enabled }}
 [http]
 proxy = "socks5h://127.0.0.1:{{ .proxy.socksPort }}"
-
 [https]
 proxy = "socks5h://127.0.0.1:{{ .proxy.socksPort }}"
+{{ end }}
 
 [net]
 git-fetch-with-cli = true

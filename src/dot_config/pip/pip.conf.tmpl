@@ -1,2 +1,4 @@
 [global]
+{{ if .proxy.enabled }}
 proxy = http://127.0.0.1:{{ .proxy.httpPort }}
+{{ end }}
