@@ -1,5 +1,5 @@
 if status is-interactive
-    function __hook_fish_exit -e fish_exit
+    function __clean_history -e fish_exit
         echo all | history delete --prefix ';' >/dev/null
     end
 
@@ -10,5 +10,14 @@ if status is-interactive
     if type -q direnv
         set -g direnv_fish_mode eval_after_arrow
         direnv hook fish | source
+    end
+
+    if type -q zoxide
+        zoxide init fish | source
+    end
+
+    if type -q starship
+        starship init fish | source
+        enable_transience
     end
 end

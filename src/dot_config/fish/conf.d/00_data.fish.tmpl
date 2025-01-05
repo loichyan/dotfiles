@@ -1,0 +1,4 @@
+if {{ .gpg.enabled }}; set -g MY_GPG_ENABLED 1; end
+if {{ .proxy.enabled }}; set -g MY_PROXY_ENABLED 1; end
+set -g MY_HTTP_PROXY http://127.0.0.1:{{ .proxy.httpPort }}
+set -g MY_SOCKS_PROXY socks5h://127.0.0.1:{{ .proxy.socksPort }}

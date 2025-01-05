@@ -1,8 +1,12 @@
 if not set -q __fish_did_init
-    # Setup environment variables for Nix and Home Manager
-    if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    # Load environment variables of Nixx
+    for f in /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish ~/.nix-profile/etc/profile.d/nix.fish
+        if test -f $f
+            . $f
+            break
+        end
     end
+    # Load sesion variables of Homee Manager
     for p in (string split ' ' -- $NIX_PROFILES)
         if test -f $p/etc/profile.d/hm-session-vars.fish
             . $p/etc/profile.d/hm-session-vars.fish
