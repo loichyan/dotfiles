@@ -49,7 +49,7 @@ for p in "$root"/private/config/*; do
 done
 
 # Install plum and rime-ice
-if [[ ! -d "$HOME/.plum" ]]; then
+if has ibus && [[ ! -d "$HOME/.plum" ]]; then
 	info "install rime/plum"
 	git clone --depth 1 "https://github.com/rime/plum" ~/.plum
 	info "clone iDvel/rime-ice"
@@ -57,15 +57,17 @@ if [[ ! -d "$HOME/.plum" ]]; then
 fi
 
 # Create an empty Aria2 session file
-mkdir -p ~/.local/share/aria2
-touch ~/.local/share/aria2/session
+if has aria2c; then
+	mkdir -p ~/.local/share/aria2
+	touch ~/.local/share/aria2/session
+fi
 
 # c.f. https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
 autostart="$HOME/.config/autostart"
-sysconf="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
-userconf="$autostart/gnome-keyring-ssh.desktop"
-if [[ -e "$sysconf" ]] && [[ ! -e "$userconf" ]]; then
+sysfile="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
+userfile="$autostart/gnome-keyring-ssh.desktop"
+if [[ -f "$sysfile" ]] && [[ ! -f "$userfile" ]]; then
 	mkdir -p "$autostart/"
-	cp "$sysconf" "$autostart/"
-	echo "Hidden=true" >>"$userconf"
+	cp "$sysfile" "$autostart/"
+	echo "Hidden=true" >>"$userfile"
 fi
