@@ -10,7 +10,7 @@ function fish_user_key_bindings
 
     fish_vi_key_bindings
     fish_default_key_bindings -M insert
-    bind -M insert jj __bind_i_escape
+    bind -M insert \e __bind_i_escape
     bind -M insert jk __bind_i_escape
     bind -M insert \ce end-of-line
     bind -M insert \cw backward-kill-path-component
