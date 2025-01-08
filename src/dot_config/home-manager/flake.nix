@@ -54,11 +54,11 @@
             nix.registry = {
               nixpkgs.to = {
                 type = "path";
-                path = "${nixpkgs}";
+                path = toString nixpkgs;
               };
               my.to = {
                 type = "path";
-                path = "${self}";
+                path = toString self;
               };
             };
             nixpkgs = {
