@@ -25,7 +25,8 @@ with pkgs;
   ncurses
   perl
   starship
-  tmux
+  # TODO: back to the next stable release
+  (callPackage ./tmux.nix { })
   zoxide
 
   # Git
