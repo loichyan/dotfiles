@@ -23,17 +23,15 @@ symlink() {
 
 	if [[ ! -e "$src" ]]; then
 		warn "skip non-existent path '$src'"
-		return
 	elif [[ -L "$dest" ]]; then
 		info "skip existing symlink '$dest'"
 	elif [[ -e "$dest" ]]; then
 		warn "skip existing path '$dest'"
-		return
 	else
 		info "create symlink '$dest'"
+		ln -sr -T "$src" "$dest"
 	fi
 
-	ln -sf -T "$src" "$dest"
 }
 
 info "setup extra configuration"

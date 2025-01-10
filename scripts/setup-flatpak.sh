@@ -31,4 +31,4 @@ flatpak install -y com.brave.Browser md.obsidian.Obsidian
 
 flatpak override --user --filesystem=/nix:ro --filesystem=xdg-config/fontconfig:ro
 # Share Git configuration directory so that it can be recognized by obsidian-git
-flatpak override --user --filesystem=xdg-config/git:ro
+flatpak override --user --filesystem=xdg-config/git:ro md.obsidian.Obsidian
