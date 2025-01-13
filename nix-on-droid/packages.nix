@@ -24,7 +24,6 @@ with pkgs;
   eza
   ncurses
   perl
-  starship
   # TODO: back to the next stable release
   (callPackage ./tmux.nix { })
   zoxide
