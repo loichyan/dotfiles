@@ -26,9 +26,11 @@
             paths = callPackage ./packages.nix { };
           };
         packages.pin =
-          with pkgs;
-          writeShellScriptBin "pin" ''
-            nix registry pin --override-flake nixpkgs ${nixpkgs} nixpkgs
+          let
+            inherit (nixpkgs) rev narHash;
+          in
+          pkgs.writeShellScriptBin "pin" ''
+            nix registry pin --override-flake nixpkgs "github:NixOS/nixpkgs?rev=${rev}&narHash=${narHash}" nixpkgs
           '';
       }
     );
