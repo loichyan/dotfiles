@@ -3,7 +3,13 @@ if status is-interactive
     set -g fish_greeting
 
     # Make cursor distinct among modes
-    fish_vi_cursor
+    set -g fish_vi_force_cursor 1
+    set -g fish_cursor_default block
+    set -g fish_cursor_insert line blink
+    set -g fish_cursor_replace_one underscore
+    set -g fish_cursor_replace underscore
+    set -g fish_cursor_external line blink
+    set -g fish_cursor_visual block
 
     # Add vendored completions and functions from Nixpkgs
     for p in (string split ' ' -- $NIX_PROFILES)

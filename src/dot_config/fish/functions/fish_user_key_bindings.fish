@@ -19,9 +19,9 @@ function fish_user_key_bindings
     bind -M default yy fish_clipboard_copy
     bind -M default Y fish_clipboard_copy
 
-    # Manually trigger postexec event to force Fish to handle VI cursor
-    bind -M insert \ee 'edit_command_buffer; emit fish_postexec'
-    bind -M insert \ev 'edit_command_buffer; emit fish_postexec'
+    # Manually trigger events to force Fish to handle VI cursor in tmux.
+    bind -M insert \ee 'edit_command_buffer; set fish_bind_mode $fish_bind_mode'
+    bind -M insert \ev 'edit_command_buffer; set fish_bind_mode $fish_bind_mode'
 
     if ! type -q atuin && type -q fzf
         function fzf-history-widget -d "Show command history"
