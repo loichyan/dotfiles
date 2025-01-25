@@ -31,7 +31,6 @@ symlink() {
 		info "create symlink '$dest'"
 		ln -sr -T "$src" "$dest"
 	fi
-
 }
 
 info "setup extra configuration"

@@ -53,8 +53,12 @@
             };
             nix.registry = {
               nixpkgs.to = {
-                type = "path";
-                path = toString nixpkgs;
+                # NOTE: pin the registry to GitHub so as to tell nix to reuse
+                # the evaluated cache when use a unqualified `nixpkgs`
+                type = "github";
+                owner = "NixOS";
+                repo = "nixpkgs";
+                inherit (nixpkgs) rev lastModified narHash;
               };
               my.to = {
                 type = "path";

@@ -27,10 +27,10 @@
           };
         packages.pin =
           let
-            inherit (nixpkgs) rev narHash;
+            inherit (nixpkgs) rev narHash lastModified;
           in
           pkgs.writeShellScriptBin "pin" ''
-            nix registry pin --override-flake nixpkgs "github:NixOS/nixpkgs?rev=${rev}&narHash=${narHash}" nixpkgs
+            nix registry pin --override-flake nixpkgs "github:NixOS/nixpkgs?rev=${rev}&narHash=${narHash}&lastModified=${toString lastModified}" nixpkgs
           '';
       }
     );
