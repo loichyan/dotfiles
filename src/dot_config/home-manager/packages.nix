@@ -25,8 +25,7 @@
     atuin
     direnv
     starship
-    tmux
-    #zellij
+    #tmux
     zoxide
 
     # Git tools
