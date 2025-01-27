@@ -13,3 +13,4 @@ patch:
     - { when: composing, accept: Control+u, send: Page_Up }
     - { when: composing, accept: Control+d, send: Page_Down }
     - { when: composing, accept: Control+w, send: BackSpace }
+  punctuator/half_shape/./=: '．'
