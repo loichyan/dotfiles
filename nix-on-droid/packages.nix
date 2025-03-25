@@ -42,6 +42,9 @@ with pkgs;
   ripgrep
   tokei
 
+  # Js/Ts
+  deno
+
   # C/C++
   stdenv.cc
 
