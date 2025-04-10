@@ -21,6 +21,8 @@ with pkgs;
   tree-sitter
 
   # Shell utilities
+  direnv
+  nix-direnv
   eza
   ncurses
   perl
