@@ -15,7 +15,6 @@
     # Nix
     cachix
     nil
-    nix-direnv
     nixfmt-rfc-style
 
     # Dotfiles manager
@@ -23,7 +22,9 @@
 
     # Shell ulities
     atuin
+    expect
     direnv
+    nix-direnv
     starship
     #tmux
     zoxide

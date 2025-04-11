@@ -23,6 +23,7 @@ with pkgs;
   # Shell utilities
   direnv
   nix-direnv
+  expect
   eza
   ncurses
   perl
