@@ -19,31 +19,43 @@ with pkgs;
   # Neovim
   neovim
   tree-sitter
+  wakatime
 
   # Shell utilities
+  atuin
+  bat
   direnv
   nix-direnv
+  du-dust
   expect
   eza
-  ncurses
-  perl
+  fd
+  fzf
+  zoxide
   # TODO: back to the next stable release
   (callPackage ./tmux.nix { })
-  zoxide
 
   # Git
   git
   lazygit
+  delta
 
   # Dev utilities
   ast-grep
   bat
   delta
-  fzf
   jq
   just
   ripgrep
   tokei
+
+  #== Languages support ==#
+
+  # Shell
+  perl
+  shellcheck
+  shfmt
+  nodePackages.bash-language-server
 
   # Js/Ts
   deno
@@ -59,4 +71,8 @@ with pkgs;
   # Nix
   nil
   nixfmt-rfc-style
+
+  # Other linters
+  typos
+  typos-lsp
 ]

@@ -20,14 +20,24 @@
     # Dotfiles manager
     chezmoi
 
+    # Neovim
+    neovim
+    tree-sitter
+    wakatime
+
     # Shell ulities
     atuin
-    expect
+    bat
     direnv
     nix-direnv
+    du-dust
+    expect
+    eza
+    fd
+    fzf
     starship
-    #tmux
     zoxide
+    #tmux
 
     # Git tools
     git
@@ -35,17 +45,12 @@
     cz-cli
     lazygit
     husky
+    delta
 
     # Dev tools
     ast-grep
-    bat
     bottom
-    delta
     distrobox
-    du-dust
-    eza
-    fd
-    fzf
     jq
     just
     kondo
@@ -61,14 +66,9 @@
     jellyfin-ffmpeg
     netcat
     p7zip
-    wakatime
     yazi
 
     #== Languages support ==#
-
-    # Neovim
-    neovim
-    tree-sitter
 
     # Shell
     perl
