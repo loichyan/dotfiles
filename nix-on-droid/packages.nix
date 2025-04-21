@@ -57,6 +57,9 @@ with pkgs;
   shfmt
   nodePackages.bash-language-server
 
+  # Rust
+  sccache
+
   # Js/Ts
   deno
 
