@@ -3,8 +3,8 @@ gui:
   nerdFontsVersion: "3"
   border: rounded
   theme:
-    selectedLineBgColor: ["#5a524c"]
-    inactiveBorderColor: [black]
+    selectedLineBgColor: ["black"]
+    inactiveBorderColor: ["black"]
 git:
   overrideGpg: true
   paging:
