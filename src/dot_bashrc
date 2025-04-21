@@ -10,7 +10,7 @@ for p in /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ~/.nix-profil
 		break
 	fi
 done
-# Load sesion variables of Homee Manager
+# Load session variables of Homee Manager
 for p in $NIX_PROFILES; do
 	if [[ -f $p/etc/profile.d/hm-session-vars.sh ]]; then
 		. "$p/etc/profile.d/hm-session-vars.sh"
