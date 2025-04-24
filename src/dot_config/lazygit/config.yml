@@ -15,6 +15,9 @@ git:
     autoWrapWidth: 72
   truncateCopiedCommitHashesTo: 7
   autoFetch: false
+os:
+  copyToClipboardCmd: printf {{text}} | tmux -Ldefault load-buffer -w -
+  readFromClipboardCmd: tmux -Ldefault save-buffer -
 keybinding:
   universal:
     toggleRangeSelect: V
