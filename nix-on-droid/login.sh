@@ -59,6 +59,7 @@ export LANG="C.UTF-8"
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export MANPATH=/usr/share/man
 export TMPDIR=/tmp
+export SSL_CERT_FILE="/$CERT_FILE"
 
 $PROOT \
 	--bind="/:/host" \
