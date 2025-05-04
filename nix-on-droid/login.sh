@@ -55,7 +55,7 @@ export GC_NPROCS=1
 unset LD_PRELOAD
 unset LD_LIBRARY_PATH
 # Common environment variables
-export LANG="${LANG:-'C.UTF-8'}"
+export LANG="C.UTF-8"
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export MANPATH=/usr/share/man
 export TMPDIR=/tmp
