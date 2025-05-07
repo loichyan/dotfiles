@@ -60,8 +60,9 @@ with pkgs;
   # Rust
   sccache
 
-  # Js/Ts
+  # Web
   deno
+  prettierd
 
   # C/C++
   stdenv.cc
