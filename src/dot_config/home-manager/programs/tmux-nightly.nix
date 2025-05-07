@@ -4,12 +4,12 @@ let
     with pkgs;
     tmux.overrideAttrs (
       final: prev: {
-        version = "00894d1";
+        version = "3d2b26d";
         src = fetchFromGitHub {
           owner = "tmux";
           repo = "tmux";
-          rev = "00894d188d2a60767a80ae749e7c3fc810fca8cd";
-          hash = "sha256-aMXYBMmcRap8Q28K/8/2+WTnPxcF7MTu1Tr85t+zliU=";
+          rev = "3d2b26dcfe1a14b5ff6e04121e933a30652c2fe9";
+          hash = "sha256-v+d+xxtJOMpZN6qkdgVKKraupj5CPkJd7XP4WR2lJQg=";
         };
       }
     );
