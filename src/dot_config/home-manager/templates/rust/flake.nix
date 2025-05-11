@@ -2,65 +2,55 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    fenix = {
-      url = "github:nix-community/fenix";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    { nixpkgs, flake-utils, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      rust-overlay,
+    }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ inputs.fenix.overlays.default ];
+          overlays = [ rust-overlay.overlays.default ];
         };
-        inherit (pkgs) lib mkShell fenix;
+        inherit (pkgs) lib mkShell rust-bin;
 
-        toolchainFile = (lib.importTOML ./rust-toolchain.toml);
-        cargoManifest = (lib.importTOML ./Cargo.toml);
-        crate = cargoManifest.package;
+        rustupToolchain = (lib.importTOML ./rust-toolchain.toml).channel;
+        crateMetadata = (lib.importTOML ./Cargo.toml).package;
 
         # Rust toolchain for development
-        rustChannel = {
-          channel = toolchainFile.toolchain.channel;
-          sha256 = "";
-        };
-        rustToolchain = fenix.toolchainOf rustChannel;
-        rust-dev = fenix.combine (
-          with rustToolchain;
-          [
-            defaultToolchain
-            rust-src
-          ]
-          # Add additional targets
-          ++ (builtins.map (target: fenix.targets."${target}".toolchainOf rustChannel) [
-            "wasm32-unknown-unknown"
-          ])
-        );
+        rust-dev = rust-bin.fromRustupToolchain rustupToolchain;
+        rust-dev-with-rust-analyzer = rust-dev.override (prev: {
+          extensions = prev.extensions ++ [
+            "rust-src"
+            "rust-analyzer"
+          ];
+        });
 
         # Rust toolchain of MSRV
-        rust-msrv =
-          if crate.rust-version == rustChannel.channel then
-            # Reuse the development toolchain if possible
-            rust-dev
-          else
-            (fenix.toolchainOf {
-              channel = crate.rust-version;
-              sha256 = "";
-            }).minimalToolchain;
+        rust-msrv = rust-bin.fromRustupToolchain {
+          channel = crateMetadata.rust-version;
+          profile = "minimal";
+        };
       in
       {
         packages.default = pkgs.rustPlatform.buildRustPackage {
-          pname = crate.name;
-          version = crate.version;
+          pname = crateMetadata.name;
+          version = crateMetadata.version;
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
           meta = {
-            description = crate.description;
-            homepage = crate.repository;
+            description = crateMetadata.description;
+            homepage = crateMetadata.repository;
             license = with lib.licenses; [
               mit
               asl20
@@ -68,15 +58,15 @@
           };
         };
 
+        # The default devShell with IDE integrations
         devShells.default = mkShell {
+          packages = [ rust-dev-with-rust-analyzer ];
+        };
+        # A minimal devShell without IDE integrations
+        devShells.minimal = mkShell {
           packages = [ rust-dev ];
         };
-        devShells.with-rust-analyzer = mkShell {
-          packages = [
-            rust-dev
-            rustToolchain.rust-analyzer
-          ];
-        };
+        # A minimal devShell with toolchain of MSRV
         devShells.msrv = mkShell {
           packages = [ rust-msrv ];
         };

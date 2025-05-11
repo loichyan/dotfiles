@@ -82,14 +82,12 @@
     gnumake
 
     # Rust
-    (
-      with fenix.stable;
-      fenix.combine [
-        defaultToolchain
-        rust-src
-        rust-analyzer
-      ]
-    )
+    (rust-bin.stable.latest.default.override {
+      extensions = [
+        "rust-src"
+        "rust-analyzer"
+      ];
+    })
     sccache
 
     # Cargo ulities

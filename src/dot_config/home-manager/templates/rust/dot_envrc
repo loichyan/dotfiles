@@ -1,1 +1,1 @@
-use flake .#with-rust-analyzer
+use flake .

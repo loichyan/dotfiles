@@ -1,26 +1,26 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) writeShellApplication fenix-monthly;
-  rustToolchain =
-    with fenix-monthly;
-    combine [
-      default.toolchain
-      complete.miri
-      complete.llvm-tools
-    ];
+  inherit (pkgs) writeShellApplication rust-bin;
+  rust-nightly = rust-bin.selectLatestNightlyWith (
+    toolchain:
+    toolchain.minimal.override {
+      extensions = [
+        "clippy"
+        "llvm-tools"
+        "miri"
+        "rustfmt"
+      ];
+    }
+  );
   cargo-nightly = writeShellApplication {
     name = "cargo-nightly";
-    runtimeInputs = [ rustToolchain ];
-    text = ''
-      cargo "$@"
-    '';
+    runtimeInputs = [ rust-nightly ];
+    text = ''cargo "$@"'';
   };
   rustfmt-nightly = writeShellApplication {
     name = "rustfmt-nightly";
-    runtimeInputs = [ rustToolchain ];
-    text = ''
-      rustfmt "$@"
-    '';
+    runtimeInputs = [ rust-nightly ];
+    text = ''rustfmt "$@"'';
   };
   cargoCommand =
     {
@@ -30,7 +30,7 @@ let
     writeShellApplication {
       name = "cargo-nightly-${name}";
       runtimeInputs = [
-        rustToolchain
+        rust-nightly
         pkg
       ];
       text = ''cargo ${name} "$@"'';

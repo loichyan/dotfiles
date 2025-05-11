@@ -15,12 +15,8 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    fenix-monthly = {
-      url = "github:nix-community/fenix/monthly";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,9 +28,7 @@
       home-manager,
       nixgl,
       nix-index-database,
-      fenix,
-      fenix-monthly,
-      ...
+      rust-overlay,
     }:
     let
       myData = import ./data.nix;
@@ -67,11 +61,8 @@
             };
             nixpkgs = {
               overlays = [
-                (_: prev: {
-                  inherit myData;
-                  fenix = fenix.packages.${prev.system};
-                  fenix-monthly = fenix-monthly.packages.${prev.system};
-                })
+                rust-overlay.overlays.default
+                (_: prev: { inherit myData; })
               ];
             };
             nixGL.packages = nixgl.packages;

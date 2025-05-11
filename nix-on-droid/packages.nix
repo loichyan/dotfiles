@@ -58,6 +58,12 @@ with pkgs;
   nodePackages.bash-language-server
 
   # Rust
+  (rust-bin.stable.latest.default.override {
+    extensions = [
+      "rust-src"
+      "rust-analyzer"
+    ];
+  })
   sccache
 
   # Web
