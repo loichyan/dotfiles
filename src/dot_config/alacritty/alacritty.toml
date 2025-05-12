@@ -2,12 +2,23 @@
 import = ["base16.toml"]
 
 [window]
-opacity = 0.75
-blur = true
 decorations = "none"
 padding = { x = 2, y = 2 }
+dynamic_padding = true
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
+vi_mode_style = { shape = "Block", blinking = "Always" }
+blink_interval = 500
 
 [font]
 normal.family = "monospace"
 size = 11
 builtin_box_drawing = true
+
+[scrolling]
+history = 0
+
+[terminal]
+shell = { program = "tmux", args = ["new", "-ADs", "main"] }
+osc52 = "OnlyCopy"
