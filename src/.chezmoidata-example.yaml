@@ -7,7 +7,78 @@ email: yourname@example.com
 home: /home/yourname
 hostname: Your Machine
 
-# Customization
+# Appearance
+font:
+  monospace: 0xProto
+  sansSerif: Noto Sans CJK SC
+  serif: Noto Serif CJK SC
+
+colors:
+  scheme: Gruvbox Material Dark
+  author: Sainnhe Park (https://github.com/sainnhe)
+
+  base00: "#1b1b1b"
+  base01: "#282828"
+  base02: "#3c3836"
+  base03: "#504945"
+  base04: "#665c54"
+
+  base05: "#d4be98"
+  base06: "#ddc7a1"
+  base07: "#e6d5ae"
+
+  base08: "#ea6962"
+  base09: "#e78a4e"
+  base0A: "#d8a657"
+  base0B: "#a9b665"
+  base0C: "#89b482"
+  base0D: "#7daea3"
+  base0E: "#d3869b"
+  base0F: "#a89984"
+
+  # NOTE: all colors above lightened by 5%
+  bright:
+    base00: "#282828"
+    base01: "#353535"
+    base02: "#494542"
+    base03: "#5e5551"
+    base04: "#746960"
+
+    base05: "#dcc9aa"
+    base06: "#e4d2b4"
+    base07: "#ecdfc1"
+
+    base08: "#ed7e78"
+    base09: "#ea9964"
+    base0A: "#ddb16c"
+    base0B: "#b3be76"
+    base0C: "#98be92"
+    base0D: "#8db8ae"
+    base0E: "#da99aa"
+    base0F: "#b3a593"
+
+  # NOTE: all colors above darkened by 5%
+  dim:
+    base00: "#0e0e0e"
+    base01: "#1b1b1b"
+    base02: "#2f2b2a"
+    base03: "#423d39"
+    base04: "#584f48"
+
+    base05: "#ccb386"
+    base06: "#d6bc8e"
+    base07: "#e0cb9b"
+
+    base08: "#e7544c"
+    base09: "#e47b38"
+    base0A: "#d39b42"
+    base0B: "#9fae54"
+    base0C: "#7aaa72"
+    base0D: "#6da498"
+    base0E: "#cc738c"
+    base0F: "#9d8d75"
+
+# Programs
 aria:
   port: 6800
   token: xxxxxxxx
@@ -18,11 +89,6 @@ wakatime:
   address: https://api.wakatime.com/api/v1
   token: xxxxxxxx
 terminal: alacritty # "alacritty", "kitty", "wezterm", ...
-
-font:
-  monospace: 0xProto
-  sansSerif: Noto Sans CJK SC
-  serif: Noto Serif CJK SC
 
 # Services
 gpg:
