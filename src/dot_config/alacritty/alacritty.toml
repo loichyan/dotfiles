@@ -1,8 +1,5 @@
 [general]
-import = ["catppuccin.toml"]
-
-[terminal]
-shell = { program = "tmux", args = ["new", "-ADs", "main"] }
+import = ["base16.toml"]
 
 [window]
 opacity = 0.75
