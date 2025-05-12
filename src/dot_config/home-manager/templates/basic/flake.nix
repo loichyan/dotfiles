@@ -10,10 +10,10 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        inherit (pkgs) mkShell;
+        inherit (pkgs) mkShellNoCC;
       in
       {
-        devShells.default = mkShell {
+        devShells.default = mkShellNoCC {
           packages = with pkgs; [ ];
           shellHook = '''';
         };

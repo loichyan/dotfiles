@@ -10,12 +10,12 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        inherit (pkgs) lib mkShell;
+        inherit (pkgs) lib mkShellNoCC;
 
         libPath = lib.makeLibraryPath (with pkgs; [ stdenv.cc.cc ]);
       in
       {
-        devShells.default = mkShell {
+        devShells.default = mkShellNoCC {
           packages = with pkgs; [ python3 ];
           shellHook = ''
             export LD_LIBRARY_PATH=${libPath}:$LD_LIBRARY_PATH

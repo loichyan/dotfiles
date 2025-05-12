@@ -22,7 +22,7 @@
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
-        inherit (pkgs) lib mkShell rust-bin;
+        inherit (pkgs) lib mkShellNoCC rust-bin;
 
         rustupToolchain = (lib.importTOML ./rust-toolchain.toml).channel;
         crateMetadata = (lib.importTOML ./Cargo.toml).package;
@@ -41,6 +41,19 @@
           channel = crateMetadata.rust-version;
           profile = "minimal";
         };
+
+        mkDevShell =
+          devPkgs:
+          (mkShellNoCC {
+            packages =
+              with pkgs;
+              [
+                # Necessary packages for build
+                openssl
+                cargo-binutils
+              ]
+              ++ devPkgs;
+          });
       in
       {
         packages.default = pkgs.rustPlatform.buildRustPackage {
@@ -59,17 +72,11 @@
         };
 
         # The default devShell with IDE integrations
-        devShells.default = mkShell {
-          packages = [ rust-dev-with-rust-analyzer ];
-        };
+        devShells.default = mkDevShell [ rust-dev-with-rust-analyzer ];
         # A minimal devShell without IDE integrations
-        devShells.minimal = mkShell {
-          packages = [ rust-dev ];
-        };
+        devShells.minimal = mkDevShell [ rust-dev ];
         # A minimal devShell with toolchain of MSRV
-        devShells.msrv = mkShell {
-          packages = [ rust-msrv ];
-        };
+        devShells.msrv = mkDevShell [ rust-msrv ];
       }
     );
 }
