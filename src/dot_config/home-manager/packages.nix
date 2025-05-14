@@ -3,13 +3,6 @@
   programs.home-manager.enable = true;
   programs.nix-index.enable = true;
 
-  nixGL.defaultWrapper = "mesa";
-  nixGL.offloadWrapper = "nvidia";
-  nixGL.installScripts = [
-    "mesa"
-    "nvidia"
-  ];
-
   # Install packages
   home.packages = with pkgs; [
     # Nix

@@ -32,6 +32,8 @@ Build the first generation of Home Manager (following
 
 ```sh
 nix run home-manager/master -- switch
+# (Optional) Install nixGL to use graphical apps
+nix profile install nix-community/nixGL --impure
 ```
 
 ### Setup NeoVim
