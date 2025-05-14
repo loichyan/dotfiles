@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,20 +22,27 @@
     {
       self,
       nixpkgs,
+      flake-utils,
       home-manager,
-      nixgl,
       nix-index-database,
       rust-overlay,
     }:
     let
+      _ = flake-utils; # Currently only used to generate global registry
       myData = import ./data.nix;
       username = myData.user;
       homeDirectory = myData.home;
+
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      inherit (pkgs) lib;
+
+      lockfile = lib.importJSON ./flake.lock;
+      getLocked = name: lockfile.nodes.${name}.locked;
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        inherit pkgs;
         modules = [
           {
             home = {
@@ -42,14 +50,11 @@
               stateVersion = "24.11";
             };
             nix.registry = {
-              nixpkgs.to = {
-                # NOTE: pin the registry to GitHub so as to tell nix to reuse
-                # the evaluated cache when use a unqualified `nixpkgs`
-                type = "github";
-                owner = "NixOS";
-                repo = "nixpkgs";
-                inherit (nixpkgs) rev lastModified narHash;
-              };
+              # NOTE: pin the registry to GitHub so as to tell nix to reuse
+              # the evaluated cache when use a unqualified `nixpkgs`
+              nixpkgs.to = getLocked "nixpkgs";
+              flake-utils.to = getLocked "flake-utils";
+              rust-overlay.to = getLocked "rust-overlay";
               my.to = {
                 type = "path";
                 path = toString self;
@@ -61,7 +66,6 @@
                 (_: prev: { inherit myData; })
               ];
             };
-            nixGL.packages = nixgl.packages;
           }
           nix-index-database.hmModules.nix-index
           ./services/aria2.nix
