@@ -22,7 +22,7 @@ if ! PROOT=$(command -v proot); then
 	die "proot is not installed"
 fi
 
-user=${USER:-$(id -un)}
+user=$(id -un)
 user_id=$(id -u)
 group=$(id -gn)
 group_id=$(id -g)
@@ -41,6 +41,7 @@ EOF
 
 mkdir -p "$PREFIX/nix"
 mkdir -p "$PREFIX/tmp"
+mkdir -p "$PREFIX/dev/shm"
 mkdir -p "$PREFIX/.l2s"
 
 # Enable link2symlink, which is critical for git and nix
@@ -63,12 +64,15 @@ export SSL_CERT_FILE="/$CERT_FILE"
 
 $PROOT \
 	--bind="/:/host" \
-	--bind="$PREFIX/nix:/nix" \
 	--bind="$PREFIX/:/usr" \
-	--bind="$PREFIX/etc:/etc" \
+	--bind="$PREFIX/bin:/bin!" \
+	--bind="$PREFIX/etc:/etc!" \
+	--bind="$PREFIX/nix:/nix" \
 	--bind="$PREFIX/tmp:/tmp" \
-	--bind="$PREFIX/tmp:/dev/shm" \
+	--bind="$PREFIX/dev/shm:/dev/shm" \
 	--bind="$passwd_file:/etc/passwd" \
 	--bind="$group_file:/etc/group" \
+	--kill-on-exit \
 	--link2symlink \
-	"${@:-$SHELL}"
+	--sysvipc \
+	-L "${@:-$SHELL}"
