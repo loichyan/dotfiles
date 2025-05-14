@@ -1,0 +1,15 @@
+# Adapted from <https://git.lix.systems/lix-project/lix-installer/src/commit/e4048682396999c11069f99f9b323f1d4a333bbc/src/action/common/place_nix_configuration.rs>
+
+#{{ if eq .platform "termux" }}
+auto-optimise-store = false
+sandbox = false
+#{{ else }}
+auto-optimise-store = true
+sandbox = true
+#{{ end }}
+
+always-allow-substitutes = true
+bash-prompt-prefix = (nix:$name)\040
+extra-experimental-features = nix-command flakes
+extra-nix-path = nixpkgs=flake:nixpkgs
+max-jobs = auto

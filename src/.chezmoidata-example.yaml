@@ -1,4 +1,5 @@
 sourceDir: /home/yourname/dotfiles
+platform: linux # "linux", "termux"
 
 # Personal info
 user: yourname

@@ -32,7 +32,6 @@ Build the first generation of Home Manager (following
 
 ```sh
 nix run home-manager/master -- switch
-./result/activate
 ```
 
 ### Setup NeoVim
