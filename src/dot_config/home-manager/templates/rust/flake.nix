@@ -24,7 +24,7 @@
         };
         inherit (pkgs) lib mkShellNoCC rust-bin;
 
-        rustupToolchain = (lib.importTOML ./rust-toolchain.toml).channel;
+        rustupToolchain = (lib.importTOML ./rust-toolchain.toml).toolchain;
         crateMetadata = (lib.importTOML ./Cargo.toml).package;
 
         # Rust toolchain for development
