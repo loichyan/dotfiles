@@ -1,5 +1,6 @@
 patch:
   schema_list:
+    - schema: eng
     - schema: rime_frost
     - schema: rime_frost_double_pinyin_flypy
   menu/page_size: 5
@@ -13,6 +14,7 @@ patch:
   key_binder/bindings/+:
     - { when: composing, accept: Control+c, send: Escape }
     - { when: composing, accept: Control+w, send: Shift+BackSpace }
+    - { when: always, accept: Control+period, select: eng }
 
   ascii_composer:
     good_old_caps_lock: true

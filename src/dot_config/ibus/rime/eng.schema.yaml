@@ -1,0 +1,21 @@
+schema:
+  schema_id: eng
+  name: English Keyboard
+  version: "2025-05-23"
+  author:
+    - Loi Chyan <loichyan@foxmail.com>
+  description: ASCII mode English keyboard
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [E, A]
+
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+
+key_binder:
+  bindings:
+    - { when: always, accept: Control+period, select: .next }
