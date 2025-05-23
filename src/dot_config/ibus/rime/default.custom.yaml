@@ -11,10 +11,7 @@ patch:
       - key_bindings:/move_by_word_with_tab
       - key_bindings:/paging_with_comma_period
       - key_bindings:/numbered_mode_switch
-  key_binder/bindings/+:
-    - { when: composing, accept: Control+c, send: Escape }
-    - { when: composing, accept: Control+w, send: Shift+BackSpace }
-    - { when: always, accept: Control+period, select: eng }
+      - custom_key_bindings
 
   ascii_composer:
     good_old_caps_lock: true
@@ -30,3 +27,9 @@ patch:
       ".": { commit: "．" }
     half_shape:
       ".": { commit: "．" }
+
+custom_key_bindings:
+  __append:
+    - { when: composing, accept: Control+c, send: Escape }
+    - { when: composing, accept: Control+w, send: Shift+BackSpace }
+    - { when: always, accept: Control+period, select: eng }
