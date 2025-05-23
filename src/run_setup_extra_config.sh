@@ -45,12 +45,11 @@ for p in "$root"/private/config/*; do
 	symlink "private/config/$f" ".config/$f"
 done
 
-# Install plum and rime-ice
-if has ibus && [[ ! -d "$HOME/.plum" ]]; then
-	info "install rime/plum"
-	git clone --depth 1 "https://github.com/rime/plum" ~/.plum
-	info "clone iDvel/rime-ice"
-	bash ~/.plum/rime-install iDvel/rime-ice:others/recipes/full
+# Install rime-frost
+if has ibus && [[ ! -d "$HOME/.config/ibus/rime" ]]; then
+	info "clone rime-frost"
+	git clone --depth=1 https://github.com/gaboolic/rime-frost ~/.config/ibus/rime
+	env -C ~/.config/ibus/rime git apply --verbose "$ROOT_DIR"/patch/rime-frost/*
 fi
 
 # Create an empty Aria2 session file
