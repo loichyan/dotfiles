@@ -22,11 +22,8 @@ patch:
       Control_L: noop
       Control_R: noop
 
-  punctuator:
-    full_shape:
-      ".": { commit: "．" }
-    half_shape:
-      ".": { commit: "．" }
+  punctuator/full_shape/.: { commit: "．" }
+  punctuator/half_shape/.: { commit: "．" }
 
 custom_key_bindings:
   __append:
