@@ -8,6 +8,7 @@ let
         "clippy"
         "llvm-tools"
         "miri"
+        "rust-src"
         "rustfmt"
       ];
     }
