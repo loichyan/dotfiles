@@ -28,5 +28,6 @@ patch:
 custom_key_bindings:
   __append:
     - { when: composing, accept: Control+c, send: Escape }
+    - { when: composing, accept: Control+u, send: Escape }
     - { when: composing, accept: Control+w, send: Shift+BackSpace }
     - { when: always, accept: Control+period, select: eng }
