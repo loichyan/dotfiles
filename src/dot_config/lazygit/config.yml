@@ -30,4 +30,4 @@ customCommands:
     description: commit with commitizen
     context: files
     loadingText: opening commitizen
-    subprocess: true
+    output: terminal
