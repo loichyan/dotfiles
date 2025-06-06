@@ -1,5 +1,3 @@
-# vim:ft=tmux
-
 # == Options == #
 
 # Appearance
@@ -123,7 +121,9 @@ bind -n M-9 select-window -t :=9
 bind -n M-t run "#{@popup-toggle} -Ed'#{pane_current_path}' -w85% -h85% --name=scratch"
 bind -n M-g run "#{@popup-toggle} -Ed'#{pane_current_path}' -w85% -h85% --name=lazygit lazygit"
 bind -n M-e run "#{@popup-toggle} -Ed'#{pane_current_path}' -w85% -h85% --name=yazi yazi"
+#{{ if eq .platform "termux" }}
 bind -n M-G run "#{@popup-toggle} -Ed$HOME -w85% -h85% --id=gpg-agent ~/.scripts/gpg-agent-here"
+#{{ end }}
 
 # Misc
 bind R source-file ~/.tmux.conf
@@ -131,10 +131,12 @@ bind R source-file ~/.tmux.conf
 # == Plugins == #
 
 set -g @plugin "tmux-plugins/tpm"
-set -g @plugin "tmux-plugins/tmux-resurrect"
 # Must be loaded before continuum, as it overrides the status options
 source-file ~/.tmux/tmux-base16.conf
+#{{ if ne .platform "termux" }}
+set -g @plugin "tmux-plugins/tmux-resurrect"
 set -g @plugin "tmux-plugins/tmux-continuum"
+#{{ end }}
 # Must be loaded after continuum, as it starts the popup server, which disables autosave
 set -g @plugin "loichyan/tmux-toggle-popup"
 
@@ -149,3 +151,5 @@ if '[ -z "$TMUX_POPUP_SERVER" ] && [ -z "$(tmux show -gqv @tmux-did-init)" ]' {
 	run "#{@resurrect-restore-script-path}"
 	set -g @tmux-did-init 1
 }
+
+# vim:ft=tmux
