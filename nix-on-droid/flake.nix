@@ -17,7 +17,7 @@
       nixpkgs,
       flake-utils,
       rust-overlay,
-    }:
+    }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -25,54 +25,19 @@
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
-        inherit (pkgs) lib;
-
-        lockfile = lib.importJSON ./flake.lock;
-        inputs = builtins.filter (item: builtins.hasAttr item.name lockfile.nodes.root.inputs) (
-          lib.mapAttrsToList (name: node: {
-            name = name;
-            value = node.locked;
-          }) lockfile.nodes
-        );
+        registry = pkgs.callPackage ./registry.nix { inherit inputs; };
+        homePackages = pkgs.callPackage ./packages.nix { };
       in
-      rec {
+      {
         packages.default =
           with pkgs;
           buildEnv {
             name = "my-nix-profile";
-            paths = callPackage ./packages.nix { };
+            paths = homePackages ++ [ registry.flake-sync-lock ];
           };
-        packages.registry = pkgs.writeText "registry" (
-          builtins.toJSON {
-            version = 2;
-            flakes = builtins.map (
-              { name, value }:
-              {
-                from.type = "indirect";
-                from.id = name;
-                to = value;
-              }
-            ) inputs;
-          }
-        );
-        /**
-          Pins all flake inputs to the local registry.
-        */
-        packages.pin = pkgs.writeShellScriptBin "pin" ''
-          cat ${packages.registry} >~/.config/nix/registry.json
-        '';
-        /**
-          Updates the current flake inputs to the same as the global inputs.
-        */
-        packages.flake-lock =
-          let
-            overrides = builtins.map (
-              { name, value }: "--override-input ${name} ${builtins.flakeRefToString value}"
-            ) inputs;
-          in
-          pkgs.writeShellScriptBin "flake-lock" ''
-            nix flake lock ${builtins.concatStringsSep " " overrides}
-          '';
+        packages = {
+          inherit (registry) registry pin flake-sync-lock;
+        };
       }
     );
 }

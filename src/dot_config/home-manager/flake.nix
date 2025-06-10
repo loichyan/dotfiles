@@ -26,7 +26,7 @@
       home-manager,
       nix-index-database,
       rust-overlay,
-    }:
+    }@inputs:
     let
       _ = flake-utils; # Currently only used to generate global registry
       myData = import ./data.nix;
@@ -35,10 +35,7 @@
 
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      inherit (pkgs) lib;
-
-      lockfile = lib.importJSON ./flake.lock;
-      getLocked = name: lockfile.nodes.${name}.locked;
+      registry = pkgs.callPackage ./registry.nix { inherit inputs; };
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
@@ -48,18 +45,7 @@
             home = {
               inherit username homeDirectory;
               stateVersion = "24.11";
-            };
-            nix.registry = {
-              # TODO: unpack all inputs from flake.lock
-              # NOTE: pin the registry to GitHub so as to tell nix to reuse
-              # the evaluated cache when use a unqualified `nixpkgs`
-              nixpkgs.to = getLocked "nixpkgs";
-              flake-utils.to = getLocked "flake-utils";
-              rust-overlay.to = getLocked "rust-overlay";
-              my.to = {
-                type = "path";
-                path = toString self;
-              };
+              packages = [ registry.flake-sync-lock ];
             };
             nixpkgs = {
               overlays = [
@@ -67,6 +53,7 @@
                 (_: prev: { inherit myData; })
               ];
             };
+            xdg.configFile."nix/registry.json".source = registry.registry;
           }
           nix-index-database.hmModules.nix-index
           ./services/aria2.nix
