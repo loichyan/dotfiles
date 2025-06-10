@@ -17,7 +17,7 @@
       nixpkgs,
       flake-utils,
       rust-overlay,
-    }@inputs:
+    }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -26,6 +26,14 @@
           overlays = [ rust-overlay.overlays.default ];
         };
         inherit (pkgs) lib;
+
+        lockfile = lib.importJSON ./flake.lock;
+        inputs = builtins.filter (item: builtins.hasAttr item.name lockfile.nodes.root.inputs) (
+          lib.mapAttrsToList (name: node: {
+            name = name;
+            value = node.locked;
+          }) lockfile.nodes
+        );
       in
       rec {
         packages.default =
@@ -34,21 +42,37 @@
             name = "my-nix-profile";
             paths = callPackage ./packages.nix { };
           };
-        packages.registry =
+        packages.registry = pkgs.writeText "registry" (
+          builtins.toJSON {
+            version = 2;
+            flakes = builtins.map (
+              { name, value }:
+              {
+                from.type = "indirect";
+                from.id = name;
+                to = value;
+              }
+            ) inputs;
+          }
+        );
+        /**
+          Pins all flake inputs to the local registry.
+        */
+        packages.pin = pkgs.writeShellScriptBin "pin" ''
+          cat ${packages.registry} >~/.config/nix/registry.json
+        '';
+        /**
+          Updates the current flake inputs to the same as the global inputs.
+        */
+        packages.flake-lock =
           let
-            lockfile = lib.importJSON ./flake.lock;
-            nodes = builtins.mapAttrs (name: node: {
-              from.type = "indirect";
-              from.id = name;
-              to = node.locked;
-            }) lockfile.nodes;
-            registry = {
-              version = 2;
-              flakes = builtins.filter (node: builtins.hasAttr node.from.id inputs) (builtins.attrValues nodes);
-            };
+            overrides = builtins.map (
+              { name, value }: "--override-input ${name} ${builtins.flakeRefToString value}"
+            ) inputs;
           in
-          pkgs.writeText "registry" (builtins.toJSON registry);
-        packages.pin = pkgs.writeShellScriptBin "pin" ''cat ${packages.registry} >~/.config/nix/registry.json'';
+          pkgs.writeShellScriptBin "flake-lock" ''
+            nix flake lock ${builtins.concatStringsSep " " overrides}
+          '';
       }
     );
 }
