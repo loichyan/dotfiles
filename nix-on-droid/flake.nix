@@ -17,7 +17,7 @@
       nixpkgs,
       flake-utils,
       rust-overlay,
-    }:
+    }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -25,21 +25,30 @@
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
+        inherit (pkgs) lib;
       in
-      {
+      rec {
         packages.default =
           with pkgs;
           buildEnv {
             name = "my-nix-profile";
             paths = callPackage ./packages.nix { };
           };
-        packages.pin =
+        packages.registry =
           let
-            inherit (nixpkgs) rev narHash lastModified;
+            lockfile = lib.importJSON ./flake.lock;
+            nodes = builtins.mapAttrs (name: node: {
+              from.type = "indirect";
+              from.id = name;
+              to = node.locked;
+            }) lockfile.nodes;
+            registry = {
+              version = 2;
+              flakes = builtins.filter (node: builtins.hasAttr node.from.id inputs) (builtins.attrValues nodes);
+            };
           in
-          pkgs.writeShellScriptBin "pin" ''
-            nix registry pin --override-flake nixpkgs "github:NixOS/nixpkgs?rev=${rev}&narHash=${narHash}&lastModified=${toString lastModified}" nixpkgs
-          '';
+          pkgs.writeText "registry" (builtins.toJSON registry);
+        packages.pin = pkgs.writeShellScriptBin "pin" ''cat ${packages.registry} >~/.config/nix/registry.json'';
       }
     );
 }

@@ -50,6 +50,7 @@
               stateVersion = "24.11";
             };
             nix.registry = {
+              # TODO: unpack all inputs from flake.lock
               # NOTE: pin the registry to GitHub so as to tell nix to reuse
               # the evaluated cache when use a unqualified `nixpkgs`
               nixpkgs.to = getLocked "nixpkgs";
