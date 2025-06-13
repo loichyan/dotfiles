@@ -28,9 +28,9 @@ Options:
 
     # Start a new shell instance so that we can CTRL_C to stop the whole server.
     bash -c "
-        $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' &
+        $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' || true &
         mkdir -p target
-        dufs -p $port[1] --allow-search --enable-cors --render-spa --render-try-index target
+        static-web-server --cors-allow-origins='*' --directory-listing --ignore-hidden-files --host=127.0.0.1 --port=$port[1] --root=target
     "
 end
 

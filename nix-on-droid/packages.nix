@@ -49,6 +49,9 @@ with pkgs;
   ripgrep
   tokei
 
+  # Misc tools
+  static-web-server
+
   #== Languages support ==#
 
   # Shell

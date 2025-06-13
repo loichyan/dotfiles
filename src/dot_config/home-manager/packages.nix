@@ -54,11 +54,11 @@
     # Misc tools
     aria2
     docker-compose
-    dufs
     gh
     jellyfin-ffmpeg
     netcat
     p7zip
+    static-web-server
     yazi
 
     #== Languages support ==#
