@@ -71,7 +71,6 @@ with pkgs;
 
   # Web
   deno
-  prettierd
 
   # C/C++
   stdenv.cc
@@ -85,7 +84,8 @@ with pkgs;
   nil
   nixfmt-rfc-style
 
-  # Other linters
+  # Other formaters & linters
+  dprint
   typos
   typos-lsp
 ]
