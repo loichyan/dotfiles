@@ -82,6 +82,7 @@
       ];
     })
     sccache
+    taplo-cli
 
     # Cargo ulities
     cargo-flamegraph
@@ -127,7 +128,6 @@
     # Other formaters & linters
     dprint
     hadolint
-    taplo-cli
     typos
     typos-lsp
     nodePackages.yaml-language-server

@@ -68,6 +68,7 @@ with pkgs;
     ];
   })
   sccache
+  taplo-cli
 
   # Web
   deno
