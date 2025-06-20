@@ -1,26 +1,26 @@
 #!/usr/bin/env fish
 
-function main
-    if test -z "$argv" || ! argparse nightly cfg-docsrs p/port= -- $argv
-        echo -n "\
-Start a server for Cargo documentation
-
+function cargo-doc-server
+    if ! argparse nightly cfg-docsrs p/port= root= -- $argv
+        echo -n "
 Usage:
 
   cargo-doc-server [OPTIONS]
 
 Options:
 
-  -p/--port <int>  Port to listen on
+  -p/--port <port> Port to listen on
   --nightly        Use nightly Rust toolchain
   --cfg-docsrs     Set `--cfg=docsrs` flag
+  --root <path>    Root directory to start the file server
 "
         return 1
     end
 
-    set port $_flag_port
+    set port $_flag_port 5500
     set cargo_watch (set -q _flag_nightly && echo "cargo-nightly-watch" || echo "cargo-watch")
     set rustflags
+    set root $_flag_root target/doc
 
     if set -q _flag_cfg_docsrs
         set -a rustflags --cfg docsrs
@@ -36,8 +36,8 @@ Options:
             --ignore-hidden-files \
             --host=127.0.0.1 \
             --port=$port[1] \
-            --root=target/doc
+            --root=$root[1]
     "
 end
 
-main $argv
+cargo-doc-server $argv
