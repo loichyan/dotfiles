@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function cargo-doc-server
-    if ! argparse nightly cfg-docsrs p/port= root= -- $argv
+    if ! argparse no-watch nightly cfg-docsrs p/port= root= -- $argv
         echo -n "
 Usage:
 
@@ -12,6 +12,7 @@ Options:
   -p/--port <port> Port to listen on
   --nightly        Use nightly Rust toolchain
   --cfg-docsrs     Set `--cfg=docsrs` flag
+  --no-watch       Stop watching and rebuilding
   --root <path>    Root directory to start the file server
 "
         return 1
@@ -26,18 +27,24 @@ Options:
         set -a rustflags --cfg docsrs
     end
 
+    set sws_flags \
+        --cors-allow-origins='*' \
+        --directory-listing \
+        --ignore-hidden-files \
+        --host=127.0.0.1 \
+        --port=$port[1] \
+        --root=$root[1]
+
     # Start a new shell instance so that we can CTRL_C to stop the whole server.
-    bash -c "
-        $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' || true &
-        mkdir -p target
-        static-web-server \
-            --cors-allow-origins='*' \
-            --directory-listing \
-            --ignore-hidden-files \
-            --host=127.0.0.1 \
-            --port=$port[1] \
-            --root=$root[1]
-    "
+    if set -q _flag_no_watch
+        exec static-web-server $sws_flags
+    else
+        exec bash -c "
+            $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv'&
+            mkdir -p target
+            static-web-server $(string escape -- $sws_flags | string join ' ')
+        "
+    end
 end
 
 cargo-doc-server $argv
