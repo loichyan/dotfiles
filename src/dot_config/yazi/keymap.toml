@@ -1,6 +1,6 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = ["g", "n"]
 run = "shell --block --confirm 'xdg-open .'"
 desc = "Open in system app"

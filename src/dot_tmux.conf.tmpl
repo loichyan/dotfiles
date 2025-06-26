@@ -120,7 +120,6 @@ bind -n M-9 select-window -t :=9
 # Popups
 bind -n M-g run "#{@popup-toggle} -Ed'#{pane_current_path}' -w75% -h90% --name=lazygit lazygit"
 bind -n M-t run "#{@popup-toggle} -Ed'#{pane_current_path}' -w75% -h90% --name=scratchpad"
-bind -n M-e run "#{@popup-toggle} -Ed'#{pane_current_path}' -w75% -h90% --name=yazi yazi"
 #{{ if eq .platform "termux" }}
 bind -n M-G run "#{@popup-toggle} -Ed$HOME -w75% -h90% --id=gpg-agent ~/.scripts/gpg-agent-here"
 #{{ end }}

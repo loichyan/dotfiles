@@ -59,7 +59,6 @@
     netcat
     p7zip
     static-web-server
-    yazi
 
     #== Languages support ==#
 
