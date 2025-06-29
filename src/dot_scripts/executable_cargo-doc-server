@@ -40,9 +40,9 @@ Options:
         exec static-web-server $sws_flags
     else
         exec bash -c "
-            $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv'&
+            $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' &
             mkdir -p target
-            static-web-server $(string escape -- $sws_flags | string join ' ')
+            static-web-server $sws_flags
         "
     end
 end
