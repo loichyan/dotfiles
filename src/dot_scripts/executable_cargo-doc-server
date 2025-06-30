@@ -35,6 +35,9 @@ Options:
         --port=$port[1] \
         --root=$root[1]
 
+    export SERVER_LOG_LEVEL=info
+    export SERVER_LOG_WITH_ANSI=true
+
     # Start a new shell instance so that we can CTRL_C to stop the whole server.
     if set -q _flag_no_watch
         exec static-web-server $sws_flags
