@@ -1,0 +1,12 @@
+patch:
+  schema/name: "双拼-小鹤双拼"
+
+  aux_code/trigger_word: ";"
+
+  speller/alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA;"
+  # TODO: report to rime-mini
+  speller/initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+  speller/delimiter: " '"
+
+  punctuator/full_shape/.: { commit: "．" }
+  punctuator/half_shape/.: { commit: "．" }

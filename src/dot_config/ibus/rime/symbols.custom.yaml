@@ -1,0 +1,3 @@
+patch:
+  punctuator/full_shape/.: { commit: "．" }
+  punctuator/half_shape/.: { commit: "．" }

@@ -1,8 +1,8 @@
 patch:
   schema_list:
-    - schema: eng
-    - schema: rime_frost
-    - schema: rime_frost_double_pinyin_flypy
+    - schema: ascii
+    - schema: rime_mint
+    - schema: double_pinyin_flypy
   menu/page_size: 5
 
   key_binder/bindings:
@@ -30,4 +30,4 @@ custom_key_bindings:
     - { when: composing, accept: Control+c, send: Escape }
     - { when: composing, accept: Control+u, send: Escape }
     - { when: composing, accept: Control+w, send: Shift+BackSpace }
-    - { when: always, accept: Control+period, select: eng }
+    - { when: always, accept: Control+period, select: ascii }

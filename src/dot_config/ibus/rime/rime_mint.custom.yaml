@@ -1,0 +1,8 @@
+patch:
+  schema/name: "全拼-薄荷拼音"
+
+  speller/alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+  speller/delimiter: " '"
+
+  punctuator/full_shape/.: { commit: "．" }
+  punctuator/half_shape/.: { commit: "．" }

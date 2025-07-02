@@ -1,15 +1,15 @@
 schema:
-  schema_id: eng
-  name: English Keyboard
+  schema_id: ascii
+  name: ASCII Keyboard
   version: "2025-05-23"
   author:
     - Loi Chyan <loichyan@foxmail.com>
-  description: ASCII mode English keyboard
+  description: A minimal keyboard that supports only ASCII mode
 
 switches:
   - name: ascii_mode
     reset: 0
-    states: [E, A]
+    states: [A, A]
 
 engine:
   processors:
