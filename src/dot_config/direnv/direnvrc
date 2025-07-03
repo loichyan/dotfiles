@@ -1,5 +1,3 @@
-# vim:ft=sh
-
 : "${XDG_DATA_HOME:="${HOME}/.local/share"}"
 : "${NIX_PROFILE_HOME:="${HOME}/.nix-profile"}"
 
@@ -20,3 +18,5 @@ for p in $NIX_PROFILES; do
 		. "$p/share/nix-direnv/direnvrc"
 	fi
 done
+
+# vim:ft=sh
