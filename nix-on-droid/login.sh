@@ -62,7 +62,7 @@ export MANPATH=/usr/share/man
 export TMPDIR=/tmp
 export SSL_CERT_FILE="/$CERT_FILE"
 
-$PROOT \
+exec $PROOT \
 	--bind="/:/host" \
 	--bind="$PREFIX/:/usr" \
 	--bind="$PREFIX/bin:/bin!" \

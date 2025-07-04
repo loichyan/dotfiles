@@ -11,6 +11,7 @@ with pkgs;
   tree
   wget
   zip
+  (callPackage ./session-vars.nix { })
 
   # GnuPG
   gnupg
