@@ -85,6 +85,9 @@ with pkgs;
   nil
   nixfmt-rfc-style
 
+  # Python
+  python3
+
   # Other formaters & linters
   dprint
   typos
