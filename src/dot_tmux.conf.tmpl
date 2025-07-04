@@ -5,8 +5,9 @@
 set -g  default-terminal "$TERM"
 set -ga terminal-overrides ",$TERM:Tc"
 
-set -g @base16-palette "~/.tmux/base16-palette.conf"
-set -g @base16-border rounded
+set -g @base16-background dark
+set -g @base16-palette-dark "~/.tmux/base16-palette.conf"
+set -g @base16-border-lines rounded
 set -g @base16-statusline on
 set -g @base16-transparent on
 
@@ -131,7 +132,7 @@ bind R source-file ~/.tmux.conf
 
 set -g @plugin "tmux-plugins/tpm"
 # Must be loaded before continuum, as it overrides the status options
-source-file ~/.tmux/tmux-base16.conf
+set -g @plugin "loichyan/tmux-base16"
 #{{ if ne .platform "termux" }}
 set -g @plugin "tmux-plugins/tmux-resurrect"
 set -g @plugin "tmux-plugins/tmux-continuum"
