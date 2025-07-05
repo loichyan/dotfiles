@@ -129,6 +129,7 @@
     hadolint
     typos
     typos-lsp
+    vale
     nodePackages.yaml-language-server
 
     ## Document
