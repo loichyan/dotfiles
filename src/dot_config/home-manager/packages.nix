@@ -135,19 +135,4 @@
     #texlive.combined.scheme-full
     #texlab
   ];
-
-  xdg.configFile."dprint/plugins.json".text = with pkgs.dprint-plugins; ''
-    {
-      "plugins": [
-        "${dprint-plugin-biome}/plugin.wasm",
-        "${dprint-plugin-dockerfile}/plugin.wasm"
-        "${dprint-plugin-json}/plugin.wasm",
-        "${dprint-plugin-markdown}/plugin.wasm",
-        "${g-plane-malva}/plugin.wasm",
-        "${g-plane-markup_fmt}/plugin.wasm",
-        "${g-plane-pretty_graphql}/plugin.wasm",
-        "${g-plane-pretty_yaml}/plugin.wasm"
-      ]
-    }
-  '';
 }

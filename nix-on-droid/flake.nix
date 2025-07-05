@@ -27,22 +27,6 @@
         };
         registry = pkgs.callPackage ./registry.nix { inherit inputs; };
         homePackages = pkgs.callPackage ./packages.nix { };
-        dprint-plugins =
-          with pkgs.dprint-plugins;
-          pkgs.writeText "dprint-plugins" ''
-            {
-              "plugins": [
-                "${dprint-plugin-biome}/plugin.wasm",
-                "${dprint-plugin-dockerfile}/plugin.wasm"
-                "${dprint-plugin-json}/plugin.wasm",
-                "${dprint-plugin-markdown}/plugin.wasm",
-                "${g-plane-malva}/plugin.wasm",
-                "${g-plane-markup_fmt}/plugin.wasm",
-                "${g-plane-pretty_graphql}/plugin.wasm",
-                "${g-plane-pretty_yaml}/plugin.wasm"
-              ]
-            }
-          '';
       in
       {
         packages.default =
@@ -55,8 +39,6 @@
         packages.deploy = pkgs.writeShellScriptBin "deploy" ''
           mkdir -p ~/.config/nix/
           cat ${registry.registry} >~/.config/nix/registry.json
-          mkdir -p ~/.config/dprint/
-          cat ${dprint-plugins} >~/.config/dprint/plugins.json
         '';
       }
     );

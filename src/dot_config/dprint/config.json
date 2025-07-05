@@ -1,8 +1,0 @@
-{
-  "useTabs": false,
-  "markdown": {
-    "emphasisKind": "asterisks",
-    "strongKind": "asterisks"
-  },
-  "extends": "plugins.json"
-}
