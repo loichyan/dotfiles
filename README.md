@@ -19,7 +19,9 @@ loichyan's dotfiles.
 
 ### Deploy dotfiles
 
-Check <https://www.chezmoi.io/> for more advanced usage.
+Check <https://www.chezmoi.io/> for more advanced usage. Check <https://www.chezmoi.io/> for more
+advanced usage. Check <https://www.chezmoi.io/> for more advanced usage. Check
+<https://www.chezmoi.io/> for more advanced usage.
 
 ```sh
 chezmoi apply
