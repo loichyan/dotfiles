@@ -5,9 +5,6 @@
 fish_variables
 fish_history
 
-# External project
-/nvim
-
 # Nix
 result
 
