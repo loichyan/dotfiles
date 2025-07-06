@@ -2,9 +2,7 @@
 
 loichyan's dotfiles.
 
-## 📸 Showcase
-
-![wezterm](assets/overview.png)
+![showcase](https://github.com/user-attachments/assets/18deae4b-9ba2-4c03-83de-cc31b65e7cf0)
 
 ## ✨ Overview
 
@@ -12,8 +10,8 @@ loichyan's dotfiles.
 - Dotfile manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 - Package manager: [Home Manager](https://github.com/nix-community/home-manager)
 - Shell: [Fish](https://fishshell.com/)
-- Development environment: [DeltaVim](https://github.com/loichyan/DeltaVim)
-- Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/) & [Tmux](https://github.com/tmux/tmux)
+- Development environment: [Meowim](https://github.com/loichyan/Meowim)
+- Terminal: [Alacritty](https://alacritty.org/) & [Tmux](https://github.com/tmux/tmux)
 
 ## 🚀 Installation
 
@@ -38,29 +36,12 @@ nix run home-manager/master -- switch
 nix profile install nix-community/nixGL --impure
 ```
 
-### Setup NeoVim
-
-Clone my NeoVim configuration repository ([loichyan/nvim](https://github.com/loichyan/nvim)):
-
-```sh
-git clone https://github.com/loichyan/nvim.git ~/.config/nvim
-```
-
-### Import OBS repository
-
-Check [the repo](https://github.com/loichyan/packages) for more details.
-
-```sh
-dnf config-manager --add-repo "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo"
-# or download manually
-curl -fL "https://download.opensuse.org/repositories/home:loichyan/Fedora_$(rpm -E %fedora)/home:loichyan.repo" | sudo tee /etc/yum.repos.d/home_loichyan.repo
-```
-
 ## ⚖️ License
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or
+  <http://www.apache.org/licenses/LICENSE-2.0>)
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
