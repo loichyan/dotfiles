@@ -37,7 +37,6 @@
     git-cliff
     cz-cli
     lazygit
-    husky
     delta
 
     # Dev tools
