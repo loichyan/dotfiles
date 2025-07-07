@@ -93,4 +93,5 @@ with pkgs;
   dprint
   typos
   typos-lsp
+  vale
 ]
