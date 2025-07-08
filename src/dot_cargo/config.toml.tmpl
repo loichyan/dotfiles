@@ -1,9 +1,9 @@
-{{ if .proxy.enabled }}
+#{{ if .proxy.enabled }}
 [http]
 proxy = "socks5h://127.0.0.1:{{ .proxy.socksPort }}"
 [https]
 proxy = "socks5h://127.0.0.1:{{ .proxy.socksPort }}"
-{{ end }}
+#{{ end }}
 
 [net]
 git-fetch-with-cli = true
@@ -12,4 +12,6 @@ git-fetch-with-cli = true
 protocol = "sparse"
 
 [build]
-rustc-wrapper = "sccache"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+# vim:ft=toml

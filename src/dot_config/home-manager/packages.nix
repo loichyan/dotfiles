@@ -79,8 +79,7 @@
         "rust-analyzer"
       ];
     })
-    sccache
-    taplo-cli
+    mold
 
     # Cargo ulities
     cargo-flamegraph
@@ -126,10 +125,11 @@
     # Other formaters & linters
     dprint
     hadolint
+    nodePackages.yaml-language-server
+    taplo-cli
     typos
     typos-lsp
     vale
-    nodePackages.yaml-language-server
 
     ## Document
     #texlive.combined.scheme-full

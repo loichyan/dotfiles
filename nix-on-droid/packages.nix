@@ -63,8 +63,7 @@ with pkgs;
       "rust-analyzer"
     ];
   })
-  sccache
-  taplo-cli
+  mold-wrapped
 
   # Web
   deno
@@ -86,6 +85,7 @@ with pkgs;
 
   # Other formaters & linters
   dprint
+  taplo-cli
   typos
   typos-lsp
   vale
