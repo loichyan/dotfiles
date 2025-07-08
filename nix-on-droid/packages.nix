@@ -5,13 +5,9 @@ with pkgs;
   chezmoi
   curl
   openssh
-  p7zip
   rsync
-  time
-  tree
   wget
   zip
-  (callPackage ./session-vars.nix { })
 
   # GnuPG
   gnupg
@@ -44,7 +40,6 @@ with pkgs;
   # Dev utilities
   ast-grep
   bat
-  delta
   jq
   just
   ripgrep
