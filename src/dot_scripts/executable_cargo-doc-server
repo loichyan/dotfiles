@@ -20,11 +20,11 @@ Options:
 
     set port $_flag_port 5500
     set cargo_watch (set -q _flag_nightly && echo "cargo-nightly-watch" || echo "cargo-watch")
-    set rustflags
+    set rustdocflags
     set root $_flag_root target/doc
 
     if set -q _flag_cfg_docsrs
-        set -a rustflags --cfg docsrs
+        set -a rustdocflags --cfg docsrs
     end
 
     set sws_flags \
@@ -43,7 +43,7 @@ Options:
         exec static-web-server $sws_flags
     else
         exec bash -c "
-            $cargo_watch -E RUSTFLAGS='$rustflags' -x 'doc $argv' &
+            $cargo_watch -E RUSTDOCFLAGS='$rustdocflags' -x 'doc $argv' &
             mkdir -p target
             static-web-server $sws_flags
         "
