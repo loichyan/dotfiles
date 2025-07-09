@@ -20,15 +20,14 @@ loichyan's dotfiles.
 - Package manager: [Home Manager](https://github.com/nix-community/home-manager)
 - Shell: [Fish](https://fishshell.com/)
 - Development environment: [Meowim](https://github.com/loichyan/Meowim)
-- Terminal: [Alacritty](https://alacritty.org/) & [Tmux](https://github.com/tmux/tmux)
+- Terminal: [Alacritty](https://alacritty.org/) & [Termux](https://github.com/termux/termux-app) &
+  [tmux](https://github.com/tmux/tmux)
 
 ## 🚀 Installation
 
 ### Deploy dotfiles
 
-Check <https://www.chezmoi.io/> for more advanced usage. Check <https://www.chezmoi.io/> for more
-advanced usage. Check <https://www.chezmoi.io/> for more advanced usage. Check
-<https://www.chezmoi.io/> for more advanced usage.
+Check out <https://www.chezmoi.io/> for more advanced usage.
 
 ```sh
 chezmoi apply
