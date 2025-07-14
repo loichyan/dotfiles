@@ -27,7 +27,7 @@ flatpak install -y \
 
 # Additional packages from Flathub
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y com.brave.Browser md.obsidian.Obsidian
+flatpak install -y app.zen_browser.zen md.obsidian.Obsidian
 
 flatpak override --user --filesystem=/nix:ro --filesystem=xdg-config/fontconfig:ro
 # Share Git configuration directory so that it can be recognized by obsidian-git
