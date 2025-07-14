@@ -10,8 +10,8 @@ rpm-ostree install \
 # Install Nvidia driver and setup secure boot
 rpm-ostree install xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda
 sudo mokutil --import /etc/pki/akmods/certs/public_key.der
-# Disable Nouveau
-rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
+# Disable Nouveau see <https://docs.fedoraproject.org/en-US/fedora-silverblue/troubleshooting/#_using_nvidia_drivers>
+rpm-ostree kargs --append=rd.driver.blacklist=nouveau,nova-core --append=modprobe.blacklist=nouveau,nova-core --append=nvidia-drm.modeset=1 --append=initcall_blacklist=simpledrm_platform_driver_init
 
 # Import VS Code's repository
 cat <<-INI | sudo tee /etc/yum.repos.d/vscode.repo
