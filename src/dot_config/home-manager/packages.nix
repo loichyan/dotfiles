@@ -54,7 +54,7 @@
     aria2
     docker-compose
     gh
-    jellyfin-ffmpeg
+    ffmpeg
     netcat
     p7zip
     static-web-server
