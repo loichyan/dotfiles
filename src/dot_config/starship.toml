@@ -1,1 +1,7 @@
+format = "$all${env_var.priv_mode}$character"
 command_timeout = 300
+
+[env_var.priv_mode]
+variable = "starship_private_status"
+format = "[(${env_value} )](bold yellow)"
+description = "Whether in Fish's private mode"

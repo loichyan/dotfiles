@@ -25,6 +25,11 @@ function fish_prompt
         set prompt_status $status_color "[" $last_status "]" $normal
     end
 
-    echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
-    echo -n -s $status_color $suffix ' ' $normal
+    set -l priv_mode
+    if set -q fish_private_mode
+        set priv_mode (set_color --bold yellow) '[P] ' (set_color normal)
+    end
+
+    echo -s $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
+    echo -n -s $priv_mode $status_color $suffix ' ' $normal
 end
