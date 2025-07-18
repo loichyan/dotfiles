@@ -14,9 +14,10 @@ if status is-interactive
     set -g fish_color_operator brblue
     set -g fish_color_escape brblue
     set -g fish_color_autosuggestion brblack
-    set -g fish_color_cwd green
+    set -g fish_color_cwd cyan
     set -g fish_color_cwd_root red
     set -g fish_color_user green
+    set -g fish_color_user_root red
     set -g fish_color_host blue
     set -g fish_color_host_remote blue
     set -g fish_color_status red

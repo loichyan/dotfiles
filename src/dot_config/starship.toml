@@ -6,6 +6,20 @@ variable = "starship_private_status"
 format = "[(${env_value} )](bold yellow)"
 description = "Whether in Fish's private mode"
 
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red bold)'
+vimcmd_symbol = '[❮](green)'
+vimcmd_replace_one_symbol = '[❮](purple)'
+vimcmd_replace_symbol = '[❮](purple)'
+vimcmd_visual_symbol = '[❮](blue)'
+
+[directory]
+read_only = " 󰌾"
+truncation_length = 2
+fish_style_pwd_dir_length = 1
+truncate_to_repo = false
+
 # starship preset nerd-font-symbols
 [aws]
 symbol = "  "
@@ -36,9 +50,6 @@ symbol = " "
 
 [deno]
 symbol = " "
-
-[directory]
-read_only = " 󰌾"
 
 [docker_context]
 symbol = " "
