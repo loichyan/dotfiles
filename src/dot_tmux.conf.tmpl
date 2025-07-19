@@ -73,9 +73,9 @@ if '[ ! -d ~/.tmux/plugins/tpm ]' {
 run ~/.tmux/plugins/tpm/tpm
 
 # Restore previous session
-if '[ -z "$TMUX_POPUP_SERVER" ] && [ -z "$(tmux show -gqv @tmux-did-init)" ]' {
+%if "#{&&:#{!=:#{@tmux-did-init},1},#{==:#{b:socket_path},default}}"
 	run "#{@resurrect-restore-script-path}"
 	set -g @tmux-did-init 1
-}
+%endif
 
 # vim:ft=tmux
