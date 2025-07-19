@@ -1,39 +1,53 @@
-# == Options == #
+# Many useful options are stolen from:
+# - <https://github.com/tmux-plugins/tmux-sensible>
+# - <https://gist.github.com/chadaustin/d4696e18217a7de9b2671549abcb54c4>
+# - <https://github.com/aktau/dotfiles/blob/151bc71d7addd289a015e1be8f73214cdd0347ad/.tmux.conf>
 
-# Appearance
-# See <https://medium.com/@jogarcia/bring-on-the-true-color-on-alacritty-tmux-neovim-99134521731d>
-set -g  default-terminal "$TERM"
-set -ga terminal-overrides ",$TERM:Tc"
+# == Appearance == #
+set -g  default-terminal "tmux-256color"
+set -ga terminal-features ",*:RGB:usstyle"
 
+# Theme
 set -g @base16-background dark
 set -g @base16-palette-dark "~/.tmux/base16-palette.conf"
 set -g @base16-border-lines rounded
 set -g @base16-statusline on
 set -g @base16-transparent on
 
-# Sensible options, stolen from: https://github.com/tmux-plugins/tmux-sensible
+# == Sensible options == #
 set -g escape-time 0
-set -g history-limit 10000
-set -g display-time 3000
-set -g status-interval 5
 set -g focus-events on
+set -g history-limit 10000
+set -g status-interval 5
 
-# Keymap options
+set -g base-index 1
+set -g pane-base-index 1
+set -g aggressive-resize on
+set -g renumber-windows on
+
+set -g display-time 1000
+set -g display-panes-time 800
+
+set -g allow-set-title off
+set -g set-titles on
+set -g set-titles-string "#W"
+
+# Monity bells of background panes
+set -g monitor-bell on
+set -g bell-action other
+
+# == Keymap == #
 set -g mode-keys vi
 set -g mouse on
 set -g status-keys emacs
 set -g extended-keys on
 set -g extended-keys-format csi-u
 
-# Misc options
+# == Security == #
 set -g allow-passthrough off
 set -g set-clipboard external
-set -g renumber-windows on
 
-set -g base-index 1
-set -g pane-base-index 1
-set -g aggressive-resize on
-
+# == Plugin options == #
 set -g @popup-autostart on
 set -g @popup-id-format "#{session_name}/#{b:pane_current_path}/{popup_name}"
 set -g @continuum-save-interval 15
