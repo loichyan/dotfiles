@@ -44,8 +44,9 @@ set -g set-clipboard external
 set -g mode-keys vi
 set -g mouse on
 set -g status-keys emacs
-set -g extended-keys on
-set -g extended-keys-format csi-u
+# TODO: enable this if tmux support Kitty Keyboard Protocol?
+#set -g extended-keys on
+#set -g extended-keys-format csi-u
 
 source ~/.tmux/keymaps.conf
 
