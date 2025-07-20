@@ -1,0 +1,27 @@
+shell = tmux new -ADs main
+
+font = monospace:size=11
+pad = 2x2
+include = ~/.config/foot/colors.ini
+
+[cursor]
+style = block
+blink = yes
+blink-rate = 500
+# TODO: move to `[colors].cursor` after 1.23
+color = {{.colors.base00|trimPrefix "#"}} {{.colors.base05|trimPrefix "#"}}
+
+[mouse]
+hide-when-typing = yes
+
+[csd]
+preferred = none
+
+[scrollback]
+# Scroll buffers ared handled by tmux
+lines = 0
+
+[security]
+osc52 = copy-enabled
+
+# vim:ft=ini
