@@ -1,5 +1,5 @@
 [general]
-import = ["base16.toml"]
+import = ["colors.toml"]
 
 [window]
 decorations = "none"
