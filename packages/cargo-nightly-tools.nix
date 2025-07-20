@@ -21,22 +21,25 @@ let
         rust-nightly
         pkgs."cargo-${name}"
       ];
-      text = ''cargo ${name} "$@"'';
+      text = ''cargo-${name} "$@"'';
     };
 in
-{
-  cargo-nightly = writeShellApplication {
-    name = "cargo-nightly";
-    runtimeInputs = [ rust-nightly ];
-    text = ''cargo "$@"'';
-  };
-  rustfmt-nightly = writeShellApplication {
-    name = "rustfmt-nightly";
-    runtimeInputs = [ rust-nightly ];
-    text = ''rustfmt "$@"'';
-  };
-  cargo-nightly-expand = wrapNightly "expand";
-  cargo-nightly-llvm-cov = wrapNightly "llvm-cov";
-  cargo-nightly-udpes = wrapNightly "udeps";
-  cargo-nightly-watch = wrapNightly "watch";
+pkgs.symlinkJoin {
+  name = "cargo-nightly-tools";
+  paths = [
+    (writeShellApplication {
+      name = "cargo-nightly";
+      runtimeInputs = [ rust-nightly ];
+      text = ''cargo "$@"'';
+    })
+    (writeShellApplication {
+      name = "rustfmt-nightly";
+      runtimeInputs = [ rust-nightly ];
+      text = ''rustfmt "$@"'';
+    })
+    (wrapNightly "expand")
+    (wrapNightly "llvm-cov")
+    (wrapNightly "udeps")
+    (wrapNightly "watch")
+  ];
 }

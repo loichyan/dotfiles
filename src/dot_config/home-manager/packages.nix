@@ -59,6 +59,9 @@
     p7zip
     static-web-server
 
+    # Fonts used by terminal
+    (callPackage ./packages/ZxProtoNF.nix { })
+
     #== Languages support ==#
 
     # Shell
@@ -79,10 +82,7 @@
         "rust-analyzer"
       ];
     })
-    (symlinkJoin {
-      name = "cargo-nightly-tools";
-      pkgs = builtins.attrValues (callPackage ./packages/cargo-nightly-tools.nix { });
-    })
+    (callPackage ./packages/cargo-nightly-tools.nix { })
     mold
 
     # Cargo ulities

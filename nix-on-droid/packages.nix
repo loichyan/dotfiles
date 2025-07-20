@@ -48,7 +48,7 @@ with pkgs;
   # Misc tools
   static-web-server
 
-  # Fonts used by Termux
+  # Fonts used by terminals
   (callPackage ./packages/ZxProtoNF.nix { })
 
   #== Languages support ==#
