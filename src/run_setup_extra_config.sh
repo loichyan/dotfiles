@@ -33,6 +33,15 @@ symlink() {
 	fi
 }
 
+copy_dir() {
+	src="$root/$1"
+	dest="$HOME/$2"
+
+	info "copy '$src/*' into '$dest'"
+	mkdir -p "$dest/"
+	find "$src" -type f -exec cp {} "$dest/" \;
+}
+
 info "setup extra configuration"
 
 # Symlink directories
@@ -44,6 +53,9 @@ for p in "$root"/private/config/*; do
 	f="$(basename "$p")"
 	symlink "private/config/$f" ".config/$f"
 done
+
+# Copy extra files
+copy_dir packages .config/home-manager/packages
 
 # Install plum and mint
 if has ibus && [[ ! -d "$HOME/.plum" ]]; then

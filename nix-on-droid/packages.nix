@@ -30,7 +30,7 @@ with pkgs;
   fzf
   zoxide
   # TODO: back to the next stable release
-  (callPackage ./tmux.nix { })
+  (callPackage ./packages/tmux-nightly.nix { })
 
   # Git
   git
@@ -49,7 +49,7 @@ with pkgs;
   static-web-server
 
   # Fonts used by Termux
-  (callPackage ./ZxProtoNF.nix { })
+  (callPackage ./packages/ZxProtoNF.nix { })
 
   #== Languages support ==#
 

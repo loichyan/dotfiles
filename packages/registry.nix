@@ -1,20 +1,21 @@
 {
   pkgs,
   inputs,
+  lockfile,
 }:
 let
   inherit (pkgs) lib;
-  lockfile = lib.importJSON ./flake.lock;
   selfNode = {
     name = "dotfiles";
     value.type = "path";
     value.path = toString inputs.self;
   };
+  lockfileJson = lib.importJSON lockfile;
   lockedNodes = builtins.filter ({ name, ... }: builtins.hasAttr name inputs) (
     lib.mapAttrsToList (name: node: {
       name = name;
       value = node.locked;
-    }) lockfile.nodes
+    }) lockfileJson.nodes
   );
 in
 rec {

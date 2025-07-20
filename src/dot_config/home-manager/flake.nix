@@ -35,7 +35,10 @@
 
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      registry = pkgs.callPackage ./registry.nix { inherit inputs; };
+      registry = pkgs.callPackage ./packages/registry.nix {
+        inherit inputs;
+        lockfile = ./flake.lock;
+      };
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
@@ -61,8 +64,6 @@
           ./services/sing-box.nix
           ./services/tor.nix
           ./services/xray.nix
-          ./programs/cargo-nightly-tools.nix
-          ./programs/tmux-nightly.nix
           ./misc/extra-completions.nix
           ./misc/hm-session-vars.nix
           ./packages.nix

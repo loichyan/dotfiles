@@ -13,6 +13,18 @@ let
       ];
     }
   );
+  wrapNightly =
+    name:
+    writeShellApplication {
+      name = "cargo-nightly-${name}";
+      runtimeInputs = [
+        rust-nightly
+        pkgs."cargo-${name}"
+      ];
+      text = ''cargo ${name} "$@"'';
+    };
+in
+{
   cargo-nightly = writeShellApplication {
     name = "cargo-nightly";
     runtimeInputs = [ rust-nightly ];
@@ -23,27 +35,8 @@ let
     runtimeInputs = [ rust-nightly ];
     text = ''rustfmt "$@"'';
   };
-  cargoCommand =
-    {
-      name,
-      pkg ? pkgs."cargo-${name}",
-    }:
-    writeShellApplication {
-      name = "cargo-nightly-${name}";
-      runtimeInputs = [
-        rust-nightly
-        pkg
-      ];
-      text = ''cargo ${name} "$@"'';
-    };
-in
-{
-  home.packages = [
-    cargo-nightly
-    rustfmt-nightly
-    (cargoCommand { name = "expand"; })
-    (cargoCommand { name = "llvm-cov"; })
-    (cargoCommand { name = "udeps"; })
-    (cargoCommand { name = "watch"; })
-  ];
+  cargo-nightly-expand = wrapNightly "expand";
+  cargo-nightly-llvm-cov = wrapNightly "llvm-cov";
+  cargo-nightly-udpes = wrapNightly "udeps";
+  cargo-nightly-watch = wrapNightly "watch";
 }

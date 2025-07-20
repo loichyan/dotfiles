@@ -30,7 +30,7 @@
     fzf
     starship
     zoxide
-    #tmux
+    (callPackage ./packages/tmux-nightly.nix { })
 
     # Git tools
     git
@@ -78,6 +78,10 @@
         "rust-src"
         "rust-analyzer"
       ];
+    })
+    (symlinkJoin {
+      name = "cargo-nightly-tools";
+      pkgs = builtins.attrValues (callPackage ./packages/cargo-nightly-tools.nix { });
     })
     mold
 

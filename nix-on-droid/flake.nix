@@ -25,7 +25,10 @@
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
-        registry = pkgs.callPackage ./registry.nix { inherit inputs; };
+        registry = pkgs.callPackage ./packages/registry.nix {
+          inherit inputs;
+          lockfile = ./flake.lock;
+        };
         homePackages = pkgs.callPackage ./packages.nix { };
       in
       {
