@@ -49,7 +49,7 @@ symlink nvim .config/nvim
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
 symlink private/ssh .ssh
-for p in "$root"/private/config/*; do
+test -d private/config && find private/config -mindepth 1 | while read -r p; do
 	f="$(basename "$p")"
 	symlink "private/config/$f" ".config/$f"
 done
