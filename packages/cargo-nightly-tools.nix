@@ -21,7 +21,7 @@ let
         rust-nightly
         pkgs."cargo-${name}"
       ];
-      text = ''cargo-${name} "$@"'';
+      text = ''cargo ${name} "$@"'';
     };
 in
 pkgs.symlinkJoin {
