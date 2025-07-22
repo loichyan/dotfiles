@@ -16,8 +16,8 @@ git:
   truncateCopiedCommitHashesTo: 7
   autoFetch: false
 os:
-  copyToClipboardCmd: printf {{text}} | tmux -Ldefault load-buffer -w -
-  readFromClipboardCmd: tmux -Ldefault save-buffer -
+  copyToClipboardCmd: ~/.config/lazygit/copyToClipboard {{text}}
+  readFromClipboardCmd: ~/.config/lazygit/readFromClipboard
 keybinding:
   universal:
     toggleRangeSelect: V
