@@ -7,6 +7,9 @@
 set -g  default-terminal "tmux-256color"
 set -ga terminal-features ",*:RGB:usstyle" # 'usstyle' is required by Neovim
 
+set -g cursor-style block # use block cursor in copy mode
+set -g prompt-cursor-style bar
+
 # Theme
 set -g @base16-background dark
 set -g @base16-palette-dark "~/.tmux/base16-palette.conf"
