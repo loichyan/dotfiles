@@ -1,6 +1,10 @@
 if status is-interactive
     if type -q atuin
         atuin init fish --disable-up-arrow | source
+        if not ps -oargs x | string match -q 'atuin daemon'
+            rm -f ~/.local/share/atuin/atuin.sock
+            atuin daemon &>/dev/null & disown
+        end
     end
 
     if type -q direnv
