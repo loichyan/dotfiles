@@ -26,8 +26,18 @@ bind -T copy-mode-vi M-k select-pane -U
 bind -T copy-mode-vi M-l select-pane -R
 
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
-bind -T copy-mode-vi Y send -X copy-line-and-cancel
+bind -T copy-mode-vi Y send -X copy-end-of-line-and-cancel
 bind -T copy-mode-vi p send -X copy-pipe-and-cancel 'tmux pasteb -p'
+
+%if "$TMUX_POPUP_SERVER"
+	set -g copy-command "tmux -Ldefault loadb -w -"
+	bind -T copy-mode-vi y send -X copy-pipe-and-cancel
+	bind -T copy-mode-vi Y send -X copy-pipe-end-of-line-and-cancel
+	bind -T copy-mode-vi p send -X cancel \; run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
+
+	bind ] run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
+	bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel
+%endif
 
 # Sessions
 bind -n M-N new-session
@@ -92,15 +102,6 @@ bind -n M-t run "#{@popup-toggle} -Ed'{popup_caller_pane_path}' -w75% -h90% --na
 #{{ if eq .platform "termux" }}
 bind -n M-G run "#{@popup-toggle} -Ed$HOME -w75% -h90% --id=gpg-agent ~/.scripts/gpg-agent-here"
 #{{ end }}
-
-if '[ -n "$TMUX_POPUP_SERVER" ]' {
-	set -g copy-command "tmux -Ldefault loadb -w -"
-	bind -T copy-mode-vi y send -X copy-pipe-and-cancel
-	bind -T copy-mode-vi Y send -X copy-pipe-line-and-cancel
-	bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel
-	bind -T copy-mode-vi p send -X cancel \; run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
-	bind ] run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
-}
 
 # Misc
 bind R source-file ~/.tmux.conf
