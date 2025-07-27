@@ -49,8 +49,14 @@ source ~/.tmux/keymaps.conf
 
 # == Plugin options == #
 set -g @popup-autostart on
-set -g @popup-id-format "#{session_name}/#{b:pane_current_path}/{popup_name}"
+set -g @popup-id-format "#{b:pane_current_path}/{popup_name}"
+set -g @popup-on-init 'nop'
 set -g @continuum-save-interval 15
+
+%if "$TMUX_POPUP_SERVER"
+	set -g status off
+	set -g exit-empty off
+%endif
 
 # == Plugins == #
 set -g @plugin "tmux-plugins/tpm"
