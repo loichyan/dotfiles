@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) aria2;
+  inherit (pkgs) myData lib aria2;
 in
 {
-  systemd.user.services = {
+  systemd.user.services = lib.optionalAttrs myData.ariaEnabled {
     aria2 = {
       Unit = {
         Description = aria2.meta.description;

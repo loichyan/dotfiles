@@ -1,10 +1,15 @@
 {
   user = "{{ .user }}";
   home = "{{ .home }}";
+
+  # Services
+  ariaEnabled = {{ .aria.enabled }};
+  torEnabled = {{ .tor.enabled }};
+
   proxyEnabled = {{ .proxy.enabled }};
   proxyBackend = "{{ .proxy.backend }}";
+
+  geodatEnabled = {{ .geodat.enabled }};
   geodatIp = "{{ .geodat.ip }}";
   geodatDomain = "{{ .geodat.domain }}";
-  torEnabled = {{ .tor.enabled }};
-  geodatEnabled = {{ .geodat.enabled }};
 }

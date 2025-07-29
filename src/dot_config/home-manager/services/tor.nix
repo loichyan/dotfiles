@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) myData tor;
+  inherit (pkgs) lib myData tor;
 in
 {
-  systemd.user.services = {
+  systemd.user.services = lib.optionalAttrs myData.torEnabled {
     tor = {
       Unit = {
         Description = tor.meta.description;
@@ -15,7 +15,9 @@ in
         Restart = "on-failure";
         ExecStart = "${tor}/bin/tor";
       };
-      Install = if myData.torEnabled then { WantedBy = [ "default.target" ]; } else { };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }

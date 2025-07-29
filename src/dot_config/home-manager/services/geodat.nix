@@ -1,6 +1,11 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) myData curl writeShellApplication;
+  inherit (pkgs)
+    lib
+    myData
+    curl
+    writeShellApplication
+    ;
   update-geodat = writeShellApplication {
     name = "update-geodat";
     runtimeInputs = [ curl ];
@@ -12,7 +17,7 @@ let
   };
 in
 {
-  systemd.user.services = {
+  systemd.user.services = lib.optionalAttrs myData.geodatEnabled {
     geodat = {
       Unit = {
         Description = "Download geodat";
@@ -24,7 +29,7 @@ in
       };
     };
   };
-  systemd.user.timers = {
+  systemd.user.timers = lib.optionalAttrs myData.geodatEnabled {
     geodat = {
       Unit = {
         Description = "Auto download geodat";
@@ -33,7 +38,9 @@ in
       Timer = {
         OnBootSec = "1h";
       };
-      Install = if myData.geodatEnabled then { WantedBy = [ "default.target" ]; } else { };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 
