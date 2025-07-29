@@ -43,6 +43,7 @@
     ast-grep
     bottom
     distrobox
+    hyperfine
     jq
     just
     kondo

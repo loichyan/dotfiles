@@ -40,6 +40,7 @@ with pkgs;
   # Dev utilities
   ast-grep
   bat
+  hyperfine
   jq
   just
   ripgrep
