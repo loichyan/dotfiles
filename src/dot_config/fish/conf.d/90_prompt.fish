@@ -47,6 +47,13 @@ else if status is-interactive
         set -lx fish_prompt_pwd_dir_length 1
         set -l prompt_cwd (set_color $fish_color_cwd -o) (prompt_pwd) $normal
 
+        # Display virtual env
+        set -l prompt_venv
+        if set -q VIRTUAL_ENV
+            set -l venv_info (path basename $VIRTUAL_ENV)
+            set prompt_venv ' via ' (set_color yellow -o) "($venv_info)" $normal
+        end
+
         # Display Git branch
         set -l prompt_vsc
         if set -l vsc_info (fish_vcs_prompt '%s')
@@ -66,7 +73,10 @@ else if status is-interactive
             set prompt_priv_mode (set_color yellow -o) '* ' $normal
         end
 
-        echo -s \n $prompt_user $prompt_cwd $prompt_vsc $prompt_status
+        echo -s \n $prompt_user $prompt_cwd $prompt_venv $prompt_vsc $prompt_status
         echo -n -s $prompt_priv_mode $status_color (fish_prompt_prefix) ' '
     end
+
+    # Disable as it breaks out prompt
+    set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 end
