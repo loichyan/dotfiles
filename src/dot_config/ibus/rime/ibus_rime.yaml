@@ -1,3 +1,4 @@
+# See <https://github.com/rime/ibus-rime/blob/4218655b1278ea5748ebdfd3d6efec4158f9fa09/ibus_rime.yaml>
 config_version: "1.0"
 style:
   horizontal: false
