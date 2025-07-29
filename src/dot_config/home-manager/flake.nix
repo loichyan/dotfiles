@@ -58,7 +58,7 @@
             };
             xdg.configFile."nix/registry.json".source = registry.registry;
           }
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./services/aria2.nix
           ./services/geodat.nix
           ./services/sing-box.nix
