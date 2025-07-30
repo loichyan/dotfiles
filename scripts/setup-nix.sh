@@ -22,4 +22,11 @@ multiuser() {
 
 singleuser() {
 	curl -L https://nixos.org/nix/install | sh -s -- --no-daemon --no-channel-add --no-modify-profile
+	# Replace Nix with Lix
+	nix run \
+		--experimental-features "nix-command flakes" \
+		--extra-substituters https://cache.lix.systems --extra-trusted-public-keys "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o=" \
+		'git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.93.3' -- \
+		upgrade-nix \
+		--extra-substituters https://cache.lix.systems --extra-trusted-public-keys "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
 }
