@@ -104,6 +104,7 @@ bind -n M-G run "#{@popup-toggle} -Ed$HOME -w75% -h90% --id=gpg-agent ~/.scripts
 #{{ end }}
 
 # Misc
+bind C-b run 'tmux -Ldefault run "#{@base16-toggle-background}" && tmux -Lpopup run "#{@base16-toggle-background}"'
 bind R source-file ~/.tmux.conf
 
 # vim:ft=tmux
