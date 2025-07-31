@@ -18,7 +18,7 @@ Options:
             set -e (string upper $v)
         end
     else
-        set -l proxy (test -n "$argv" && echo $argv || echo $MY_HTTP_PROXY)
+        set -l proxy (test -n "$argv"; and echo $argv; or echo $MY_HTTP_PROXY)
         for v in {all,ftp,http,https}_proxy
             set -gx $v $proxy
             set -gx (string upper $v) $proxy
