@@ -2,6 +2,7 @@ notARepository: prompt
 gui:
   nerdFontsVersion: "3"
   border: rounded
+  showRootItemInFileTree: false
   theme:
     selectedLineBgColor: ["black"]
     inactiveBorderColor: ["black"]
