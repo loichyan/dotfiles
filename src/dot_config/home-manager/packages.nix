@@ -27,9 +27,10 @@
     expect
     eza
     fd
-    fzf
     starship
     zoxide
+    (callPackage ./packages/fzf.nix { })
+    # TODO: back to the next stable release
     (callPackage ./packages/tmux-nightly.nix { })
 
     # Git tools

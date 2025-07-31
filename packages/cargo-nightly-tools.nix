@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  writeShellApplication,
+  rust-bin,
+  symlinkJoin,
+}:
 let
-  inherit (pkgs) writeShellApplication rust-bin;
   rust-nightly = rust-bin.selectLatestNightlyWith (
     toolchain:
     toolchain.minimal.override {
@@ -24,7 +28,7 @@ let
       text = ''cargo ${name} "$@"'';
     };
 in
-pkgs.symlinkJoin {
+symlinkJoin {
   name = "cargo-nightly-tools";
   paths = [
     (writeShellApplication {

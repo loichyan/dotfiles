@@ -1,5 +1,4 @@
-{ pkgs }:
-with pkgs;
+{ tmux, fetchFromGitHub }:
 tmux.overrideAttrs (
   final: prev: {
     version = "1dbceaa";

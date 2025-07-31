@@ -27,8 +27,8 @@ with pkgs;
   expect
   eza
   fd
-  fzf
   zoxide
+  (callPackage ./packages/fzf.nix { })
   # TODO: back to the next stable release
   (callPackage ./packages/tmux-nightly.nix { })
 
