@@ -45,7 +45,4 @@ if not set -q __fish_did_init
     set -gx FZF_DEFAULT_OPTS "--color 16"
     # Set default Golang module directory
     set -gx GOPATH ~/.go
-
-    # Prevent duplicate initialization
-    set -gx __fish_did_init 1
 end

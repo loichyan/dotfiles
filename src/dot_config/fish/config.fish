@@ -5,9 +5,10 @@ if status is-interactive
 
     if type -q atuin
         atuin init fish --disable-up-arrow | source
-        if not ps -oargs x | string match -q 'atuin daemon'
+        if not set -q __atuin_daemon_started; and not ps -oargs x | string match -q 'atuin daemon'
             rm -f ~/.local/share/atuin/atuin.sock
             atuin daemon &>/dev/null & disown
+            set -gx __atuin_daemon_started 1
         end
     end
 
@@ -20,3 +21,6 @@ if status is-interactive
         zoxide init fish | source
     end
 end
+
+# Prevent duplicate initialization
+set -gx __fish_did_init 1
