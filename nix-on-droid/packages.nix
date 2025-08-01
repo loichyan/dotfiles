@@ -86,6 +86,8 @@ with pkgs;
 
   # Python
   python3
+  basedpyright
+  ruff
 
   # Other formaters & linters
   dprint

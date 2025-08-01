@@ -104,12 +104,7 @@
     nodePackages.vscode-langservers-extracted
 
     # Python
-    (python3.withPackages (
-      p: with p; [
-        ipython
-        pip
-      ]
-    ))
+    python3
     basedpyright
     ruff
 
