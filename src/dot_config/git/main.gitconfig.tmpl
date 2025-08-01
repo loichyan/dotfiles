@@ -40,7 +40,27 @@
 	colorMoved = default
 	algorithm = histogram
 
+
 [delta]
 	navigate = true
 	diff-so-fancy = true
 	syntax-theme = base16
+
+	# Colors
+	commit-style                  = raw
+	file-style                    = brightyellow
+	hunk-header-style             = bold syntax
+	minus-style                   = bold red
+	minus-non-emph-style          = minus-style
+	minus-emph-style              = reverse bold red
+	minus-empty-line-marker-style = minus-style
+	zero-style                    = normal
+	plus-style                    = bold green
+	plus-non-emph-style           = plus-style
+	plus-emph-style               = reverse bold green
+	plus-empty-line-marker-style  = plus-style
+	grep-file-style               = purple
+	grep-line-number-style        = green
+	whitespace-error-style        = reverse purple
+
+# vim:ft=gitconfig
