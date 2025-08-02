@@ -37,47 +37,24 @@ colors:
   base0E: "#d3869b"
   base0F: "#a89984"
 
-  # NOTE: all colors above lightened by 5%
+  # Bright colors with lightness +5%
   bright:
-    base00: "#282828"
-    base01: "#353535"
-    base02: "#494542"
-    base03: "#5e5551"
-    base04: "#746960"
-
-    base05: "#dcc9aa"
-    base06: "#e4d2b4"
-    base07: "#ecdfc1"
-
-    base08: "#ed7e78"
-    base09: "#ea9964"
-    base0A: "#ddb16c"
-    base0B: "#b3be76"
-    base0C: "#98be92"
-    base0D: "#8db8ae"
-    base0E: "#da99aa"
-    base0F: "#b3a593"
-
-  # NOTE: all colors above darkened by 5%
-  dim:
-    base00: "#0e0e0e"
-    base01: "#1b1b1b"
-    base02: "#2f2b2a"
-    base03: "#423d39"
-    base04: "#584f48"
-
-    base05: "#ccb386"
-    base06: "#d6bc8e"
-    base07: "#e0cb9b"
-
-    base08: "#e7544c"
-    base09: "#e47b38"
-    base0A: "#d39b42"
-    base0B: "#9fae54"
-    base0C: "#7aaa72"
-    base0D: "#6da498"
-    base0E: "#cc738c"
-    base0F: "#9d8d75"
+    base00: "#1e1e1e"
+    base01: "#2b2b2b"
+    base02: "#403c3a"
+    base03: "#564f4b"
+    base04: "#6d635b"
+    base05: "#e1cba5"
+    base06: "#ebd5ae"
+    base07: "#f5e3bc"
+    base08: "#f6746c"
+    base09: "#f3955a"
+    base0A: "#e5b263"
+    base0B: "#b5c271"
+    base0C: "#94c08d"
+    base0D: "#88b9ae"
+    base0E: "#df91a6"
+    base0F: "#b3a48e"
 
 # Programs
 aria:
