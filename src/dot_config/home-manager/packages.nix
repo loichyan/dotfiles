@@ -44,6 +44,7 @@
     ast-grep
     bottom
     distrobox
+    husky
     hyperfine
     jq
     just
