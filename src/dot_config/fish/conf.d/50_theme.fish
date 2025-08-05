@@ -23,22 +23,24 @@ set -g fish_color_redirection magenta
 set -g fish_color_end magenta
 set -g fish_color_error red -o
 set -g fish_color_param normal
-set -g fish_color_valid_path magenta -u
-set -g fish_color_option cyan
 set -g fish_color_comment brblack
-set -g fish_color_selection brwhite -b brblack
+set -g fish_color_match brblue
+set -g fish_color_selection -b brblack
+set -g fish_color_search_match -b brblack
+set -g fish_color_history_current -o
 set -g fish_color_operator brblue
 set -g fish_color_escape brblue
-set -g fish_color_autosuggestion brblack
 set -g fish_color_cwd cyan
 set -g fish_color_cwd_root red
+set -g fish_color_option cyan
+set -g fish_color_valid_path magenta -u
+set -g fish_color_autosuggestion brblack
 set -g fish_color_user green
 set -g fish_color_user_root red
 set -g fish_color_host blue
-set -g fish_color_host_remote blue
+set -g fish_color_host_remote yellow
 set -g fish_color_status red
 set -g fish_color_cancel -r -o
-set -g fish_color_search_match brwhite -b brblack
 
 # Pager colors
 set -g fish_pager_color_background
