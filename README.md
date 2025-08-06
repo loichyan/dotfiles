@@ -20,7 +20,8 @@ loichyan's dotfiles.
 - Package manager: [Home Manager](https://github.com/nix-community/home-manager)
 - Shell: [Fish](https://fishshell.com/)
 - Development environment: [Meowim](https://github.com/loichyan/Meowim)
-- Terminal: [Alacritty](https://alacritty.org/) & [Termux](https://github.com/termux/termux-app) &
+- Terminal: [Alacritty](https://alacritty.org/) &
+  [Termux](https://github.com/termux/termux-app) &
   [tmux](https://github.com/tmux/tmux)
 
 ## 🚀 Installation
@@ -50,6 +51,7 @@ Licensed under either of
 
 - Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or
   <http://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or
+  <http://opensource.org/licenses/MIT>)
 
 at your option.

@@ -2,7 +2,7 @@
   "useTabs": false,
   // Use dprint's Markdown plugin as it supports asterisks
   "markdown": {
-    "lineWidth": 100,
+    "lineWidth": 80,
     "textWrap": "always",
     "emphasisKind": "asterisks",
     "strongKind": "asterisks"
