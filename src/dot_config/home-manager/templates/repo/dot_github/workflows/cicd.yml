@@ -1,0 +1,99 @@
+name: CICD
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md"]
+  pull_request:
+    paths-ignore: ["**.md"]
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  check:
+    name: Run tests and checks
+    strategy:
+      fail-fast: false
+      matrix:
+        # prettier-ignore
+        include:
+          - { os: ubuntu-22.04 }
+          - { os: windows-2019 }
+          - { os: macos-13     }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v4
+      # ...
+
+  changelog:
+    name: Update changelog
+    needs: [check]
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: write # need to commit changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v4
+        with: { ref: "${{ github.head_ref }}" }
+
+      - name: Doc | Update changelog
+        if: github.event_name == 'pull_request'
+        run: |
+          sed -i \
+            -e 's/{{PRNUM}}/${{ github.event.number }}/g' \
+            -e "s/{{DATE}}/$(date -u +'%Y-%m-%d')/g" \
+            CHANGELOG.md
+
+      - name: Post Doc | Commit changes
+        if: github.event_name == 'pull_request'
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: "docs: expand variables in changelog"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+
+  # How to create a new GitHub release?
+  # 1. Create a release branch named "release/<tag>".
+  # 2. Open a PR from the branch, including the release note in the PR body.
+  # 3. Wait for the CI to create a draft release.
+  # 4. Publish the release when it's ready.
+  release:
+    name: Create GitHub release
+    needs: [check, changelog]
+    if: startsWith(github.head_ref, 'release/')
+    permissions:
+      contents: write # need to update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup | Configure
+        id: configure
+        run: |
+          echo tag="${GITHUB_HEAD_REF#release/}" >$GITHUB_OUTPUT
+
+      - name: Release | Create Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ steps.configure.outputs.tag }}
+          release_body: ${{ github.event.pull_request.body }}
+        run: |
+          if gh release view "$release_tag" >/dev/null; then
+            echo "update existing release $release_tag"
+            gh release edit "$release_tag" --notes="$release_body"
+          else
+            echo "create new release $release_tag"
+            gh release create "$release_tag" \
+              --target="$GITHUB_BASE_REF" \
+              --draft=true \
+              --title="${release_tag#v} ($(date -u +'%Y-%m-%d'))" \
+              --notes="$release_body"
+          fi
