@@ -35,6 +35,7 @@ end
 
 if type -q cargo-nextest
     abbr_cargo t nextest run
+    abbr_cargo tt test
 end
 
 if type -q docker
