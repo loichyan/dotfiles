@@ -29,6 +29,7 @@ if type -q cargo
     abbr_cargo r run
     abbr_cargo rr run --release
     abbr_cargo t test
+    abbr_cargo ta test --all-features --workspace
     abbr_cargo td test --doc
     abbr CC cargo_captured
 end
@@ -36,6 +37,8 @@ end
 if type -q cargo-nextest
     abbr_cargo t nextest run
     abbr_cargo tt test
+    abbr_cargo ta nextest run --all-features --workspace
+    abbr_cargo tta test --all-features --workspace
 end
 
 if type -q docker
