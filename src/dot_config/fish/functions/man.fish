@@ -11,6 +11,7 @@ function man -d "man(1) with colors"
     set -lx LESS_TERMCAP_us (set_color green -o)
     set -lx LESS_TERMCAP_ue (set_color normal)
 
+    set -lx GROFF_NO_SGR 1 # TODO: fish's pager does not show colors
     set -lx MANPAGER 'less -R'
     command man $argv
 end
