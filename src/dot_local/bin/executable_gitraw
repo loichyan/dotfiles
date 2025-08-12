@@ -1,0 +1,3 @@
+#!/bin/sh
+# See <https://github.com/loichyan/nvim/blob/98b07cb002d1fb7669b79cdc17405fc15a03fe99/lua/meowim/config/polish.lua#L31>
+git -c 'core.pager=delta --paging=never' "$@" && sleep 0.05
