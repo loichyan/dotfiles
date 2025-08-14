@@ -1,3 +1,15 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/loichyan/nvim
+[submodule "tmux-base16"]
+	path = tmux/plugins/tmux-base16
+	url = https://github.com/loichyan/tmux-base16
+[submodule "tmux-toggle-popup"]
+	path = tmux/plugins/tmux-toggle-popup
+	url = https://github.com/loichyan/tmux-toggle-popup
+[submodule "tmux-continuum"]
+	path = tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect

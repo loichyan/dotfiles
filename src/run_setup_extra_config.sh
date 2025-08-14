@@ -46,6 +46,7 @@ info "setup extra configuration"
 
 # Symlink directories
 symlink nvim .config/nvim
+symlink tmux/plugins .tmux/plugins
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
 symlink private/ssh .ssh

@@ -58,21 +58,15 @@ set -g @continuum-save-interval 15
 %endif
 
 # == Plugins == #
-set -g @plugin "tmux-plugins/tpm"
+set -g @plugins "~/.tmux/plugins"
 # Must be loaded before continuum, as it overrides the status options
-set -g @plugin "loichyan/tmux-base16"
+run "#{@plugins}/tmux-base16/base16.tmux"
 #{{ if ne .platform "termux" }}
-set -g @plugin "tmux-plugins/tmux-resurrect"
-set -g @plugin "tmux-plugins/tmux-continuum"
+run "#{@plugins}/tmux-resurrect/resurrect.tmux"
+run "#{@plugins}/tmux-continuum/continuum.tmux"
 #{{ end }}
 # Must be loaded after continuum, as it starts the popup server, which disables autosave
-set -g @plugin "loichyan/tmux-toggle-popup"
-
-if '[ ! -d ~/.tmux/plugins/tpm ]' {
-	display "Installing TPM"
-	run "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-}
-run ~/.tmux/plugins/tpm/tpm
+run "#{@plugins}/tmux-toggle-popup/toggle-popup.tmux"
 
 # Restore previous session
 %if "#{&&:#{!=:#{@tmux-did-init},1},#{==:#{b:socket_path},default}}"
