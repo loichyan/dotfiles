@@ -39,7 +39,10 @@
 [diff]
 	colorMoved = default
 	algorithm = histogram
+    tool = nvim
 
+[merge]
+    tool = nvim
 
 [delta]
 	navigate = true
@@ -62,5 +65,11 @@
 	grep-file-style               = purple
 	grep-line-number-style        = green
 	whitespace-error-style        = reverse purple
+
+[difftool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE
+
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED
 
 # vim:ft=gitconfig
