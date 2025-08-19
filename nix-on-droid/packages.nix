@@ -75,6 +75,8 @@ with pkgs;
 
   # C/C++
   stdenv.cc
+  cmake
+  gnumake
 
   # Lua
   lua
