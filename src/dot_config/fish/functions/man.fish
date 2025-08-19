@@ -5,7 +5,7 @@ function man -d "man(1) with colors"
     set -lx LESS_TERMCAP_md (set_color red -o)
     set -lx LESS_TERMCAP_me (set_color normal)
     # standout mode
-    set -lx LESS_TERMCAP_so (set_color -b bryellow black -o)
+    set -lx LESS_TERMCAP_so (set_color -r bryellow -o)
     set -lx LESS_TERMCAP_se (set_color normal)
     # underlining
     set -lx LESS_TERMCAP_us (set_color green -o)
