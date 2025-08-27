@@ -4,9 +4,8 @@ patch:
   aux_code/trigger_word: ";"
 
   speller/alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA;"
-  # TODO: report to rime-mini
   speller/initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   speller/delimiter: " '"
 
-  punctuator/full_shape/.: { commit: "．" }
-  punctuator/half_shape/.: { commit: "．" }
+  punctuator:
+    import_preset: default

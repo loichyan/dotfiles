@@ -4,5 +4,5 @@ patch:
   speller/alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   speller/delimiter: " '"
 
-  punctuator/full_shape/.: { commit: "．" }
-  punctuator/half_shape/.: { commit: "．" }
+  punctuator:
+    import_preset: default
