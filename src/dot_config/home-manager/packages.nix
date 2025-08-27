@@ -57,7 +57,6 @@
     aria2
     docker-compose
     gh
-    ffmpeg
     netcat
     p7zip
     static-web-server
