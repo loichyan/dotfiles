@@ -5,7 +5,7 @@ loichyan's dotfiles.
 [![showcase](https://github.com/user-attachments/assets/18deae4b-9ba2-4c03-83de-cc31b65e7cf0)](https://github.com/loichyan/dotfiles)
 
 <details>
-<summary>Information</summary>
+<summary id="information">Information</summary>
 
 - font: [0xProto](https://github.com/0xType/0xProto)
 - tmux: [tmux-base16](https://github.com/loichyan/tmux-base16)
