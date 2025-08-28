@@ -2,7 +2,7 @@
 
 loichyan's dotfiles.
 
-[![showcase](https://github.com/user-attachments/assets/18deae4b-9ba2-4c03-83de-cc31b65e7cf0)](https://github.com/loichyan/dotfiles)
+![showcase](assets/showcase.jpg)
 
 <details>
 <summary id="information">Information</summary>
