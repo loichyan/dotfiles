@@ -16,6 +16,8 @@ git:
     autoWrapWidth: 72
   truncateCopiedCommitHashesTo: 7
   autoFetch: false
+  log:
+    showGraph: when-maximised
 os:
   copyToClipboardCmd: ~/.config/lazygit/copyToClipboard {{text}}
   readFromClipboardCmd: ~/.config/lazygit/readFromClipboard

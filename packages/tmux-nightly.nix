@@ -1,12 +1,12 @@
 { tmux, fetchFromGitHub }:
 tmux.overrideAttrs (
   final: prev: {
-    version = "1dbceaa";
+    version = "fa63088";
     src = fetchFromGitHub {
       owner = "tmux";
       repo = "tmux";
-      rev = "e7f15d09be61fd0b9d54f6fec2f47ace4008b4dc";
-      hash = "sha256-75iHBSZZnH0gZQUv4GbNdTj3hBo6eyIauKPtC/edr9E=";
+      rev = "fa63088dceab9b9397d5cfde83b19839a6a881d7";
+      hash = "sha256-vcBMdGgHEKlh6UuzoStPTmZt9KIM9AQZLH7fCpVii6s=";
     };
   }
 )

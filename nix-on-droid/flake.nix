@@ -4,6 +4,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # TODO: remove this input
+    nixpkgs-dprint.url = "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -15,16 +17,22 @@
     {
       self,
       nixpkgs,
+      nixpkgs-dprint,
       flake-utils,
       rust-overlay,
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
+        pkgs-dprint = nixpkgs-dprint.legacyPackages.${system};
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ rust-overlay.overlays.default ];
+          overlays = [
+            rust-overlay.overlays.default
+            (_: prev: { inherit (pkgs-dprint) dprint; })
+          ];
         };
+
         registry = pkgs.callPackage ./packages/registry.nix {
           inherit inputs;
           lockfile = ./flake.lock;
