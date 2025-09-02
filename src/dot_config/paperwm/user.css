@@ -1,6 +1,6 @@
 .paperwm-selection {
   background-color: transparent;
-  border-width: 7px;
+  border-width: 3px;
   /* https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/css-variables.html#accent-colors */
   border-color: rgba(145, 65, 172, 0.35);
 }
