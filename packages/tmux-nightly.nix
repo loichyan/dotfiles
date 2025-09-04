@@ -1,6 +1,6 @@
 { tmux, fetchFromGitHub }:
 tmux.overrideAttrs (
-  final: prev: {
+  self: super: {
     version = "fa63088";
     src = fetchFromGitHub {
       owner = "tmux";

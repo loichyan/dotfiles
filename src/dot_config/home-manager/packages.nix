@@ -29,9 +29,8 @@
     fd
     starship
     zoxide
-    (callPackage ./packages/fzf.nix { })
     # TODO: back to the next stable release
-    (callPackage ./packages/tmux-nightly.nix { })
+    tmux-nightly
 
     # Git tools
     git
@@ -62,7 +61,7 @@
     static-web-server
 
     # Fonts used by terminal
-    (callPackage ./packages/ZxProtoNF.nix { })
+    ZxProtoNF
 
     #== Languages support ==#
 
@@ -84,7 +83,7 @@
         "rust-analyzer"
       ];
     })
-    (callPackage ./packages/cargo-nightly-tools.nix { })
+    cargo-nightly-tools
     mold
 
     # Cargo ulities

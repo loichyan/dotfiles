@@ -74,7 +74,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-dprint": {
+    "nixpkgs-prev": {
       "locked": {
         "lastModified": 1753722563,
         "narHash": "sha256-FK8iq76wlacriq3u0kFCehsRYTAqjA9nfprpiSWRWIc=",
@@ -96,7 +96,7 @@
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-dprint": "nixpkgs-dprint",
+        "nixpkgs-prev": "nixpkgs-prev",
         "rust-overlay": "rust-overlay"
       }
     },
