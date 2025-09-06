@@ -62,6 +62,10 @@
           deploy = pkgs.writeShellScriptBin "deploy" ''
             mkdir -p ~/.config/nix/
             cat ${myRegistry.registry} >~/.config/nix/registry.json
+            profile_dir=~/.local/state/nix/profiles
+            profile_name=$(readlink $profile_dir/profile)
+            profile_path=$(readlink -f $profile_dir/$profile_name)
+            ln -s $profile_dir/$profile_name /nix/var/nix/gcroots/auto/$(basename $profile_path)
           '';
         };
       }
