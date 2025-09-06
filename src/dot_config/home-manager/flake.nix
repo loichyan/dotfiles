@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # TODO: remove this input
-    nixpkgs-prev.url = "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,7 +22,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-prev,
       flake-utils,
       home-manager,
       nix-index-database,
@@ -33,8 +30,6 @@
     flake-utils.lib.eachDefaultSystemPassThrough (
       system:
       let
-        pkgs-prev = nixpkgs-prev.legacyPackages.${system};
-
         myData = import ./data.nix;
         myRegistry = pkgs.callPackage ./packages/registry.nix {
           inherit inputs;
@@ -46,7 +41,6 @@
             inherit (super) callPackage;
           in
           {
-            inherit (pkgs-prev) dprint;
             inherit myData myRegistry;
             tmux-nightly = callPackage ./packages/tmux-nightly.nix { };
             ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };

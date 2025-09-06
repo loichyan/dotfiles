@@ -4,8 +4,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # TODO: remove this input
-    nixpkgs-prev.url = "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -17,15 +15,12 @@
     {
       self,
       nixpkgs,
-      nixpkgs-prev,
       flake-utils,
       rust-overlay,
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs-prev = nixpkgs-prev.legacyPackages.${system};
-
         myRegistry = pkgs.callPackage ./packages/registry.nix {
           inherit inputs;
           lockfile = ./flake.lock;
@@ -36,7 +31,6 @@
             inherit (super) callPackage;
           in
           {
-            inherit (pkgs-prev) dprint;
             tmux-nightly = callPackage ./packages/tmux-nightly.nix { };
             ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
           };
