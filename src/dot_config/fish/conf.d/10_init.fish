@@ -17,7 +17,7 @@ for p in (string split ' ' -- $NIX_PROFILES)
 end
 
 # Search local installed binaries
-fish_add_path -gp ~/.local/bin ~/.scripts ~/.cargo/bin ~/.pnpm/bin
+fish_add_path -gp ~/.local/bin
 
 # Set the default editor
 if type -q nvim

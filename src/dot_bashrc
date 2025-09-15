@@ -18,7 +18,7 @@ for p in $NIX_PROFILES; do
 done
 
 # Search local installed binaries
-p="$HOME/.local/bin:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.pnpm/bin"
+p="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.pnpm/bin"
 if [[ ! $PATH =~ $p ]]; then
 	PATH="$p:$PATH"
     export PATH
