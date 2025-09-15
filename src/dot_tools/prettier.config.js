@@ -8,7 +8,12 @@ export default {
   overrides: [
     {
       files: ["*.md"],
-      options: { printWidth: 80 },
+      options: {
+        printWidth: 80,
+        proseWrap: "always",
+        emphasisKind: "asterisk",
+        strongKind: "asterisk",
+      },
     },
   ],
 };
