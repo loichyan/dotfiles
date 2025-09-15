@@ -71,6 +71,7 @@ with pkgs;
 
   # Web
   deno
+  nodePackages.typescript-language-server
 
   # C/C++
   stdenv.cc
