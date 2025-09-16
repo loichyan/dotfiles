@@ -7,7 +7,7 @@ export default {
   printWidth: 100,
   overrides: [
     {
-      files: ["*.md"],
+      files: "*.md", // Files may be provided as an absolute path
       options: {
         printWidth: 80,
         proseWrap: "always",

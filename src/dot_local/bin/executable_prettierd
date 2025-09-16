@@ -1,0 +1,22 @@
+#!/bin/sh
+if ! grep -q '"prettier": "npm:.*"' deno.json 2>/dev/null; then
+	cd "$HOME/.tools" || exit
+	config="$PWD/dist/prettier.config.js"
+	case "$1" in
+	--*)
+		# Put a potential control flag (`--stop`, `--start`) at the first position
+		t="$1"
+		shift
+		set -- "$t" --config="$config" "$@"
+		;;
+	*)
+		set -- --config="$config" "$@"
+		;;
+	esac
+fi
+exec deno run \
+	--config="$PWD/deno.json" \
+	--lock="$PWD/deno.lock" \
+	--no-check \
+	--allow-all \
+	"$HOME/.tools/dist/prettierd.js" "$@"

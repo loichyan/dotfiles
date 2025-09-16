@@ -1,8 +1,0 @@
-#!/bin/sh
-if grep -q '"prettier": "npm:.*"' deno.json 2>/dev/null; then
-	cwd="$PWD"
-else
-	cwd="$HOME/.tools"
-	set -- --config="$cwd/prettier.config.js" "$@"
-fi
-exec deno run --config="$cwd/deno.json" --lock="$cwd/deno.lock" --allow-all prettier "$@"

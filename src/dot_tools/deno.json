@@ -1,6 +1,11 @@
 {
+  "tasks": {
+    "bundle": "deno run -A ./bundle.ts"
+  },
   "imports": {
+    "@types/node": "npm:@types/node@^24.5.0",
     "prettier": "npm:prettier@^3",
     "prettier-plugin-organize-imports": "npm:prettier-plugin-organize-imports@^4"
-  }
+  },
+  "unstable": ["bundle"]
 }
