@@ -107,15 +107,12 @@ async function sendJson(conn: Deno.Conn, val: any) {
 }
 
 function parseCliOptions(args: string[]): CliOptions {
-  const config: Partial<CliOptions> = {
-    configPrecedence: "cli-override",
-    editorconfig: true,
-  };
+  const config: Partial<CliOptions> = {};
 
   for (const arg of args) {
     const mat = arg.match(/^\-\-([^=]+)(?:=?(.*))$/);
-    if (mat === null) {
-      config.filepath = arg;
+    if (!mat) {
+      config.stdinFilepath = arg;
       break;
     }
 
@@ -138,7 +135,8 @@ function parseCliOptions(args: string[]): CliOptions {
     config[k] = any === undefined ? v : any;
   }
 
-  return config as CliOptions;
+  if (!config.stdinFilepath) throw new Error("filepath must be specified");
+  else return config as CliOptions;
 }
 
 async function start(connFile: string) {
@@ -178,14 +176,14 @@ async function main() {
     }
 
     case "--debug-info": {
-      const conn = await connect(connFile, false);
-      const args = parseCliOptions(Deno.args.slice(1));
+      const args = tryCall(parseCliOptions, Deno.args.slice(1));
 
       // Fetch server debug informations
-      let server = null;
+      let server;
+      const conn = await connect(connFile, false);
       if (conn) {
         await writeAll(conn, u32ToBytes(Request.DebugInfo));
-        await sendJson(conn, args);
+        await sendJson(conn, args ?? {});
         await checkResponse(conn);
         server = await readAll(conn).then(decode).then(JSON.parse);
       }
@@ -194,11 +192,14 @@ async function main() {
       const debugInfo = {
         cwd: Deno.cwd(),
         main: import.meta.filename,
-        config: args ?? Deno.args,
         dataDir: dataDir,
+        cliOptions: args ?? "<error>",
       };
 
-      console.log({ client: debugInfo, server });
+      console.log({
+        client: debugInfo,
+        server: server ?? "<inactive>",
+      });
       return;
     }
 

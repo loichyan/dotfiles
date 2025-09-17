@@ -12,10 +12,10 @@ export interface Writer {
 
 // deno-lint-ignore no-explicit-any
 export interface CliOptions extends Record<string, any> {
-  filepath: string;
+  stdinFilepath: string;
   config?: string | boolean;
-  configPrecedence: "cli-override" | "file-override" | "prefer-file";
-  editorconfig: boolean;
+  configPrecedence?: "cli-override" | "file-override" | "prefer-file";
+  editorconfig?: boolean;
 }
 
 export enum Request {

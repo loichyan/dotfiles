@@ -48,26 +48,31 @@ async function recvJson(conn: Deno.Conn): Promise<any> {
   return JSON.parse(decode(data));
 }
 
-async function resolveConfig(args: CliOptions): Promise<Prettier.Options | null> {
-  const { config, editorconfig, configPrecedence, ...cliConfig } = args;
+async function resolveConfig(args: CliOptions): Promise<Prettier.Options> {
+  const { stdinFilepath: filepath, config, editorconfig, configPrecedence, ...cli } = args;
 
-  // No config file should be loaded.
-  if (config === false) return cliConfig;
-  const resolved = await tryCall(prettier.resolveConfig, args.filepath, {
-    config: typeof config === "string" ? config : undefined,
-    editorconfig,
-  });
+  let final: Prettier.Options;
+  if (config === false) {
+    // If no config file should be resolved, use CLI options.
+    final = cli;
+  } else {
+    const resolved = await tryCall(prettier.resolveConfig, filepath, {
+      config: typeof config === "string" ? config : undefined,
+      // Editorconfig resolution is enabled by default.
+      editorconfig: editorconfig !== false,
+    });
 
-  // CLI options are always taken as fallback.
-  if (!resolved) return cliConfig;
+    // CLI options are always taken as fallback.
+    if (!resolved) final = cli;
+    // When set to `prefer-file`, no CLI options are taken into account.
+    else if (configPrecedence === "prefer-file") final = resolved;
+    // Otherwise `cli-override` is the default precedence.
+    else if (configPrecedence === "file-override") final = Object.assign(cli, resolved);
+    else final = Object.assign(resolved, cli);
+  }
 
-  // When set to `prefer-file`, no CLI options are taken into account.
-  if (configPrecedence === "prefer-file") return resolved;
-
-  // Respect the specified loading order.
-  return configPrecedence === "file-override"
-    ? Object.assign(cliConfig, resolved)
-    : Object.assign(resolved, cliConfig);
+  // Tell perttier the filepath so that it can select a proper parser.
+  return Object.assign(final, { filepath });
 }
 
 async function serve(conn: Deno.Conn) {
