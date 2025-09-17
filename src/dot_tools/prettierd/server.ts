@@ -6,7 +6,7 @@ import {
   decode,
   die,
   encode,
-  formatErr,
+  encodeErr,
   readAll,
   readExact,
   Request,
@@ -30,8 +30,9 @@ async function respond(conn: Deno.TcpConn, data: Bytes | string) {
 
 // deno-lint-ignore no-explicit-any
 async function respondErr(conn: Deno.TcpConn, err: any) {
+  err = err instanceof Error ? err : new Error(String(err));
   await writeAll(conn, u32ToBytes(Response.Err));
-  await writeAll(conn, encode(formatErr(err)));
+  await writeAll(conn, encodeErr(err));
   conn.closeWrite();
 }
 
@@ -103,7 +104,7 @@ async function serve(conn: Deno.TcpConn) {
         const config = await resolveConfig(args);
         formatted = await prettier.format(text, config ?? undefined);
       } catch (e) {
-        await respondErr(conn, String(e));
+        await respondErr(conn, e);
         return;
       }
 

@@ -121,13 +121,26 @@ export function decode(bytes: Bytes): string {
   return decoder.decode(bytes);
 }
 
-// deno-lint-ignore no-explicit-any
-export function formatErr(e: any): string {
-  return e instanceof Error && e.stack ? `${e.stack}` : String(e);
+export function encodeErr(err: Error): Bytes {
+  return encode(
+    JSON.stringify({
+      message: err.message,
+      cause: err.cause,
+      stack: err.stack,
+    }),
+  );
+}
+
+export function decodeErr(data: Bytes): Error {
+  const obj = JSON.parse(decode(data));
+  return Object.assign(new Error(obj.message), {
+    cause: obj.cause,
+    stack: obj.stack,
+  });
 }
 
 // deno-lint-ignore no-explicit-any
 export function die(e: any): never {
-  Deno.stderr.writeSync(encode(formatErr(e)));
+  console.error(e);
   Deno.exit(1);
 }

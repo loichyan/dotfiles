@@ -14,6 +14,7 @@ import {
   bytesToU32,
   CliOptions,
   decode,
+  decodeErr,
   die,
   encode,
   readAll,
@@ -96,8 +97,7 @@ async function checkResponse(conn: Deno.TcpConn) {
       return;
     }
     case Response.Err: {
-      const err = await readAll(conn);
-      throw new Error(decode(err));
+      throw decodeErr(await readAll(conn));
     }
     default: {
       throw new Error("unknown response");
