@@ -7,5 +7,6 @@
     "prettier": "npm:prettier@^3",
     "prettier-plugin-organize-imports": "npm:prettier-plugin-organize-imports@^4"
   },
+  "exclude": ["dist/"],
   "unstable": ["bundle"]
 }

@@ -18,8 +18,6 @@ export interface CliOptions extends Record<string, any> {
   editorconfig: boolean;
 }
 
-export const SERVER_HOST = "127.0.0.1";
-
 export enum Request {
   Ping = 0,
   Stop = 1,
@@ -139,8 +137,29 @@ export function decodeErr(data: Bytes): Error {
   });
 }
 
-// deno-lint-ignore no-explicit-any
-export function die(e: any): never {
-  console.error(e);
-  Deno.exit(1);
+export type ConnOptions = { transport: "tcp"; hostname: "127.0.0.1"; port: number };
+
+/**
+ * Writes the connection file *atomically*.
+ */
+export async function writeConnFile(path: string, options: ConnOptions) {
+  const temp = await Deno.makeTempFile();
+  await Deno.writeFile(temp, u32ToBytes(options.port));
+  await Deno.rename(temp, path);
+}
+
+export async function readConnFile(path: string): Promise<ConnOptions> {
+  const f = await Deno.open(path);
+  const port = await readExact(f, 4).then(bytesToU32);
+  return { transport: "tcp", hostname: "127.0.0.1", port };
+}
+
+export async function entrypoint(main: () => Promise<void>): Promise<never> {
+  try {
+    await main();
+    Deno.exit(0);
+  } catch (e) {
+    console.error(e);
+    Deno.exit(1);
+  }
 }

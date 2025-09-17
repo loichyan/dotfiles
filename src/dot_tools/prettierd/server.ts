@@ -1,27 +1,32 @@
+import { basename } from "node:path";
 import type * as Prettier from "prettier";
 import {
   Bytes,
   bytesToU32,
   CliOptions,
+  ConnOptions,
   decode,
-  die,
   encode,
   encodeErr,
+  entrypoint,
   readAll,
   readExact,
   Request,
   Response,
-  SERVER_HOST,
   tryCall,
   tryFile,
   u32ToBytes,
   writeAll,
+  writeConnFile,
 } from "./common.ts";
 
-const [portFile, prettierMod] = Deno.args;
-const prettier: typeof Prettier = await import(prettierMod);
+const [connFile, prettierMod] = Deno.args;
+const serverId = basename(connFile);
 
-async function respond(conn: Deno.TcpConn, data: Bytes | string) {
+let prettier: typeof Prettier;
+let connOptions: ConnOptions;
+
+async function respond(conn: Deno.Conn, data: Bytes | string) {
   data = typeof data === "string" ? encode(data) : data;
   await writeAll(conn, u32ToBytes(Response.Ok));
   await writeAll(conn, data);
@@ -29,7 +34,7 @@ async function respond(conn: Deno.TcpConn, data: Bytes | string) {
 }
 
 // deno-lint-ignore no-explicit-any
-async function respondErr(conn: Deno.TcpConn, err: any) {
+async function respondErr(conn: Deno.Conn, err: any) {
   err = err instanceof Error ? err : new Error(String(err));
   await writeAll(conn, u32ToBytes(Response.Err));
   await writeAll(conn, encodeErr(err));
@@ -37,7 +42,7 @@ async function respondErr(conn: Deno.TcpConn, err: any) {
 }
 
 // deno-lint-ignore no-explicit-any
-async function recvJson(conn: Deno.TcpConn): Promise<any> {
+async function recvJson(conn: Deno.Conn): Promise<any> {
   const len = await readExact(conn, 4).then(bytesToU32);
   const data = await readExact(conn, len);
   return JSON.parse(decode(data));
@@ -65,7 +70,7 @@ async function resolveConfig(args: CliOptions): Promise<Prettier.Options | null>
     : Object.assign(resolved, cliConfig);
 }
 
-async function serve(conn: Deno.TcpConn) {
+async function serve(conn: Deno.Conn) {
   const req = (await readExact(conn, 4).then(bytesToU32)) as Request;
   switch (req) {
     case Request.Ping: {
@@ -74,7 +79,7 @@ async function serve(conn: Deno.TcpConn) {
     }
 
     case Request.Stop: {
-      await tryFile(Deno.remove, portFile);
+      await tryFile(Deno.remove, connFile);
       conn.close();
       return Deno.exit(0);
     }
@@ -85,7 +90,8 @@ async function serve(conn: Deno.TcpConn) {
       const debugInfo = {
         cwd: Deno.cwd(),
         main: import.meta.filename,
-        address: conn.localAddr,
+        id: serverId,
+        address: connOptions,
         prettier: prettierMod,
         resolvedConfig: await resolveConfig(args),
       };
@@ -119,11 +125,14 @@ async function serve(conn: Deno.TcpConn) {
 }
 
 async function main() {
-  const server = Deno.listen({ hostname: SERVER_HOST, port: 0 });
-  const serverPort = server.addr.port;
+  prettier = await import(prettierMod);
+  connOptions = { transport: "tcp", hostname: "127.0.0.1", port: 0 };
 
-  // Report the port being listened on.
-  await Deno.writeFile(portFile, u32ToBytes(serverPort));
+  const server = Deno.listen(connOptions);
+
+  // Update the TCP port since it is randomly chosen.
+  connOptions.port = server.addr.port;
+  await writeConnFile(connFile, connOptions);
 
   // Process client requests.
   do {
@@ -132,8 +141,4 @@ async function main() {
   } while (true);
 }
 
-try {
-  await main();
-} catch (e) {
-  die(e);
-}
+await entrypoint(main);

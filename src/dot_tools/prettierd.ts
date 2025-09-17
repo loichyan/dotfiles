@@ -7,21 +7,21 @@
  * Original License: ISC
  */
 
-import { Buffer } from "node:buffer";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import {
   bytesToU32,
   CliOptions,
+  ConnOptions,
   decode,
   decodeErr,
-  die,
   encode,
+  entrypoint,
   readAll,
+  readConnFile,
   readExact,
   Request,
   Response,
-  SERVER_HOST,
   sleep,
   tryCall,
   tryFile,
@@ -31,24 +31,19 @@ import {
 
 const dataDir = join(homedir(), ".prettierd");
 
-async function connect(portFile: string, startNew?: true): Promise<Deno.TcpConn>;
-async function connect(portFile: string, startNew: false): Promise<Deno.TcpConn | undefined>;
-async function connect(portFile: string, startNew?: boolean): Promise<Deno.TcpConn | undefined> {
-  let serverPort: number | undefined;
-  let conn: Deno.TcpConn | undefined;
+async function connect(connFile: string, startNew?: true): Promise<Deno.Conn>;
+async function connect(connFile: string, startNew: false): Promise<Deno.Conn | undefined>;
+async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn | undefined> {
+  let connOptions: ConnOptions | undefined;
+  let conn: Deno.Conn | undefined;
   // Check if server already started
   try {
-    const f = await Deno.open(portFile);
-    serverPort = bytesToU32(await readExact(f, 4));
-    conn = await Deno.connect({ hostname: SERVER_HOST, port: serverPort });
+    connOptions = await readConnFile(connFile);
+    conn = await Deno.connect(connOptions);
   } catch (e) {
-    // Ignore errors if server not started or aborted for any reason.
-    if (
-      e instanceof Deno.errors.NotFound ||
-      e instanceof Deno.errors.UnexpectedEof ||
-      e instanceof Deno.errors.ConnectionRefused
-    ) {
-      await tryFile(Deno.remove, portFile);
+    // Ignore errors if server does not start or was aborted for any reason.
+    if (e instanceof Deno.errors.NotFound || e instanceof Deno.errors.ConnectionRefused) {
+      await tryFile(Deno.remove, connFile);
     } else {
       throw e;
     }
@@ -64,33 +59,32 @@ async function connect(portFile: string, startNew?: boolean): Promise<Deno.TcpCo
 
     await Deno.mkdir(dataDir, { recursive: true });
 
-    const child = fork(serverMod, [portFile, prettierMod], { stdio: "inherit", detached: true });
-    child.unref();
-    child.on("exit", () => {
-      // Server should keep running until explicitly stopped.
-      throw new Error("server crashes");
+    const child = fork(serverMod, [connFile, prettierMod], {
+      stdio: "inherit",
+      detached: true,
     });
+    child.unref();
+    // Server should keep running until explicitly stopped.
+    const onExit = (e: unknown) => {
+      child.removeAllListeners();
+      throw e instanceof Error ? e : new Error("server crashes");
+    };
+    child.on("error", onExit);
+    child.on("exit", onExit);
 
-    // Receive the port being listened.
-    const buf = Buffer.alloc(4);
-    let cur = buf;
-    let f: Deno.FsFile | undefined;
+    // Wait until server really starts.
     do {
-      await sleep(50);
-      f = f ?? (await tryFile(Deno.open, portFile));
-      const d = (await f?.read(cur)) ?? 0;
-      if (d > 0) cur = cur.subarray(d);
-    } while (cur.length > 0);
-
-    serverPort = bytesToU32(buf);
-    conn = await Deno.connect({ hostname: SERVER_HOST, port: serverPort });
+      await sleep(10);
+      connOptions = await tryFile(readConnFile, connFile);
+    } while (!connOptions);
+    conn = await Deno.connect(connOptions);
   }
 
   return conn;
 }
 
 // Throws an exception if server returns an error.
-async function checkResponse(conn: Deno.TcpConn) {
+async function checkResponse(conn: Deno.Conn) {
   const resp = (await readExact(conn, 4).then(bytesToU32)) as Response;
   switch (resp) {
     case Response.Ok: {
@@ -106,7 +100,7 @@ async function checkResponse(conn: Deno.TcpConn) {
 }
 
 // deno-lint-ignore no-explicit-any
-async function sendJson(conn: Deno.TcpConn, val: any) {
+async function sendJson(conn: Deno.Conn, val: any) {
   const data = encode(JSON.stringify(val));
   await writeAll(conn, u32ToBytes(data.length));
   await writeAll(conn, data);
@@ -147,44 +141,44 @@ function parseCliOptions(args: string[]): CliOptions {
   return config as CliOptions;
 }
 
+async function start(connFile: string) {
+  const conn = await connect(connFile);
+  await writeAll(conn, u32ToBytes(Request.Ping));
+}
+
+async function stop(connFile: string) {
+  const conn = await connect(connFile, false);
+  if (conn) await writeAll(conn, u32ToBytes(Request.Stop));
+  await tryFile(Deno.remove, connFile);
+}
+
 async function main() {
   const serverId = encodeURIComponent(Deno.cwd());
-  const portFile = join(dataDir, serverId);
+  const connFile = join(dataDir, serverId);
 
   switch (Deno.args[0]) {
     case "--start": {
-      const conn = await connect(portFile);
-      await writeAll(conn, u32ToBytes(Request.Ping));
+      await start(connFile);
       return;
     }
 
     case "--restart": {
-      let conn = await connect(portFile, false);
-      if (conn) {
-        await writeAll(conn, u32ToBytes(Request.Stop));
-        await tryFile(Deno.remove, portFile);
-      }
-      conn = await connect(portFile);
-      await writeAll(conn, u32ToBytes(Request.Ping));
+      await stop(connFile);
+      await start(connFile);
       return;
     }
 
     case "--stop": {
-      if (!(await tryFile(Deno.stat, dataDir))) return;
-
       // Stop all started servers
+      if (!(await tryFile(Deno.stat, dataDir))) return;
       for await (const ent of Deno.readDir(dataDir)) {
-        const portFile = join(dataDir, ent.name);
-        const conn = await connect(portFile, false);
-        if (!conn) continue;
-        await writeAll(conn, u32ToBytes(Request.Stop));
+        await stop(join(dataDir, ent.name));
       }
-
       return;
     }
 
     case "--debug-info": {
-      const conn = await connect(portFile, false);
+      const conn = await connect(connFile, false);
       const args = parseCliOptions(Deno.args.slice(1));
 
       // Fetch server debug informations
@@ -196,14 +190,15 @@ async function main() {
         server = await readAll(conn).then(decode).then(JSON.parse);
       }
 
+      // Build client informations
       const debugInfo = {
         cwd: Deno.cwd(),
         main: import.meta.filename,
-        args: args ?? Deno.args,
+        config: args ?? Deno.args,
         dataDir: dataDir,
       };
-      console.log({ client: debugInfo, server });
 
+      console.log({ client: debugInfo, server });
       return;
     }
 
@@ -211,7 +206,7 @@ async function main() {
       if (Deno.stdin.isTerminal()) throw new Error("file content must be provided from stdin");
       const args = parseCliOptions(Deno.args);
 
-      const conn = await connect(portFile);
+      const conn = await connect(connFile);
       await writeAll(conn, u32ToBytes(Request.Format));
 
       // Report the command line arguments
@@ -224,14 +219,9 @@ async function main() {
       // server -> stdout
       await checkResponse(conn);
       await conn.readable.pipeTo(Deno.stdout.writable, { preventClose: true });
-
       return;
     }
   }
 }
 
-try {
-  await main();
-} catch (e) {
-  die(e);
-}
+await entrypoint(main);
