@@ -139,13 +139,10 @@ export function decodeErr(data: Bytes): Error {
 
 export type ConnOptions = { transport: "tcp"; hostname: "127.0.0.1"; port: number };
 
-/**
- * Writes the connection file *atomically*.
- */
 export async function writeConnFile(path: string, options: ConnOptions) {
-  const temp = await Deno.makeTempFile();
-  await Deno.writeFile(temp, u32ToBytes(options.port));
-  await Deno.rename(temp, path);
+  // Only persist port number as other options are known at compile time.
+  const data = u32ToBytes(options.port);
+  await Deno.writeFile(path, data);
 }
 
 export async function readConnFile(path: string): Promise<ConnOptions> {

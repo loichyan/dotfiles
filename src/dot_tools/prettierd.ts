@@ -7,8 +7,10 @@
  * Original License: ISC
  */
 
+import { once } from "node:events";
 import { homedir } from "node:os";
 import { join } from "node:path";
+import { promisify } from "node:util";
 import {
   bytesToU32,
   CliOptions,
@@ -22,14 +24,15 @@ import {
   readExact,
   Request,
   Response,
-  sleep,
   tryCall,
   tryFile,
   u32ToBytes,
   writeAll,
+  writeConnFile,
 } from "./prettierd/common.ts";
 
 const dataDir = join(homedir(), ".prettierd");
+const serverId = encodeURIComponent(Deno.cwd());
 
 async function connect(connFile: string, startNew?: true): Promise<Deno.Conn>;
 async function connect(connFile: string, startNew: false): Promise<Deno.Conn | undefined>;
@@ -57,27 +60,26 @@ async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn 
     const serverMod = import.meta.resolve("./prettierd/server.ts");
     const prettierMod = import.meta.resolve("prettier");
 
-    await Deno.mkdir(dataDir, { recursive: true });
-
-    const child = fork(serverMod, [connFile, prettierMod], {
-      stdio: "inherit",
-      detached: true,
-    });
-    child.unref();
     // Server should keep running until explicitly stopped.
+    const server = fork(serverMod, undefined, { stdio: "inherit", detached: true });
     const onExit = (e: unknown) => {
-      child.removeAllListeners();
+      server.removeAllListeners();
       throw e instanceof Error ? e : new Error("server crashes");
     };
-    child.on("error", onExit);
-    child.on("exit", onExit);
+    server.on("error", onExit);
+    server.on("exit", onExit);
 
-    // Wait until server really starts.
-    do {
-      await sleep(10);
-      connOptions = await tryFile(readConnFile, connFile);
-    } while (!connOptions);
+    // Wait for server to really start.
+    await promisify<object, void>(server.send)({ serverId, prettierMod });
+    const [connOptions] = await once(server, "message");
     conn = await Deno.connect(connOptions);
+
+    // Save the connection file.
+    await Deno.mkdir(dataDir, { recursive: true });
+    await writeConnFile(connFile, connOptions);
+
+    // Do detach the server.
+    server.unref();
   }
 
   return conn;
@@ -151,7 +153,6 @@ async function stop(connFile: string) {
 }
 
 async function main() {
-  const serverId = encodeURIComponent(Deno.cwd());
   const connFile = join(dataDir, serverId);
 
   switch (Deno.args[0]) {

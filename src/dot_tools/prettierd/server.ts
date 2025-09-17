@@ -1,4 +1,6 @@
-import { basename } from "node:path";
+import { once } from "node:events";
+import process from "node:process";
+import { promisify } from "node:util";
 import type * as Prettier from "prettier";
 import {
   Bytes,
@@ -14,17 +16,11 @@ import {
   Request,
   Response,
   tryCall,
-  tryFile,
   u32ToBytes,
   writeAll,
-  writeConnFile,
 } from "./common.ts";
 
-const [connFile, prettierMod] = Deno.args;
-const serverId = basename(connFile);
-
-let prettier: typeof Prettier;
-let connOptions: ConnOptions;
+let serverId: string, connOptions: ConnOptions, prettierMod: string, prettier: typeof Prettier;
 
 async function respond(conn: Deno.Conn, data: Bytes | string) {
   data = typeof data === "string" ? encode(data) : data;
@@ -84,7 +80,6 @@ async function serve(conn: Deno.Conn) {
     }
 
     case Request.Stop: {
-      await tryFile(Deno.remove, connFile);
       conn.close();
       return Deno.exit(0);
     }
@@ -96,6 +91,7 @@ async function serve(conn: Deno.Conn) {
         cwd: Deno.cwd(),
         main: import.meta.filename,
         id: serverId,
+        pid: process.pid,
         address: connOptions,
         prettier: prettierMod,
         resolvedConfig: await resolveConfig(args),
@@ -130,14 +126,15 @@ async function serve(conn: Deno.Conn) {
 }
 
 async function main() {
+  [{ serverId, prettierMod }] = await once(process, "message");
   prettier = await import(prettierMod);
-  connOptions = { transport: "tcp", hostname: "127.0.0.1", port: 0 };
 
+  connOptions = { transport: "tcp", hostname: "127.0.0.1", port: 0 };
   const server = Deno.listen(connOptions);
 
-  // Update the TCP port since it is randomly chosen.
-  connOptions.port = server.addr.port;
-  await writeConnFile(connFile, connOptions);
+  // Report the connection options.
+  connOptions.port = server.addr.port; // update the randomly chosen port
+  await promisify<object, void>(process.send!)(connOptions);
 
   // Process client requests.
   do {
