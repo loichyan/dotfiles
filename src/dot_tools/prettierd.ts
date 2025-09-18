@@ -31,6 +31,7 @@ import {
   writeConnFile,
 } from "./prettierd/common.ts";
 
+let debug = false;
 const dataDir = join(homedir(), ".prettierd");
 const serverId = encodeURIComponent(Deno.cwd());
 
@@ -61,7 +62,10 @@ async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn 
     const prettierMod = import.meta.resolve("prettier");
 
     // Server should keep running until explicitly stopped.
-    const server = fork(serverMod, undefined, { stdio: "inherit", detached: true });
+    const server = fork(serverMod, undefined, {
+      stdio: debug ? "inherit" : "ignore",
+      detached: true,
+    });
     const onExit = (e: unknown) => {
       server.removeAllListeners();
       throw e instanceof Error ? e : new Error("server crashes");
@@ -177,6 +181,7 @@ async function main() {
     }
 
     case "--debug-info": {
+      debug = true;
       const args = tryCall(parseCliOptions, Deno.args.slice(1));
 
       // Fetch server debug informations
