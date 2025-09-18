@@ -5,6 +5,7 @@ export default {
     import.meta.resolve("prettier-plugin-organize-imports"),
   ],
   printWidth: 100,
+  quoteProps: "consistent",
   overrides: [
     {
       files: "*.md", // Files may be provided as an absolute path

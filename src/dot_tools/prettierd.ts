@@ -58,7 +58,9 @@ async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn 
     if (startNew === false) return;
 
     const { fork } = await import("node:child_process");
-    const serverMod = import.meta.resolve("./prettierd/server.ts");
+    const serverMod = import.meta.DENO_BUNDLE
+      ? import.meta.resolve("./prettierd/server.js")
+      : import.meta.resolve("./prettierd/server.ts");
     const prettierMod = import.meta.resolve("prettier");
 
     // Server should keep running until explicitly stopped.
