@@ -4,13 +4,12 @@ export default {
     import.meta.resolve("./prettier-markdown-extended.js"),
     import.meta.resolve("prettier-plugin-organize-imports"),
   ],
-  printWidth: 100,
+  printWidth: 80,
   quoteProps: "consistent",
   overrides: [
     {
       files: "*.md", // Files may be provided as an absolute path
       options: {
-        printWidth: 80,
         proseWrap: "always",
         emphasisKind: "asterisk",
         strongKind: "asterisk",
