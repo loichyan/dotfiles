@@ -136,8 +136,7 @@ async function serve(conn: Deno.Conn) {
 }
 
 async function main() {
-  [{ serverId, prettierMod }] = await once(process, "message");
-  prettier = await import(prettierMod);
+  [{ serverId }] = await once(process, "message");
 
   connOptions = { transport: "tcp", hostname: "127.0.0.1", port: 0 };
   const server = Deno.listen(connOptions);
@@ -145,6 +144,10 @@ async function main() {
   // Report the connection options.
   connOptions.port = server.addr.port; // update the randomly chosen port
   await promisify<object, void>(process.send!)(connOptions);
+
+  // Load modules
+  prettierMod = import.meta.resolve("prettier");
+  prettier = await import(prettierMod);
 
   // Process client requests.
   do {

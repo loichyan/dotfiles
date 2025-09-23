@@ -70,7 +70,6 @@ async function connect(
     const serverMod = import.meta.DENO_BUNDLE
       ? import.meta.resolve("./prettierd/server.js")
       : import.meta.resolve("./prettierd/server.ts");
-    const prettierMod = import.meta.resolve("prettier");
 
     // Server should keep running until explicitly stopped.
     const server = fork(serverMod, undefined, {
@@ -85,7 +84,7 @@ async function connect(
     server.on("exit", onExit);
 
     // Wait for server to really start.
-    await promisify<object, void>(server.send)({ serverId, prettierMod });
+    await promisify<object, void>(server.send)({ serverId });
     const [connOptions] = await once(server, "message");
     conn = await Deno.connect(connOptions);
 
