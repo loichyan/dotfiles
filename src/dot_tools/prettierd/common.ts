@@ -44,7 +44,10 @@ export function bytesToU32(bytes: Bytes): number {
  * Performs an operation, discarding any error.
  */
 // deno-lint-ignore no-explicit-any
-export function tryCall<A extends any[], R>(op: (...args: A) => R, ...args: A): R | undefined {
+export function tryCall<A extends any[], R>(
+  op: (...args: A) => R,
+  ...args: A
+): R | undefined {
   try {
     const r = op(...args);
     return r instanceof Promise ? (r.catch((_) => {}) as R) : r;
@@ -73,7 +76,10 @@ export async function tryFile<A extends any[], R>(
 /**
  * Reads until `buf` is fulfilled.
  */
-export async function readExact(reader: Reader, buf: Bytes | number): Promise<Bytes> {
+export async function readExact(
+  reader: Reader,
+  buf: Bytes | number,
+): Promise<Bytes> {
   buf = typeof buf === "number" ? Buffer.alloc(buf) : buf;
   let cur = buf;
   while (cur.length > 0) {
@@ -137,7 +143,11 @@ export function decodeErr(data: Bytes): Error {
   });
 }
 
-export type ConnOptions = { transport: "tcp"; hostname: "127.0.0.1"; port: number };
+export type ConnOptions = {
+  transport: "tcp";
+  hostname: "127.0.0.1";
+  port: number;
+};
 
 export async function writeConnFile(path: string, options: ConnOptions) {
   // Only persist port number as other options are known at compile time.

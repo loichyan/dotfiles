@@ -20,7 +20,10 @@ import {
   writeAll,
 } from "./common.ts";
 
-let serverId: string, connOptions: ConnOptions, prettierMod: string, prettier: typeof Prettier;
+let serverId: string,
+  connOptions: ConnOptions,
+  prettierMod: string,
+  prettier: typeof Prettier;
 
 async function respond(conn: Deno.Conn, data: Bytes | string) {
   data = typeof data === "string" ? encode(data) : data;
@@ -45,7 +48,13 @@ async function recvJson(conn: Deno.Conn): Promise<any> {
 }
 
 async function resolveConfig(args: CliOptions): Promise<Prettier.Options> {
-  const { stdinFilepath: filepath, config, editorconfig, configPrecedence, ...cli } = args;
+  const {
+    stdinFilepath: filepath,
+    config,
+    editorconfig,
+    configPrecedence,
+    ...cli
+  } = args;
 
   let final: Prettier.Options;
   if (config === false) {
@@ -63,7 +72,8 @@ async function resolveConfig(args: CliOptions): Promise<Prettier.Options> {
     // When set to `prefer-file`, no CLI options are taken into account.
     else if (configPrecedence === "prefer-file") final = resolved;
     // Otherwise `cli-override` is the default precedence.
-    else if (configPrecedence === "file-override") final = Object.assign(cli, resolved);
+    else if (configPrecedence === "file-override")
+      final = Object.assign(cli, resolved);
     else final = Object.assign(resolved, cli);
   }
 

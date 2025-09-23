@@ -10,6 +10,7 @@ import origPlugin from "prettier/plugins/markdown";
 const parsers = origPlugin.parsers;
 
 /** @type {Plugin["options"]} */
+// prettier-ignore
 const options = {
   emphasisKind: {
     category: "Markdown",
@@ -91,11 +92,17 @@ const printers = {
       }
 
       if (node.type === "list" && node.ordered) {
-        doc = modifyOrderedListKind(doc, orderedListKindMap[options.orderedListKind]);
+        doc = modifyOrderedListKind(
+          doc,
+          orderedListKindMap[options.orderedListKind],
+        );
       }
 
       if (node.type === "list" && !node.ordered) {
-        doc = modifyUnorderedListKind(doc, unorderedListKindMap[options.unorderedListKind]);
+        doc = modifyUnorderedListKind(
+          doc,
+          unorderedListKindMap[options.unorderedListKind],
+        );
       }
 
       return doc;
@@ -114,7 +121,11 @@ const modifyEmphasisKind = (doc, ch) => {
 
   const l = doc.findIndex(isString);
   const r = doc.findLastIndex(isString);
-  if (l === -1 || r === -1 || !(doc[l].match(/^[_*]/) && doc[r].match(/[_*]$/))) {
+  if (
+    l === -1 ||
+    r === -1 ||
+    !(doc[l].match(/^[_*]/) && doc[r].match(/[_*]$/))
+  ) {
     // There maybe an upstream change.
     throw new Error("failed to resolve emphasis kind");
   }
@@ -136,7 +147,11 @@ const modifyStrongKind = (doc, ch) => {
 
   const l = doc.findIndex(isString);
   const r = doc.findLastIndex(isString);
-  if (l === -1 || r === -1 || !(doc[l].match(/^[_*][_*]/) && doc[r].match(/[_*][_*]$/))) {
+  if (
+    l === -1 ||
+    r === -1 ||
+    !(doc[l].match(/^[_*][_*]/) && doc[r].match(/[_*][_*]$/))
+  ) {
     // There maybe an upstream change.
     throw new Error("failed to resolve strong kind");
   }

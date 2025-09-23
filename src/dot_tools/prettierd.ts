@@ -36,8 +36,14 @@ const dataDir = join(homedir(), ".prettierd");
 const serverId = encodeURIComponent(Deno.cwd());
 
 async function connect(connFile: string, startNew?: true): Promise<Deno.Conn>;
-async function connect(connFile: string, startNew: false): Promise<Deno.Conn | undefined>;
-async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn | undefined> {
+async function connect(
+  connFile: string,
+  startNew: false,
+): Promise<Deno.Conn | undefined>;
+async function connect(
+  connFile: string,
+  startNew?: boolean,
+): Promise<Deno.Conn | undefined> {
   let connOptions: ConnOptions | undefined;
   let conn: Deno.Conn | undefined;
   // Check if server already started
@@ -46,7 +52,10 @@ async function connect(connFile: string, startNew?: boolean): Promise<Deno.Conn 
     conn = await Deno.connect(connOptions);
   } catch (e) {
     // Ignore errors if server does not start or was aborted for any reason.
-    if (e instanceof Deno.errors.NotFound || e instanceof Deno.errors.ConnectionRefused) {
+    if (
+      e instanceof Deno.errors.NotFound ||
+      e instanceof Deno.errors.ConnectionRefused
+    ) {
       await tryFile(Deno.remove, connFile);
     } else {
       throw e;
@@ -212,7 +221,8 @@ async function main() {
     }
 
     default: {
-      if (Deno.stdin.isTerminal()) throw new Error("file content must be provided from stdin");
+      if (Deno.stdin.isTerminal())
+        throw new Error("file content must be provided from stdin");
       const args = parseCliOptions(Deno.args);
 
       const conn = await connect(connFile);
