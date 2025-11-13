@@ -116,7 +116,7 @@ const printers = {
  * @return {Doc}
  */
 const modifyEmphasisKind = (doc, ch) => {
-  if (ch === "_") return doc; // Does nothing for the default kind.
+  if (ch === "_") return doc; // Do nothing for the default kind.
   doc = flatten(doc);
 
   const l = doc.findIndex(isString);
@@ -142,7 +142,7 @@ const modifyEmphasisKind = (doc, ch) => {
  * @return {Doc}
  */
 const modifyStrongKind = (doc, ch) => {
-  if (ch === "**") return doc; // Does nothing for the default kind.
+  if (ch === "**") return doc; // Do nothing for the default kind.
   doc = flatten(doc);
 
   const l = doc.findIndex(isString);
@@ -168,7 +168,7 @@ const modifyStrongKind = (doc, ch) => {
  * @return {Doc}
  */
 const modifyOrderedListKind = (doc, ch) => {
-  if (ch === ".") return doc; // Does nothing for the default kind.
+  if (ch === ".") return doc; // Do nothing for the default kind.
   doc = flatten(doc);
 
   for (let i = 0; i < doc.length; i++) {
@@ -188,7 +188,7 @@ const modifyOrderedListKind = (doc, ch) => {
  * @return {Doc}
  */
 const modifyUnorderedListKind = (doc, ch) => {
-  if (ch === "-") return doc; // Does nothing for the default character.
+  if (ch === "-") return doc; // Do nothing for the default character.
   doc = flatten(doc);
 
   for (let i = 0; i < doc.length; i++) {
