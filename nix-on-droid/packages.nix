@@ -16,14 +16,14 @@ with pkgs;
   # Neovim
   neovim
   tree-sitter
-  wakatime
+  wakatime-cli
 
   # Shell utilities
   atuin
   bat
   direnv
   nix-direnv
-  du-dust
+  dust
   expect
   eza
   fd
@@ -81,7 +81,7 @@ with pkgs;
   # Lua
   lua
   stylua
-  sumneko-lua-language-server
+  lua-language-server
 
   # Nix
   nil
@@ -93,8 +93,7 @@ with pkgs;
   ruff
 
   # Other formaters & linters
-  dprint
-  taplo-cli
+  taplo
   typos
   typos-lsp
   vale

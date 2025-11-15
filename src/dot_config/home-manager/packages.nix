@@ -16,14 +16,14 @@
     # Neovim
     neovim
     tree-sitter
-    wakatime
+    wakatime-cli
 
     # Shell ulities
     atuin
     bat
     direnv
     nix-direnv
-    du-dust
+    dust
     expect
     eza
     fd
@@ -110,7 +110,7 @@
     # Lua
     lua
     stylua
-    sumneko-lua-language-server
+    lua-language-server
 
     ## Haskell
     #ghc
@@ -123,10 +123,9 @@
     delve
 
     # Other formaters & linters
-    dprint
     hadolint
     nodePackages.yaml-language-server
-    taplo-cli
+    taplo
     typos
     typos-lsp
     vale
