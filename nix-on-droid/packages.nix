@@ -48,6 +48,7 @@ with pkgs;
 
   # Misc tools
   static-web-server
+  optipng
 
   # Fonts used by terminals
   ZxProtoNF
