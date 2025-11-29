@@ -47,6 +47,7 @@ set -g set-clipboard external
 source ~/.tmux/keymaps.conf
 
 # == Plugin options == #
+set -g @base16-palette-path "#{@base16-palettes}/gruvbox-material.conf"
 set -g @popup-autostart on
 set -g @popup-id-format "#{b:pane_current_path}/{popup_name}"
 set -g @popup-on-init 'nop'
