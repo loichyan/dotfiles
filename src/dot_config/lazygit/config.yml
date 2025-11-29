@@ -8,9 +8,9 @@ gui:
     inactiveBorderColor: ["black"]
 git:
   overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
   commit:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
