@@ -51,7 +51,7 @@ with pkgs;
   optipng
 
   # Fonts used by terminals
-  ZxProtoNF
+  FiraMonoNF
 
   #== Languages support ==#
 

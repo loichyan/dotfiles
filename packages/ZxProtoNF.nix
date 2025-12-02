@@ -19,9 +19,9 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ nerd-font-patcher ];
   buildPhase = ''
     mkdir out
-    find -name "0xProto-*.ttf" -exec nerd-font-patcher -out out -c {} \;
+    find -name "0xProto-*.ttf" -exec nerd-font-patcher --mono -out out -c {} \;
   '';
   installPhase = ''
-    install -Dm644 out/* -t $out/share/fonts/0xProtoNF
+    install -Dm644 out/* -t $out/share/fonts/truetype/0xProtoNF
   '';
 }

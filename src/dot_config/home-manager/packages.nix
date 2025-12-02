@@ -61,7 +61,7 @@
     static-web-server
 
     # Fonts used by terminal
-    ZxProtoNF
+    FiraMonoNF
 
     #== Languages support ==#
 

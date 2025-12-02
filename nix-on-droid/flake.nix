@@ -32,6 +32,7 @@
           in
           {
             tmux-nightly = callPackage ./packages/tmux-nightly.nix { };
+            FiraMonoNF = callPackage ./packages/FiraMonoNF.nix { };
             ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
           };
 
@@ -56,6 +57,7 @@
           inherit (pkgs)
             myRegistry
             tmux-nightly
+            FiraMonoNF
             ZxProtoNF
             ;
           inherit (myRegistry) flake-sync-lock;
