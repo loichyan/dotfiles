@@ -31,7 +31,6 @@
             inherit (super) callPackage;
           in
           {
-            tmux-nightly = callPackage ./packages/tmux-nightly.nix { };
             FiraMonoNF = callPackage ./packages/FiraMonoNF.nix { };
             ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
           };
@@ -56,7 +55,6 @@
         packages = {
           inherit (pkgs)
             myRegistry
-            tmux-nightly
             FiraMonoNF
             ZxProtoNF
             ;

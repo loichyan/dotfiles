@@ -22,14 +22,13 @@ with pkgs;
   atuin
   bat
   direnv
-  nix-direnv
   dust
   expect
   eza
   fd
+  nix-direnv
+  tmux
   zoxide
-  # TODO: back to the next stable release
-  tmux-nightly
 
   # Git
   git

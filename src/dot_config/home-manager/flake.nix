@@ -42,9 +42,9 @@
           in
           {
             inherit myData myRegistry;
-            tmux-nightly = callPackage ./packages/tmux-nightly.nix { };
-            ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
             cargo-nightly-tools = callPackage ./packages/cargo-nightly-tools.nix { };
+            FiraMonoNF = callPackage ./packages/FiraMonoNF.nix { };
+            ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
           };
 
         pkgs = import nixpkgs {
@@ -62,9 +62,9 @@
         packages.${system} = {
           inherit (pkgs)
             myRegistry
-            tmux-nightly
-            ZxProtoNF
             cargo-nightly-tools
+            FiraMonoNF
+            ZxProtoNF
             ;
         };
 
