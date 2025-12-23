@@ -59,6 +59,7 @@ port={{ .proxy.socksPort }}
 show-all-sources=true
 sources=[('ibus', 'rime')]
 xkb-options=['ctrl:nocaps', 'caps:ctrl_modifier']
+#xkb-options=['ctrl:nocaps', 'caps:ctrl_modifier', 'altwin:swap_alt_win']
 
 [org/gnome/desktop/peripherals/keyboard]
 remember-numlock-state=true
@@ -85,10 +86,10 @@ settings-version=2
 [org/gnome/shell/extensions/blur-my-shell/applications]
 blur=true
 blur-on-overview=false
-brightness=0.87
+brightness=0.45
 dynamic-opacity=false
-opacity=233
-sigma=23
+opacity=230
+sigma=15
 whitelist=['Alacritty', 'foot', 'kitty', 'org.wezfurlong.wezterm']
 
 [org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab]
@@ -104,7 +105,8 @@ blur=true
 blur=true
 
 [org/gnome/shell/extensions/blur-my-shell/panel]
-blur=false
+blur=true
+static-blur=true
 
 [org/gnome/shell/extensions/blur-my-shell/screenshot]
 blur=true
@@ -132,19 +134,30 @@ toggle-private-mode=['<Super>apostrophe']
 topbar-preview-size=15
 window-width-percentage=25
 
+[org/gnome/shell/extensions/dash-in-panel]
+button-margin=2
+dim-dot=true
+icon-size=24
+show-activities=true
+show-apps=false
+
 [org/gnome/shell/extensions/paperwm]
 cycle-height-steps=[0.35, 0.5, 0.65]
 cycle-width-steps=[0.35, 0.5, 0.65]
-horizontal-margin=10
+disable-topbar-styling=true
+horizontal-margin=3
 open-window-position=0
+open-window-position-option-down=false
 selection-border-radius-bottom=3
 selection-border-radius-top=3
-selection-border-size=10
+selection-border-size=3
+show-focus-mode-icon=false
+show-open-position-icon=false
 show-window-position-bar=true
 show-workspace-indicator=false
-vertical-margin=5
-vertical-margin-bottom=5
-window-gap=10
+vertical-margin=3
+vertical-margin-bottom=3
+window-gap=3
 winprops=@as []
 
 [org/gnome/shell/extensions/switcher]
@@ -383,7 +396,7 @@ exec-arg=''
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=@as []
-enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst', 'appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'Vitals@CoreCoding.com']
+enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst', 'appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'dash-in-panel@fthx', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
