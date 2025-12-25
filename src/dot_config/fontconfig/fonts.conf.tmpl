@@ -8,6 +8,7 @@
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.sansSerif }}</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
@@ -18,6 +19,7 @@
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.serif }}</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
@@ -28,6 +30,7 @@
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.sansSerif }}</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
@@ -39,7 +42,15 @@
       <string>{{ .font.monospace }}</string>
       <string>{{ .font.sansSerif }}</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
+  <!-- FIXME: See https://github.com/alacritty/alacritty/issues/8615 -->
+  <selectfont>
+    <rejectfont>
+      <glob>/usr/share/fonts/google-noto-color-emoji-fonts/*</glob>
+      <glob>/usr/share/fonts/google-noto-emoji-fonts/*</glob>
+    </rejectfont>
+  </selectfont>
 </fontconfig>
