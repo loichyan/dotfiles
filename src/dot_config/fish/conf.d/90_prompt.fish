@@ -42,10 +42,15 @@ function fish_prompt
     set -l normal (set_color normal)
     set -l status_color (set_color brgreen)
 
-    # Display username when we're root
+    # Display username anyway when we're root;
+    # otherwise display it only if explicitly enabled.
     set -l prompt_user
     if functions -q fish_is_root_user; and fish_is_root_user
-        set prompt_user (set_color $fish_color_user_root -o) $USER $normal ' in '
+        set prompt_user (set_color $fish_color_user_root -o) $USER $normal '@' \
+            (set_color $fish_color_host -o) (prompt_hostname) $normal ' in '
+    else if set -q PROMPT_SHOW_USER
+        set prompt_user (set_color $fish_color_user -o) $USER $normal '@' \
+            (set_color $fish_color_host -o) (prompt_hostname) $normal ' in '
     end
 
     # ~/a/b/c/to/directory
