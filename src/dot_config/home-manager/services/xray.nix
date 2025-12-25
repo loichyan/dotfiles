@@ -15,10 +15,8 @@ in
       Service = {
         Type = "exec";
         Restart = "on-failure";
-        Environment = [
-          "XRAY_LOCATION_CONFDIR=${myData.home}/.config/xray"
-        ] ++ (lib.optional myData.geodatEnabled "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray");
-        ExecStart = "${xray}/bin/xray run";
+        Environment = lib.optional myData.geodatEnabled "XRAY_LOCATION_ASSET=${myData.home}/.local/share/xray";
+        ExecStart = "${xray}/bin/xray run -confdir ${myData.home}/.config/xray";
       };
       Install = {
         WantedBy = [ "default.target" ];
