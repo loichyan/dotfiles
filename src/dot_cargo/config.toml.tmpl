@@ -13,5 +13,8 @@ protocol = "sparse"
 
 [build]
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+#{{ if ne .platform "termux" }}
+rustc-wrapper = "sccache"
+#{{ end }}
 
 # vim:ft=toml

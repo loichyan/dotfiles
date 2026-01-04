@@ -84,6 +84,7 @@
     })
     cargo-nightly-tools
     mold
+    sccache
 
     # Cargo ulities
     cargo-flamegraph
