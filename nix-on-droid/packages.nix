@@ -49,9 +49,6 @@ with pkgs;
   static-web-server
   optipng
 
-  # Fonts used by terminals
-  FiraMonoNF
-
   #== Languages support ==#
 
   # Shell

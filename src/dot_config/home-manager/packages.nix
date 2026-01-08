@@ -59,9 +59,6 @@
     p7zip
     static-web-server
 
-    # Fonts used by terminal
-    FiraMonoNF
-
     #== Languages support ==#
 
     # Shell
