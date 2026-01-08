@@ -16,7 +16,7 @@
     description = "Repository with GPL-3.0 license";
   };
   unlicense = {
-    path = ./templates/repo-unlicense;
+    path = ./templates/unlicense;
     description = "Repository with Unlicense license";
   };
   just = {
