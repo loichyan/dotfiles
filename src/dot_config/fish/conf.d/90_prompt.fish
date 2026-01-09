@@ -23,6 +23,7 @@ function fish_prompt_prefix
             set_color green
             echo '❮'
         case insert
+            set_color green
             echo '❯'
         case replace_one
             set_color purple
