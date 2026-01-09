@@ -64,7 +64,7 @@ with pkgs;
       "rust-analyzer"
     ];
   })
-  mold-wrapped
+  mold
 
   # Web
   deno
