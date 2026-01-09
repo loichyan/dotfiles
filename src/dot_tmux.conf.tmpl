@@ -49,7 +49,8 @@ source ~/.tmux/keymaps.conf
 # == Plugin options == #
 set -g @base16-palette-path '#{@base16-palettes}/gruvbox-material.conf'
 set -g @popup-autostart on
-set -g @popup-id-format '#{session_name}/{popup_name}'
+set -g @popup-id-format '{popup_name}@#{session_name}'
+set -g @popup-id-format-by-cwd '{popup_name}@#{pane_current_path}'
 set -g @popup-on-init 'nop'
 set -g @continuum-save-interval 15
 
