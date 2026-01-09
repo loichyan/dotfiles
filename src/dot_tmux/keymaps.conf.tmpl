@@ -29,42 +29,42 @@ bind -T copy-mode-vi y send -X copy-selection-and-cancel
 bind -T copy-mode-vi Y send -X copy-end-of-line-and-cancel
 bind -T copy-mode-vi p send -X copy-pipe-and-cancel 'tmux pasteb -p'
 
-%if "$TMUX_POPUP_SERVER"
-	set -g copy-command "tmux -Ldefault loadb -w -"
+if -F "$TMUX_POPUP_SERVER" {
+	set -g copy-command 'tmux -Ldefault loadb -w -'
 	bind -T copy-mode-vi y send -X copy-pipe-and-cancel
 	bind -T copy-mode-vi Y send -X copy-pipe-end-of-line-and-cancel
-	bind -T copy-mode-vi p send -X cancel \; run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
+	bind -T copy-mode-vi p send -X cancel \; run 'tmux -Ldefault saveb - | tmux loadb -' \; pasteb -p
 
-	bind ] run "tmux -Ldefault saveb - | tmux loadb -" \; pasteb -p
+	bind ] run 'tmux -Ldefault saveb - | tmux loadb -' \; pasteb -p
 	bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel
-%endif
+}
 
 # Sessions
 bind -n M-N new-session
 bind -n M-q choose-tree -Zs -O time
 
 # Panes
-bind -n M-- split-window -v -c "#{pane_current_path}"
-bind -n M-_ split-window -fv -c "#{pane_current_path}"
-bind -n M-\\ split-window -h -c "#{pane_current_path}"
-bind -n M-| split-window -fh -c "#{pane_current_path}"
+bind -n M-- split-window -v -c '#{pane_current_path}'
+bind -n M-_ split-window -fv -c '#{pane_current_path}'
+bind -n M-\\ split-window -h -c '#{pane_current_path}'
+bind -n M-| split-window -fh -c '#{pane_current_path}'
 bind -n M-m resize-pane -Z
-bind -n M-w confirm-before -p "Close current pane? (y/n)" kill-pane
+bind -n M-w confirm-before -p 'Close current pane? (y/n)' kill-pane
 
-bind -n M-h if -F "#{@pane-is-vim}" 'send-keys M-h' 'select-pane -L'
-bind -n M-j if -F "#{@pane-is-vim}" 'send-keys M-j' 'select-pane -D'
-bind -n M-k if -F "#{@pane-is-vim}" 'send-keys M-k' 'select-pane -U'
-bind -n M-l if -F "#{@pane-is-vim}" 'send-keys M-l' 'select-pane -R'
+bind -n M-h if -F '#{@pane-is-vim}' 'send-keys M-h' 'select-pane -L'
+bind -n M-j if -F '#{@pane-is-vim}' 'send-keys M-j' 'select-pane -D'
+bind -n M-k if -F '#{@pane-is-vim}' 'send-keys M-k' 'select-pane -U'
+bind -n M-l if -F '#{@pane-is-vim}' 'send-keys M-l' 'select-pane -R'
 
-bind -n M-H if -F "#{@pane-is-vim}" 'send-keys M-H' 'resize-pane -L 3'
-bind -n M-J if -F "#{@pane-is-vim}" 'send-keys M-J' 'resize-pane -D 3'
-bind -n M-K if -F "#{@pane-is-vim}" 'send-keys M-K' 'resize-pane -U 3'
-bind -n M-L if -F "#{@pane-is-vim}" 'send-keys M-L' 'resize-pane -R 3'
+bind -n M-H if -F '#{@pane-is-vim}' 'send-keys M-H' 'resize-pane -L 3'
+bind -n M-J if -F '#{@pane-is-vim}' 'send-keys M-J' 'resize-pane -D 3'
+bind -n M-K if -F '#{@pane-is-vim}' 'send-keys M-K' 'resize-pane -U 3'
+bind -n M-L if -F '#{@pane-is-vim}' 'send-keys M-L' 'resize-pane -R 3'
 
-bind -n M-Left swap-pane -s "{left-of}"
-bind -n M-Down swap-pane -s "{down-of}"
-bind -n M-Up swap-pane -s "{up-of}"
-bind -n M-Right swap-pane -s "{right-of}"
+bind -n M-Left swap-pane -s '{left-of}'
+bind -n M-Down swap-pane -s '{down-of}'
+bind -n M-Up swap-pane -s '{up-of}'
+bind -n M-Right swap-pane -s '{right-of}'
 
 bind M-h select-pane -L
 bind M-j select-pane -D
@@ -77,14 +77,14 @@ bind -r M-K resize-pane -U 3
 bind -r M-L resize-pane -R 3
 
 # Tabs
-bind -n M-n new-window -c "#{pane_current_path}"
-bind -n M-W confirm-before -p "Close current tab? (y/n)" kill-window
+bind -n M-n new-window -c '#{pane_current_path}'
+bind -n M-W confirm-before -p 'Close current tab? (y/n)' kill-window
 
-bind -n M-, select-window -t "{previous}"
-bind -n M-. select-window -t "{next}"
+bind -n M-, select-window -t '{previous}'
+bind -n M-. select-window -t '{next}'
 
-bind -n M-< swap-window -t "{previous}" \; select-window -t "{previous}"
-bind -n M-> swap-window -t "{next}" \; select-window -t "{next}"
+bind -n M-< swap-window -t '{previous}' \; select-window -t '{previous}'
+bind -n M-> swap-window -t '{next}' \; select-window -t '{next}'
 
 bind -n M-1 select-window -t :=1
 bind -n M-2 select-window -t :=2
@@ -100,11 +100,11 @@ bind -n M-9 select-window -t :=9
 bind -n M-g run "#{@popup-toggle} -Ed'{popup_caller_pane_path}' -w75% -h90% --name=lazygit lazygit"
 bind -n M-t run "#{@popup-toggle} -Ed'{popup_caller_pane_path}' -w75% -h90% --name=scratch"
 #{{ if eq .platform "termux" }}
-bind -n M-G run "#{@popup-toggle} -Ed$HOME -w75% -h90% --id=gpg-agent ~/.local/bin/gpg-agent-here"
+bind -n M-G run "#{@popup-toggle} -Ed'$HOME' -w75% -h90% --id=gpg-agent ~/.local/bin/gpg-agent-here"
 #{{ end }}
 
 # Misc
-bind C-b run 'tmux -Ldefault run "#{@base16-toggle-background}" && tmux -Lpopup run "#{@base16-toggle-background}"'
+bind C-b run "tmux -Ldefault run '#{@base16-toggle-background}' && tmux -Lpopup run '#{@base16-toggle-background}'"
 bind R source-file ~/.tmux.conf
 
 # vim:ft=tmux
