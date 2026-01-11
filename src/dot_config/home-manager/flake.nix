@@ -43,8 +43,6 @@
           {
             inherit myData myRegistry;
             cargo-nightly-tools = callPackage ./packages/cargo-nightly-tools.nix { };
-            FiraMonoNF = callPackage ./packages/FiraMonoNF.nix { };
-            ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
           };
 
         pkgs = import nixpkgs {
@@ -63,8 +61,6 @@
           inherit (pkgs)
             myRegistry
             cargo-nightly-tools
-            FiraMonoNF
-            ZxProtoNF
             ;
         };
 

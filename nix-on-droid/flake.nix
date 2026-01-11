@@ -25,15 +25,9 @@
           inherit inputs;
           lockfile = ./flake.lock;
         };
-        myOverlay =
-          _: super:
-          let
-            inherit (super) callPackage;
-          in
-          {
-            FiraMonoNF = callPackage ./packages/FiraMonoNF.nix { };
-            ZxProtoNF = callPackage ./packages/ZxProtoNF.nix { };
-          };
+        myOverlay = _: super: {
+          inherit myRegistry;
+        };
 
         pkgs = import nixpkgs {
           inherit system;
@@ -55,17 +49,11 @@
         packages = {
           inherit (pkgs)
             myRegistry
-            FiraMonoNF
-            ZxProtoNF
             ;
           inherit (myRegistry) flake-sync-lock;
           deploy = pkgs.writeShellScriptBin "deploy" ''
             mkdir -p ~/.config/nix/
             cat ${myRegistry.registry} >~/.config/nix/registry.json
-            profile_dir=~/.local/state/nix/profiles
-            profile_name=$(readlink $profile_dir/profile)
-            profile_path=$(readlink -f $profile_dir/$profile_name)
-            ln -s $profile_dir/$profile_name /nix/var/nix/gcroots/auto/$(basename $profile_path)
           '';
         };
       }
