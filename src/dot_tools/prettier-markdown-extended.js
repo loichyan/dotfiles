@@ -53,6 +53,30 @@ const options = {
       { value: "plus", description: "Use plus signs (+) for unordered list." },
     ],
   },
+  definitionWrap: {
+    category: "Markdown",
+    description: "How to wrap definitions",
+    type: "choice",
+    default: "inherit",
+    choices: [
+      { value: "always", description: "Wrap definitions if it exceeds the print width." },
+      { value: "never", description: "Do not wrap definitions." },
+      { value: "inherit", description: "Inherit the value of 'proseWrap'." },
+      { value: "preserve", description: "Wrap definitions as-is." },
+    ],
+  },
+  footnoteDefinitionWrap: {
+    category: "Markdown",
+    description: "How to wrap footnote definitions",
+    type: "choice",
+    default: "inherit",
+    choices: [
+      { value: "always", description: "Wrap footnote definitions if it exceeds the print width." },
+      { value: "never", description: "Do not wrap footnote definitions." },
+      { value: "inherit", description: "Inherit the value of 'proseWrap'." },
+      { value: "preserve", description: "Wrap footnote definitions as-is." },
+    ],
+  }
 };
 
 const emphasisKindMap = {
@@ -81,24 +105,33 @@ const printers = {
     ...origPrinter,
     print: (path, options, print, args) => {
       const { node } = path;
-      let doc = origPrint(path, options, print, args);
+      const { proseWrap } = options;
 
+      // prettier-ignore
+      if (node.type === "definition" && options.definitionWrap != "inherit") {
+        options.proseWrap =  options.definitionWrap ;
+      }
+      else if (node.type === "footnoteDefinition" && options.footnoteDefinitionWrap != "inherit") {
+        options.proseWrap =  options.footnoteDefinitionWrap ;
+      }
+
+      let doc = origPrint(path, options, print, args);
+      options.proseWrap = proseWrap;
+
+      // prettier-ignore
       if (node.type === "emphasis") {
         doc = modifyEmphasisKind(doc, emphasisKindMap[options.emphasisKind]);
       }
-
-      if (node.type === "strong") {
+      else if (node.type === "strong") {
         doc = modifyStrongKind(doc, strongKindMap[options.strongKind]);
       }
-
-      if (node.type === "list" && node.ordered) {
+      else if (node.type === "list" && node.ordered) {
         doc = modifyOrderedListKind(
           doc,
           orderedListKindMap[options.orderedListKind],
         );
       }
-
-      if (node.type === "list" && !node.ordered) {
+      else if (node.type === "list" && !node.ordered) {
         doc = modifyUnorderedListKind(
           doc,
           unorderedListKindMap[options.unorderedListKind],

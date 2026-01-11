@@ -13,6 +13,8 @@ export default {
         proseWrap: "always",
         emphasisKind: "asterisk",
         strongKind: "asterisk",
+        definitionWrap: "preserve",
+        footnoteDefinitionWrap: "preserve",
       },
     },
   ],
