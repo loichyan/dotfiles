@@ -26,6 +26,7 @@ with pkgs;
   expect
   eza
   fd
+  fzf
   nix-direnv
   tmux
   zoxide

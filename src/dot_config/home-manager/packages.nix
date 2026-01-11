@@ -26,6 +26,7 @@
     expect
     eza
     fd
+    fzf
     nix-direnv
     starship
     tmux
