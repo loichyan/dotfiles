@@ -1,7 +1,6 @@
-disable
-execution
-hook
-special
-
-Cons
-Pros
+(?i)cons
+(?i)disable
+(?i)execution
+(?i)hook
+(?i)pros
+(?i)special
