@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
-  <match target="pattern">
-    <test name="family">
-      <string>sans-serif</string>
-    </test>
-    <edit name="family" mode="prepend" binding="strong">
-      <string>{{ .font.sansSerif }}</string>
-      <string>Noto Color Emoji</string>
-      <string>Symbols Nerd Font</string>
+  <!-- See https://github.com/davgar99/arch-linux-font-improvement-guide -->
+  <match target="font">
+    <edit name="antialias" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="hinting" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="rgba" mode="assign">
+      <const>rgb</const>
+    </edit>
+    <edit name="hintstyle" mode="assign">
+      <const>hintslight</const>
+    </edit>
+    <edit name="lcdfilter" mode="assign">
+      <const>lcddefault</const>
     </edit>
   </match>
   <match target="pattern">
@@ -17,7 +25,21 @@
     </test>
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.serif }}</string>
+      <string>Noto Sans</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
+      <string>Symbols Nerd Font</string>
+    </edit>
+  </match>
+  <match target="pattern">
+    <test name="family">
+      <string>sans-serif</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>{{ .font.sansSerif }}</string>
+      <string>Noto Serif</string>
+      <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
@@ -27,7 +49,9 @@
     </test>
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.sansSerif }}</string>
+      <string>Noto Sans</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
@@ -38,7 +62,9 @@
     <edit name="family" mode="prepend" binding="strong">
       <string>{{ .font.monospace }}</string>
       <string>{{ .font.sansSerif }}</string>
+      <string>Noto Mono</string>
       <string>Noto Color Emoji</string>
+      <string>Noto Emoji</string>
       <string>Symbols Nerd Font</string>
     </edit>
   </match>
