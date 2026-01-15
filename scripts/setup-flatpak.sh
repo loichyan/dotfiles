@@ -25,7 +25,7 @@ flatpak install -y \
 
 # Additional packages from Flathub
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.github.tchx84.Flatseal net.thunderbird.Thunderbird app.zen_browser.zen md.obsidian.Obsidian
+flatpak install com.github.tchx84.Flatseal eu.betterbird.Betterbird md.obsidian.Obsidian com.brave.Browser
 
 # Share nixpkgs and fontconfig
 flatpak override --user --filesystem=/nix:ro --filesystem=xdg-config/fontconfig:ro
