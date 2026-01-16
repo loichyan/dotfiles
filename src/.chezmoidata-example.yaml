@@ -10,7 +10,8 @@ hostname: Your Machine
 
 # Appearance
 font:
-  monospace: 0xProto
+  monospace: Source Code Pro
+  monospaceSpace: 11.0
   sansSerif: Noto Sans CJK SC
   serif: Noto Serif CJK SC
 
