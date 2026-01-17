@@ -3,7 +3,8 @@
 # - <https://gist.github.com/chadaustin/d4696e18217a7de9b2671549abcb54c4>
 # - <https://github.com/aktau/dotfiles/blob/151bc71d7addd289a015e1be8f73214cdd0347ad/.tmux.conf>
 
-# == Appearance == #
+#-- Appearance -----------------------------------------------------------------
+
 set -g  default-terminal 'tmux-256color'
 set -ga terminal-features ',*:RGB:usstyle' # 'usstyle' is required by Neovim
 
@@ -16,7 +17,8 @@ set -g @base16-border-lines rounded
 set -g @base16-statusline on
 set -g @base16-transparent off
 
-# == Sensible options == #
+#-- Sensible options -----------------------------------------------------------
+
 set -g escape-time 0
 set -g focus-events on
 set -g history-limit 10000
@@ -39,11 +41,13 @@ set -g monitor-bell on
 set -g bell-action any
 set -g visual-bell off
 
-# == Security == #
+
+# Improve security
 set -g allow-passthrough off
 set -g set-clipboard external
 
-# == Plugin options == #
+#-- Plugins --------------------------------------------------------------------
+
 set -g @base16-palette-path '#{@base16-palettes}/gruvbox-material.conf'
 set -g @popup-autostart on
 set -g @popup-id-format '{popup_name}@#{session_name}'
@@ -56,7 +60,6 @@ if -F "$TMUX_POPUP_SERVER" {
 	set -g exit-empty off
 }
 
-# == Plugins == #
 set -g @plugins '~/.tmux/plugins'
 # Must be loaded before continuum, as it overrides the status options
 run '#{@plugins}/tmux-base16/base16.tmux'
@@ -64,10 +67,10 @@ run '#{@plugins}/tmux-base16/base16.tmux'
 run '#{@plugins}/tmux-resurrect/resurrect.tmux'
 run '#{@plugins}/tmux-continuum/continuum.tmux'
 #{{ end }}
-# Must be loaded after continuum, as it starts the popup server, which disables autosave
+# Must be loaded after continuum, as it disables autosave
 run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 
-# == Keymaps == #
+# Load keymaps
 source ~/.tmux/keymaps.conf
 
 # Restore previous session
