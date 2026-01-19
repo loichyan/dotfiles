@@ -89,6 +89,7 @@ with pkgs;
   python3
   basedpyright
   ruff
+  uv
 
   # Other formaters & linters
   taplo

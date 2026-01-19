@@ -104,6 +104,7 @@
     python3
     basedpyright
     ruff
+    uv
 
     # Lua
     lua
