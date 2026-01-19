@@ -10,6 +10,9 @@ if type -q starship
             set -e starship_private_status
         end
     end
+    function starship_transient_prompt_func
+        starship module character
+    end
     starship init fish | source
     enable_transience
     return
@@ -23,7 +26,7 @@ function fish_prompt_prefix
             set_color green
             echo '❮'
         case insert
-            set_color green
+            # Color is set by $status_color
             echo '❯'
         case replace_one
             set_color purple
@@ -35,13 +38,12 @@ function fish_prompt_prefix
             set_color blue
             echo '❮'
     end
-    set_color normal
 end
 
 function fish_prompt
     set -l last_status $status
     set -l normal (set_color normal)
-    set -l status_color (set_color brgreen)
+    set -l status_color (set_color green)
 
     # Display username anyway when we're root;
     # otherwise display it only if explicitly enabled.
@@ -74,8 +76,8 @@ function fish_prompt
 
     # Color the prompt in red on error
     set -l prompt_status
-    if test $last_status -ne 0
-        set status_color (set_color $fish_color_error -o)
+    if test "$last_status" -ne 0
+        set status_color (set_color $fish_color_error)
         set prompt_status $status_color ' [' $last_status ']' $normal
     end
 
@@ -86,7 +88,7 @@ function fish_prompt
     end
 
     echo -s \n $prompt_user $prompt_cwd $prompt_venv $prompt_vsc $prompt_status
-    echo -n -s $prompt_priv_mode $status_color (fish_prompt_prefix) ' '
+    echo -n -s $prompt_priv_mode (set_color -o) $status_color (fish_prompt_prefix) $normal ' '
 end
 
 # Disable as it breaks out prompt
