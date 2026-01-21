@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ~/.tmux/plugins/tmux-toggle-popup/bin/proxy saveb "$@" -

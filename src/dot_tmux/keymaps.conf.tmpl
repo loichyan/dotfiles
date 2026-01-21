@@ -10,7 +10,7 @@ set -g prefix C-\\
 bind C-\\ send-prefix
 bind -n M-u copy-mode
 
-# Copy select
+# Copy mode navigation and selection
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi a send -X cancel
 bind -T copy-mode-vi i send -X cancel
@@ -23,19 +23,17 @@ bind -T copy-mode-vi M-j select-pane -D
 bind -T copy-mode-vi M-k select-pane -U
 bind -T copy-mode-vi M-l select-pane -R
 
-bind -T copy-mode-vi y send -X copy-selection-and-cancel
-bind -T copy-mode-vi Y send -X copy-end-of-line-and-cancel
-bind -T copy-mode-vi p send -X copy-pipe-and-cancel 'tmux pasteb -p'
 
-if -F "$TMUX_POPUP_SERVER" {
-	set -gF copy-command '#{@popup-caller} loadb -w -'
-	bind -T copy-mode-vi y send -X copy-pipe-and-cancel
-	bind -T copy-mode-vi Y send -X copy-pipe-end-of-line-and-cancel
-	bind -T copy-mode-vi p send -X cancel \; run '#{@popup-caller} saveb - | tmux loadb -' \; pasteb -p
+# Copy and paste
+set -gF copy-command '#{@popup-proxy} loadb -w -'
 
-	bind -T prefix ] run '#{@popup-caller} saveb - | tmux loadb -' \; pasteb -p
-	bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel
-}
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel
+bind -T prefix P run '#{@popup-sync-buffer}' \; pasteb -p
+bind -T prefix ] run '#{@popup-sync-buffer}' \; pasteb -p
+
+# Copy line of current application using readline key bindings.
+bind -T prefix Y send C-a \; run -Cd 0.1 copy-mode \; send -X copy-pipe-end-of-line-and-cancel \; send C-e
+#                                    ^^^ Wait application to respond.
 
 # Sessions
 bind -n M-N new-session
