@@ -1,5 +1,6 @@
 (?i)cons
 (?i)disable
+(?i)execute[d|s]?
 (?i)execution
 (?i)hook
 (?i)pros
