@@ -7,12 +7,12 @@ format = "[(${env_value} )](bold yellow)"
 description = "Whether in Fish's private mode"
 
 [character]
-success_symbol = '[❯](green bold)'
-error_symbol = '[❯](red bold)'
-vimcmd_symbol = '[❮](green bold)'
-vimcmd_replace_one_symbol = '[❮](purple bold)'
-vimcmd_replace_symbol = '[❮](purple bold)'
-vimcmd_visual_symbol = '[❮](blue bold)'
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red)'
+vimcmd_symbol = '[❮](green)'
+vimcmd_replace_one_symbol = '[❮](purple)'
+vimcmd_replace_symbol = '[❮](purple)'
+vimcmd_visual_symbol = '[❮](yellow)'
 
 [directory]
 read_only = " 󰌾"

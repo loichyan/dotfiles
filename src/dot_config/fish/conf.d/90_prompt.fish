@@ -23,19 +23,18 @@ functions -e fish_mode_prompt
 function fish_prompt_prefix
     switch $fish_bind_mode
         case default
-            set_color green
             echo '❮'
         case insert
             # Color is set by $status_color
             echo '❯'
         case replace_one
-            set_color purple
+            set_color magenta
             echo '❮'
         case replace
-            set_color purple
+            set_color magenta
             echo '❮'
         case visual
-            set_color blue
+            set_color yellow
             echo '❮'
     end
 end
@@ -71,7 +70,7 @@ function fish_prompt
     # Display Git branch
     set -l prompt_vsc
     if set -l vsc_info (fish_vcs_prompt '%s')
-        set prompt_vsc ' on ' (set_color brpurple -o) $vsc_info $normal
+        set prompt_vsc ' on ' (set_color brmagenta -o) $vsc_info $normal
     end
 
     # Color the prompt in red on error
@@ -88,7 +87,7 @@ function fish_prompt
     end
 
     echo -s \n $prompt_user $prompt_cwd $prompt_venv $prompt_vsc $prompt_status
-    echo -n -s $prompt_priv_mode (set_color -o) $status_color (fish_prompt_prefix) $normal ' '
+    echo -n -s $prompt_priv_mode $status_color (fish_prompt_prefix) $normal ' '
 end
 
 # Disable as it breaks out prompt
