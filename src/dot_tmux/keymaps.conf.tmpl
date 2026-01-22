@@ -25,15 +25,23 @@ bind -T copy-mode-vi M-l select-pane -R
 
 
 # Copy and paste
-set -gF copy-command '#{@popup-proxy} loadb -w -'
+set -gF copy-command '#{@popup-proxy} loadb -w -' # copy to both tmux buffer and system clipboard
+set -gF @copy-line-command 'tr -d \\n | #{copy-command}' # copy with trailing newline removed
 
 bind -T copy-mode-vi y send -X copy-pipe-and-cancel
-bind -T prefix P run '#{@popup-sync-buffer}' \; pasteb -p
+bind -T copy-mode-vi Y send -X copy-pipe-end-of-line-and-cancel '#{@copy-line-command}'
+bind -T copy-mode-vi p send -X cancel \; run '#{@popup-sync-buffer}' \; pasteb -p
+
 bind -T prefix ] run '#{@popup-sync-buffer}' \; pasteb -p
+bind -T prefix P run '#{@popup-sync-buffer}' \; pasteb -p
 
 # Copy line of current application using readline key bindings.
-bind -T prefix Y send C-a \; run -Cd 0.1 copy-mode \; send -X copy-pipe-end-of-line-and-cancel \; send C-e
-#                                    ^^^ Wait application to respond.
+bind -T prefix Y {
+    send C-a # move to line start
+    run -d0.1 -C copy-mode # wait for application to respond
+    send -X copy-pipe-end-of-line-and-cancel '#{@copy-line-command}'
+    send C-e # move to line end
+}
 
 # Sessions
 bind -n M-N new-session
