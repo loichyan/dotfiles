@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 # Gnome packages
-flatpak install -y \
+flatpak install \
 	org.gnome.Calculator \
 	org.gnome.Calendar \
 	org.gnome.Characters \
@@ -14,7 +14,6 @@ flatpak install -y \
 	org.gnome.Logs \
 	org.gnome.Loupe \
 	org.gnome.Maps \
-	org.gnome.NautilusPreviewer \
 	org.gnome.Showtime \
 	org.gnome.Snapshot \
 	org.gnome.TextEditor \
