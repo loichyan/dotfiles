@@ -5,6 +5,10 @@ patch:
     - schema: double_pinyin_flypy
   menu/page_size: 5
 
+  switcher/hotkeys:
+    - Control+Shift+greater # for ibus
+    - Control+Shift+period # for fcitx5-android
+
   key_binder/bindings:
     __patch:
       - key_bindings:/emacs_editing
