@@ -46,14 +46,19 @@ set -g visual-bell off
 set -g allow-passthrough off
 set -g set-clipboard external
 
+# Load keymaps
+source ~/.tmux/keymaps.conf
+
 #-- Plugins --------------------------------------------------------------------
 
-set -g @base16-palette-path '#{@base16-palettes}/gruvbox-material.conf'
-set -g @popup-autostart on
-set -g @popup-id-format '{popup_name}@#{session_name}'
-set -g @popup-id-format-by-cwd '{popup_name}@#{pane_current_path}'
-set -g @popup-on-init 'nop'
-set -g @continuum-save-interval 15
+set -g  @base16-palette-path '#{@base16-palettes}/gruvbox-material.conf'
+set -g  @popup-autostart on
+set -g  @popup-id-format '{popup_name}@#{session_name}'
+set -g  @popup-id-format-by-cwd '{popup_name}@#{pane_current_path}'
+set -g  @popup-on-init nop
+set -g  @continuum-restore off
+set -g  @continuum-save-interval 15
+set -gF @resurrect-dir '~/.local/share/tmux/resurrect/#{b:socket_path}'
 
 if -F "$TMUX_POPUP_SERVER" {
 	set -g status off
@@ -63,19 +68,14 @@ if -F "$TMUX_POPUP_SERVER" {
 set -g @plugins '~/.tmux/plugins'
 # Must be loaded before continuum, as it overrides the status options
 run '#{@plugins}/tmux-base16/base16.tmux'
-#{{ if ne .platform "termux" }}
 run '#{@plugins}/tmux-resurrect/resurrect.tmux'
 run '#{@plugins}/tmux-continuum/continuum.tmux'
-#{{ end }}
 # Must be loaded after continuum, as it disables autosave
 run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 
-# Load keymaps
-source ~/.tmux/keymaps.conf
-
 # Restore previous session
-if -F '#{&&:#{!=:#{@tmux-did-init},1},#{==:#{b:socket_path},default}}' {
-	run '#{@resurrect-restore-script-path}'
+if -F '#{&&:#{!=:#{@tmux-did-init},1},#{!=:#{b:socket_path},popup}}' {
+	run -b '#{@resurrect-restore-script-path}'
 	set -g @tmux-did-init 1
 }
 
