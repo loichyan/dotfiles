@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# Start a gpg-agent daemon nd redirect all pinentry requests to the current terminal
-gpgconf --kill gpg-agent
-gpg-agent --daemon --ttyname="$(tty)" --keep-tty >/dev/null
-clear
-echo "Listening for pinentry requests..."
-while true; do sleep 3600; done

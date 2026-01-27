@@ -103,9 +103,6 @@ bind -n M-9 select-window -t :=9
 # Popups
 bind -n M-g run "#{@popup-toggle} -Ed'##{pane_current_path}' -w75% -h90% --name=lazygit --id-format='#{@popup-id-format-by-cwd}' lazygit"
 bind -n M-t run "#{@popup-toggle} -Ed'##{pane_current_path}' -w75% -h90% --name=scratch"
-#{{ if eq .platform "termux" }}
-bind -n M-G run "#{@popup-toggle} -Ed'$HOME' -w75% -h90% --id=gpg-agent ~/.local/bin/gpg-agent-here"
-#{{ end }}
 
 # Misc
 bind C-b run "tmux -Ldefault run '#{@base16-toggle-background}' && tmux -Lpopup run '#{@base16-toggle-background}'"
