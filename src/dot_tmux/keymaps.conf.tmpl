@@ -45,7 +45,13 @@ bind -T prefix Y {
 
 # Sessions
 bind -n M-N new-session
-bind -n M-o popup -BE -w100% -h100% '~/.tmux/fzf_session_switch.sh --border=none --preview-window=down,noinfo --preview-border=top'
+bind -n M-o popup -BE -w100% -h100% ~/.tmux/fzf_session_switch.sh \
+    --border=none \
+    --preview-window=down,noinfo \
+    --preview-border=top \
+    --bind="ctrl-b:preview-half-page-up" \
+    --bind="ctrl-f:preview-half-page-down" \
+    --bind="ctrl-x:execute-silent(tmux kill-session -t {1})+exclude"
 
 # Panes
 bind -n M-- split-window -v -c '#{pane_current_path}'
