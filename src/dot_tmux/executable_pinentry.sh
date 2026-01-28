@@ -40,13 +40,13 @@ start_local() {
 			owner_tmux=$(getenv "$owner_pid" TMUX)
 			export TMUX=$owner_tmux # use $TMUX from the owner process
 
-			# fetch user defined options
-			readarr -rd '' < <(tmux display-message -p '#{@pinentry-popup-options}' | xargs printf '%s\0')
 			popup_opts=(
 				-E
 				-e PINENTRY_TMUX_CALLER="$CALLER"
 				-e PINENTRY_TMUX_CONFIG="$CONFIG"
 			)
+			# fetch user defined options
+			readarr -rd '' < <(tmux display-message -p '#{@pinentry-popup-options}' | xargs printf '%s\0')
 			if [[ ${#res} -gt 0 ]]; then popup_opts+=("${res[@]}"); fi
 
 			mkfifo "$CONFIG/remote"
