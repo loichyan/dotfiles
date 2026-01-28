@@ -38,13 +38,19 @@ start_local() {
 			[[ ${line:7} =~ ^owner=([[:digit:]]+) ]]
 			owner_pid=${BASH_REMATCH[1]}
 			owner_tmux=$(getenv "$owner_pid" TMUX)
+			export TMUX=$owner_tmux # use $TMUX from the owner process
+
+			# fetch user defined options
+			readarr -rd '' < <(tmux display-message -p '#{@pinentry-popup-options}' | xargs printf '%s\0')
+			popup_opts=(
+				-E
+				-e PINENTRY_TMUX_CALLER="$CALLER"
+				-e PINENTRY_TMUX_CONFIG="$CONFIG"
+			)
+			if [[ ${#res} -gt 0 ]]; then popup_opts+=("${res[@]}"); fi
 
 			mkfifo "$CONFIG/remote"
-			TMUX=$owner_tmux tmux display-popup -E \
-				-w100% -h100% -B \
-				-e PINENTRY_TMUX_CALLER="$CALLER" \
-				-e PINENTRY_TMUX_CONFIG="$CONFIG" \
-				"$0" &
+			(tmux display-popup "${popup_opts[@]}" "$0" || kill -INT "$CALLER") &
 
 			IFS=' ' read -r remote_pid remote_term remote_tty <"$CONFIG/remote" || :
 
@@ -88,6 +94,13 @@ getenv() {
 		fi
 	done <"/proc/$pid/environ"
 	return 1
+}
+
+# Read from stdin into an array variable `$res`.
+readarr() {
+	res=()
+	# shellcheck disable=SC2162
+	while IFS='' read "$@" val; do res+=("$val"); done
 }
 
 # Abort due to interruption.

@@ -16,6 +16,7 @@ set -g @base16-background dark
 set -g @base16-border-lines rounded
 set -g @base16-statusline on
 set -g @base16-transparent off
+set -g @pinentry-popup-options '-B -w72 -h14' # fit width without border
 
 #-- Sensible options -----------------------------------------------------------
 
@@ -40,7 +41,6 @@ set -g set-titles-string '#W'
 set -g monitor-bell on
 set -g bell-action any
 set -g visual-bell off
-
 
 # Improve security
 set -g allow-passthrough off
