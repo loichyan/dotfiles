@@ -1,12 +1,10 @@
 # Use GnuPG for SSH authorization
-if not set -q __fish_did_init; and set -q MY_GPG_ENABLED; and type -q gpg
+if set -q MY_GPG_ENABLED; and status is-login; and type -q gpg
     # See <https://wiki.archlinux.org/title/GnuPG#SSH_agent>
-    set -e SSH_AGENT_PID
-    if test "$gnupg_SSH_AUTH_SOCK_BY" != $fish_pid
+    if not set -q SSH_AUTH_SOCK
         set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     end
-    # Start the gpg agent
-    gpg-connect-agent updatestartuptty /bye
+    gpg-connect-agent -q updatestartuptty /bye >/dev/null &
 end
 
 # Interactive tools

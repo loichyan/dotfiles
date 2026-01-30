@@ -1,5 +1,5 @@
 function history_delete -d "Delete history entries"
-    if test -z "$argv" || ! argparse p/prefix=+ c/contains=+ -- $argv
+    if test -z "$argv" || not argparse p/prefix=+ c/contains=+ -- $argv
         echo -n '\
 Usage:
 

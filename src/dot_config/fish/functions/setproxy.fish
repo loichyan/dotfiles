@@ -1,5 +1,5 @@
 function setproxy -d "Set proxy variables"
-    if ! argparse -X1 e/earse -- $argv
+    if not argparse -X1 e/earse -- $argv
         echo -n "
 Usage:
 
