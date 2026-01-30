@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-
+#!/bin/sh
 # Update rime-ice
 ~/.plum/rime-install Mintimate/oh-my-rime:plum/full
