@@ -6,7 +6,7 @@ if not set -q __fish_did_init; and set -q MY_GPG_ENABLED; and type -q gpg
         set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     end
     # Start the gpg agent
-    gpg-connect-agent -q /bye >/dev/null
+    gpg-connect-agent updatestartuptty /bye
 end
 
 # Interactive tools

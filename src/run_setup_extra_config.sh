@@ -71,13 +71,3 @@ if has aria2c; then
 	mkdir -p ~/.local/share/aria2
 	touch ~/.local/share/aria2/session
 fi
-
-# c.f. https://wiki.archlinux.org/title/GNOME/Keyring#Disabling
-autostart="$HOME/.config/autostart"
-sysfile="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
-userfile="$autostart/gnome-keyring-ssh.desktop"
-if [[ -f "$sysfile" ]] && [[ ! -f "$userfile" ]]; then
-	mkdir -p "$autostart/"
-	cp "$sysfile" "$autostart/"
-	echo "Hidden=true" >>"$userfile"
-fi
