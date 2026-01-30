@@ -23,14 +23,36 @@ cat <<-INI | sudo tee /etc/yum.repos.d/vscode.repo
 	gpgcheck=1
 INI
 
-# Import my personal packages
+# # Import my personal packages
+# cat <<-INI | sudo tee /etc/yum.repos.d/obs-loichyan.repo
+# 	[obs-loichyan]
+# 	name=obs:loichyan (Fedora_\$releasever)
+# 	baseurl=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/
+# 	gpgkey=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/repodata/repomd.xml.key
+# 	enabled=1
+# 	gpgcheck=1
+# INI
+
 cat <<-INI | sudo tee /etc/yum.repos.d/obs-loichyan.repo
-	[obs-loichyan]
-	name=obs:loichyan (Fedora_\$releasever)
-	baseurl=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/
-	gpgkey=https://download.opensuse.org/repositories/home:/loichyan/Fedora_\$releasever/repodata/repomd.xml.key
+	[nvidia-container-toolkit]
+	name=nvidia-container-toolkit
+	baseurl=https://nvidia.github.io/libnvidia-container/stable/rpm/\$basearch
+	repo_gpgcheck=1
+	gpgcheck=0
 	enabled=1
-	gpgcheck=1
+	gpgkey=https://nvidia.github.io/libnvidia-container/gpgkey
+	sslverify=1
+	sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+	[nvidia-container-toolkit-experimental]
+	name=nvidia-container-toolkit-experimental
+	baseurl=https://nvidia.github.io/libnvidia-container/experimental/rpm/\$basearch
+	repo_gpgcheck=1
+	gpgcheck=0
+	enabled=0
+	gpgkey=https://nvidia.github.io/libnvidia-container/gpgkey
+	sslverify=1
+	sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 INI
 
 # Install common packages
