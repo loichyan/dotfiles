@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 # Gnome packages
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install \
 	org.gnome.Calculator \
 	org.gnome.Calendar \
@@ -22,9 +23,13 @@ flatpak install \
 	org.gnome.clocks \
 	org.gnome.font-viewer
 
-# Additional packages from Flathub
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.github.tchx84.Flatseal eu.betterbird.Betterbird md.obsidian.Obsidian com.brave.Browser
+# Additional packages
+flatpak install \
+	com.brave.Browser \
+	com.github.tchx84.Flatseal \
+	com.visualstudio.code \
+	eu.betterbird.Betterbird \
+	md.obsidian.Obsidian
 
 # Share nixpkgs and fontconfig
 flatpak override --user --filesystem=/nix:ro --filesystem=xdg-config/fontconfig:ro

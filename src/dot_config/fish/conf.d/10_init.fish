@@ -1,4 +1,4 @@
-if set -q __fish_did_init
+if not status is-login
     return
 end
 
@@ -34,12 +34,6 @@ end
 # Set the default pager
 set -gx PAGER 'less -R'
 
-# Set XDG base directories
-set -gx XDG_CONFIG_HOME ~/.config
-set -gx XDG_CACHE_HOME ~/.cache
-set -gx XDG_DATA_HOME ~/.local/share
-set -gx XDG_STATE_HOME ~/.local/state
-
 # Set Python user base folder
 set -gx PYTHONUSERBASE ~/.pip
 # Set ripgrep config path
@@ -48,3 +42,12 @@ set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/ripgreprc
 set -gx FZF_DEFAULT_OPTS "--color 16"
 # Set default Golang module directory
 set -gx GOPATH ~/.go
+
+# Set XDG base directories
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx XDG_CACHE_HOME ~/.cache
+set -gx XDG_DATA_HOME ~/.local/share
+set -gx XDG_STATE_HOME ~/.local/state
+
+# Override $SHELL.
+set -gx SHELL (type -p fish)

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [[ $container != 'flatpak' ]]; then
+	exec flatpak run \
+		--env=HOST_PATH="$PATH" \
+		--env=HOST_SHELL="$SHELL" \
+		--file-forwarding \
+		--command="$0" \
+		com.visualstudio.code "$@"
+else
+	export XDG_CONFIG_HOME="${HOST_XDG_CONFIG_HOME:-$HOME/.config}"
+	export XDG_CACHE_HOME="${HOST_XDG_DATA_HOME:-$HOME/.cache}"
+	export XDG_DATA_HOME="${HOST_XDG_DATA_HOME:-$HOME/.local/share}"
+	export XDG_STATE_HOME="${HOST_XDG_STATE_HOME:-$HOME/.local/state}"
+	export PATH="$HOST_PATH:$PATH"
+	exec /app/bin/code "$@"
+fi

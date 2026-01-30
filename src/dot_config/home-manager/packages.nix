@@ -8,7 +8,7 @@
     # Nix
     cachix
     nil
-    nixfmt-rfc-style
+    nixfmt
 
     # Dotfiles manager
     chezmoi
@@ -26,6 +26,7 @@
     expect
     eza
     fd
+    fish
     fzf
     nix-direnv
     starship

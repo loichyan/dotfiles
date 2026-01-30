@@ -13,15 +13,15 @@ sudo mokutil --import /etc/pki/akmods/certs/public_key.der
 # Disable Nouveau see <https://docs.fedoraproject.org/en-US/fedora-silverblue/troubleshooting/#_using_nvidia_drivers>
 rpm-ostree kargs --append=rd.driver.blacklist=nouveau,nova-core --append=modprobe.blacklist=nouveau,nova-core --append=nvidia-drm.modeset=1 --append=initcall_blacklist=simpledrm_platform_driver_init
 
-# Import VS Code's repository
-cat <<-INI | sudo tee /etc/yum.repos.d/vscode.repo
-	[vscode]
-	name=vscode
-	baseurl=https://packages.microsoft.com/yumrepos/vscode
-	gpgkey=https://packages.microsoft.com/keys/microsoft.asc
-	enabled=1
-	gpgcheck=1
-INI
+# # Import VS Code's repository
+# cat <<-INI | sudo tee /etc/yum.repos.d/vscode.repo
+# 	[vscode]
+# 	name=vscode
+# 	baseurl=https://packages.microsoft.com/yumrepos/vscode
+# 	gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+# 	enabled=1
+# 	gpgcheck=1
+# INI
 
 # # Import my personal packages
 # cat <<-INI | sudo tee /etc/yum.repos.d/obs-loichyan.repo

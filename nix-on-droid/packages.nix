@@ -1,6 +1,10 @@
 { pkgs }:
 with pkgs;
 [
+  # Nix
+  nil
+  nixfmt
+
   # General utilities
   chezmoi
   curl
@@ -26,6 +30,7 @@ with pkgs;
   expect
   eza
   fd
+  fish
   fzf
   nix-direnv
   tmux
@@ -80,10 +85,6 @@ with pkgs;
   lua
   stylua
   lua-language-server
-
-  # Nix
-  nil
-  nixfmt-rfc-style
 
   # Python
   python3

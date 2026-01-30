@@ -71,3 +71,12 @@ if has aria2c; then
 	mkdir -p ~/.local/share/aria2
 	touch ~/.local/share/aria2/session
 fi
+
+mkdir -p "$HOME/.local/share/applications"
+for f in com.visualstudio.code.desktop com.visualstudio.code-url-handler.desktop; do
+	p="$HOME/.local/share/applications/$f"
+	if [[ ! -f $p ]]; then continue; fi
+	info "create '$p'"
+	cp "/var/lib/flatpak/exports/share/applications/$f" "$p"
+	sed "s|^Exec=/usr/bin/flatpak run .*com\.visualstudio\.code\(.*\)|Exec=$HOME/.local/bin/code\1|" -i "$p"
+done
