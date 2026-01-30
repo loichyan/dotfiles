@@ -60,23 +60,28 @@ set -g  @continuum-restore off
 set -g  @continuum-save-interval 15
 set -gF @resurrect-dir '~/.local/share/tmux/resurrect/#{b:socket_path}'
 
-if -F "$TMUX_POPUP_SERVER" {
+if -F '#{TMUX_POPUP_SERVER}' {
 	set -g status off
 	set -g exit-empty off
 }
 
 set -g @plugins '~/.tmux/plugins'
-# Must be loaded before continuum, as it overrides the status options
 run '#{@plugins}/tmux-base16/base16.tmux'
-run '#{@plugins}/tmux-resurrect/resurrect.tmux'
-run '#{@plugins}/tmux-continuum/continuum.tmux'
-# Must be loaded after continuum, as it disables autosave
-run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 
-# Restore previous session
-if -F '#{&&:#{!=:#{@tmux-did-init},1},#{!=:#{b:socket_path},popup}}' {
-	run -b '#{@resurrect-restore-script-path}'
-	set -g @tmux-did-init 1
+# Load other plugins in the background
+run -bC {
+	if -F '#{!:#{TMUX_POPUP_SERVER}}' {
+		run '#{@plugins}/tmux-resurrect/resurrect.tmux'
+		run '#{@plugins}/tmux-continuum/continuum.tmux'
+	}
+	# Must be loaded after continuum, as it disables autosave
+	run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
+
+	# Restore previous session
+	if -F '#{!:#{||:#{@tmux-did-init},#{TMUX_POPUP_SERVER}}}' {
+		run '#{@resurrect-restore-script-path}'
+		set -g @tmux-did-init 1
+	}
 }
 
 # vim:ft=tmux
