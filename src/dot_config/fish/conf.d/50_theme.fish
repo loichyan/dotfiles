@@ -1,5 +1,18 @@
-if not status is-interactive
-    return
+if status is-login
+    # Stolen from <https://github.com/ohmyzsh/ohmyzsh/blob/5c804257ceb5b3062b876afae290adf72c474aad/plugins/colored-man-pages/colored-man-pages.plugin.zsh#L9>
+    # bold & blinking mode
+    set -gx LESS_TERMCAP_mb (set_color red -o)
+    set -gx LESS_TERMCAP_md (set_color red -o)
+    set -gx LESS_TERMCAP_me (set_color normal)
+    # standout mode
+    set -gx LESS_TERMCAP_so (set_color -r bryellow -o)
+    set -gx LESS_TERMCAP_se (set_color normal)
+    # underlining
+    set -gx LESS_TERMCAP_us (set_color green -o)
+    set -gx LESS_TERMCAP_ue (set_color normal)
+
+    set -gx GROFF_NO_SGR 1
+    set -gx MANPAGER 'less -R'
 end
 
 # Disable greeting
@@ -56,27 +69,3 @@ set -g fish_pager_color_selected_background -b brblack
 set -g fish_pager_color_selected_completion
 set -g fish_pager_color_selected_description
 set -g fish_pager_color_selected_prefix
-
-function colored_man_wrap -d "Wrap man(1) execution with colors"
-    # Stolen from <https://github.com/ohmyzsh/ohmyzsh/blob/5c804257ceb5b3062b876afae290adf72c474aad/plugins/colored-man-pages/colored-man-pages.plugin.zsh#L9>
-    # bold & blinking mode
-    set -lx LESS_TERMCAP_mb (set_color red -o)
-    set -lx LESS_TERMCAP_md (set_color red -o)
-    set -lx LESS_TERMCAP_me (set_color normal)
-    # standout mode
-    set -lx LESS_TERMCAP_so (set_color -r bryellow -o)
-    set -lx LESS_TERMCAP_se (set_color normal)
-    # underlining
-    set -lx LESS_TERMCAP_us (set_color green -o)
-    set -lx LESS_TERMCAP_ue (set_color normal)
-
-    set -lx GROFF_NO_SGR 1
-    set -lx MANPAGER 'less -R'
-
-    $argv
-end
-
-functions -c __fish_print_help __fish_print_help_orig
-function __fish_print_help
-    colored_man_wrap __fish_print_help_orig $argv
-end
