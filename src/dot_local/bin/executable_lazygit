@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+while IFS= read -rd: path; do
+	lazygit="$path/lazygit"
+	if [[ $lazygit == "$0" ]]; then continue; fi
+	SHELL=$(command -v bash) exec "$lazygit"
+done <<<"$PATH"
+exit 1

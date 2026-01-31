@@ -19,8 +19,8 @@ git:
   log:
     showGraph: when-maximised
 os:
-  copyToClipboardCmd: ~/.config/lazygit/copyToClipboard {{text}}
-  readFromClipboardCmd: ~/.config/lazygit/readFromClipboard
+  copyToClipboardCmd: printf '%s' {{text}} | sed 's/\\\(.\)/\1/g' | tmuxcpy -w
+  readFromClipboardCmd: tmuxpst
 keybinding:
   universal:
     toggleRangeSelect: V
