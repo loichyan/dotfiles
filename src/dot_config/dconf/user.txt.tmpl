@@ -119,20 +119,14 @@ restore-state=true
 toggle-state=true
 user-enabled=true
 
-[org/gnome/shell/extensions/clipboard-history]
-clear-history=@as []
-disable-down-arrow=true
+[org/gnome/shell/extensions/clipboard-indicator]
 display-mode=2
-next-entry=['<Super>bracketright']
-notify-on-copy=false
-paste-on-selection=false
-prev-entry=['<Super>bracketleft']
-process-primary-selection=false
 strip-text=true
+clear-history=@as []
+next-entry=['<Super>bracketright']
+prev-entry=['<Super>bracketleft']
+private-mode-binding=['<Super>apostrophe']
 toggle-menu=@as []
-toggle-private-mode=['<Super>apostrophe']
-topbar-preview-size=15
-window-width-percentage=25
 
 [org/gnome/shell/extensions/dash-in-panel]
 button-margin=2
@@ -177,9 +171,9 @@ show-switcher=['<Super>o']
 workspace-indicator=false
 
 [org/gnome/shell/extensions/top-bar-organizer]
-left-box-order=['WorkspaceMenu', 'FocusButton', 'OpenPositionButton', 'activities', 'dash']
-center-box-order=['vitalsMenu', 'pomodoro', 'screenRecording', 'screenSharing']
-right-box-order=['Clipboard History Indicator', 'keyboard', 'dateMenu', 'dwellClick', 'a11y', 'quickSettings']
+left-box-order=['activities', 'dash']
+center-box-order=['pomodoro', 'vitalsMenu']
+right-box-order=['clipboardIndicator', 'screenRecording', 'screenSharing', 'keyboard', 'dwellClick', 'a11y', 'dateMenu', 'quickSettings']
 
 [org/gnome/shell/extensions/vitals]
 fixed-widths=true
@@ -405,7 +399,7 @@ exec-arg=''
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=@as []
-enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst', 'appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-history@alexsaveau.dev', 'cronomix@zagortenay333', 'dash-in-panel@fthx', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'top-bar-organizer@julian.gse.jsts.xyz', 'Vitals@CoreCoding.com']
+enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst', 'appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'cronomix@zagortenay333', 'dash-in-panel@fthx', 'paperwm@paperwm.github.com', 'steal-my-focus-window@steal-my-focus-window', 'switcher@landau.fi', 'top-bar-organizer@julian.gse.jsts.xyz', 'Vitals@CoreCoding.com']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
