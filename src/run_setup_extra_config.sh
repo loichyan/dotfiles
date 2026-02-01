@@ -2,7 +2,8 @@
 
 set -e
 
-root="$(cd "$(dirname "$CHEZMOI_SOURCE_DIR")" && pwd)"
+root=$(cd "$(dirname "$CHEZMOI_SOURCE_DIR")" && pwd)
+cd "$root"
 
 warn() {
 	printf "\e[33m[WARN]\e[0m %s\n" "$1"
@@ -50,10 +51,12 @@ symlink tmux/plugins .tmux/plugins
 symlink wezterm .config/wezterm
 symlink private/gpg .gnupg
 symlink private/ssh .ssh
-test -d private/config && find private/config -mindepth 1 | while read -r p; do
-	f="$(basename "$p")"
-	symlink "private/config/$f" ".config/$f"
-done
+if [[ -d private/config ]]; then
+	for p in private/config/*; do
+		f="$(basename "$p")"
+		symlink "private/config/$f" ".config/$f"
+	done
+fi
 
 # Copy extra files
 copy_dir packages .config/home-manager/packages
