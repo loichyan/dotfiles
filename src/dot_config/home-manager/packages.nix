@@ -41,6 +41,7 @@
     delta
 
     # Dev tools
+    aichat
     ast-grep
     bottom
     distrobox

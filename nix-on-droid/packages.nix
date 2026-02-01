@@ -42,6 +42,7 @@ with pkgs;
   delta
 
   # Dev utilities
+  aichat
   ast-grep
   bat
   husky
