@@ -126,9 +126,11 @@
     hadolint
     nodePackages.yaml-language-server
     taplo
+
+    # Spellcheckers
+    harper
     typos
     typos-lsp
-    vale
 
     ## Document
     #texlive.combined.scheme-full

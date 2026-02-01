@@ -94,7 +94,9 @@ with pkgs;
 
   # Other formaters & linters
   taplo
+
+  # Spellcheckers
+  harper
   typos
   typos-lsp
-  vale
 ]
