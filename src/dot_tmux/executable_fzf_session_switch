@@ -7,7 +7,7 @@ SHELL=/bin/sh selected=$(
 		# Remove columns that should not be displayed.
 		cut -d' ' -f2- |
 		# Return the id of selected session.
-		fzf --accept-nth=1 --with-nth=2.. --preview="$HOME/.tmux/fzf_session_preview.sh {1}" "$@"
+		fzf --accept-nth=1 --with-nth=2.. --preview="$HOME/.tmux/fzf_session_preview {1}" "$@"
 )
 if [ -z "$selected" ]; then exit; fi
 tmux switch-client -t "$selected"
