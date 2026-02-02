@@ -1,0 +1,10 @@
+#!/bin/sh
+# 1) move to line start
+# 2) wait for application to respond
+# 3) copy current line
+# 4) move to line end
+exec tmux \
+	send C-a \; \
+	run -d0.1 -C copy-mode \; \
+	send -X copy-pipe-end-of-line-and-cancel "${1:-"#{copy-command}"}" \; \
+	send C-e \;

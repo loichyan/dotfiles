@@ -19,7 +19,7 @@ git:
   log:
     showGraph: when-maximised
 os:
-  copyToClipboardCmd: printf '%s' {{text}} | sed 's/\\\(.\)/\1/g' | tmuxcpy -w
+  copyToClipboardCmd: printf '%s' {{text}} | sed 's/\\\(.\)/\1/g' | tmuxcpy
   readFromClipboardCmd: tmuxpst
 keybinding:
   universal:

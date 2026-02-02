@@ -25,23 +25,28 @@ bind -T copy-mode-vi M-l select-pane -R
 
 
 # Copy and paste
-set -gF copy-command '~/.tmux/plugins/tmux-toggle-popup/bin/proxy loadb -w -' # copy to both tmux buffer and system clipboard
-set -gF @copy-line-command 'tr -d \\n | #{copy-command}' # copy with trailing newline removed
+set -gF @copy                '#{@popup-proxy} loadb -'        # copy to only tmux buffer
+set -gF @copy-clipboard      '#{@popup-proxy} loadb -w -'     # copy to both tmux buffer and clipboard
+set -gF @copy-line           'tr -d \\n | #{@copy}'           # copy with trailing newline removed
+set -gF @copy-line-clipboard 'tr -d \\n | #{@copy-clipboard}' # copy with trailing newline removed
 
-bind -T copy-mode-vi y send -X copy-pipe-and-cancel
-bind -T copy-mode-vi Y send -X copy-pipe-end-of-line-and-cancel '#{@copy-line-command}'
-bind -T copy-mode-vi p send -X cancel \; run '#{@popup-sync-buffer}' \; pasteb -p
+set -gF copy-command '#{@copy}' # copy only to tmux buffer by default
 
-bind -T prefix ] run '#{@popup-sync-buffer}' \; pasteb -p
-bind -T prefix P run '#{@popup-sync-buffer}' \; pasteb -p
+set -g @paste          { run '#{@popup-sync-buffer}' ; pasteb -p }
+set -g @push-clipboard { run '#{@popup-proxy} saveb - | #{@copy-clipboard}' }
 
-# Copy line of current application using readline key bindings.
-bind -T prefix Y {
-    send C-a # move to line start
-    run -d0.1 -C copy-mode # wait for application to respond
-    send -X copy-pipe-end-of-line-and-cancel '#{@copy-line-command}'
-    send C-e # move to line end
-}
+bind -T copy-mode-vi y   send -X copy-pipe-and-cancel '#{@copy}'
+bind -T copy-mode-vi M-y send -X copy-pipe-and-cancel '#{@copy-clipboard}'
+bind -T copy-mode-vi Y   send -X copy-pipe-end-of-line-and-cancel '#{@copy-line}'
+bind -T copy-mode-vi M-Y send -X copy-pipe-end-of-line-and-cancel '#{@copy-line-clipboard}'
+bind -T copy-mode-vi p   send -X cancel \; run -C '#{@paste}'
+bind -T copy-mode-vi M-p send -X cancel \; run -C '#{@push-clipboard}'
+
+bind -N 'Copy current line from shell'         -T prefix Y   run "~/.tmux/copy_shell '##{@copy-line}'"
+bind -N 'Copy current line from shell'         -T prefix M-y run "~/.tmux/copy_shell '##{@copy-line-clipboard}'"
+bind -N 'Paste most recent buffer'             -T prefix ]   run -C '#{@paste}'
+bind -N 'Paste most recent buffer'             -T prefix P   run -C '#{@paste}'
+bind -N 'Push most recent buffer to clipboard' -T prefix M-p run -C '#{@push-clipboard}'
 
 # Sessions
 bind -n M-N new-session

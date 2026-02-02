@@ -46,9 +46,6 @@ set -g visual-bell off
 set -g allow-passthrough off
 set -g set-clipboard external
 
-# Load keymaps
-source ~/.tmux/keymaps.conf
-
 #-- Plugins --------------------------------------------------------------------
 
 set -g  @base16-palette-path '#{@base16-palettes}/gruvbox-material.conf'
@@ -65,7 +62,7 @@ if -F '#{TMUX_POPUP_SERVER}' {
 	set -g exit-empty off
 }
 
-set -g @plugins '~/.tmux/plugins'
+set -g @plugins "~/.tmux/plugins"
 run '#{@plugins}/tmux-base16/base16.tmux'
 
 # Load other plugins in the background
@@ -76,6 +73,9 @@ run -bC {
 	}
 	# Must be loaded after continuum, as it disables autosave
 	run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
+
+	# Load keymaps
+	source ~/.tmux/keymaps.conf
 
 	# Restore previous session
 	if -F '#{!:#{||:#{@tmux-did-init},#{TMUX_POPUP_SERVER}}}' {
