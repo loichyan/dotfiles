@@ -2,27 +2,18 @@
 
 loichyan's dotfiles.
 
+## ✨ Overview <a id="information"></a>
+
 ![showcase](https://loichyan.github.io/dotfiles/assets/showcase.jpg)
 
-<details>
-<summary id="information">Information</summary>
-
-- font: [0xProto](https://github.com/0xType/0xProto)
-- tmux: [tmux-base16](https://github.com/loichyan/tmux-base16)
-- Neovim: [Meowim](https://github.com/loichyan/Meowim)
-
-</details>
-
-## ✨ Overview
-
 - Operating system: [Fedora Silverblue](https://silverblue.fedoraproject.org/)
-- Dotfile manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 - Package manager: [Home Manager](https://github.com/nix-community/home-manager)
 - Shell: [Fish](https://fishshell.com/)
-- Development environment: [Meowim](https://github.com/loichyan/Meowim)
-- Terminal: [Alacritty](https://alacritty.org/) &
-  [Termux](https://github.com/termux/termux-app) &
-  [tmux](https://github.com/tmux/tmux)
+- Terminal: [tmux](https://github.com/tmux/tmux) +
+  [tmux-base16](https://github.com/loichyan/tmux-base16)
+- Editor: [Neovim](https://neovim.io/) +
+  [Meowim](https://github.com/loichyan/Meowim)
+- Font: [Baccano](https://github.com/loichyan/baccano-font)
 
 ## 🚀 Installation
 
