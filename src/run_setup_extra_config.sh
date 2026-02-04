@@ -43,6 +43,11 @@ copy_dir() {
 	find "$src" -type f -exec cp {} "$dest/" \;
 }
 
+tmux_base16_build() {
+	info "build tmux-base16 template '$1' to '$2'"
+	tmux run -E "#{@base16-build-palette} -i '#{@base16-templates}/$1' -o $2"
+}
+
 info "setup extra configuration"
 
 # Symlink directories
@@ -83,3 +88,11 @@ for f in com.visualstudio.code.desktop com.visualstudio.code-url-handler.desktop
 	cp "/var/lib/flatpak/exports/share/applications/$f" "$p"
 	sed "s|^Exec=/usr/bin/flatpak run .*com\.visualstudio\.code\(.*\)|Exec=$HOME/.local/bin/code\1|" -i "$p"
 done
+
+# Build terminal colors
+if [[ -n $TMUX ]]; then
+	tmux_base16_build alacritty.toml ~/.config/alacritty/colors.toml
+	tmux_base16_build foot.ini ~/.config/foot/colors.ini
+	tmux_base16_build kitty.conf ~/.config/kitty/colors.conf
+	tmux_base16_build termux.properties ~/.termux/colors.properties
+fi
