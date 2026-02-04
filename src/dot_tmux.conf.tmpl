@@ -67,12 +67,12 @@ run '#{@plugins}/tmux-base16/base16.tmux'
 
 # Load other plugins in the background
 run -bC {
+	run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 	if -F '#{!:#{TMUX_POPUP_SERVER}}' {
+		set -gaF status-right '##(#{@plugins}/tmux-continuum/scripts/continuum_save.sh)'
 		run '#{@plugins}/tmux-resurrect/resurrect.tmux'
 		run '#{@plugins}/tmux-continuum/continuum.tmux'
 	}
-	# Must be loaded after continuum, as it disables autosave
-	run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 
 	# Load keymaps
 	source ~/.tmux/keymaps.conf
