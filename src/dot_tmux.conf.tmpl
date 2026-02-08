@@ -69,9 +69,8 @@ run '#{@plugins}/tmux-base16/base16.tmux'
 run -bC {
 	run '#{@plugins}/tmux-toggle-popup/toggle-popup.tmux'
 	if -F '#{!:#{TMUX_POPUP_SERVER}}' {
-		set -gaF status-right '##(#{@plugins}/tmux-continuum/scripts/continuum_save.sh)'
 		run '#{@plugins}/tmux-resurrect/resurrect.tmux'
-		run '#{@plugins}/tmux-continuum/continuum.tmux'
+		set -ga status-right "#(~/.tmux/continuum_save)"
 	}
 
 	# Load keymaps

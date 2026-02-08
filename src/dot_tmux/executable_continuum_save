@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -x
+IFS=',' read -r timestamp interval save_script < <(tmux display -p \
+	'#{@continuum-timestamp},#{@continuum-save-interval},#{@resurrect-save-script-path}')
+now=$(date +%s)
+if [[ -z $timestamp ]]; then
+	tmux set -g @continuum-timestamp "$now"
+	timestamp=${timestamp:-$now}
+fi
+if [[ $((now - timestamp)) -ge $((interval * 60)) ]]; then
+	tmux set -g @continuum-timestamp "$now"
+	exec "$save_script" quiet
+fi
