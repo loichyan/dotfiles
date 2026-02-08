@@ -49,7 +49,7 @@ bind -N 'Paste most recent buffer'             -T prefix P   run -C '#{@paste}'
 bind -N 'Push most recent buffer to clipboard' -T prefix M-p run -C '#{@push-clipboard}'
 
 # Sessions
-bind -n M-N new-session
+bind -n M-N command-prompt { new-session -s '%%' }
 bind -n M-o popup -BE -w100% -h100% ~/.tmux/fzf_session_switch \
     --border=none \
     --preview-window=down,noinfo \
