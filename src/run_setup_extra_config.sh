@@ -43,11 +43,6 @@ copy_dir() {
 	find "$src" -type f -exec cp {} "$dest/" \;
 }
 
-tmux_base16_build() {
-	info "build tmux-base16 template '$1' to '$2'"
-	tmux run -E "#{@base16-build-palette} -i '#{@base16-templates}/$1' -o $2"
-}
-
 info "setup extra configuration"
 
 # Symlink directories
@@ -91,8 +86,12 @@ done
 
 # Build terminal colors
 if [[ -n $TMUX ]]; then
-	tmux_base16_build alacritty.toml ~/.config/alacritty/colors.toml
-	tmux_base16_build foot.ini ~/.config/foot/colors.ini
-	tmux_base16_build kitty.conf ~/.config/kitty/colors.conf
-	tmux_base16_build termux.properties ~/.termux/colors.properties
+	info 'build tmux-base16 templates'
+	tmux run -E "
+		#{@base16-build-palette} \
+			-i '#{@base16-templates}/alacritty.toml'    -o ~/.config/alacritty/colors.toml \
+			-i '#{@base16-templates}/foot.ini'          -o ~/.config/foot/colors.ini \
+			-i '#{@base16-templates}/kitty.conf'        -o ~/.config/kitty/colors.conf \
+			-i '#{@base16-templates}/termux.properties' -o ~/.termux/colors.properties
+	"
 fi
