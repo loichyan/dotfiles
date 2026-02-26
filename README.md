@@ -28,7 +28,7 @@ chezmoi apply
 ### Setup Home Manager
 
 Build the first generation of Home Manager (following
-[this guide](https://rycee.gitlab.io/home-manager/index.html#ch-nix-flakes)):
+[this guide](https://nix-community.github.io/home-manager/index.xhtml#ch-nix-flakes)):
 
 ```sh
 nix run home-manager/master -- switch
