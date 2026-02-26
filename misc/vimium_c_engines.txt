@@ -21,6 +21,7 @@ alpine|Aline         https://pkgs.alpinelinux.org/packages?name=$s
 # Nixpkgs
 home-manager|HomeManager: https://home-manager-options.extranix.com/?query=$s
 nix|Nixpkgs:              https://search.nixos.org/packages?channel=unstable&query=$s
+nix-hub|Nixhub:           https://www.nixhub.io/search?q=$s
 nix-version|NixVersions:  https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=$s
 
 # Rust
