@@ -4,15 +4,21 @@ let
     lib
     myData
     curl
+    jq
     writeShellApplication
     ;
   update-geodat = writeShellApplication {
     name = "update-geodat";
-    runtimeInputs = [ curl ];
+    runtimeInputs = [
+      curl
+      jq
+    ];
     text = ''
-      mkdir -p ${myData.home}/.local/share/xray
-      curl -fL "${myData.geodatIp}" -o ${myData.home}/.local/share/xray/geoip.dat
-      curl -fL "${myData.geodatDomain}" -o ${myData.home}/.local/share/xray/geosite.dat
+      if [[ ! -f ~/.config/xray/config.json ]]; then exit; fi
+      mkdir -p ~/.local/share/xray
+      while IFS=$'\t' read -r name url; do
+        curl -fL "$url" -o "$HOME/.local/share/xray/$name.dat"
+      done < <(jq -r '.ruleset.[] | "\(.name)\t\(.url)"' ~/.config/xray/config.json)
     '';
   };
 in

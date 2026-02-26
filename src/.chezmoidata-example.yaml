@@ -80,8 +80,6 @@ proxy:
   socksPort: 1079
 geodat:
   enabled: true
-  ip: https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
-  domain: https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat
 tor:
   enabled: true
   port: 1089
