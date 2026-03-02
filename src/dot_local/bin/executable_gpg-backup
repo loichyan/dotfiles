@@ -25,6 +25,8 @@ Options:
 
     if set -q _flag_key
         set -p gpg_flags --default-recipient $_flag_key
+    else if test -f ~/.gnupg/default_backup_key
+        set -p gpg_flags --default-recipient (cat ~/.gnupg/default_backup_key)
     end
 
     if set -q _flag_extract
