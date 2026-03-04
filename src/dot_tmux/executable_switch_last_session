@@ -1,0 +1,15 @@
+#!/bin/sh
+SHELL=/bin/sh
+tmux list-sessions -F \
+	'#{?session_last_attached,#{session_last_attached},0} #{session_id} #{session_name}' |
+	sort -k1,1nr -k3 |
+	cut -d' ' -f2 |
+	{
+		current=$(tmux display-message -p '#{session_id}')
+		while IFS=' ' read -r id; do
+			if [ "$id" != "$current" ]; then
+				tmux switch-client -t "$id"
+				break
+			fi
+		done
+	}
