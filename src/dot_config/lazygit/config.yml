@@ -14,7 +14,7 @@ git:
   commit:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
-  truncateCopiedCommitHashesTo: 7
+  truncateCopiedCommitHashesTo: 8
   autoFetch: false
   log:
     showGraph: when-maximised
