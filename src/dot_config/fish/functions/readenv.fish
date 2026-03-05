@@ -3,14 +3,9 @@ function readenv -d "Read dotenv into current session"
     for envfile in $argv
         if not test -f "$envfile"
             echo "failed to load $envfile" >&2
-            return 1
+            continue
         end
-
-        while read line
-            if set kv (string match -gr '^(\w+)=(.+)' $line)
-                set kv[2] (eval echo $kv[2]) # expand any variables in the value
-                set -gx $kv
-            end
-        end <$envfile
+        string replace -r '^\w+=.+' 'export $0' <$envfile | source
+        or echo "failed to load $envfile" >&2
     end
 end
