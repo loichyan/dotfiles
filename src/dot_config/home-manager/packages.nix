@@ -56,9 +56,11 @@
 
     # Misc tools
     aria2
+    cloudflared
     docker-compose
     gh
     netcat
+    optipng
     p7zip
     static-web-server
 

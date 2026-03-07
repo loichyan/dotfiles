@@ -53,8 +53,10 @@ with pkgs;
   tokei
 
   # Misc tools
-  static-web-server
+  cloudflared
+  netcat
   optipng
+  static-web-server
 
   #== Languages support ==#
 
