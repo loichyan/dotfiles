@@ -73,6 +73,7 @@
     nodePackages.bash-language-server
 
     # C/C++
+    stdenv.cc
     clang-tools
     cmake
     gnumake
