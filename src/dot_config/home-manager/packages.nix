@@ -70,7 +70,7 @@
     perl
     shellcheck
     shfmt
-    nodePackages.bash-language-server
+    bash-language-server
 
     # C/C++
     stdenv.cc
@@ -98,12 +98,12 @@
     # Web
     deno
     nodejs
-    nodePackages.pnpm
+    pnpm
 
     tailwindcss-language-server
-    nodePackages.eslint
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
+    eslint
+    typescript-language-server
+    vscode-langservers-extracted
 
     # Python
     python3
@@ -128,7 +128,7 @@
 
     # Other formaters & linters
     hadolint
-    nodePackages.yaml-language-server
+    yaml-language-server
     taplo
 
     # Spellcheckers

@@ -64,7 +64,7 @@ with pkgs;
   perl
   shellcheck
   shfmt
-  nodePackages.bash-language-server
+  bash-language-server
 
   # Rust
   (rust-bin.stable.latest.default.override {
@@ -77,7 +77,7 @@ with pkgs;
 
   # Web
   deno
-  nodePackages.typescript-language-server
+  typescript-language-server
 
   # C/C++
   stdenv.cc
