@@ -67,13 +67,13 @@ with pkgs;
   bash-language-server
 
   # Rust
-  (rust-bin.stable.latest.default.override {
-    extensions = [
-      "rust-src"
-      "rust-analyzer"
-    ];
-  })
-  mold
+  # (rust-bin.stable.latest.default.override {
+  #   extensions = [
+  #     "rust-src"
+  #     "rust-analyzer"
+  #   ];
+  # })
+  # mold
 
   # Web
   deno
